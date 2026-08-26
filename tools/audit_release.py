@@ -132,7 +132,7 @@ def main() -> None:
     )
     for pattern in critical_log_patterns:
         require(pattern not in build_log, f"final build diagnostic: {pattern}")
-    require("Output written on paper.pdf (12 pages" in build_log, "unexpected final PDF page count")
+    require("Output written on paper.pdf (13 pages" in build_log, "unexpected final PDF page count")
 
     expected_numerical_fragments = [
         "60 1.3794549573 0.9105539931 0.9628386433",
@@ -179,7 +179,7 @@ def main() -> None:
     print(
         "release audit passed: "
         f"citations={len(cited)} labels={len(labels)} results={result_count} "
-        "numerical_rows=11 pages=12",
+        "numerical_rows=11 pages=13",
         flush=True,
     )
 

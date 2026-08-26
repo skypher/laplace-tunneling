@@ -59,6 +59,8 @@ Audit date: 2026-08-26.
 | Distant-component dichotomy | Parini--Salort, Theorems 1.2 and 1.3 |
 | Mutual-position observation | Abatangelo--Felli--Noris, Introduction, p. 3 |
 | Exact translated cross-energy and point-mass toy | Zahl, Section 10, equations (10.3) and (10.7) |
+| Disconnected-domain generalized superposition problem | Dipierro--Proietti Lippi--Sportelli--Valdinoci, Theorems 1.4--1.7 |
+| No-local-minimum result for Zahl's discrete energy | Wu, abstract |
 | Interval eigenvalue and eigenfunction estimates | Kwasnicki, Theorem 1 and Propositions 1--2 |
 | Sharper interval asymptotics and uniform eigenfunction bound | Zhang, Theorems 1 and 2 |
 
@@ -72,16 +74,17 @@ priority wording “we are not aware of an earlier result.”
 ## Release checks
 
 The final `make audit` run checks the last LaTeX build, which produced a
-12-page PDF with no unresolved citation, unresolved
+13-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
-inspection of pages 1 and 10--12 confirms that the fixed-mesh qualification,
+inspection of pages 1--2 and 9--13 confirms that the abstract qualification,
+related-work additions, expanded corollary proofs, fixed-mesh statement,
 effective spectra, tables, code link, and references are legible.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
 paper confirms the same two-sided article geometry, Latin Modern font set,
 title stack, section and theorem typography, running-head convention,
-caption treatment, link palette, and ruled-table presentation.  Page 11
+caption treatment, link palette, and ruled-table presentation.  Page 12
 contains the AI-use disclosure naming OpenAI GPT-5.6 Sol
 (`gpt-5.6-sol`) at max reasoning effort.  The manuscript source and extracted
 PDF text contain no prohibited product-name reference.
@@ -89,21 +92,21 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=7 labels=50 results=14 numerical_rows=11 pages=12
+release audit passed: citations=9 labels=50 results=14 numerical_rows=11 pages=13
 ```
 
 Artifact hashes after the final bibliography build are:
 
 ```text
-7cacb5926f94e48dd5d40ab497fee6128cf7e360dbcdb72dc454adc1c58255c1  paper.pdf
-b0905795c0f3795cd4b589634cdd1b28794f9cde509a808a3372b36f0e9b1d7e  dist/laplace-tunneling-arxiv.tar.gz
+28934da3a77772cc5d8f222fdaea89ad82d9991c2c20a8e4d07451381f0e150a  paper.pdf
+2ff605919e8abea8e8637c52f888042f74bb78ba723e32de76192fa32b52a004  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
 The source archive passed `gzip -t` and contains the manuscript, generated
 bibliography, BibTeX database, README, Makefile, release and numerical audit
 scripts, pinned dependencies, and saved 180-cell output.  After extraction in
-a fresh directory, `make audit` rebuilt the 12-page PDF and returned the same
+a fresh directory, `make audit` rebuilt the 13-page PDF and returned the same
 release-audit result shown above.
 
 ## Final double-check before closure

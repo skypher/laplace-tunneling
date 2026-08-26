@@ -158,7 +158,11 @@ matrix with zero diagonal and off-diagonal entries
 $-c_{d,s}m_1^2\abs{a_i-a_j}^{-d-2s}$.  Exact cell-integral Galerkin
 computations on two and three intervals illustrate the corresponding
 fixed-mesh limits, while a mesh study records stabilization of the one-well
-interaction coefficient.
+interaction coefficient.  In the displayed spectral asymptotics,
+$L\to\infty$.
+The implicit constants in the two-well formulas depend only on
+$d,s,D,R$, and $g$; in the multi-well formula they may also depend on the
+fixed $N$ and configuration $(a_1,\dots,a_N)$.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -196,14 +200,21 @@ also emphasized by Abatangelo, Felli, and Noris
 fractional-capacity perturbations.  In the shape-optimization setting, Zahl
 isolated the exact cross-energy under translations and proposed a signed
 point-mass interaction with kernel $\abs{x-y}^{-d-2s}$
-\cite[Section~10, equations~(10.3) and~(10.7)]{Zahl2026}.  That discrete
-energy anticipates the matrix in \eqref{eq:effective-matrix}; the result here
-derives it from the full restricted fractional operator, bounds the
-off-diagonal block in operator norm, controls its coupling to the
-complementary one-well modes through the spectral gap, and identifies every
-ordered eigenvalue in the cluster.  We are not aware of an earlier result giving either the
-two-component coefficient with a quantified remainder or this finite-well
-spectral reduction.
+\cite[Section~10, equations~(10.3) and~(10.7)]{Zahl2026}.  Wu subsequently
+settled Zahl's no-local-minimum conjecture for that discrete signed-mass
+energy \cite[abstract]{Wu2026}.  In another recent direction, Dipierro, Proietti Lippi,
+Sportelli, and Valdinoci studied disconnected domains for generalized
+eigenproblems having a superposition of lower-order operators on the
+right-hand side
+\cite[Theorems~1.4--1.7]{DipierroProiettiLippiSportelliValdinoci2026}.
+Neither work derives a large-separation spectral expansion for the ordinary
+restricted fractional Laplacian.  Zahl's discrete energy anticipates the
+matrix in \eqref{eq:effective-matrix}; the result here derives it from the full
+restricted fractional operator, bounds the off-diagonal block in operator
+norm, controls its coupling to the complementary one-well modes through the
+spectral gap, and identifies every ordered eigenvalue in the cluster.  We are
+not aware of an earlier result giving either the two-component coefficient
+with a quantified remainder or this finite-well spectral reduction.
 
 The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
 cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
@@ -415,7 +426,7 @@ eigenvalues of $A_{\Omega_L}$ satisfy
  &\leq c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
        +\frac{2\beta_L^2}{g}.\label{eq:lambda2}
 \end{align}
-In particular,
+In particular, as $L\to\infty$,
 \begin{equation}\label{eq:gap-limit}
  L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(\Omega_L)\bigr)
  \longrightarrow 2c_{d,s}m_1^2.
@@ -468,7 +479,7 @@ two expansions and multiplying by $L^\kappa$ proves
 
 \begin{corollary}[Rate for the distant-ball minimizing sequence]
 Let $D=B_R(0)$ and let $\Omega_L$ be the union of two radius-$R$ balls whose
-centers are separated by $L$.  Then
+centers are separated by $L$.  Then, as $L\to\infty$,
 \[
  L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(B_R)\bigr)
  \longrightarrow c_{d,s}
@@ -707,7 +718,7 @@ The cluster is separated from the rest of the spectrum by
  \geq\mu_1+g-\gamma_L
  \geq\mu_1+\frac{3g}{4}.
 \end{equation}
-Consequently, for every $1\leq k\leq N$,
+Consequently, as $L\to\infty$, for every $1\leq k\leq N$,
 \begin{equation}\label{eq:multi-limit}
  L^{d+2s}\bigl(\lambda_k(\Omega_{\mathbf a,L})-\mu_1\bigr)
  \longrightarrow\theta_k.
@@ -754,7 +765,10 @@ In this case
 \]
 whose ordered eigenvalues are the two stated numbers.  Moreover,
 $\Sigma_\kappa(\mathbf a)=\Sigma_{\kappa+2}(\mathbf a)=1$, so
-$\gamma_L=\beta_L$ and the two displayed remainder bounds coincide.
+$\gamma_L=\beta_L$.  In the exact compression, central symmetry of $D$ and
+evenness of $\phi_1$ show, after the change of variables $y\mapsto-y$, that
+the translated two-well kernel integral equals $I_L$.  Thus the compression
+errors, and hence the two displayed remainder bounds, coincide.
 \end{proof}
 
 \begin{corollary}[Collective ground state]\label{cor:collective-ground}
@@ -775,9 +789,19 @@ shows that no component can vanish.  Thus every eigenvector for $\theta_1$
 has one strict sign.  Two linearly independent such eigenvectors would have
 a nonzero linear combination with a zero component, so $\theta_1$ is simple.
 Finally, $\operatorname{tr}M_{\mathbf a}=0$ and $\theta_1<0$, hence
-$\theta_N>0$.  The assertions for the full operator follow from
-\eqref{eq:multi-eigenvalue-bound} and the strict gaps between the relevant
-eigenvalues of $M_{\mathbf a}$.
+$\theta_N>0$.  Put
+\[
+ r_L=\varepsilon_L+\frac{2\gamma_L^2}{g}.
+\]
+Theorem~\ref{thm:multi-well} gives $L^\kappa r_L\to0$.  Since $\theta_1$ is
+simple, $\theta_2-\theta_1>0$.  Choose $L$ so large that
+\[
+ L^\kappa r_L
+ <\min\left\{\frac{\theta_2-\theta_1}{2},-\theta_1,\theta_N\right\}.
+\]
+Then \eqref{eq:multi-eigenvalue-bound} gives
+$\lambda_2-\lambda_1>0$, $\lambda_1<\mu_1$, and
+$\lambda_N>\mu_1$, which proves all three assertions for the full operator.
 \end{proof}
 
 \begin{corollary}[Regular-simplex cluster]\label{cor:simplex}
@@ -853,7 +877,8 @@ and $\phi_{1,h}$ be the lowest eigenvalue and a positive,
 $L^2$-normalized piecewise-constant eigenfunction of its Galerkin matrix.  Put
 $m_{1,h}=\int_D\phi_{1,h}$.  For the corresponding Galerkin matrix on
 $\bigcup_{j=1}^N(D+La_j)$, write its ordered eigenvalues as
-$\lambda_{k,h}(L)$.  Then, for fixed distinct $a_1,\dots,a_N$,
+$\lambda_{k,h}(L)$.  Then, as $L\to\infty$, for fixed distinct
+$a_1,\dots,a_N$,
 \begin{equation}\label{eq:discrete-cluster}
  \lambda_{k,h}(L)
  =\mu_{1,h}+L^{-1-2s}\theta_{k,h}

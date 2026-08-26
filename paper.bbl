@@ -1,4 +1,4 @@
-\begin{thebibliography}{DNPV12}
+\begin{thebibliography}{DPLSV26}
 
 \bibitem[AFN20]{AbatangeloFelliNoris2020}
 Laura Abatangelo, Veronica Felli, and Benedetta Noris.
@@ -17,6 +17,12 @@ Eleonora Di~Nezza, Giampiero Palatucci, and Enrico Valdinoci.
 \newblock Hitchhiker's guide to the fractional {S}obolev spaces.
 \newblock {\em Bulletin des Sciences Math\'{e}matiques}, 136(5):521--573, 2012.
 
+\bibitem[DPLSV26]{DipierroProiettiLippiSportelliValdinoci2026}
+Serena Dipierro, Edoardo Proietti~Lippi, Caterina Sportelli, and Enrico
+  Valdinoci.
+\newblock Nonlocal eigenvalue problems and superposition operators, 2026.
+\newblock arXiv:2602.18035 [math.AP].
+
 \bibitem[Kwa12]{Kwasnicki2012}
 Mateusz Kwa\'{s}nicki.
 \newblock Eigenvalues of the fractional {L}aplace operator in the interval.
@@ -26,6 +32,13 @@ Mateusz Kwa\'{s}nicki.
 Enea Parini and Ariel Salort.
 \newblock Compactness and dichotomy in nonlocal shape optimization.
 \newblock {\em Mathematische Nachrichten}, 293(11):2208--2232, 2020.
+
+\bibitem[Wu26]{Wu2026}
+Zijian Wu.
+\newblock Equilibrium configurations and stability analysis of a discrete toy
+  model arising from the minimization of eigenvalues of the fractional
+  {L}aplacian.
+\newblock {\em Applied Mathematics and Computation}, 531:130195, 2026.
 
 \bibitem[Zah26]{Zahl2026}
 Alvis Zahl.
