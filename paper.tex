@@ -185,10 +185,10 @@ the second eigenvalue is strict and that two equal balls form a minimizing
 sequence when their mutual distance tends to infinity
 \cite[Theorem~6.2]{BrascoParini2016}.  Parini and Salort placed such distant
 components in a general concentration--compactness dichotomy
-\cite[Theorems~1.2 and~1.3]{PariniSalort2020}.  Those results identify the
-limit but do not specify the leading interaction coefficient.  The purpose of
-this article is to extract that coefficient and the associated effective
-finite-dimensional interaction.
+\cite[Theorems~1.2 and~1.3]{PariniSalort2020}.  Together these works establish
+the qualitative limiting and dichotomy picture but do not specify the leading
+interaction coefficient.  The purpose of this article is to extract that
+coefficient and the associated effective finite-dimensional interaction.
 
 The influence of mutual position on the restricted fractional spectrum is
 also emphasized by Abatangelo, Felli, and Noris
@@ -290,9 +290,12 @@ For $f\in\Hs(\Omega_L)$ set
 This defines a unitary map from $L^2(\Omega_L)$ to
 $L^2(D)\oplus L^2(D)$.  Translational and reflection invariance identify the
 two diagonal parts of the form with $\mathcal q_D[u]$ and
-$\mathcal q_D[v]$.  Because the two components have positive separation,
-their cross-kernel is bounded; consequently this unitary maps
-$\Hs(\Omega_L)$ onto $\Hs(D)\oplus\Hs(D)$.  Expanding the square in
+$\mathcal q_D[v]$.  Positive separation permits smooth compactly supported
+cutoffs isolating the two components.  Multiplication by these cutoffs is
+bounded on $H^s(\R^d)$, while conversely the sum of separated translated and
+reflected one-well functions lies in $H^s(\R^d)$.  Hence the unitary
+identifies $\Hs(\Omega_L)$ with $\Hs(D)\oplus\Hs(D)$.  The cross-kernel is
+bounded by positive separation.  Expanding the square in
 \eqref{eq:form}, the difference
 between the form of the sum and the two separate forms is exactly
 \[
@@ -533,9 +536,10 @@ unitarily equivalent to $\mathcal A_0+\mathcal V_L$.  Moreover,
 For $f\in L^2(\Omega_{\mathbf a,L})$, put
 $u_j(x)=f(x+La_j)$ for $x\in D$.  This is a unitary identification with
 $\mathcal H_N$.  Translation invariance gives the diagonal operator
-$\mathcal A_0$.  Positive separation makes every cross-kernel bounded, so
-the form domain is identified with $\bigoplus_{j=1}^N\Hs(D)$.  For $i<j$,
-direct expansion of the form
+$\mathcal A_0$.  The cutoff argument in the proof of Lemma~\ref{lem:block}
+identifies the form domain with $\bigoplus_{j=1}^N\Hs(D)$, and positive
+separation makes every cross-kernel bounded.  For $i<j$, direct expansion of
+the form
 \eqref{eq:form} gives the cross term
 \[
  -2c_{d,s}\operatorname{Re}\iint_{D\times D}
@@ -806,11 +810,11 @@ cell indicators have finite form energy in this range, so they span a
 conforming finite-dimensional subspace of the form domain.
 
 \begin{proposition}[Exact cell-integral matrix]\label{prop:cell-matrix}
-Let $I_\alpha$ be pairwise disjoint cells of length $h$, let $x_\alpha$ be
-their centers, put $r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and set
-$q=1-2s$.  In the $L^2$-orthonormal basis
-$e_\alpha=h^{-1/2}\mathbf 1_{I_\alpha}$, the Galerkin matrix $H_h$ of the
-zero-exterior form has entries
+Let $I_1,\dots,I_M$ be pairwise disjoint cells of length $h$, set
+$G=\bigcup_{\alpha=1}^M I_\alpha$, let $x_\alpha$ be their centers, put
+$r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and set $q=1-2s$.  In the
+$L^2(G)$-orthonormal basis $e_\alpha=h^{-1/2}\mathbf 1_{I_\alpha}$, the
+Galerkin matrix $H_h$ of the zero-exterior form $\mathcal q_G$ has entries
 \begin{align}
  (H_h)_{\alpha\alpha}
  &=\frac{c_{1,s}}{h}\frac{2h^q}{2s q},

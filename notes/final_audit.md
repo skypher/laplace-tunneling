@@ -81,7 +81,7 @@ page lists Leslie P. Polzer, Independent Researcher, and
 source-to-source and rendered-page comparison with the Virasoro reference
 paper confirms the same two-sided article geometry, Latin Modern font set,
 title stack, section and theorem typography, running-head convention,
-caption treatment, link palette, and ruled-table presentation.  Page 12
+caption treatment, link palette, and ruled-table presentation.  Page 11
 contains the AI-use disclosure naming OpenAI GPT-5.6 Sol
 (`gpt-5.6-sol`) at max reasoning effort.  The manuscript source and extracted
 PDF text contain no prohibited product-name reference.
@@ -95,14 +95,16 @@ release audit passed: citations=7 labels=50 results=14 numerical_rows=11 pages=1
 Artifact hashes after the final bibliography build are:
 
 ```text
-fb6da8f18c4d95e4e655eb43a247f5f227a8f5838d02368f4b4c2d0f0d9e843a  paper.pdf
-7b6b7a093ede14c3de506cc54e6cfae09adc70e5e72aa705c5ee454f8b5faaec  dist/laplace-tunneling-arxiv.tar.gz
+7cacb5926f94e48dd5d40ab497fee6128cf7e360dbcdb72dc454adc1c58255c1  paper.pdf
+b0905795c0f3795cd4b589634cdd1b28794f9cde509a808a3372b36f0e9b1d7e  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
 The source archive passed `gzip -t` and contains the manuscript, generated
-bibliography, BibTeX database, README, Makefile, numerical code, pinned
-dependencies, and saved 180-cell output.
+bibliography, BibTeX database, README, Makefile, release and numerical audit
+scripts, pinned dependencies, and saved 180-cell output.  After extraction in
+a fresh directory, `make audit` rebuilt the 12-page PDF and returned the same
+release-audit result shown above.
 
 ## Final double-check before closure
 
