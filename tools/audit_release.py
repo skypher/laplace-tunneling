@@ -76,6 +76,16 @@ def main() -> None:
     for marker in forbidden_markers:
         require(marker not in paper, f"open marker in manuscript: {marker}")
 
+    submission_metadata = (
+        "pdfauthor={Leslie P. Polzer}",
+        "\\author{Leslie P. Polzer",
+        "Independent Researcher",
+        "mailto:polzer@fastmail.com",
+        "https://github.com/skypher/laplace-tunneling",
+    )
+    for fragment in submission_metadata:
+        require(fragment in paper, f"missing submission metadata: {fragment}")
+
     critical_log_patterns = (
         "LaTeX Warning",
         "Package hyperref Warning",

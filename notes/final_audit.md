@@ -75,7 +75,9 @@ The final `make audit` run checks the last LaTeX build, which produced a
 12-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
 inspection of pages 1 and 10--12 confirms that the fixed-mesh qualification,
-effective spectra, tables, code link, and references are legible.
+effective spectra, tables, code link, and references are legible.  The title
+page lists Leslie P. Polzer, Independent Researcher, and
+`polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.
 
 `python3 -u tools/audit_release.py` reports:
 
@@ -86,8 +88,8 @@ release audit passed: citations=7 labels=50 results=14 numerical_rows=11 pages=1
 Artifact hashes after the final bibliography build are:
 
 ```text
-636024c64d9ef4ee0e1f4349fd02370a04349aa5bbf3e282fcaeb3f5fc4dfc0b  paper.pdf
-572c16b762e75048bd47a869227a2c6f5184d659b4c5541e5706b9a3d76d6804  dist/laplace-tunneling-arxiv.tar.gz
+2d6c01a07a195c9211ba512b43e937dba483f25304ab170791d85d3b1656db3b  paper.pdf
+b91c8726896a62ff9bd59e04119cea88c0900eef7973171d642545ac02affdac  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
