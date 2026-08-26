@@ -77,7 +77,11 @@ reference, multiply-defined label, overfull box, or underfull box.  Visual
 inspection of pages 1 and 10--12 confirms that the fixed-mesh qualification,
 effective spectra, tables, code link, and references are legible.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
-`polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.
+`polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
+source-to-source and rendered-page comparison with the Virasoro reference
+paper confirms the same two-sided article geometry, Latin Modern font set,
+title stack, section and theorem typography, running-head convention,
+caption treatment, link palette, and ruled-table presentation.
 
 `python3 -u tools/audit_release.py` reports:
 
@@ -88,8 +92,8 @@ release audit passed: citations=7 labels=50 results=14 numerical_rows=11 pages=1
 Artifact hashes after the final bibliography build are:
 
 ```text
-2d6c01a07a195c9211ba512b43e937dba483f25304ab170791d85d3b1656db3b  paper.pdf
-b91c8726896a62ff9bd59e04119cea88c0900eef7973171d642545ac02affdac  dist/laplace-tunneling-arxiv.tar.gz
+0340ff2ce9579e4b9ef3d038c18f16dd92e4f87819d354e88234d0613aa16acf  paper.pdf
+8f319fea24bc04dfbfbb5cd0e315e0f5947b12046e57fb3fa3846f1830e591fa  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 

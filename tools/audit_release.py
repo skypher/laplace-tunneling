@@ -78,13 +78,30 @@ def main() -> None:
 
     submission_metadata = (
         "pdfauthor={Leslie P. Polzer}",
-        "\\author{Leslie P. Polzer",
-        "Independent Researcher",
-        "mailto:polzer@fastmail.com",
+        "\\author{Leslie P. Polzer}",
+        "\\newcommand{\\authoraffiliation}{Independent Researcher}",
+        "\\newcommand{\\authoremail}{polzer@fastmail.com}",
+        "\\date{August 26, 2026}",
+        "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
         "https://github.com/skypher/laplace-tunneling",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
+    require("mailto:" not in paper, "reference style requires an uncolored title-page email")
+    require("\\usepackage{microtype}" not in paper, "reference style excludes microtype")
+
+    reference_style = (
+        "\\documentclass[twoside,10pt]{article}",
+        "\\usepackage[T1]{fontenc}",
+        "\\usepackage{lmodern}",
+        "\\usepackage[small,labelfont=bf,labelsep=period]{caption}",
+        "total={5.5in,8in}",
+        "headsep=21pt",
+        "\\newtheoremstyle{slbody}",
+        "\\baselineskip=13.5pt",
+    )
+    for fragment in reference_style:
+        require(fragment in paper, f"missing Virasoro-style primitive: {fragment}")
 
     critical_log_patterns = (
         "LaTeX Warning",

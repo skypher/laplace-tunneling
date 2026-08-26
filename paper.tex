@@ -13,7 +13,6 @@
   headsep=21pt
 ]{geometry}
 \usepackage{xcolor}
-\usepackage{microtype}
 \usepackage[
   breaklinks=false,
   linktocpage=true
@@ -65,11 +64,10 @@
 
 \title{Algebraic tunnelling for the restricted fractional\\
 Laplacian on distant domains}
-\author{Leslie P. Polzer\\[4pt]
-  {\normalfont\small Independent Researcher}\\[-1pt]
-  {\normalfont\small
-   \href{mailto:polzer@fastmail.com}{\texttt{polzer@fastmail.com}}}}
-\date{August 2026}
+\author{Leslie P. Polzer}
+\newcommand{\authoraffiliation}{Independent Researcher}
+\newcommand{\authoremail}{polzer@fastmail.com}
+\date{August 26, 2026}
 
 \makeatletter
 \renewcommand{\section}{%
@@ -86,7 +84,7 @@ Laplacian on distant domains}
   \textup{{\normalfont(\oldstylenums{\ref{#1}}}\normalfont)}}
 
 \newcommand{\shorttitle}{ALGEBRAIC TUNNELLING ON DISTANT DOMAINS}
-\newcommand{\shortauthors}{RESTRICTED FRACTIONAL LAPLACIAN}
+\newcommand{\shortauthors}{LESLIE P. POLZER}
 \newcommand{\ps@bookheader}{%
   \renewcommand\@oddfoot{\hfil}%
   \renewcommand\@evenfoot{\hfil}%
@@ -102,13 +100,17 @@ Laplacian on distant domains}
 
 \renewcommand{\maketitle}{%
   \begin{center}
-    {\large\bfseries\@title}\par
+    {\large\bfseries\@title}\\
     \vskip36pt
     \ifx\@author\@empty
-      {\small\@date}\par
+      \mbox{}\par
     \else
       {\scshape\@author}\par
       \medskip
+      {\small\authoraffiliation}\par
+      \smallskip
+      {\small\texttt{\authoremail}}\par
+      \smallskip
       {\small\@date}\par
     \fi
     \vskip36pt
@@ -120,7 +122,6 @@ Laplacian on distant domains}
   {\endquotation}
 
 \begin{document}
-\raggedbottom
 \maketitle
 
 \begin{abstract}
@@ -843,9 +844,9 @@ Dividing both expressions by $h$ for the normalized indicators proves
 
 \begin{corollary}[Fixed-mesh cluster asymptotic]
 \label{cor:discrete-cluster}
-Fix a uniform partition of $D=(-1/2,1/2)$ and let $\mu_{1,h}$ and
-$\phi_{1,h}$ be the lowest eigenvalue and a positive, $L^2$-normalized
-piecewise-constant eigenfunction of its Galerkin matrix.  Put
+Let $D=(-1/2,1/2)$, and fix a uniform partition of $D$.  Let $\mu_{1,h}$
+and $\phi_{1,h}$ be the lowest eigenvalue and a positive,
+$L^2$-normalized piecewise-constant eigenfunction of its Galerkin matrix.  Put
 $m_{1,h}=\int_D\phi_{1,h}$.  For the corresponding Galerkin matrix on
 $\bigcup_{j=1}^N(D+La_j)$, write its ordered eigenvalues as
 $\lambda_{k,h}(L)$.  Then, for fixed distinct $a_1,\dots,a_N$,
@@ -889,10 +890,12 @@ $m_{1,h}$ is the relevant check for the interaction coefficient.
 \begin{table}[ht]
 \centering
 \begin{tabular}{rccc}
+\hline
 cells & $\mu_{1,h}$ & $\mu_{2,h}-\mu_{1,h}$ & $m_{1,h}$\\ \hline
 60  & 1.3794549573 & 0.9105539931 & 0.9628386433\\
 120 & 1.3753692130 & 0.8998883318 & 0.9633505837\\
-180 & 1.3741292905 & 0.8969647744 & 0.9636021778
+180 & 1.3741292905 & 0.8969647744 & 0.9636021778\\
+\hline
 \end{tabular}
 \caption{One-well Galerkin data for $s=1/4$.}
 \label{tab:mesh}
@@ -911,23 +914,27 @@ effective-matrix eigenvalue.
 \begin{table}[ht]
 \centering
 \begin{tabular}{rccc}
+\hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & max. error\\ \hline
 3  & $-0.190740$ & $ 0.189832$ & $5.52\times10^{-3}$\\
 6  & $-0.186544$ & $ 0.186335$ & $1.33\times10^{-3}$\\
 12 & $-0.185551$ & $ 0.185486$ & $3.36\times10^{-4}$\\
-24 & $-0.185286$ & $ 0.185295$ & $8.04\times10^{-5}$
+24 & $-0.185286$ & $ 0.185295$ & $8.04\times10^{-5}$\\
+\hline
 \end{tabular}
 
 \vskip10pt
 \begin{tabular}{rcccc}
+\hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & max. error\\ \hline
 3  & $-0.304984$ & $0.065562$ & $0.237544$ & $8.27\times10^{-3}$\\
 6  & $-0.298738$ & $0.065554$ & $0.232747$ & $2.03\times10^{-3}$\\
 12 & $-0.297232$ & $0.065510$ & $0.231597$ & $5.19\times10^{-4}$\\
-24 & $-0.296843$ & $0.065504$ & $0.231323$ & $1.29\times10^{-4}$
+24 & $-0.296843$ & $0.065504$ & $0.231323$ & $1.29\times10^{-4}$\\
+\hline
 \end{tabular}
 \caption{Scaled two-well (top) and three-well (bottom) cluster shifts.}
 \label{tab:clusters}
@@ -940,13 +947,13 @@ singular quadrature or fitted coefficient enters the tables.
 
 \section*{Code availability}
 
-The script \path{tools/check_asymptotics.py} is available in the public
-\texttt{laplace-tunneling} repository on
-\href{https://github.com/skypher/laplace-tunneling}{GitHub} and reconstructs
-every entry in Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the
-cell-integral identity before solving the eigenproblems and prints progress
-after each separation.  The pinned numerical dependencies are listed in
-\path{requirements-numerics.txt}.
+The script \path{tools/check_asymptotics.py} reconstructs every entry in
+Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the cell-integral
+identity before solving the eigenproblems and prints progress after each
+separation.  The pinned numerical dependencies are listed in
+\path{requirements-numerics.txt}.  The versioned source package is available
+at \href{https://github.com/skypher/laplace-tunneling}%
+{github.com/skypher/laplace-tunneling}.
 
 \bibliographystyle{alpha}
 \bibliography{references}
