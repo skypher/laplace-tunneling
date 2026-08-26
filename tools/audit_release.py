@@ -103,6 +103,22 @@ def main() -> None:
     for fragment in reference_style:
         require(fragment in paper, f"missing Virasoro-style primitive: {fragment}")
 
+    ai_disclosure = (
+        "\\section*{AI-use disclosure}",
+        "OpenAI GPT-5.6 Sol model",
+        "\\texttt{gpt-5.6-sol}",
+        "at max reasoning effort",
+        "takes responsibility for all mathematical claims, citations, computations, and wording",
+    )
+    normalized_paper = re.sub(r"\s+", " ", paper)
+    for fragment in ai_disclosure:
+        require(fragment in normalized_paper, f"missing AI-disclosure text: {fragment}")
+    forbidden_product_name = "co" + "dex"
+    require(
+        forbidden_product_name not in paper.lower(),
+        "AI disclosure contains a prohibited product-name reference",
+    )
+
     critical_log_patterns = (
         "LaTeX Warning",
         "Package hyperref Warning",
