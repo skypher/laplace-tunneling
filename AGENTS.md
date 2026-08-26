@@ -13,7 +13,7 @@ The final paper theorem has three parts:
 All three parts have passed the end-to-end theorem, source, numerical, and
 release checks recorded in `notes/final_audit.md`.  The final manuscript is
 `paper.pdf`, and the deterministic submission source is
-`dist/tunnel-arxiv.tar.gz`.
+`dist/laplace-tunneling-arxiv.tar.gz`.
 
 ## Mathematical conventions
 

@@ -117,6 +117,7 @@ Laplacian on distant domains}
   {\endquotation}
 
 \begin{document}
+\raggedbottom
 \maketitle
 
 \begin{abstract}
@@ -151,7 +152,9 @@ centers $a_1,\dots,a_N$, the first $N$ eigenvalues are
 where $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the explicit
 matrix with zero diagonal and off-diagonal entries
 $-c_{d,s}m_1^2\abs{a_i-a_j}^{-d-2s}$.  Exact cell-integral Galerkin
-computations on two and three intervals reproduce these limits.
+computations on two and three intervals illustrate the corresponding
+fixed-mesh limits, while a mesh study records stabilization of the one-well
+interaction coefficient.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -790,7 +793,8 @@ eigenvalue $w$.
 
 \section{A reproducible interval check}\label{sec:numerics}
 
-We finish with a conforming Galerkin check of the two- and three-well limits.
+We finish with a conforming fixed-mesh Galerkin check of the two- and
+three-well limits.
 It is included as a reproducibility test of the formulas, not as an input to
 their proofs.  Take $d=1$, $0<s<1/2$, and partition each unit interval into
 cells of length $h$.  Proposition~\ref{prop:cell-matrix} shows directly that
@@ -891,12 +895,15 @@ cells & $\mu_{1,h}$ & $\mu_{2,h}-\mu_{1,h}$ & $m_{1,h}$\\ \hline
 \label{tab:mesh}
 \end{table}
 
-On the 180-cell mesh, the predicted two-well scaled levels are
-$(-0.18521477,0.18521477)$.  For three collinear centers
-$(-L,0,L)$, they are
-$(-0.29671332,0.06548331,0.23123001)$.  The direct Galerkin eigenvalues are
-shown in Table~\ref{tab:clusters}; the last column is the largest absolute
-difference from the corresponding effective-matrix eigenvalue.
+On the 180-cell mesh, the fixed-mesh effective matrices give
+\begin{align*}
+ \text{two wells:}&\quad (-0.18521477,0.18521477),\\
+ \text{centers }(-L,0,L):&\quad
+ (-0.29671332,0.06548331,0.23123001).
+\end{align*}
+The direct Galerkin eigenvalues are shown in Table~\ref{tab:clusters}; the
+last column is the largest absolute difference from the corresponding
+effective-matrix eigenvalue.
 
 \begin{table}[ht]
 \centering
@@ -930,10 +937,12 @@ singular quadrature or fitted coefficient enters the tables.
 
 \section*{Code availability}
 
-The script \path{tools/check_asymptotics.py} reconstructs every entry in
-Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the cell-integral
-identity before solving the eigenproblems and prints progress after each
-separation.  The pinned numerical dependencies are listed in
+The script \path{tools/check_asymptotics.py} is available in the public
+\texttt{laplace-tunneling} repository on
+\href{https://github.com/skypher/laplace-tunneling}{GitHub} and reconstructs
+every entry in Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the
+cell-integral identity before solving the eigenproblems and prints progress
+after each separation.  The pinned numerical dependencies are listed in
 \path{requirements-numerics.txt}.
 
 \bibliographystyle{alpha}

@@ -63,4 +63,5 @@ recorded in `notes/final_audit.md`.
 
 The final manuscript has 50 resolved labels, seven source-specific cited
 works, 14 numbered results paired with 14 proofs, and a reproducible 12-page
-PDF.  The deterministic source archive is `dist/tunnel-arxiv.tar.gz`.
+PDF.  The deterministic source archive is
+`dist/laplace-tunneling-arxiv.tar.gz`.

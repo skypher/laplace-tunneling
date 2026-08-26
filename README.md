@@ -34,7 +34,7 @@ After a successful audit, create the deterministic arXiv source archive with:
 make arxiv
 ```
 
-The archive is written to `dist/tunnel-arxiv.tar.gz` and includes the
+The archive is written to `dist/laplace-tunneling-arxiv.tar.gz` and includes the
 manuscript source, generated bibliography, numerical script, pinned
 dependencies, and reference numerical output.
 

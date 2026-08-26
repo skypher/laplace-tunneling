@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Mechanical release audit for the tunnel manuscript."""
+"""Mechanical release audit for the laplace-tunneling manuscript."""
 
 from __future__ import annotations
 
@@ -81,6 +81,8 @@ def main() -> None:
         "Package hyperref Warning",
         "Overfull \\hbox",
         "Overfull \\vbox",
+        "Underfull \\hbox",
+        "Underfull \\vbox",
         "undefined references",
         "undefined citations",
         "multiply defined",
