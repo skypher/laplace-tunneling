@@ -1,0 +1,942 @@
+\documentclass[twoside,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools}
+\usepackage[small,labelfont=bf,labelsep=period]{caption}
+\usepackage[
+  letterpaper,
+  total={5.5in,8in},
+  vmarginratio=1:1,
+  hmarginratio=1:1,
+  headsep=21pt
+]{geometry}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage[
+  breaklinks=false,
+  linktocpage=true
+]{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor={purple},
+  urlcolor={purple},
+  citecolor={blue!80!black},
+  pdfauthor={},
+  pdftitle={Algebraic Tunnelling for the Restricted Fractional Laplacian on Distant Domains},
+  pdfsubject={Leading eigenvalue splitting for distant components of the restricted fractional Laplacian},
+  pdfkeywords={fractional Laplacian, eigenvalue splitting, nonlocal double wells, spectral perturbation, shape optimization}
+}
+
+\medmuskip=4mu
+\thickmuskip=8mu
+\setlength{\emergencystretch}{2em}
+
+\numberwithin{equation}{section}
+
+\newtheoremstyle{slbody}
+  {8pt}
+  {8pt}
+  {\normalfont\slshape}
+  {}
+  {\bfseries}
+  {.}
+  {0.5em}
+  {\thmname{#1}\thmnumber{ #2}%
+   \thmnote{ {\normalfont\itshape(\ignorespaces#3\unskip)}}}
+\theoremstyle{slbody}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Hs}{\widetilde H^s}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+
+\title{Algebraic tunnelling for the restricted fractional\\
+Laplacian on distant domains}
+\author{}
+\date{August 2026}
+
+\makeatletter
+\renewcommand{\section}{%
+  \@startsection{section}{1}{\z@}%
+    {-3.5ex \@plus -1ex \@minus -.2ex}%
+    {2.3ex \@plus .2ex}%
+    {\normalfont\large\bfseries}}
+\renewcommand{\@seccntformat}[1]{%
+  \csname the#1\endcsname.\enspace}
+
+\def\tagform@#1{%
+  \maketag@@@{(\ignorespaces{\oldstylenums{#1}}\unskip\@@italiccorr)}}
+\renewcommand{\eqref}[1]{%
+  \textup{{\normalfont(\oldstylenums{\ref{#1}}}\normalfont)}}
+
+\newcommand{\shorttitle}{ALGEBRAIC TUNNELLING ON DISTANT DOMAINS}
+\newcommand{\shortauthors}{RESTRICTED FRACTIONAL LAPLACIAN}
+\newcommand{\ps@bookheader}{%
+  \renewcommand\@oddfoot{\hfil}%
+  \renewcommand\@evenfoot{\hfil}%
+  \renewcommand\@oddhead{%
+    \ifnum\value{page}>1
+      {\small\hfil\shortauthors}\hfil\thepage
+    \else
+      \hfil
+    \fi}%
+  \renewcommand\@evenhead{%
+    \thepage\hfil\small\shorttitle\hfil}}
+\pagestyle{bookheader}
+
+\renewcommand{\maketitle}{%
+  \begin{center}
+    {\large\bfseries\@title}\par
+    \vskip36pt
+    \ifx\@author\@empty
+      {\small\@date}\par
+    \else
+      {\scshape\@author}\par
+      \medskip
+      {\small\@date}\par
+    \fi
+    \vskip36pt
+  \end{center}}
+\makeatother
+
+\renewenvironment{abstract}
+  {\quotation\noindent\small{\bfseries\abstractname.\enspace}}
+  {\endquotation}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Let $D\subset\R^d$ be a bounded centrally symmetric Lipschitz domain, and
+let $\Omega_L$ be the union of two reflected translates of $D$ whose centers
+are separated by $L$.  For the restricted fractional Laplacian
+$(-\Delta)^s$, $0<s<1$, we determine the leading splitting of the two
+eigenvalues converging to the one-well ground-state energy.  If $\mu_1$ is
+the one-well ground-state eigenvalue, $\phi_1$ is its positive
+$L^2$-normalized eigenfunction, and $m_1=\int_D\phi_1$, then
+\[
+ \lambda_1(\Omega_L)
+ =\mu_1-c_{d,s}m_1^2L^{-d-2s}
+   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
+\]
+\[
+ \lambda_2(\Omega_L)
+ =\mu_1+c_{d,s}m_1^2L^{-d-2s}
+   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right).
+\]
+The proof uses an exact reflection reduction to the two operators
+$A_D\pm B_L$, an elementary isolated-eigenvalue estimate, and a second-order
+Taylor expansion of the interaction kernel.  For two equal balls, the upper
+formula gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
+minimizing sequence.  More generally, for any fixed collection of distinct
+centers $a_1,\dots,a_N$, the first $N$ eigenvalues are
+\[
+ \lambda_k=\mu_1+L^{-d-2s}\theta_k
+ +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
+ \qquad 1\leq k\leq N,
+\]
+where $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the explicit
+matrix with zero diagonal and off-diagonal entries
+$-c_{d,s}m_1^2\abs{a_i-a_j}^{-d-2s}$.  Exact cell-integral Galerkin
+computations on two and three intervals reproduce these limits.
+
+\vskip5pt
+\noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
+eigenvalue splitting; nonlocal double wells; spectral perturbation; shape
+optimization.
+
+\vskip5pt
+\noindent\textbf{MSC2020 Classification.}\enspace 35P15; 35R11.
+\end{abstract}
+
+\vskip50pt
+\baselineskip=13.5pt
+\section{Introduction}
+
+The restricted fractional Laplacian couples disjoint components through its
+integral kernel.  This differs from the local Dirichlet Laplacian, whose
+spectrum on a disconnected union is exactly the multiset union of the
+component spectra.  Two distant congruent components therefore form a
+nonlocal analogue of a double well: their limiting degeneracies split at an
+algebraic, rather than exponential, scale.
+
+Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
+the second eigenvalue is strict and that two equal balls form a minimizing
+sequence when their mutual distance tends to infinity
+\cite[Theorem~6.2]{BrascoParini2016}.  Parini and Salort placed such distant
+components in a general concentration--compactness dichotomy
+\cite[Theorems~1.2 and~1.3]{PariniSalort2020}.  Those results identify the
+limit but do not specify the leading interaction coefficient.  The purpose of
+this article is to extract that coefficient and the associated effective
+finite-dimensional interaction.
+
+The influence of mutual position on the restricted fractional spectrum is
+also emphasized by Abatangelo, Felli, and Noris
+\cite[Introduction, p.~3]{AbatangeloFelliNoris2020}, in a study of small
+fractional-capacity perturbations.  In the shape-optimization setting, Zahl
+isolated the exact cross-energy under translations and proposed a signed
+point-mass interaction with kernel $\abs{x-y}^{-d-2s}$
+\cite[Section~10, equations~(10.3) and~(10.7)]{Zahl2026}.  That discrete
+energy anticipates the matrix in \eqref{eq:effective-matrix}; the result here
+derives it from the full restricted fractional operator, bounds the
+off-diagonal block in operator norm, controls its coupling to the
+complementary one-well modes through the spectral gap, and identifies every
+ordered eigenvalue in the cluster.  We are not aware of an earlier result giving either the
+two-component coefficient with a quantified remainder or this finite-well
+spectral reduction.
+
+The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
+cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
+cluster for finitely many translated components with the spectrum of an
+explicit weighted interaction matrix.  Both proofs are self-contained after
+the standard one-well spectral facts.  The interval provides an explicit
+benchmark: one-well eigenvalue and eigenfunction estimates are available in
+\cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
+asymptotics and an eigenfunction bound uniform in both the index and the
+fractional order are proved in \cite[Theorems~1 and~2]{Zhang2026}.
+
+\section{The one-well operator and exact two-well reduction}
+
+Fix $d\geq1$ and $0<s<1$, and put
+\[
+ \kappa=d+2s.
+\]
+For an open set $G\subset\R^d$, let
+\[
+ \Hs(G)=\{u\in H^s(\R^d):u=0\ \text{a.e. on }\R^d\setminus G\}.
+\]
+The zero-exterior quadratic form is
+\begin{equation}\label{eq:form}
+ \mathcal q_G[u]
+ =\frac{c_{d,s}}2\iint_{\R^d\times\R^d}
+   \frac{\abs{u(x)-u(y)}^2}{\abs{x-y}^{\kappa}}\,dx\,dy,
+ \qquad u\in\Hs(G),
+\end{equation}
+where $c_{d,s}>0$ is the normalization in the singular-integral definition
+of $(-\Delta)^s$.  We denote the associated self-adjoint operator on
+$L^2(G)$ by $A_G$.
+
+Let $D\subset B_R(0)$ be a bounded Lipschitz domain satisfying $D=-D$.
+The Lipschitz extension property and compactness of the form embedding follow
+from \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Write the first two
+eigenvalues of $A_D$ as
+\[
+ \mu_1<\mu_2,
+ \qquad g=\mu_2-\mu_1>0.
+\]
+The first eigenvalue is simple and has a strictly positive normalized
+eigenfunction by \cite[Theorem~2.8]{BrascoParini2016}, specialized to the
+linear case.  Fix that eigenfunction and set
+\begin{equation}\label{eq:mass}
+ A_D\phi_1=\mu_1\phi_1,
+ \qquad \norm{\phi_1}_{L^2(D)}=1,
+ \qquad m_1=\int_D\phi_1(x)\,dx>0.
+\end{equation}
+Simplicity and reflection invariance imply $\phi_1(-x)=\phi_1(x)$.
+
+Fix a unit vector $e\in\R^d$.  For $L>2R$, define
+\[
+ D_L^- =D-\frac L2e,
+ \qquad D_L^+=D+\frac L2e,
+ \qquad \Omega_L=D_L^-\cup D_L^+.
+\]
+On $L^2(D)$ define the bounded integral operator
+\begin{equation}\label{eq:B}
+ (B_Lv)(x)
+ =-c_{d,s}\int_D\frac{v(y)}{\abs{Le-x-y}^{\kappa}}\,dy.
+\end{equation}
+Its kernel is real and symmetric, so $B_L$ is self-adjoint.
+
+\begin{lemma}[Exact reflection reduction]\label{lem:block}
+The operator $A_{\Omega_L}$ is unitarily equivalent to
+\[
+ \begin{pmatrix}A_D&B_L\\B_L&A_D\end{pmatrix}
+ \quad\text{on }L^2(D)\oplus L^2(D),
+\]
+and hence to
+\begin{equation}\label{eq:direct-sum}
+ (A_D+B_L)\oplus(A_D-B_L).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $f\in\Hs(\Omega_L)$ set
+\[
+ u(x)=f\left(x-\frac L2e\right),
+ \qquad
+ v(x)=f\left(-x+\frac L2e\right),
+ \qquad x\in D.
+\]
+This defines a unitary map from $L^2(\Omega_L)$ to
+$L^2(D)\oplus L^2(D)$.  Translational and reflection invariance identify the
+two diagonal parts of the form with $\mathcal q_D[u]$ and
+$\mathcal q_D[v]$.  Because the two components have positive separation,
+their cross-kernel is bounded; consequently this unitary maps
+$\Hs(\Omega_L)$ onto $\Hs(D)\oplus\Hs(D)$.  Expanding the square in
+\eqref{eq:form}, the difference
+between the form of the sum and the two separate forms is exactly
+\[
+ -2c_{d,s}\operatorname{Re}\iint_{D\times D}
+ \frac{u(x)\overline{v(y)}}{\abs{Le-x-y}^{\kappa}}\,dx\,dy
+ =2\operatorname{Re}\ip{u}{B_Lv}.
+\]
+This proves the block representation in the sense of closed forms.  Since
+$B_L$ is bounded, it also gives the stated operator representation.  The
+unitary change of variables
+$(u,v)\mapsto 2^{-1/2}(u+v,u-v)$ yields \eqref{eq:direct-sum}.
+\end{proof}
+
+\section{The doublet splitting}
+
+We first record the elementary perturbation estimate used for the two scalar
+branches.
+
+\begin{lemma}[Ground-state perturbation bound]\label{lem:perturb}
+Let $A$ be self-adjoint with compact resolvent, simple lowest eigenvalue
+$\mu$, normalized ground state $\phi$, and spectral gap $g>0$.  Let $W$ be
+bounded and self-adjoint, put $b=\norm{W}$ and
+$w=\ip{\phi}{W\phi}$, and suppose $b\leq g/4$.  Then
+\begin{equation}\label{eq:perturb}
+ -\frac{2b^2}{g}
+ \leq \lambda_1(A+W)-(\mu+w)\leq0.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The upper bound follows by testing the Rayleigh quotient with $\phi$.  For a
+normalized vector $\psi=a\phi+\eta$, where $\eta\perp\phi$ and
+$t=\norm{\eta}$, the spectral gap gives
+\[
+ \ip{\psi}{A\psi}\geq\mu+gt^2.
+\]
+Since $\abs{w}\leq b$ and $\abs{a}\leq1$,
+\begin{align*}
+ \ip{\psi}{(A+W)\psi}-(\mu+w)
+ &\geq gt^2-2bt^2-2bt\\
+ &=(g-2b)t^2-2bt\\
+ &\geq-\frac{b^2}{g-2b}
+ \geq-\frac{2b^2}{g}.
+\end{align*}
+Taking the infimum over normalized $\psi$ proves the lower bound.
+\end{proof}
+
+The next lemma extracts the interaction coefficient and records why central
+symmetry improves the kernel error by one power of $L$.
+
+\begin{lemma}[Interaction-kernel expansion]\label{lem:kernel}
+Let
+\[
+ I_L=\iint_{D\times D}
+ \frac{\phi_1(x)\phi_1(y)}{\abs{Le-x-y}^{\kappa}}\,dx\,dy.
+\]
+For $L\geq4R$,
+\begin{equation}\label{eq:kernel-expansion}
+ \abs{I_L-m_1^2L^{-\kappa}}
+ \leq C_{\kappa,R}m_1^2L^{-\kappa-2},
+ \qquad
+ C_{\kappa,R}=2^{\kappa+3}\kappa(\kappa+3)R^2.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:Bnorm}
+ \norm{B_L}\leq \beta_L,
+ \qquad
+ \beta_L=c_{d,s}2^\kappa\abs D\,L^{-\kappa}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Set $F_L(z)=\abs{Le-z}^{-\kappa}$.  For $\abs z\leq2R$ and $L\geq4R$,
+the segment from $0$ to $z$ remains at distance at least $L/2$ from $Le$.
+Direct differentiation gives
+\[
+ \norm{D^2F_L(z)}
+ \leq \kappa(\kappa+3)\abs{Le-z}^{-\kappa-2}.
+\]
+Taylor's theorem therefore yields
+\[
+ \abs{F_L(z)-L^{-\kappa}
+ -\kappa L^{-\kappa-1}e\cdot z}
+ \leq C_{\kappa,R}L^{-\kappa-2}
+\]
+for $\abs z\leq2R$, with the displayed value of $C_{\kappa,R}$.
+Because $\phi_1$ is even,
+\[
+ \int_Dx\phi_1(x)\,dx=0.
+\]
+Consequently the integral of the linear Taylor term with $z=x+y$ vanishes.
+Since $\phi_1$ is positive, integration of the remainder gives
+\eqref{eq:kernel-expansion}.
+
+Finally, $\abs{Le-x-y}\geq L-2R\geq L/2$.  The Schur test applied to
+\eqref{eq:B} gives
+\[
+ \norm{B_L}
+ \leq c_{d,s}\abs D(L-2R)^{-\kappa}
+ \leq c_{d,s}2^\kappa\abs D\,L^{-\kappa},
+\]
+which is \eqref{eq:Bnorm}.
+\end{proof}
+
+\begin{theorem}[Two-well algebraic splitting]\label{thm:two-well}
+Let $D\subset B_R(0)$ be a bounded centrally symmetric Lipschitz domain, and
+let $\Omega_L$ be defined above.  There is $L_0<\infty$, determined by
+$d,s,D,R$ and the one-well gap $g$, such that for $L\geq L_0$ the first two
+eigenvalues of $A_{\Omega_L}$ satisfy
+\begin{align}
+ \abs{\lambda_1(\Omega_L)
+  -(\mu_1-c_{d,s}m_1^2L^{-\kappa})}
+ &\leq c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
+       +\frac{2\beta_L^2}{g},\label{eq:lambda1}\\
+ \abs{\lambda_2(\Omega_L)
+  -(\mu_1+c_{d,s}m_1^2L^{-\kappa})}
+ &\leq c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
+       +\frac{2\beta_L^2}{g}.\label{eq:lambda2}
+\end{align}
+In particular,
+\begin{equation}\label{eq:gap-limit}
+ L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(\Omega_L)\bigr)
+ \longrightarrow 2c_{d,s}m_1^2.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:block}, the spectrum is the union of the spectra of
+$A_D+B_L$ and $A_D-B_L$.  Put
+\[
+ t_L=\ip{\phi_1}{B_L\phi_1}=-c_{d,s}I_L<0.
+\]
+Choose $L_0\geq4R$ so large that, for $L\geq L_0$,
+\begin{equation}\label{eq:L0-conditions}
+ \beta_L\leq\frac g4,
+ \qquad
+ 2c_{d,s}m_1^2(L+2R)^{-\kappa}>\frac{4\beta_L^2}{g}.
+\end{equation}
+Such a choice exists because the left-hand side of the second inequality is
+of order $L^{-\kappa}$ and its right-hand side is of order $L^{-2\kappa}$.
+
+Apply Lemma~\ref{lem:perturb} first with $W=B_L$ and then with $W=-B_L$.
+The two branch ground-state energies have the form
+\begin{equation}\label{eq:branches}
+ E_+(L)=\mu_1+t_L+\rho_+(L),
+ \qquad
+ E_-(L)=\mu_1-t_L+\rho_-(L),
+\end{equation}
+where
+\[
+ \abs{\rho_\pm(L)}\leq\frac{2\beta_L^2}{g}.
+\]
+The second eigenvalue of either branch is at least
+$\mu_2-\beta_L\geq\mu_1+3g/4$, whereas both branch ground-state energies are
+at most $\mu_1+\beta_L\leq\mu_1+g/4$.  Thus the first two eigenvalues of the
+full operator are the two numbers in \eqref{eq:branches}.
+
+Since $\abs{Le-x-y}\leq L+2R$ and $\phi_1>0$,
+\[
+ I_L\geq m_1^2(L+2R)^{-\kappa}.
+\]
+The second condition in \eqref{eq:L0-conditions} and
+\eqref{eq:branches} imply $E_+(L)<E_-(L)$.  Hence
+$\lambda_1(\Omega_L)=E_+(L)$ and
+$\lambda_2(\Omega_L)=E_-(L)$.  Equations \eqref{eq:lambda1} and
+\eqref{eq:lambda2} now follow from Lemma~\ref{lem:kernel}.  Subtracting the
+two expansions and multiplying by $L^\kappa$ proves
+\eqref{eq:gap-limit}, since $\kappa>0$.
+\end{proof}
+
+\begin{corollary}[Rate for the distant-ball minimizing sequence]
+Let $D=B_R(0)$ and let $\Omega_L$ be the union of two radius-$R$ balls whose
+centers are separated by $L$.  Then
+\[
+ L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(B_R)\bigr)
+ \longrightarrow c_{d,s}
+ \left(\int_{B_R}\phi_1(x)\,dx\right)^2.
+\]
+Thus the minimizing sequence in
+\cite[Theorem~6.2]{BrascoParini2016} approaches its limiting value at the
+explicit leading order $L^{-d-2s}$.
+\end{corollary}
+
+\begin{proof}
+This is \eqref{eq:lambda2} with $D=B_R(0)$ and
+$\mu_1=\lambda_1(B_R)$.
+\end{proof}
+
+\section{Finitely many wells}\label{sec:multi-well}
+
+The two-well reflection decomposition is special to a pair.  For finitely
+many components we instead keep the full block operator and compare its
+lowest spectral cluster with its compression to the translated one-well
+ground states.
+
+\begin{definition}[Multi-well geometry]\label{def:multi-geometry}
+Fix an integer $N\geq2$ and distinct points
+$\mathbf a=(a_1,\dots,a_N)$ in $\R^d$.  Set
+\begin{equation}\label{eq:geometry-constants}
+ \delta_{\mathbf a}=\min_{i\ne j}\abs{a_i-a_j},
+ \qquad
+ \Sigma_p(\mathbf a)
+ =\max_{1\leq i\leq N}\sum_{j\ne i}\abs{a_i-a_j}^{-p}
+ \quad (p>0).
+\end{equation}
+For $L\delta_{\mathbf a}>2R$, define
+\begin{equation}\label{eq:multi-domain}
+ D_{j,L}=D+La_j,
+ \qquad
+ \Omega_{\mathbf a,L}=\bigcup_{j=1}^N D_{j,L}.
+\end{equation}
+The sets in this union are pairwise disjoint.
+\end{definition}
+
+On $\mathcal H_N=\bigoplus_{j=1}^N L^2(D)$, let
+$\mathcal A_0=\bigoplus_{j=1}^N A_D$.  For $i\ne j$ define
+\begin{equation}\label{eq:multi-block}
+ (B_{ij,L}v)(x)
+ =-c_{d,s}\int_D
+ \frac{v(y)}{\abs{L(a_i-a_j)+x-y}^{\kappa}}\,dy,
+ \qquad B_{ii,L}=0,
+\end{equation}
+and let $\mathcal V_L=(B_{ij,L})_{i,j=1}^N$.
+
+\begin{lemma}[Exact multi-well reduction and norm bound]
+\label{lem:multi-block}
+If $L\delta_{\mathbf a}\geq4R$, then $A_{\Omega_{\mathbf a,L}}$ is
+unitarily equivalent to $\mathcal A_0+\mathcal V_L$.  Moreover,
+\begin{equation}\label{eq:gamma-L}
+ \norm{\mathcal V_L}\leq\gamma_L,
+ \qquad
+ \gamma_L
+ =c_{d,s}2^\kappa\abs D\,\Sigma_\kappa(\mathbf a)L^{-\kappa}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For $f\in L^2(\Omega_{\mathbf a,L})$, put
+$u_j(x)=f(x+La_j)$ for $x\in D$.  This is a unitary identification with
+$\mathcal H_N$.  Translation invariance gives the diagonal operator
+$\mathcal A_0$.  Positive separation makes every cross-kernel bounded, so
+the form domain is identified with $\bigoplus_{j=1}^N\Hs(D)$.  For $i<j$,
+direct expansion of the form
+\eqref{eq:form} gives the cross term
+\[
+ -2c_{d,s}\operatorname{Re}\iint_{D\times D}
+ \frac{u_i(x)\overline{u_j(y)}}
+ {\abs{L(a_i-a_j)+x-y}^{\kappa}}\,dx\,dy.
+\]
+Since $B_{ji,L}=B_{ij,L}^*$, summing these terms proves the exact block
+representation in the sense of closed forms and hence as operators.
+
+For $i\ne j$ and $x,y\in D$,
+\[
+ \abs{L(a_i-a_j)+x-y}
+ \geq L\abs{a_i-a_j}-2R
+ \geq\frac L2\abs{a_i-a_j}.
+\]
+The Schur test therefore gives
+\begin{equation}\label{eq:multi-block-norm}
+ \norm{B_{ij,L}}
+ \leq c_{d,s}2^\kappa\abs D\,
+ L^{-\kappa}\abs{a_i-a_j}^{-\kappa}.
+\end{equation}
+For $u=(u_1,\dots,u_N)$, set $r_j=\norm{u_j}_{L^2(D)}$ and let
+$G$ be the symmetric matrix with entries
+$G_{ij}=\norm{B_{ij,L}}$.  Then
+\[
+ \norm{\mathcal V_Lu}_{\mathcal H_N}
+ \leq\norm{Gr}_{\ell^2}
+ \leq\left(\max_i\sum_jG_{ij}\right)\norm r_{\ell^2}.
+\]
+Combining this inequality with \eqref{eq:multi-block-norm} proves
+\eqref{eq:gamma-L}.
+\end{proof}
+
+We next record the finite-multiplicity perturbation estimate that replaces
+Lemma~\ref{lem:perturb}.
+
+\begin{lemma}[Isolated spectral-cluster bound]\label{lem:cluster}
+Let $A$ be self-adjoint with compact resolvent.  Suppose its lowest
+eigenvalue $\mu$ has multiplicity $N$, let $P$ be the corresponding spectral
+projection, and suppose
+\[
+ A\big|_{P^\perp}\geq\mu+g
+\]
+in the quadratic-form sense for some $g>0$.  Let $W$ be bounded and
+self-adjoint, set $b=\norm W$, and assume $b\leq g/4$.  If
+$\eta_1\leq\cdots\leq\eta_N$ are the eigenvalues of $PWP$ on
+$\operatorname{ran}P$, then, for $1\leq k\leq N$,
+\begin{equation}\label{eq:cluster-bound}
+ -\frac{2b^2}{g}
+ \leq\lambda_k(A+W)-(\mu+\eta_k)\leq0.
+\end{equation}
+In addition,
+\begin{equation}\label{eq:cluster-separation}
+ \lambda_{N+1}(A+W)\geq\mu+g-b\geq\mu+\frac{3g}{4}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The min--max principle applied to the span of the first $k$ eigenvectors of
+$PWP$ gives the upper bound in \eqref{eq:cluster-bound}.  For the lower
+bound, write $\psi=p+q$ with $p=P\psi$ and $q=(I-P)\psi$.  Then
+\begin{align*}
+ \ip{\psi}{(A+W)\psi}
+ &\geq\mu\norm\psi^2+\ip{p}{PWPp}
+ +(g-b)\norm q^2-2b\norm p\norm q\\
+ &\geq\mu\norm\psi^2+\ip{p}{PWPp}
+ -\frac{2b^2}{g}\norm p^2
+ +\left(\frac g2-b\right)\norm q^2.
+\end{align*}
+The second line uses
+$2b\norm p\norm q\leq2b^2g^{-1}\norm p^2+(g/2)\norm q^2$.
+Thus, in the form sense, $A+W$ dominates the direct sum of
+\[
+ \mu I+PWP-\frac{2b^2}{g}I
+ \quad\text{on }\operatorname{ran}P
+\]
+and $(\mu+g/2-b)I$ on $P^\perp$.  Since
+$\eta_N\leq b\leq g/4$ and $g/2-b\geq g/4$, the first $N$ eigenvalues of
+this comparison operator are the $N$ eigenvalues of its $P$-block.  Another
+application of the min--max principle gives the lower bound in
+\eqref{eq:cluster-bound}.  Finally, $A+W\geq A-bI$ and the min--max principle
+give \eqref{eq:cluster-separation}.
+\end{proof}
+
+Let $P_1$ be the orthogonal projection in $\mathcal H_N$ onto the span of
+the $N$ vectors whose $j$th component is $\phi_1$ and whose other components
+vanish.  In this basis the compression $P_1\mathcal V_LP_1$ is represented
+by the real symmetric matrix $T_L=(t_{ij}(L))$, where
+\begin{equation}\label{eq:exact-compression}
+ t_{ii}(L)=0,
+ \qquad
+ t_{ij}(L)=-c_{d,s}\iint_{D\times D}
+ \frac{\phi_1(x)\phi_1(y)}
+ {\abs{L(a_i-a_j)+x-y}^{\kappa}}\,dx\,dy
+ \quad(i\ne j).
+\end{equation}
+
+\begin{definition}[Effective interaction matrix]\label{def:effective-matrix}
+Define the real symmetric $N\times N$ matrix $M_{\mathbf a}$ by
+\begin{equation}\label{eq:effective-matrix}
+ (M_{\mathbf a})_{ii}=0,
+ \qquad
+ (M_{\mathbf a})_{ij}
+ =-c_{d,s}m_1^2\abs{a_i-a_j}^{-\kappa}
+ \quad(i\ne j).
+\end{equation}
+Write its ordered eigenvalues as
+$\theta_1\leq\cdots\leq\theta_N$.
+\end{definition}
+
+\begin{lemma}[Compression error]\label{lem:compression}
+If $L\delta_{\mathbf a}\geq4R$, then
+\begin{equation}\label{eq:compression-error}
+ \norm{T_L-L^{-\kappa}M_{\mathbf a}}_{\ell^2\to\ell^2}
+ \leq\varepsilon_L,
+ \qquad
+ \varepsilon_L
+ =c_{d,s}C_{\kappa,R}m_1^2
+ \Sigma_{\kappa+2}(\mathbf a)L^{-\kappa-2}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Fix $i\ne j$, put $a=a_i-a_j$, and set
+$F(z)=\abs{La+z}^{-\kappa}$.  For $\abs z\leq2R$, the segment from $0$ to
+$z$ stays at distance at least $L\abs a/2$ from $-La$.  As in the proof of
+Lemma~\ref{lem:kernel}, Taylor's theorem gives
+\begin{equation}\label{eq:multi-taylor}
+ \abs{F(z)-F(0)-DF(0)z}
+ \leq C_{\kappa,R}L^{-\kappa-2}\abs a^{-\kappa-2}.
+\end{equation}
+The linear term vanishes after integration because
+\[
+ \iint_{D\times D}\phi_1(x)\phi_1(y)(x-y)\,dx\,dy=0.
+\]
+Using $F(0)=L^{-\kappa}\abs a^{-\kappa}$ in
+\eqref{eq:exact-compression} and integrating \eqref{eq:multi-taylor} gives
+\[
+ \abs{t_{ij}(L)-L^{-\kappa}(M_{\mathbf a})_{ij}}
+ \leq c_{d,s}C_{\kappa,R}m_1^2
+ L^{-\kappa-2}\abs{a_i-a_j}^{-\kappa-2}.
+\]
+The operator norm of a real symmetric matrix is at most its largest absolute
+row sum.  Taking that row sum proves \eqref{eq:compression-error}.
+\end{proof}
+
+\begin{theorem}[Finite multi-well effective Hamiltonian]
+\label{thm:multi-well}
+Let $D$, $\mu_1$, $g$, $\phi_1$, and $m_1$ be as in Section~2, and let the
+multi-well geometry be as in Definition~\ref{def:multi-geometry}.  If
+\begin{equation}\label{eq:multi-size-conditions}
+ L\delta_{\mathbf a}\geq4R,
+ \qquad
+ \gamma_L\leq\frac g4,
+\end{equation}
+then, for $1\leq k\leq N$,
+\begin{equation}\label{eq:multi-eigenvalue-bound}
+ \abs{\lambda_k(\Omega_{\mathbf a,L})
+ -(\mu_1+L^{-\kappa}\theta_k)}
+ \leq\varepsilon_L+\frac{2\gamma_L^2}{g}.
+\end{equation}
+The cluster is separated from the rest of the spectrum by
+\begin{equation}\label{eq:multi-next-level}
+ \lambda_{N+1}(\Omega_{\mathbf a,L})
+ \geq\mu_1+g-\gamma_L
+ \geq\mu_1+\frac{3g}{4}.
+\end{equation}
+Consequently, for every $1\leq k\leq N$,
+\begin{equation}\label{eq:multi-limit}
+ L^{d+2s}\bigl(\lambda_k(\Omega_{\mathbf a,L})-\mu_1\bigr)
+ \longrightarrow\theta_k.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:multi-block} identifies the full operator with
+$\mathcal A_0+\mathcal V_L$.  The lowest eigenvalue of $\mathcal A_0$ is
+$\mu_1$, with multiplicity $N$, its spectral projection is $P_1$, and the
+rest of its spectrum lies in $[\mu_1+g,\infty)$.  Apply
+Lemma~\ref{lem:cluster} with $A=\mathcal A_0$, $W=\mathcal V_L$, and
+$b=\norm{\mathcal V_L}\leq\gamma_L$.  If
+$\tau_1(L)\leq\cdots\leq\tau_N(L)$ are the eigenvalues of $T_L$, this gives
+\begin{equation}\label{eq:exact-cluster-comparison}
+ -\frac{2\gamma_L^2}{g}
+ \leq\lambda_k(\Omega_{\mathbf a,L})-(\mu_1+\tau_k(L))\leq0.
+\end{equation}
+The finite-dimensional min--max principle and
+Lemma~\ref{lem:compression} give
+\[
+ \abs{\tau_k(L)-L^{-\kappa}\theta_k}\leq\varepsilon_L.
+\]
+Combining these two estimates proves \eqref{eq:multi-eigenvalue-bound}, and
+\eqref{eq:multi-next-level} follows from \eqref{eq:cluster-separation}.
+Finally, $L^\kappa\varepsilon_L=O(L^{-2})$ and
+$L^\kappa\gamma_L^2=O(L^{-\kappa})$; since $\kappa=d+2s>0$, multiplying
+\eqref{eq:multi-eigenvalue-bound} by $L^\kappa$ proves
+\eqref{eq:multi-limit}.
+\end{proof}
+
+\begin{corollary}[Recovery of the doublet]\label{cor:multi-two}
+For $N=2$, $a_1=-e/2$, and $a_2=e/2$, the eigenvalues of
+$M_{\mathbf a}$ are $-c_{d,s}m_1^2$ and $c_{d,s}m_1^2$.  The bound
+\eqref{eq:multi-eigenvalue-bound} then agrees with
+\eqref{eq:lambda1}--\eqref{eq:lambda2}.
+\end{corollary}
+
+\begin{proof}
+In this case
+\[
+ M_{\mathbf a}
+ =\begin{pmatrix}0&-c_{d,s}m_1^2\\-c_{d,s}m_1^2&0\end{pmatrix},
+\]
+whose ordered eigenvalues are the two stated numbers.  Moreover,
+$\Sigma_\kappa(\mathbf a)=\Sigma_{\kappa+2}(\mathbf a)=1$, so
+$\gamma_L=\beta_L$ and the two displayed remainder bounds coincide.
+\end{proof}
+
+\begin{corollary}[Collective ground state]\label{cor:collective-ground}
+For every multi-well configuration, $\theta_1<0$ is simple and has an
+eigenvector with strictly positive entries.  Moreover, $\theta_N>0$.
+Consequently, for all sufficiently large $L$, the lowest eigenvalue in the
+cluster is simple and lies below $\mu_1$, while at least one cluster
+eigenvalue lies above $\mu_1$.
+\end{corollary}
+
+\begin{proof}
+The off-diagonal entries of $M_{\mathbf a}$ are strictly negative.  Its
+Rayleigh quotient at $(1,\dots,1)$ is negative, so $\theta_1<0$.  If $z$ is a
+minimizer of the Rayleigh quotient, replacing $z$ by its componentwise
+absolute value cannot increase that quotient, and equality forces all
+nonzero components to have the same sign.  The eigenvalue equation then
+shows that no component can vanish.  Thus every eigenvector for $\theta_1$
+has one strict sign.  Two linearly independent such eigenvectors would have
+a nonzero linear combination with a zero component, so $\theta_1$ is simple.
+Finally, $\operatorname{tr}M_{\mathbf a}=0$ and $\theta_1<0$, hence
+$\theta_N>0$.  The assertions for the full operator follow from
+\eqref{eq:multi-eigenvalue-bound} and the strict gaps between the relevant
+eigenvalues of $M_{\mathbf a}$.
+\end{proof}
+
+\begin{corollary}[Regular-simplex cluster]\label{cor:simplex}
+Suppose the centers satisfy $\abs{a_i-a_j}=r$ for all $i\ne j$, as for the
+vertices of a regular simplex.  Put
+\[
+ w=c_{d,s}m_1^2r^{-\kappa}.
+\]
+Then $\theta_1=-(N-1)w$ and
+$\theta_2=\cdots=\theta_N=w$.  Thus one collective level is lowered by
+$(N-1)wL^{-\kappa}$, while the remaining $N-1$ levels are raised by
+$wL^{-\kappa}$, up to the remainder in
+\eqref{eq:multi-eigenvalue-bound}.
+\end{corollary}
+
+\begin{proof}
+Here $M_{\mathbf a}=-w(J-I)$, where $J$ is the all-ones matrix.  The vector
+$(1,\dots,1)$ has eigenvalue $-(N-1)w$, and its orthogonal complement has
+eigenvalue $w$.
+\end{proof}
+
+\section{A reproducible interval check}\label{sec:numerics}
+
+We finish with a conforming Galerkin check of the two- and three-well limits.
+It is included as a reproducibility test of the formulas, not as an input to
+their proofs.  Take $d=1$, $0<s<1/2$, and partition each unit interval into
+cells of length $h$.  Proposition~\ref{prop:cell-matrix} shows directly that
+cell indicators have finite form energy in this range, so they span a
+conforming finite-dimensional subspace of the form domain.
+
+\begin{proposition}[Exact cell-integral matrix]\label{prop:cell-matrix}
+Let $I_\alpha$ be pairwise disjoint cells of length $h$, let $x_\alpha$ be
+their centers, put $r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and set
+$q=1-2s$.  In the $L^2$-orthonormal basis
+$e_\alpha=h^{-1/2}\mathbf 1_{I_\alpha}$, the Galerkin matrix $H_h$ of the
+zero-exterior form has entries
+\begin{align}
+ (H_h)_{\alpha\alpha}
+ &=\frac{c_{1,s}}{h}\frac{2h^q}{2s q},
+ \label{eq:cell-diagonal}\\
+ (H_h)_{\alpha\beta}
+ &=-\frac{c_{1,s}}{h}
+ \frac{2r_{\alpha\beta}^q-(r_{\alpha\beta}+h)^q
+ -(r_{\alpha\beta}-h)^q}{2s q},
+ \qquad \alpha\ne\beta.
+ \label{eq:cell-offdiagonal}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+For two disjoint cells with center distance $r\geq h$, direct integration
+twice gives
+\[
+ \iint_{I_\alpha\times I_\beta}\abs{x-y}^{-1-2s}\,dx\,dy
+ =\frac{2r^q-(r+h)^q-(r-h)^q}{2s q}.
+\]
+The off-diagonal form entry is minus $c_{1,s}$ times this integral.  For one
+cell,
+\[
+ \int_{I_\alpha}\int_{\R\setminus I_\alpha}
+ \abs{x-y}^{-1-2s}\,dy\,dx
+ =\frac{2h^q}{2s q}.
+\]
+Dividing both expressions by $h$ for the normalized indicators proves
+\eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}.
+\end{proof}
+
+\begin{corollary}[Fixed-mesh cluster asymptotic]
+\label{cor:discrete-cluster}
+Fix a uniform partition of $D=(-1/2,1/2)$ and let $\mu_{1,h}$ and
+$\phi_{1,h}$ be the lowest eigenvalue and a positive, $L^2$-normalized
+piecewise-constant eigenfunction of its Galerkin matrix.  Put
+$m_{1,h}=\int_D\phi_{1,h}$.  For the corresponding Galerkin matrix on
+$\bigcup_{j=1}^N(D+La_j)$, write its ordered eigenvalues as
+$\lambda_{k,h}(L)$.  Then, for fixed distinct $a_1,\dots,a_N$,
+\begin{equation}\label{eq:discrete-cluster}
+ \lambda_{k,h}(L)
+ =\mu_{1,h}+L^{-1-2s}\theta_{k,h}
+ +O_{h,\mathbf a,s}\!\left(L^{-3-2s}+L^{-2-4s}\right),
+ \qquad 1\leq k\leq N,
+\end{equation}
+where $\theta_{1,h}\leq\cdots\leq\theta_{N,h}$ are the eigenvalues of the
+matrix with zero diagonal and off-diagonal entries
+$-c_{1,s}m_{1,h}^2\abs{a_i-a_j}^{-1-2s}$.
+\end{corollary}
+
+\begin{proof}
+All off-diagonal entries of the one-well matrix in
+\eqref{eq:cell-offdiagonal} are negative.  The Rayleigh-quotient argument in
+the proof of Corollary~\ref{cor:collective-ground} therefore gives a simple
+lowest eigenvalue and a strictly positive eigenvector.  On the direct sum of
+$N$ fixed Galerkin spaces, the
+block expansion used in Lemma~\ref{lem:multi-block} is exact, its
+off-diagonal norm is $O_{h,\mathbf a,s}(L^{-1-2s})$, and the complement of
+the $N$ copied ground states is separated by the positive discrete
+one-well gap.  The Taylor argument in Lemma~\ref{lem:compression}, now in
+Euclidean operator norm, gives an
+$O_{h,\mathbf a,s}(L^{-3-2s})$ compression error.  Applying
+Lemma~\ref{lem:cluster} to this finite matrix gives the additional
+$O_{h,\mathbf a,s}(L^{-2-4s})$ term and proves
+\eqref{eq:discrete-cluster}.
+\end{proof}
+
+For the computation we take $s=1/4$, $D=(-1/2,1/2)$, and the standard
+normalization
+\[
+ c_{1,s}=\frac{4^s s\,\Gamma(1/2+s)}
+ {\sqrt\pi\,\Gamma(1-s)}.
+\]
+Table~\ref{tab:mesh} records the one-well quantities.  The stabilization of
+$m_{1,h}$ is the relevant check for the interaction coefficient.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rccc}
+cells & $\mu_{1,h}$ & $\mu_{2,h}-\mu_{1,h}$ & $m_{1,h}$\\ \hline
+60  & 1.3794549573 & 0.9105539931 & 0.9628386433\\
+120 & 1.3753692130 & 0.8998883318 & 0.9633505837\\
+180 & 1.3741292905 & 0.8969647744 & 0.9636021778
+\end{tabular}
+\caption{One-well Galerkin data for $s=1/4$.}
+\label{tab:mesh}
+\end{table}
+
+On the 180-cell mesh, the predicted two-well scaled levels are
+$(-0.18521477,0.18521477)$.  For three collinear centers
+$(-L,0,L)$, they are
+$(-0.29671332,0.06548331,0.23123001)$.  The direct Galerkin eigenvalues are
+shown in Table~\ref{tab:clusters}; the last column is the largest absolute
+difference from the corresponding effective-matrix eigenvalue.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rccc}
+$L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
+    & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & max. error\\ \hline
+3  & $-0.190740$ & $ 0.189832$ & $5.52\times10^{-3}$\\
+6  & $-0.186544$ & $ 0.186335$ & $1.33\times10^{-3}$\\
+12 & $-0.185551$ & $ 0.185486$ & $3.36\times10^{-4}$\\
+24 & $-0.185286$ & $ 0.185295$ & $8.04\times10^{-5}$
+\end{tabular}
+
+\vskip10pt
+\begin{tabular}{rcccc}
+$L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
+    & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$
+    & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & max. error\\ \hline
+3  & $-0.304984$ & $0.065562$ & $0.237544$ & $8.27\times10^{-3}$\\
+6  & $-0.298738$ & $0.065554$ & $0.232747$ & $2.03\times10^{-3}$\\
+12 & $-0.297232$ & $0.065510$ & $0.231597$ & $5.19\times10^{-4}$\\
+24 & $-0.296843$ & $0.065504$ & $0.231323$ & $1.29\times10^{-4}$
+\end{tabular}
+\caption{Scaled two-well (top) and three-well (bottom) cluster shifts.}
+\label{tab:clusters}
+\end{table}
+
+The scaled errors decrease to zero in both configurations, as asserted at
+fixed mesh by Corollary~\ref{cor:discrete-cluster}.  The calculation uses the
+exact entries \eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}; no
+singular quadrature or fitted coefficient enters the tables.
+
+\section*{Code availability}
+
+The script \path{tools/check_asymptotics.py} reconstructs every entry in
+Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the cell-integral
+identity before solving the eigenproblems and prints progress after each
+separation.  The pinned numerical dependencies are listed in
+\path{requirements-numerics.txt}.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}

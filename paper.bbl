@@ -1,0 +1,42 @@
+\begin{thebibliography}{DNPV12}
+
+\bibitem[AFN20]{AbatangeloFelliNoris2020}
+Laura Abatangelo, Veronica Felli, and Benedetta Noris.
+\newblock On simple eigenvalues of the fractional {L}aplacian under removal of
+  small fractional capacity sets.
+\newblock {\em Communications in Contemporary Mathematics}, 22(8):1950071,
+  2020.
+
+\bibitem[BP16]{BrascoParini2016}
+Lorenzo Brasco and Enea Parini.
+\newblock The second eigenvalue of the fractional {$p$}-laplacian.
+\newblock {\em Advances in Calculus of Variations}, 9(4):323--355, 2016.
+
+\bibitem[DNPV12]{DiNezzaPalatucciValdinoci2012}
+Eleonora Di~Nezza, Giampiero Palatucci, and Enrico Valdinoci.
+\newblock Hitchhiker's guide to the fractional {S}obolev spaces.
+\newblock {\em Bulletin des Sciences Math\'{e}matiques}, 136(5):521--573, 2012.
+
+\bibitem[Kwa12]{Kwasnicki2012}
+Mateusz Kwa\'{s}nicki.
+\newblock Eigenvalues of the fractional {L}aplace operator in the interval.
+\newblock {\em Journal of Functional Analysis}, 262(5):2379--2402, 2012.
+
+\bibitem[PS20]{PariniSalort2020}
+Enea Parini and Ariel Salort.
+\newblock Compactness and dichotomy in nonlocal shape optimization.
+\newblock {\em Mathematische Nachrichten}, 293(11):2208--2232, 2020.
+
+\bibitem[Zah26]{Zahl2026}
+Alvis Zahl.
+\newblock Minimizing eigenvalues of the fractional {L}aplacian.
+\newblock {\em Calculus of Variations and Partial Differential Equations},
+  65:98, 2026.
+
+\bibitem[Zha26]{Zhang2026}
+Cheng Zhang.
+\newblock Eigenvalue asymptotics and uniform eigenfunction bounds for the
+  fractional {L}aplacian in the interval, 2026.
+\newblock \href{https://arxiv.org/abs/2608.23457}{arXiv:2608.23457 [math.CA]}.
+
+\end{thebibliography}
