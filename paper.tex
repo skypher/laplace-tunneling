@@ -67,7 +67,7 @@ Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
 \newcommand{\authoremail}{polzer@fastmail.com}
-\date{August 26, 2026}
+\date{August 27, 2026}
 
 \makeatletter
 \renewcommand{\section}{%
@@ -146,8 +146,10 @@ The proof uses an exact reflection reduction to the two operators
 $A_D\pm B_L$, an elementary isolated-eigenvalue estimate, and a second-order
 Taylor expansion of the interaction kernel.  For two equal balls, the upper
 formula gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
-minimizing sequence.  More generally, for any fixed collection of distinct
-centers $a_1,\dots,a_N$, the first $N$ eigenvalues are
+minimizing sequence.  More generally, central symmetry is unnecessary for
+the finite-well result: for any bounded Lipschitz reference domain and any
+fixed collection of distinct centers $a_1,\dots,a_N$, the first $N$
+eigenvalues are
 \[
  \lambda_k=\mu_1+L^{-d-2s}\theta_k
  +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
@@ -207,7 +209,7 @@ Sportelli, and Valdinoci studied disconnected domains for generalized
 eigenproblems having a superposition of lower-order operators on the
 right-hand side
 \cite[Theorems~1.4--1.7]{DipierroProiettiLippiSportelliValdinoci2026}.
-Neither work derives a large-separation spectral expansion for the ordinary
+None of these works derives a large-separation spectral expansion for the ordinary
 restricted fractional Laplacian.  Zahl's discrete energy anticipates the
 matrix in \eqref{eq:effective-matrix}; the result here derives it from the full
 restricted fractional operator, bounds the off-diagonal block in operator
@@ -219,9 +221,11 @@ with a quantified remainder or this finite-well spectral reduction.
 The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
 cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
 cluster for finitely many translated components with the spectrum of an
-explicit weighted interaction matrix.  Both proofs are self-contained after
-the standard one-well spectral facts.  The interval provides an explicit
-benchmark: one-well eigenvalue and eigenfunction estimates are available in
+explicit weighted interaction matrix; unlike the reflection reduction, this
+result does not require central symmetry of the reference component.  Both
+proofs are self-contained after the standard one-well spectral facts.  The
+interval provides an explicit benchmark: one-well eigenvalue and
+eigenfunction estimates are available in
 \cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
 asymptotics and an eigenfunction bound uniform in both the index and the
 fractional order are proved in \cite[Theorems~1 and~2]{Zhang2026}.
@@ -244,13 +248,17 @@ The zero-exterior quadratic form is
  \qquad u\in\Hs(G),
 \end{equation}
 where $c_{d,s}>0$ is the normalization in the singular-integral definition
-of $(-\Delta)^s$.  We denote the associated self-adjoint operator on
-$L^2(G)$ by $A_G$.
+of $(-\Delta)^s$.  The form norm
+$\bigl(\mathcal q_G[u]+\norm{u}_{L^2(G)}^2\bigr)^{1/2}$
+is equivalent to the norm inherited from $H^s(\R^d)$ on $\Hs(G)$.  Thus
+\eqref{eq:form} is a densely defined closed form, and we denote its associated
+self-adjoint operator on $L^2(G)$ by $A_G$.
 
 Let $D\subset B_R(0)$ be a bounded Lipschitz domain satisfying $D=-D$.
 The Lipschitz extension property and compactness of the form embedding follow
-from \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Write the first two
-eigenvalues of $A_D$ as
+from \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Hence $A_D$
+has compact resolvent.  Write its eigenvalues with multiplicity and denote the
+first two distinct levels by
 \[
  \mu_1<\mu_2,
  \qquad g=\mu_2-\mu_1>0.
@@ -479,7 +487,8 @@ two expansions and multiplying by $L^\kappa$ proves
 
 \begin{corollary}[Rate for the distant-ball minimizing sequence]
 Let $D=B_R(0)$ and let $\Omega_L$ be the union of two radius-$R$ balls whose
-centers are separated by $L$.  Then, as $L\to\infty$,
+centers are separated by $L$, so that $\abs{\Omega_L}=2\abs{B_R}$.  Then, as
+$L\to\infty$,
 \[
  L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(B_R)\bigr)
  \longrightarrow c_{d,s}
@@ -501,6 +510,14 @@ The two-well reflection decomposition is special to a pair.  For finitely
 many components we instead keep the full block operator and compare its
 lowest spectral cluster with its compression to the translated one-well
 ground states.
+
+Throughout this section, let $D\subset B_R(0)$ be any bounded Lipschitz
+domain; central symmetry is not assumed.  The compactness and ground-state
+results \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012} and
+\cite[Theorem~2.8]{BrascoParini2016} apply unchanged.  Write
+$\mu_1<\mu_2$, $g=\mu_2-\mu_1>0$, choose the positive normalized ground
+state $A_D\phi_1=\mu_1\phi_1$, and set
+$m_1=\int_D\phi_1(x)\,dx>0$.
 
 \begin{definition}[Multi-well geometry]\label{def:multi-geometry}
 Fix an integer $N\geq2$ and distinct points
@@ -686,7 +703,8 @@ The linear term vanishes after integration because
 \[
  \iint_{D\times D}\phi_1(x)\phi_1(y)(x-y)\,dx\,dy=0.
 \]
-Using $F(0)=L^{-\kappa}\abs a^{-\kappa}$ in
+This cancellation is algebraic and does not require central symmetry of
+$D$.  Using $F(0)=L^{-\kappa}\abs a^{-\kappa}$ in
 \eqref{eq:exact-compression} and integrating \eqref{eq:multi-taylor} gives
 \[
  \abs{t_{ij}(L)-L^{-\kappa}(M_{\mathbf a})_{ij}}
@@ -699,8 +717,9 @@ row sum.  Taking that row sum proves \eqref{eq:compression-error}.
 
 \begin{theorem}[Finite multi-well effective Hamiltonian]
 \label{thm:multi-well}
-Let $D$, $\mu_1$, $g$, $\phi_1$, and $m_1$ be as in Section~2, and let the
-multi-well geometry be as in Definition~\ref{def:multi-geometry}.  If
+Let $D$, $\mu_1$, $g$, $\phi_1$, and $m_1$ be as fixed at the beginning of
+this section, and let the multi-well geometry be as in
+Definition~\ref{def:multi-geometry}.  If
 \begin{equation}\label{eq:multi-size-conditions}
  L\delta_{\mathbf a}\geq4R,
  \qquad
@@ -751,7 +770,7 @@ $L^\kappa\gamma_L^2=O(L^{-\kappa})$; since $\kappa=d+2s>0$, multiplying
 \end{proof}
 
 \begin{corollary}[Recovery of the doublet]\label{cor:multi-two}
-For $N=2$, $a_1=-e/2$, and $a_2=e/2$, the eigenvalues of
+Assume in addition that $D=-D$.  For $N=2$, $a_1=-e/2$, and $a_2=e/2$, the eigenvalues of
 $M_{\mathbf a}$ are $-c_{d,s}m_1^2$ and $c_{d,s}m_1^2$.  The bound
 \eqref{eq:multi-eigenvalue-bound} then agrees with
 \eqref{eq:lambda1}--\eqref{eq:lambda2}.
@@ -806,7 +825,8 @@ $\lambda_N>\mu_1$, which proves all three assertions for the full operator.
 
 \begin{corollary}[Regular-simplex cluster]\label{cor:simplex}
 Suppose the centers satisfy $\abs{a_i-a_j}=r$ for all $i\ne j$, as for the
-vertices of a regular simplex.  Put
+vertices of a regular simplex.  Such a configuration in $\R^d$ necessarily
+has $N\leq d+1$.  Put
 \[
  w=c_{d,s}m_1^2r^{-\kappa}.
 \]
@@ -818,6 +838,9 @@ $wL^{-\kappa}$, up to the remainder in
 \end{corollary}
 
 \begin{proof}
+After translating $a_N$ to the origin, the $N-1$ vectors
+$a_i-a_N$ have Gram matrix with diagonal entries $r^2$ and off-diagonal
+entries $r^2/2$.  This matrix is positive definite, so $N-1\leq d$.
 Here $M_{\mathbf a}=-w(J-I)$, where $J$ is the all-ones matrix.  The vector
 $(1,\dots,1)$ has eigenvalue $-(N-1)w$, and its orthogonal complement has
 eigenvalue $w$.
@@ -976,7 +999,7 @@ singular quadrature or fitted coefficient enters the tables.
 
 \section*{AI-use disclosure}
 
-The proof architecture was developed with assistance from the OpenAI GPT-5.6
+The proof architecture was developed with assistance from OpenAI's GPT-5.6
 Sol model (\texttt{gpt-5.6-sol}) at max reasoning effort.  The system was used as an
 interactive research assistant to develop and stress-test the argument,
 audit citations and calculations, prepare exact verification code, and
@@ -990,8 +1013,10 @@ The script \path{tools/check_asymptotics.py} reconstructs every entry in
 Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the cell-integral
 identity before solving the eigenproblems and prints progress after each
 separation.  The pinned numerical dependencies are listed in
-\path{requirements-numerics.txt}.  The versioned source package is available
-at \href{https://github.com/skypher/laplace-tunneling}%
+\path{requirements-numerics.txt}.  A frozen copy of the scripts, pinned
+dependencies, release audit, and reference output is included in the
+submission source package.  The development repository is available at
+\href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 
 \bibliographystyle{alpha}

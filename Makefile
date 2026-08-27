@@ -16,7 +16,7 @@ audit: paper.pdf
 
 arxiv: audit
 	mkdir -p dist
-	tar --sort=name --mtime='UTC 2026-08-26' --owner=0 --group=0 --numeric-owner \
+	tar --sort=name --mtime='UTC 2026-08-27' --owner=0 --group=0 --numeric-owner \
 		-czf dist/laplace-tunneling-arxiv.tar.gz \
 		paper.tex paper.bbl references.bib README.md Makefile \
 		tools/audit_release.py tools/check_asymptotics.py \

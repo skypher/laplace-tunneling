@@ -10,7 +10,9 @@
   tends to infinity form a minimizing sequence.
 - Di Nezza--Palatucci--Valdinoci, Theorem 5.4: bounded Lipschitz domains are
   fractional Sobolev extension domains.  Their Theorem 7.1 then gives the
-  compact embedding needed for discreteness.
+  compact embedding needed for compact resolvent and discreteness.  The form
+  norm is the inherited fractional Sobolev norm up to fixed constants, so
+  the zero-exterior form is closed.
 - Parini--Salort, Theorems 1.2 and 1.3: the cited dichotomy is qualitative
   resolvent convergence for components whose distance tends to infinity.
 
@@ -51,6 +53,10 @@ remainder is quadratic in the coupling, hence order `L^(-2d-4s)`.
   `notes/final_audit.md`.
 
 ## Multi-well proof audit
+
+The reference domain in Section 4 is an arbitrary bounded Lipschitz domain.
+Central symmetry enters the separate reflection construction of Sections
+2--3 and is restored in Corollary 4.7, but it is not used by Theorem 4.6.
 
 ### Exact operator and sign
 
@@ -108,6 +114,11 @@ The first Taylor term integrates to zero because the integral of
 
 The symmetric matrix row-sum bound then gives `epsilon_L`.  Weyl's ordered
 finite-dimensional min--max estimate and the cluster bound yield Theorem 4.6.
+
+For the regular-simplex specialization, translating one center to the origin
+gives an `(N-1)`-vector Gram matrix with diagonal `r^2` and off-diagonal
+`r^2/2`.  Its positive definiteness implies `N-1 <= d`, as now stated in
+Corollary 4.9.
 
 ### Independent diagnostic
 

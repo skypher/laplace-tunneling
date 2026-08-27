@@ -1,11 +1,15 @@
 # Final theorem and release audit
 
-Audit date: 2026-08-26.
+Audit date: 2026-08-27.
 
 ## Final-facing theorem checks
 
 ### Two-well splitting
 
+- The form norm is explicitly identified with the inherited fractional
+  Sobolev norm, so the manuscript now states closedness of the form and the
+  associated self-adjoint operator before using it.  Compactness of the
+  cited form embedding is explicitly converted into compact resolvent.
 - The unitary map identifies both the `L^2` space and the form domain with
   two copies of the one-well space; positive separation makes the cross term
   bounded.
@@ -23,6 +27,11 @@ Audit date: 2026-08-26.
 
 ### Finite multi-well cluster
 
+- Section 4 now restarts with an arbitrary bounded Lipschitz reference
+  domain.  Its proof uses translations and the algebraic `x-y` moment
+  cancellation, so central symmetry is not a hypothesis of Theorem 4.6.
+  Corollary 4.7 restores `D=-D` exactly where comparison with the reflected
+  two-well construction uses it.
 - Lemma 4.2 identifies the direct-sum form domain and obtains the full block
   norm from the Schur bounds and the symmetric row-sum estimate.
 - Lemma 4.3 was checked from the min--max principle on the ground-state
@@ -35,12 +44,14 @@ Audit date: 2026-08-26.
   errors are `O(L^(-2))` and `O(L^(-kappa))`.
 - Corollaries 4.7--4.9 follow from the explicit finite matrix: the two-well
   specialization, the sign and simplicity of its lowest eigenvector, and
-  the regular-simplex spectrum were each checked directly.
+  the regular-simplex spectrum were each checked directly.  The Gram-matrix
+  argument in Corollary 4.9 also records the necessary bound `N <= d+1`.
 
 ### Applications and fixed-mesh computation
 
 - Corollary 3.4 specializes the upper member of the doublet to the distant
-  equal-ball minimizing sequence without changing the volume convention.
+  equal-ball minimizing sequence and now states the volume convention
+  `|Omega_L|=2|B_R|` explicitly.
 - Proposition 5.1 evaluates every cell-pair integral and the zero-exterior
   diagonal integral exactly for `0 < s < 1/2`.
 - Corollary 5.2 repeats the block, gap, and Taylor estimates in the fixed
@@ -48,6 +59,8 @@ Audit date: 2026-08-26.
 - The saved 180-cell run completed in 57.123 seconds.  Its constant-function
   form identity passed before any eigensolve, and every number printed in
   Tables 1--2 agrees with the saved output after the displayed rounding.
+- A fresh unbuffered replay on 2026-08-27 again matched every saved value
+  after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
 
@@ -76,9 +89,9 @@ priority wording “we are not aware of an earlier result.”
 The final `make audit` run checks the last LaTeX build, which produced a
 13-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
-inspection of pages 1--2 and 9--13 confirms that the abstract qualification,
+inspection of all 13 pages confirms that the abstract qualification,
 related-work additions, expanded corollary proofs, fixed-mesh statement,
-effective spectra, tables, code link, and references are legible.  The title
+effective spectra, tables, disclosure, code link, and references are legible.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
@@ -98,8 +111,8 @@ release audit passed: citations=9 labels=50 results=14 numerical_rows=11 pages=1
 Artifact hashes after the final bibliography build are:
 
 ```text
-28934da3a77772cc5d8f222fdaea89ad82d9991c2c20a8e4d07451381f0e150a  paper.pdf
-2ff605919e8abea8e8637c52f888042f74bb78ba723e32de76192fa32b52a004  dist/laplace-tunneling-arxiv.tar.gz
+fd4a522c11c2b5e9419fc0febd3ce6820904e5633994d42cda8d0c65d294a367  paper.pdf
+08a840b75863532b3bdfd12ba99a7d7c70c745a1f8ccb029444e3a51c85e46ab  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 

@@ -81,7 +81,7 @@ def main() -> None:
         "\\author{Leslie P. Polzer}",
         "\\newcommand{\\authoraffiliation}{Independent Researcher}",
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
-        "\\date{August 26, 2026}",
+        "\\date{August 27, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
         "https://github.com/skypher/laplace-tunneling",
     )
@@ -105,7 +105,7 @@ def main() -> None:
 
     ai_disclosure = (
         "\\section*{AI-use disclosure}",
-        "OpenAI GPT-5.6 Sol model",
+        "OpenAI's GPT-5.6 Sol model",
         "\\texttt{gpt-5.6-sol}",
         "at max reasoning effort",
         "takes responsibility for all mathematical claims, citations, computations, and wording",
