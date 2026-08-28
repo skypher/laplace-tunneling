@@ -52,9 +52,9 @@ Primary source: arXiv:1409.6284; DOI 10.1515/acv-2015-0007.
 
 ### Parini--Salort (2020)
 
-- Theorem 1.2 gives the compactness/dichotomy alternative and operator-norm
+- Theorem 1.1 gives the compactness/dichotomy alternative and operator-norm
   resolvent approximation by two pieces at diverging distance.
-- Theorem 1.3 applies the dichotomy to spectral shape functionals.
+- Theorem 1.2 applies the dichotomy to spectral shape functionals.
 - These results are qualitative with respect to the separation scale and do
   not give an interaction coefficient or effective matrix.
 

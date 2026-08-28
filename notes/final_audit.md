@@ -69,7 +69,7 @@ Audit date: 2026-08-27.
 | One-well extension and compactness | Di Nezza--Palatucci--Valdinoci, Theorems 5.4 and 7.1 |
 | Positivity and simplicity | Brasco--Parini, Theorem 2.8, at `p=2` |
 | Nonlocal Hong--Krahn--Szego sequence | Brasco--Parini, Theorem 6.2, at `p=2` |
-| Distant-component dichotomy | Parini--Salort, Theorems 1.2 and 1.3 |
+| Distant-component dichotomy | Parini--Salort, Theorems 1.1 and 1.2 |
 | Mutual-position observation | Abatangelo--Felli--Noris, Introduction, p. 3 |
 | Exact translated cross-energy and point-mass toy | Zahl, Section 10, equations (10.3) and (10.7) |
 | Disconnected-domain generalized superposition problem | Dipierro--Proietti Lippi--Sportelli--Valdinoci, Theorems 1.4--1.7 |

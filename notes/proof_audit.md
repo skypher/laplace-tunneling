@@ -13,7 +13,7 @@
   compact embedding needed for compact resolvent and discreteness.  The form
   norm is the inherited fractional Sobolev norm up to fixed constants, so
   the zero-exterior form is closed.
-- Parini--Salort, Theorems 1.2 and 1.3: the cited dichotomy is qualitative
+- Parini--Salort, Theorems 1.1 and 1.2: the cited dichotomy is qualitative
   resolvent convergence for components whose distance tends to infinity.
 
 ## Sign and coefficient check

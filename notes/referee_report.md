@@ -308,7 +308,7 @@ uses:
   and compact embedding;
 - Brasco--Parini, Theorems 2.8 and 6.2: sign/simplicity and the strict, sharp
   nonlocal Hong--Krahn--Szegő statement;
-- Parini--Salort, Theorems 1.2 and 1.3: compactness/dichotomy and its shape
+- Parini--Salort, Theorems 1.1 and 1.2: compactness/dichotomy and its shape
   optimization consequence;
 - Abatangelo--Felli--Noris, Introduction, p. 3: dependence on mutual
   component position;
