@@ -110,7 +110,7 @@ def check_constant_energy(cells: int, s: float) -> None:
     expected = coefficient * 2.0 / (2.0 * s * (1.0 - 2.0 * s))
     if not math.isclose(computed, expected, rel_tol=2e-10, abs_tol=2e-10):
         raise RuntimeError(
-            f"cell-integral identity failed: computed={computed}, expected={expected}"
+            f"constant-function energy identity failed: computed={computed}, expected={expected}"
         )
 
 

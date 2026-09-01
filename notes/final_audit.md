@@ -13,9 +13,12 @@ Audit date: 2026-09-01.
 - The unitary map identifies both the `L^2` space and the form domain with
   two copies of the one-well space; positive separation makes the cross term
   bounded.
-- Direct form expansion gives the negative off-diagonal kernel and no
-  diagonal correction.
-- Lemma 3.1 bounds the isolated-eigenvalue error by `2 beta_L^2/g`.
+- Direct form expansion displays the cancellation
+  `|u-v|^2-|u|^2-|v|^2=-2 Re(u conjugate(v))`, giving the negative
+  off-diagonal kernel and no diagonal correction.
+- Lemma 3.1 states the operator domain for the Rayleigh vectors, displays the
+  full `W`-term expansion, and bounds the isolated-eigenvalue error by
+  `2 beta_L^2/g`.
 - Lemma 3.2 uses the Hessian bound
   `kappa (kappa+3) |Le-z|^(-kappa-2)` and evenness of the ground state to
   remove the linear Taylor term.
@@ -35,8 +38,9 @@ Audit date: 2026-09-01.
 - Lemma 4.2 identifies the direct-sum form domain and obtains the full block
   norm from the Schur bounds and the symmetric row-sum estimate.
 - Lemma 4.3 was checked from the min--max principle on the ground-state
-  subspace and its orthogonal complement.  The complement remains above the
-  compressed block when `b <= g/4`.
+  subspace and its orthogonal complement.  The displayed inequality
+  `eta_N-2b^2/g <= b-2b^2/g < g/2-b` places the entire compressed block
+  below the complement when `b <= g/4`.
 - Lemma 4.5 cancels the linear Taylor term exactly and bounds the matrix
   remainder in Euclidean operator norm by its largest absolute row sum.
 - Theorem 4.6 combines the cluster error and compression error without
@@ -59,7 +63,7 @@ Audit date: 2026-09-01.
 - The saved 180-cell run completed in 57.123 seconds.  Its constant-function
   form identity passed before any eigensolve, and every number printed in
   Tables 1--2 agrees with the saved output after the displayed rounding.
-- A fresh unbuffered replay on 2026-08-27 again matched every saved value
+- A fresh unbuffered replay on 2026-09-01 again matched every saved value
   after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
@@ -89,9 +93,9 @@ priority wording “we are not aware of an earlier result.”
 ## Release checks
 
 The final `make audit` run checks the last LaTeX build, which produced a
-13-page PDF with no unresolved citation, unresolved
+14-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
-inspection of all 13 pages confirms that the abstract qualification,
+inspection of all 14 pages confirms that the abstract qualification,
 related-work additions, expanded corollary proofs, fixed-mesh statement,
 effective spectra, tables, disclosure, code link, and references are legible.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
@@ -99,29 +103,29 @@ page lists Leslie P. Polzer, Independent Researcher, and
 source-to-source and rendered-page comparison with the Virasoro reference
 paper confirms the same two-sided article geometry, Latin Modern font set,
 title stack, section and theorem typography, running-head convention,
-caption treatment, link palette, and ruled-table presentation.  Page 12
+caption treatment, link palette, and ruled-table presentation.  Page 13
 contains the AI-use disclosure naming OpenAI GPT-5.6 Sol
-(`gpt-5.6-sol`) at max reasoning effort.  The manuscript source and extracted
+(`gpt-5.6-sol`) and specifying its research uses.  The manuscript source and extracted
 PDF text contain no prohibited product-name reference.
 
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=13
+release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=14
 ```
 
 Artifact hashes after the final bibliography build are:
 
 ```text
-166aeac254effe4a5f222b926e0771ba1fedb25f5629b19f1297eb9ba467eb1b  paper.pdf
-32159e079769756836713d3b41a021cd932636bf98aa7c8bf30e3928dc48aad9  dist/laplace-tunneling-arxiv.tar.gz
+9d77da8577790e17a10827d538af46d56392474515698df6e7b7b5eaa4c65d10  paper.pdf
+427ef4b778532c11cbe9bc8a0d7cac74ed7c323be257f6cf6324c1d16934168b  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
 The source archive passed `gzip -t` and contains the manuscript, generated
 bibliography, BibTeX database, README, Makefile, release and numerical audit
 scripts, pinned dependencies, and saved 180-cell output.  After extraction in
-a fresh directory, `make audit` rebuilt the 13-page PDF and returned the same
+a fresh directory, `make audit` rebuilt the 14-page PDF and returned the same
 release-audit result shown above.
 
 ## Final double-check before closure

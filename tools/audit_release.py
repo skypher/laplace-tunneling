@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -16,6 +17,9 @@ def read(relative: str) -> str:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+
     paper = read("paper.tex")
     bibliography = read("references.bib")
     built_bibliography = read("paper.bbl")
@@ -107,7 +111,8 @@ def main() -> None:
         "\\section*{AI-use disclosure}",
         "OpenAI's GPT-5.6 Sol model",
         "\\texttt{gpt-5.6-sol}",
-        "at max reasoning effort",
+        "argument development and stress testing",
+        "preparation of exact verification code",
         "takes responsibility for all mathematical claims, citations, computations, and wording",
     )
     normalized_paper = re.sub(r"\s+", " ", paper)
@@ -118,6 +123,15 @@ def main() -> None:
         forbidden_product_name not in paper.lower(),
         "AI disclosure contains a prohibited product-name reference",
     )
+    code_availability = (
+        "assembled constant-function energy identity",
+        "this is the version corresponding to the manuscript",
+    )
+    for fragment in code_availability:
+        require(
+            fragment in normalized_paper,
+            f"missing code-availability text: {fragment}",
+        )
 
     critical_log_patterns = (
         "LaTeX Warning",
@@ -132,7 +146,7 @@ def main() -> None:
     )
     for pattern in critical_log_patterns:
         require(pattern not in build_log, f"final build diagnostic: {pattern}")
-    require("Output written on paper.pdf (13 pages" in build_log, "unexpected final PDF page count")
+    require("Output written on paper.pdf (14 pages" in build_log, "unexpected final PDF page count")
 
     expected_numerical_fragments = [
         "60 1.3794549573 0.9105539931 0.9628386433",
@@ -154,6 +168,9 @@ def main() -> None:
         require(fragment in numerics, f"missing reference-output fragment: {fragment}")
 
     manuscript_fragments = [
+        "\\abs{u(x)-v(y)}^2-\\abs{u(x)}^2-\\abs{v(y)}^2",
+        "\\ip{\\psi}{W\\psi}-w",
+        "\\eta_N-\\frac{2b^2}{g}",
         "1.3794549573 & 0.9105539931 & 0.9628386433",
         "1.3753692130 & 0.8998883318 & 0.9633505837",
         "1.3741292905 & 0.8969647744 & 0.9636021778",
@@ -179,7 +196,7 @@ def main() -> None:
     print(
         "release audit passed: "
         f"citations={len(cited)} labels={len(labels)} results={result_count} "
-        "numerical_rows=11 pages=13",
+        "numerical_rows=11 pages=14",
         flush=True,
     )
 

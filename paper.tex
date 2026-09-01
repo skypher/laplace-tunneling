@@ -144,8 +144,8 @@ $L^2$-normalized eigenfunction, and $m_1=\int_D\phi_1$, then
 \]
 The proof uses an exact reflection reduction to the two operators
 $A_D\pm B_L$, an elementary isolated-eigenvalue estimate, and a second-order
-Taylor expansion of the interaction kernel.  For two equal balls, the upper
-formula gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
+Taylor expansion of the interaction kernel.  For two equal balls, the formula
+for $\lambda_2$ gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
 minimizing sequence.  More generally, central symmetry is unnecessary for
 the finite-well result: for any bounded Lipschitz reference domain and any
 fixed collection of distinct centers $a_1,\dots,a_N$, the first $N$
@@ -195,7 +195,7 @@ proved the mixed local/nonlocal analogue
 such distant components in a general concentration--compactness dichotomy
 \cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  Together these works establish
 the qualitative limiting and dichotomy picture but do not specify the leading
-interaction coefficient for the ordinary restricted fractional Laplacian.
+interaction coefficient for the standard restricted fractional Laplacian.
 The purpose of this article is to extract that coefficient and the associated
 effective finite-dimensional interaction.
 
@@ -212,8 +212,8 @@ Sportelli, and Valdinoci studied disconnected domains for generalized
 eigenproblems having a superposition of lower-order operators on the
 right-hand side
 \cite[Theorems~1.4--1.7]{DipierroProiettiLippiSportelliValdinoci2026}.
-None of these works derives a large-separation spectral expansion for the ordinary
-restricted fractional Laplacian.  Zahl's discrete energy anticipates the
+None of these works derives a large-separation spectral expansion for the
+standard restricted fractional Laplacian.  Zahl's discrete energy anticipates the
 matrix in \eqref{eq:effective-matrix}; the result here derives it from the full
 restricted fractional operator, bounds the off-diagonal block in operator
 norm, controls its coupling to the complementary one-well modes through the
@@ -320,15 +320,21 @@ cutoffs isolating the two components.  Multiplication by these cutoffs is
 bounded on $H^s(\R^d)$, while conversely the sum of separated translated and
 reflected one-well functions lies in $H^s(\R^d)$.  Hence the unitary
 identifies $\Hs(\Omega_L)$ with $\Hs(D)\oplus\Hs(D)$.  The cross-kernel is
-bounded by positive separation.  Expanding the square in
-\eqref{eq:form}, the difference
-between the form of the sum and the two separate forms is exactly
-\[
- -2c_{d,s}\operatorname{Re}\iint_{D\times D}
+bounded by positive separation.  Each separate zero-exterior form already
+contains the square interaction with the location occupied by the other
+component.  Thus, after the above changes of variables, expanding the square
+in \eqref{eq:form} gives exactly
+\begin{align*}
+ &\mathcal q_{\Omega_L}[f]-\mathcal q_D[u]-\mathcal q_D[v]\\
+ &\quad=c_{d,s}\iint_{D\times D}
+ \frac{\abs{u(x)-v(y)}^2-\abs{u(x)}^2-\abs{v(y)}^2}
+ {\abs{Le-x-y}^{\kappa}}\,dx\,dy\\
+ &\quad=-2c_{d,s}\operatorname{Re}\iint_{D\times D}
  \frac{u(x)\overline{v(y)}}{\abs{Le-x-y}^{\kappa}}\,dx\,dy
  =2\operatorname{Re}\ip{u}{B_Lv}.
-\]
-This proves the block representation in the sense of closed forms.  Since
+\end{align*}
+The square terms therefore cancel, leaving no additional diagonal
+contribution.  This proves the block representation in the sense of closed forms.  Since
 $B_L$ is bounded, it also gives the stated operator representation.  The
 unitary change of variables
 $(u,v)\mapsto 2^{-1/2}(u+v,u-v)$ yields \eqref{eq:direct-sum}.
@@ -352,16 +358,23 @@ $w=\ip{\phi}{W\phi}$, and suppose $b\leq g/4$.  Then
 
 \begin{proof}
 The upper bound follows by testing the Rayleigh quotient with $\phi$.  For a
-normalized vector $\psi=a\phi+\eta$, where $\eta\perp\phi$ and
-$t=\norm{\eta}$, the spectral gap gives
+normalized vector $\psi=a\phi+\eta$ in the operator domain of $A$,
+where $\eta\perp\phi$ and $t=\norm{\eta}$, the spectral gap gives
 \[
  \ip{\psi}{A\psi}\geq\mu+gt^2.
 \]
-Since $\abs{w}\leq b$ and $\abs{a}\leq1$,
+Since $\abs{a}^2=1-t^2$, self-adjointness gives
+\[
+ \ip{\psi}{W\psi}-w
+ =-t^2w+2\operatorname{Re}\ip{a\phi}{W\eta}+\ip{\eta}{W\eta}.
+\]
+Using $\abs{w}\leq b$, $\abs{a}\leq1$, and $\norm W=b$,
 \begin{align*}
  \ip{\psi}{(A+W)\psi}-(\mu+w)
  &\geq gt^2-2bt^2-2bt\\
  &=(g-2b)t^2-2bt\\
+ &= (g-2b)\left(t-\frac{b}{g-2b}\right)^2
+   -\frac{b^2}{g-2b}\\
  &\geq-\frac{b^2}{g-2b}
  \geq-\frac{2b^2}{g}.
 \end{align*}
@@ -651,8 +664,15 @@ Thus, in the form sense, $A+W$ dominates the direct sum of
  \quad\text{on }\operatorname{ran}P
 \]
 and $(\mu+g/2-b)I$ on $P^\perp$.  Since
-$\eta_N\leq b\leq g/4$ and $g/2-b\geq g/4$, the first $N$ eigenvalues of
-this comparison operator are the $N$ eigenvalues of its $P$-block.  Another
+$\eta_N\leq b\leq g/4$, we have
+\[
+ \eta_N-\frac{2b^2}{g}
+ \leq b-\frac{2b^2}{g}<\frac g2-b.
+\]
+The strict inequality follows because the difference between the last two
+quantities is $(g-2b)^2/(2g)>0$.
+Hence the first $N$ eigenvalues of this comparison operator are the $N$
+eigenvalues of its $P$-block.  Another
 application of the min--max principle gives the lower bound in
 \eqref{eq:cluster-bound}.  Finally, $A+W\geq A-bI$ and the min--max principle
 give \eqref{eq:cluster-separation}.
@@ -1005,23 +1025,25 @@ singular quadrature or fitted coefficient enters the tables.
 
 \section*{AI-use disclosure}
 
-The proof architecture was developed with assistance from OpenAI's GPT-5.6
-Sol model (\texttt{gpt-5.6-sol}) at max reasoning effort.  The system was used as an
-interactive research assistant to develop and stress-test the argument,
-audit citations and calculations, prepare exact verification code, and
-revise the manuscript.  The author directed the research, selected and
+The proof architecture and manuscript were developed with assistance from
+OpenAI's GPT-5.6 Sol model (\texttt{gpt-5.6-sol}).  The model served as an
+interactive research assistant for argument development and stress testing,
+citation and calculation audits, preparation of exact verification code, and
+revision.  The author directed the research, selected and
 checked the final arguments, and takes responsibility for all mathematical
 claims, citations, computations, and wording.
 
 \section*{Code availability}
 
 The script \path{tools/check_asymptotics.py} reconstructs every entry in
-Tables~\ref{tab:mesh} and \ref{tab:clusters}.  It checks the cell-integral
-identity before solving the eigenproblems and prints progress after each
-separation.  The pinned numerical dependencies are listed in
+Tables~\ref{tab:mesh} and \ref{tab:clusters}.  Before solving the
+eigenproblems, it checks the assembled constant-function energy identity and
+prints progress after each separation.  The pinned numerical dependencies are
+listed in
 \path{requirements-numerics.txt}.  A frozen copy of the scripts, pinned
 dependencies, release audit, and reference output is included in the
-submission source package.  The development repository is available at
+submission source package; this is the version corresponding to the
+manuscript.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 
