@@ -16,7 +16,7 @@ Audit date: 2026-09-01.
 - Direct form expansion displays the cancellation
   `|u-v|^2-|u|^2-|v|^2=-2 Re(u conjugate(v))`, giving the negative
   off-diagonal kernel and no diagonal correction.
-- Lemma 3.1 states the operator domain for the Rayleigh vectors, displays the
+- Lemma 3.1 states the form domain for the Rayleigh vectors, displays the
   full `W`-term expansion, and bounds the isolated-eigenvalue error by
   `2 beta_L^2/g`.
 - Lemma 3.2 uses the Hessian bound
@@ -63,8 +63,9 @@ Audit date: 2026-09-01.
 - The saved 180-cell run completed in 57.123 seconds.  Its constant-function
   form identity passed before any eigensolve, and every number printed in
   Tables 1--2 agrees with the saved output after the displayed rounding.
-- A fresh unbuffered replay on 2026-09-01 again matched every saved value
-  after removing the machine-dependent elapsed-time line.
+- A fresh unbuffered replay on 2026-09-01 with Python 3.12.3, NumPy 1.26.4,
+  and SciPy 1.11.4 completed in 11.145 seconds and again matched every saved
+  value after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
 
@@ -95,9 +96,10 @@ priority wording “we are not aware of an earlier result.”
 The final `make audit` run checks the last LaTeX build, which produced a
 14-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
-inspection of all 14 pages confirms that the abstract qualification,
-related-work additions, expanded corollary proofs, fixed-mesh statement,
-effective spectra, tables, disclosure, code link, and references are legible.  The title
+inspection of all 14 pages confirms that the abstract qualification, eigenvalue
+convention, form-domain perturbation argument, related-work additions, expanded
+corollary proofs, fixed-mesh geometry, effective spectra, tables, disclosure,
+code-availability metadata, and linked references are legible.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
@@ -114,19 +116,19 @@ PDF text contain no prohibited product-name reference.
 release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=14
 ```
 
-Artifact hashes after the final bibliography build are:
+Artifact hashes after the referee-revision build are:
 
 ```text
-9d77da8577790e17a10827d538af46d56392474515698df6e7b7b5eaa4c65d10  paper.pdf
-427ef4b778532c11cbe9bc8a0d7cac74ed7c323be257f6cf6324c1d16934168b  dist/laplace-tunneling-arxiv.tar.gz
+4174303304a7ec6d1283dbc2de72af9a25dd627963f04ce0284d3cd68d2a631c  paper.pdf
+e21dd479130531495791b6adb7fb665e9f871adc73d9bb016d418ef387c87589  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
 The source archive passed `gzip -t` and contains the manuscript, generated
 bibliography, BibTeX database, README, Makefile, release and numerical audit
-scripts, pinned dependencies, and saved 180-cell output.  After extraction in
-a fresh directory, `make audit` rebuilt the 14-page PDF and returned the same
-release-audit result shown above.
+scripts, pinned dependencies, and saved 180-cell output.  Every extracted
+payload byte-matched its working-tree source.  The `make arxiv` prerequisite
+ran the release audit and returned the result shown above.
 
 ## Final double-check before closure
 

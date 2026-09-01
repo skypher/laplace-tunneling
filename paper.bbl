@@ -6,44 +6,60 @@ Laura Abatangelo, Veronica Felli, and Benedetta Noris.
   small fractional capacity sets.
 \newblock {\em Communications in Contemporary Mathematics}, 22(8):1950071,
   2020.
+\newblock
+  \hfil\break\href{https://doi.org/10.1142/S0219199719500718}{doi:10.1142/S0219199719500718}.
 
 \bibitem[BDVV23]{BiagiDipierroValdinociVecchi2023}
 Stefano Biagi, Serena Dipierro, Enrico Valdinoci, and Eugenio Vecchi.
 \newblock A {H}ong--{K}rahn--{Szeg{\H{o}}} inequality for mixed local and
   nonlocal operators.
 \newblock {\em Mathematics in Engineering}, 5(1):1--25, 2023.
+\newblock
+  \hfil\break\href{https://doi.org/10.3934/mine.2023014}{doi:10.3934/mine.2023014}.
 
 \bibitem[BP16]{BrascoParini2016}
 Lorenzo Brasco and Enea Parini.
-\newblock The second eigenvalue of the fractional {$p$}-laplacian.
+\newblock The second eigenvalue of the fractional {$p$}-{L}aplacian.
 \newblock {\em Advances in Calculus of Variations}, 9(4):323--355, 2016.
+\newblock
+  \hfil\break\href{https://doi.org/10.1515/acv-2015-0007}{doi:10.1515/acv-2015-0007}.
 
 \bibitem[DFW21]{DjitteFallWeth2021}
 Sidy~Moctar Djitte, Mouhamed~Moustapha Fall, and Tobias Weth.
 \newblock A fractional {H}adamard formula and applications.
 \newblock {\em Calculus of Variations and Partial Differential Equations},
-  60:231, 2021.
+  60(6):231, 2021.
+\newblock
+  \hfil\break\href{https://doi.org/10.1007/s00526-021-02094-3}{doi:10.1007/s00526-021-02094-3}.
 
 \bibitem[DNPV12]{DiNezzaPalatucciValdinoci2012}
 Eleonora Di~Nezza, Giampiero Palatucci, and Enrico Valdinoci.
 \newblock Hitchhiker's guide to the fractional {S}obolev spaces.
 \newblock {\em Bulletin des Sciences Math\'{e}matiques}, 136(5):521--573, 2012.
+\newblock
+  \hfil\break\href{https://doi.org/10.1016/j.bulsci.2011.12.004}{doi:10.1016/j.bulsci.2011.12.004}.
 
 \bibitem[DPLSV26]{DipierroProiettiLippiSportelliValdinoci2026}
 Serena Dipierro, Edoardo Proietti~Lippi, Caterina Sportelli, and Enrico
   Valdinoci.
 \newblock Nonlocal eigenvalue problems and superposition operators, 2026.
-\newblock arXiv:2602.18035 [math.AP].
+\newblock
+  \hfil\break\href{https://arxiv.org/abs/2602.18035v1}{arXiv:2602.18035v1
+  [math.AP], 20 February 2026}.
 
 \bibitem[Kwa12]{Kwasnicki2012}
 Mateusz Kwa\'{s}nicki.
 \newblock Eigenvalues of the fractional {L}aplace operator in the interval.
 \newblock {\em Journal of Functional Analysis}, 262(5):2379--2402, 2012.
+\newblock
+  \hfil\break\href{https://doi.org/10.1016/j.jfa.2011.12.004}{doi:10.1016/j.jfa.2011.12.004}.
 
 \bibitem[PS20]{PariniSalort2020}
 Enea Parini and Ariel Salort.
 \newblock Compactness and dichotomy in nonlocal shape optimization.
 \newblock {\em Mathematische Nachrichten}, 293(11):2208--2232, 2020.
+\newblock
+  \hfil\break\href{https://doi.org/10.1002/mana.201800234}{doi:10.1002/mana.201800234}.
 
 \bibitem[Wu26]{Wu2026}
 Zijian Wu.
@@ -51,17 +67,23 @@ Zijian Wu.
   model arising from the minimization of eigenvalues of the fractional
   {L}aplacian.
 \newblock {\em Applied Mathematics and Computation}, 531:130195, 2026.
+\newblock
+  \hfil\break\href{https://doi.org/10.1016/j.amc.2026.130195}{doi:10.1016/j.amc.2026.130195}.
 
 \bibitem[Zah26]{Zahl2026}
 Alvis Zahl.
 \newblock Minimizing eigenvalues of the fractional {L}aplacian.
 \newblock {\em Calculus of Variations and Partial Differential Equations},
-  65:98, 2026.
+  65(3):98, 2026.
+\newblock
+  \hfil\break\href{https://doi.org/10.1007/s00526-026-03270-z}{doi:10.1007/s00526-026-03270-z}.
 
 \bibitem[Zha26]{Zhang2026}
 Cheng Zhang.
 \newblock Eigenvalue asymptotics and uniform eigenfunction bounds for the
   fractional {L}aplacian in the interval, 2026.
-\newblock \href{https://arxiv.org/abs/2608.23457}{arXiv:2608.23457 [math.CA]}.
+\newblock
+  \hfil\break\href{https://arxiv.org/abs/2608.23457v1}{arXiv:2608.23457v1
+  [math.CA], 24 August 2026}.
 
 \end{thebibliography}

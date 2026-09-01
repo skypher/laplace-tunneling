@@ -97,6 +97,7 @@ Laplacian on distant domains}
   \renewcommand\@evenhead{%
     \thepage\hfil\small\shorttitle\hfil}}
 \pagestyle{bookheader}
+\raggedbottom
 
 \renewcommand{\maketitle}{%
   \begin{center}
@@ -148,7 +149,7 @@ Taylor expansion of the interaction kernel.  For two equal balls, the formula
 for $\lambda_2$ gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
 minimizing sequence.  More generally, central symmetry is unnecessary for
 the finite-well result: for any bounded Lipschitz reference domain and any
-fixed collection of distinct centers $a_1,\dots,a_N$, the first $N$
+fixed collection of distinct translation sites $a_1,\dots,a_N$, the first $N$
 eigenvalues are
 \[
  \lambda_k=\mu_1+L^{-d-2s}\theta_k
@@ -259,6 +260,10 @@ $\bigl(\mathcal q_G[u]+\norm{u}_{L^2(G)}^2\bigr)^{1/2}$
 is equivalent to the norm inherited from $H^s(\R^d)$ on $\Hs(G)$.  Thus
 \eqref{eq:form} is a densely defined closed form, and we denote its associated
 self-adjoint operator on $L^2(G)$ by $A_G$.
+We write
+$\lambda_1(G)\leq\lambda_2(G)\leq\cdots$ for the eigenvalues of $A_G$,
+repeated according to multiplicity.  For an abstract self-adjoint operator
+$T$ with compact resolvent, $\lambda_k(T)$ has the analogous meaning.
 
 Let $D\subset B_R(0)$ be a bounded Lipschitz domain satisfying $D=-D$.
 The Lipschitz extension property and compactness of the form embedding follow
@@ -357,11 +362,12 @@ $w=\ip{\phi}{W\phi}$, and suppose $b\leq g/4$.  Then
 \end{lemma}
 
 \begin{proof}
-The upper bound follows by testing the Rayleigh quotient with $\phi$.  For a
-normalized vector $\psi=a\phi+\eta$ in the operator domain of $A$,
+Let $\mathfrak a$ be the closed quadratic form associated with $A$.  The upper
+bound follows by testing the Rayleigh quotient with $\phi$.  For a normalized
+vector $\psi=a\phi+\eta$ in the form domain of $\mathfrak a$,
 where $\eta\perp\phi$ and $t=\norm{\eta}$, the spectral gap gives
 \[
- \ip{\psi}{A\psi}\geq\mu+gt^2.
+ \mathfrak a[\psi]\geq\mu+gt^2.
 \]
 Since $\abs{a}^2=1-t^2$, self-adjointness gives
 \[
@@ -370,7 +376,7 @@ Since $\abs{a}^2=1-t^2$, self-adjointness gives
 \]
 Using $\abs{w}\leq b$, $\abs{a}\leq1$, and $\norm W=b$,
 \begin{align*}
- \ip{\psi}{(A+W)\psi}-(\mu+w)
+ \mathfrak a[\psi]+\ip{\psi}{W\psi}-(\mu+w)
  &\geq gt^2-2bt^2-2bt\\
  &=(g-2b)t^2-2bt\\
  &= (g-2b)\left(t-\frac{b}{g-2b}\right)^2
@@ -979,10 +985,12 @@ cells & $\mu_{1,h}$ & $\mu_{2,h}-\mu_{1,h}$ & $m_{1,h}$\\ \hline
 \label{tab:mesh}
 \end{table}
 
-On the 180-cell mesh, the fixed-mesh effective matrices give
+On the 180-cell mesh, the two-well component centers are $(-L/2,L/2)$,
+while the three-well centers are $(-L,0,L)$.  The corresponding fixed-mesh
+effective spectra are
 \begin{align*}
- \text{two wells:}&\quad (-0.18521477,0.18521477),\\
- \text{centers }(-L,0,L):&\quad
+ (-L/2,L/2):&\quad (-0.18521477,0.18521477),\\
+ (-L,0,L):&\quad
  (-0.29671332,0.06548331,0.23123001).
 \end{align*}
 The direct Galerkin eigenvalues are shown in Table~\ref{tab:clusters}; the
@@ -1035,17 +1043,21 @@ claims, citations, computations, and wording.
 
 \section*{Code availability}
 
+\begin{sloppypar}
 The script \path{tools/check_asymptotics.py} reconstructs every entry in
 Tables~\ref{tab:mesh} and \ref{tab:clusters}.  Before solving the
 eigenproblems, it checks the assembled constant-function energy identity and
 prints progress after each separation.  The pinned numerical dependencies are
 listed in
-\path{requirements-numerics.txt}.  A frozen copy of the scripts, pinned
-dependencies, release audit, and reference output is included in the
-submission source package; this is the version corresponding to the
-manuscript.  The development repository is available at
+\path{requirements-numerics.txt}; the reference output was replayed with
+Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  A frozen copy of the scripts,
+pinned dependencies, release audit, and reference output is included in the
+submission source package; this is the version corresponding to the manuscript.
+The immutable repository tag for this version is
+\texttt{paper-2026-09-01}.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
+\end{sloppypar}
 
 {\small
 \bibliographystyle{alpha}

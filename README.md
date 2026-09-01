@@ -21,6 +21,7 @@ make numerics
 
 The reference output from the 180-cell run is
 `numerics/asymptotics_180.txt`.
+It was replayed with Python 3.12.3, NumPy 1.26.4, and SciPy 1.11.4.
 
 Run the mechanical release checks with:
 
@@ -37,6 +38,9 @@ make arxiv
 The archive is written to `dist/laplace-tunneling-arxiv.tar.gz` and includes the
 manuscript source, generated bibliography, release and numerical audit scripts,
 pinned dependencies, and reference numerical output.
+
+The immutable repository tag for the reviewed manuscript is
+`paper-2026-09-01`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.

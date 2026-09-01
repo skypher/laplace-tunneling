@@ -125,6 +125,8 @@ def main() -> None:
     )
     code_availability = (
         "assembled constant-function energy identity",
+        "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
+        "paper-2026-09-01",
         "this is the version corresponding to the manuscript",
     )
     for fragment in code_availability:
