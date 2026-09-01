@@ -189,12 +189,15 @@ algebraic, rather than exponential, scale.
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
 sequence when their mutual distance tends to infinity
-\cite[Theorem~6.2]{BrascoParini2016}.  Parini and Salort placed such distant
-components in a general concentration--compactness dichotomy
+\cite[Theorem~6.2]{BrascoParini2016}.  Biagi, Dipierro, Valdinoci, and Vecchi
+proved the mixed local/nonlocal analogue
+\cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}.  Parini and Salort placed
+such distant components in a general concentration--compactness dichotomy
 \cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  Together these works establish
 the qualitative limiting and dichotomy picture but do not specify the leading
-interaction coefficient.  The purpose of this article is to extract that
-coefficient and the associated effective finite-dimensional interaction.
+interaction coefficient for the ordinary restricted fractional Laplacian.
+The purpose of this article is to extract that coefficient and the associated
+effective finite-dimensional interaction.
 
 The influence of mutual position on the restricted fractional spectrum is
 also emphasized by Abatangelo, Felli, and Noris
@@ -240,6 +243,9 @@ For an open set $G\subset\R^d$, let
 \[
  \Hs(G)=\{u\in H^s(\R^d):u=0\ \text{a.e. on }\R^d\setminus G\}.
 \]
+For bounded Lipschitz $G$, this space agrees with the completion of
+$C_c^\infty(G)$ in the global $H^s(\R^d)$ norm
+\cite[Section~2, equation~(2.1)]{DjitteFallWeth2021}.
 The zero-exterior quadratic form is
 \begin{equation}\label{eq:form}
  \mathcal q_G[u]
@@ -1019,7 +1025,9 @@ submission source package.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 
+{\small
 \bibliographystyle{alpha}
 \bibliography{references}
+}
 
 \end{document}

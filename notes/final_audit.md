@@ -1,6 +1,6 @@
 # Final theorem and release audit
 
-Audit date: 2026-08-27.
+Audit date: 2026-09-01.
 
 ## Final-facing theorem checks
 
@@ -66,9 +66,11 @@ Audit date: 2026-08-27.
 
 | Manuscript use | Primary-source statement checked |
 |---|---|
+| Zero-exterior/completion form-domain identification | Djitte--Fall--Weth, Section 2, equation (2.1) |
 | One-well extension and compactness | Di Nezza--Palatucci--Valdinoci, Theorems 5.4 and 7.1 |
 | Positivity and simplicity | Brasco--Parini, Theorem 2.8, at `p=2` |
 | Nonlocal Hong--Krahn--Szego sequence | Brasco--Parini, Theorem 6.2, at `p=2` |
+| Mixed local/nonlocal Hong--Krahn--Szego sequence | Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1 |
 | Distant-component dichotomy | Parini--Salort, Theorems 1.1 and 1.2 |
 | Mutual-position observation | Abatangelo--Felli--Noris, Introduction, p. 3 |
 | Exact translated cross-energy and point-mass toy | Zahl, Section 10, equations (10.3) and (10.7) |
@@ -105,14 +107,14 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=9 labels=50 results=14 numerical_rows=11 pages=13
+release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=13
 ```
 
 Artifact hashes after the final bibliography build are:
 
 ```text
-fd4a522c11c2b5e9419fc0febd3ce6820904e5633994d42cda8d0c65d294a367  paper.pdf
-08a840b75863532b3bdfd12ba99a7d7c70c745a1f8ccb029444e3a51c85e46ab  dist/laplace-tunneling-arxiv.tar.gz
+166aeac254effe4a5f222b926e0771ba1fedb25f5629b19f1297eb9ba467eb1b  paper.pdf
+32159e079769756836713d3b41a021cd932636bf98aa7c8bf30e3928dc48aad9  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 

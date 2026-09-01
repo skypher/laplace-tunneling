@@ -1,11 +1,12 @@
 # Referee report
 
-Review date: 2026-08-26.
+Review date: 2026-09-01.
 
 Manuscript: *Algebraic tunnelling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: commit `ac7b745c0d918294d152abbad5b7a042c8832567`.
+Version reviewed: the 2026-09-01 release source recorded in
+`notes/final_audit.md`.
 
 ## Recommendation
 
@@ -57,12 +58,13 @@ presented as a fixed-mesh check rather than as evidence used in the analytic
 argument.
 
 The novelty wording is appropriately bounded.  The checked nearby literature
-contains qualitative distant-component convergence, the exact translated
-cross-energy in a different shape-optimization setting, and a discrete
-point-mass model, but the searches performed for this review did not locate an
-earlier ordered two-well coefficient with the stated remainder or the full
-finite-well spectral-cluster estimate.  The sentence “we are not aware” states
-search evidence without converting it into a universal priority theorem.
+contains qualitative distant-component convergence, its mixed local/nonlocal
+analogue, the exact translated cross-energy in a different shape-optimization
+setting, and a discrete point-mass model, but the searches performed for this
+review did not locate an earlier ordered two-well coefficient with the stated
+remainder or the full finite-well spectral-cluster estimate.  The sentence “we
+are not aware” states search evidence without converting it into a universal
+priority theorem.
 
 ## Review of each mathematical object
 
@@ -77,9 +79,10 @@ assumption.  Reflection commutes with `A_D`; simplicity and positivity fix the
 sign and give `φ₁(−x) = φ₁(x)`.  Thus `g > 0`, `m₁ > 0`, and the later symmetry
 cancellation all have suppliers already present in Section 2.
 
-Double-check: the primary-source statements are Di Nezza--Palatucci--Valdinoci
-Theorems 5.4 and 7.1 and Brasco--Parini Theorem 2.8, specialized exactly as
-above.  No unsupported preliminary spectral fact remains.
+Double-check: the primary-source statements are Djitte--Fall--Weth, Section 2,
+equation (2.1), Di Nezza--Palatucci--Valdinoci Theorems 5.4 and 7.1, and
+Brasco--Parini Theorem 2.8, specialized exactly as above.  No unsupported
+preliminary spectral fact remains.
 
 ### Lemma 2.1: exact reflection reduction
 
@@ -306,8 +309,13 @@ uses:
 
 - Di Nezza--Palatucci--Valdinoci, Theorems 5.4 and 7.1: Lipschitz extension
   and compact embedding;
+- Djitte--Fall--Weth, Section 2, equation (2.1): identification of the
+  completed global energy space with the zero-exterior space on a
+  continuous-boundary domain;
 - Brasco--Parini, Theorems 2.8 and 6.2: sign/simplicity and the strict, sharp
   nonlocal Hong--Krahn--Szegő statement;
+- Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1: the analogous strict and
+  sharp statement for the mixed local/nonlocal operator;
 - Parini--Salort, Theorems 1.1 and 1.2: compactness/dichotomy and its shape
   optimization consequence;
 - Abatangelo--Felli--Noris, Introduction, p. 3: dependence on mutual
@@ -337,7 +345,7 @@ rows.  The constant-function identity passed before the eigensolves.
 `make audit` reports:
 
 ```text
-release audit passed: citations=9 labels=50 results=14 numerical_rows=11 pages=13
+release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=13
 ```
 
 The source archive was extracted into a fresh directory.  `make audit`
@@ -346,7 +354,7 @@ Running `make arxiv` in that directory produced the same archive hash as the
 repository artifact:
 
 ```text
-2ff605919e8abea8e8637c52f888042f74bb78ba723e32de76192fa32b52a004
+32159e079769756836713d3b41a021cd932636bf98aa7c8bf30e3928dc48aad9
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,

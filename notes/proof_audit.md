@@ -13,6 +13,15 @@
   compact embedding needed for compact resolvent and discreteness.  The form
   norm is the inherited fractional Sobolev norm up to fixed constants, so
   the zero-exterior form is closed.
+- Djitte--Fall--Weth, Section 2, equation (2.1): for a continuous-boundary
+  domain, the completion of compactly supported smooth functions in the
+  global fractional energy norm is exactly the finite-energy zero-exterior
+  space.  In particular, this identifies the two form-domain conventions for
+  bounded Lipschitz domains.
+- Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1: the mixed local/nonlocal
+  operator has the analogous strict Hong--Krahn--Szeg\H{o} inequality and
+  distant-equal-ball limiting sequence, but the statement is qualitative in
+  the separation distance.
 - Parini--Salort, Theorems 1.1 and 1.2: the cited dichotomy is qualitative
   resolvent convergence for components whose distance tends to infinity.
 

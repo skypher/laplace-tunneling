@@ -1,6 +1,6 @@
 # Literature audit for distant-component spectral splitting
 
-Audit date: 2026-08-26.
+Audit date: 2026-09-01.
 
 ## Scope and search routes
 
@@ -30,6 +30,12 @@ interaction matrix`, and `double well`.  Its apparent matches used “double
 well” for nonlinear Allen--Cahn potentials rather than for the spectrum of a
 restricted operator on translated components.
 
+A follow-up source check on 2026-09-01 added the mixed local/nonlocal
+Hong--Krahn--Szeg\H{o} theorem of Biagi--Dipierro--Valdinoci--Vecchi as a
+close qualitative analogue and the form-space identification of
+Djitte--Fall--Weth as a direct source for the manuscript's zero-exterior
+convention.
+
 No search result supplied the fixed-domain eigenvalue asymptotics proved in
 Theorems 3.3 and 4.6.  This is search evidence, not a theorem that no such
 paper exists; the manuscript therefore uses the bounded phrase “we are not
@@ -49,6 +55,18 @@ aware of an earlier result.”
   identify a multi-component cluster.
 
 Primary source: arXiv:1409.6284; DOI 10.1515/acv-2015-0007.
+
+### Biagi--Dipierro--Valdinoci--Vecchi (2023)
+
+- Theorem 1.1 proves the strict Hong--Krahn--Szeg\H{o} inequality and the
+  distant-equal-ball limiting sequence for the mixed operator
+  `-Delta_p + (-Delta)^s_p`.
+- This extends the qualitative shape-optimization picture to a mixed
+  local/nonlocal operator.  It does not extract a separation-scale
+  coefficient or a finite-dimensional interaction matrix for the ordinary
+  restricted fractional Laplacian.
+
+Primary source: arXiv:2110.07129; DOI 10.3934/mine.2023014.
 
 ### Parini--Salort (2020)
 
@@ -115,6 +133,11 @@ The source-supported distinction is:
 
 ## Background citation verification
 
+- Djitte--Fall--Weth, Section 2, equation (2.1), identifies the completion of
+  compactly supported smooth functions in the global fractional energy norm
+  with the finite-energy functions that vanish outside a continuous-boundary
+  domain.  This applies to the bounded Lipschitz domains used in the
+  manuscript.
 - Di Nezza--Palatucci--Valdinoci, Theorem 5.4, gives the fractional Sobolev
   extension property for Lipschitz sets with bounded boundary; Theorem 7.1
   gives the compact embedding used at `p=q=2`.

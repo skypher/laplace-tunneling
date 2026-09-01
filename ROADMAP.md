@@ -61,7 +61,7 @@ recorded in `notes/final_audit.md`.
 
 ## Closed integration target
 
-The final manuscript has 50 resolved labels, nine source-specific cited
+The final manuscript has 50 resolved labels, eleven source-specific cited
 works, 14 numbered results paired with 14 proofs, and a reproducible 13-page
 PDF.  The deterministic source archive is
 `dist/laplace-tunneling-arxiv.tar.gz`.
