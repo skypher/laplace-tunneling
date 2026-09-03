@@ -1,4 +1,4 @@
-# Algebraic tunnelling for the fractional Laplacian
+# Algebraic tunneling for the fractional Laplacian
 
 This repository develops spectral asymptotics for the restricted fractional
 Laplacian on distant components.  The manuscript quantifies the double-well
@@ -40,7 +40,7 @@ manuscript source, generated bibliography, release and numerical audit scripts,
 pinned dependencies, and reference numerical output.
 
 The immutable repository tag for the reviewed manuscript is
-`paper-2026-09-03`.
+`paper-2026-09-03-r1`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.

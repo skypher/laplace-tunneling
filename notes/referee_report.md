@@ -2,10 +2,10 @@
 
 Review date: 2026-09-03.
 
-Manuscript: *Algebraic tunnelling for the restricted fractional Laplacian on
+Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: the 2026-09-03 post-referee-revision source recorded in
+Version reviewed: revision tag `paper-2026-09-03-r1`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -33,7 +33,7 @@ repository's earlier audit declarations.  The last independent checks were:
    theorem, proposition, section, equation, or page;
 3. exact reproduction of all numerical output, followed by a fresh archive
    build and a deterministic-archive hash comparison; and
-4. inspection of the rendered 14-page manuscript and its final LaTeX log.
+4. inspection of the rendered 15-page manuscript and its final LaTeX log.
 
 These checks support the recommendation above.
 
@@ -94,9 +94,12 @@ Gagliardo form over both orientations of the cross-region gives
 
 This equals `2 Re ⟨u,B_Lv⟩` for the stated `B_L`.  The kernel is symmetric in
 `x,y`, so `B_L` is self-adjoint.  Positive separation permits component
-cutoffs, proving equality of the form domain with the direct sum.  A bounded
-form perturbation then gives the operator block, and the standard symmetric
-and antisymmetric unitary gives `(A_D+B_L) ⊕ (A_D−B_L)`.
+cutoffs.  The manuscript now proves their boundedness on `Hˢ` directly: the
+Lipschitz estimate controls the near-diagonal integral because `s<1`, and the
+uniform estimate controls the far field because `s>0`.  This proves equality
+of the form domain with the direct sum.  A bounded form perturbation then
+gives the operator block, and the standard symmetric and antisymmetric
+unitary gives `(A_D+B_L) ⊕ (A_D−B_L)`.
 
 Double-check: expanding the form with two test functions supported on
 different components gives the displayed coefficient and no diagonal
@@ -241,7 +244,19 @@ same cluster lemma gives (4.14).  Scaling leaves `O(L^(−2))` and
 Double-check: both size assumptions in (4.12) supply the hypotheses of the
 two invoked lemmas, and `κ=d+2s>0`.  Theorem 4.6 is correct as written.
 
-### Corollary 4.7: recovery of the doublet
+### Corollary 4.7: symmetry-free two-well asymptotic
+
+For arbitrary bounded Lipschitz `D`, the `N=2` effective matrix has the two
+eigenvalues `±c_{d,s}m₁²r^(−κ)`, where `r=|a₁−a₂|`.  Substitution in Theorem
+4.6 gives both ordered doublet expansions with remainder
+`O(L^(−κ−2)+L^(−2κ))`; scaling their difference by `L^κ` gives the stated
+limit.  No reflection or first-moment condition is used.
+
+Double-check: the matrix eigenvalues, the two remainder exponents, and the
+factor two in the gap limit were recomputed.  Corollary 4.7 is correct as
+written.
+
+### Corollary 4.8: recovery of the reflected doublet
 
 For centers `−e/2,e/2`, both row sums equal one, so `γ_L=β_L`; the effective
 matrix has eigenvalues `±c_{d,s}m₁²`.  Reflection of the second local
@@ -250,9 +265,9 @@ form used in Section 3.  Symmetry of `D` and evenness of `φ₁` preserve the
 integral.
 
 Double-check: the exact compressions and the explicit remainder constants,
-not only the leading limits, coincide.  Corollary 4.7 is correct as written.
+not only the leading limits, coincide.  Corollary 4.8 is correct as written.
 
-### Corollary 4.8: collective ground state
+### Corollary 4.9: collective ground state
 
 The matrix has strictly negative entries on every off-diagonal position.  The
 absolute-value Rayleigh argument gives a one-sign lowest eigenvector; the
@@ -266,16 +281,16 @@ effective spectral gap and the nonzero extreme eigenvalues gives simplicity
 and the signs relative to `μ₁` for large `L`.
 
 Double-check: the chosen threshold in the proof controls the factor two in
-`λ₂−λ₁` and separately controls `λ₁−μ₁` and `λ_N−μ₁`.  Corollary 4.8 is
+`λ₂−λ₁` and separately controls `λ₁−μ₁` and `λ_N−μ₁`.  Corollary 4.9 is
 correct as written.
 
-### Corollary 4.9: regular-simplex cluster
+### Corollary 4.10: regular-simplex cluster
 
 With equal pair distance `r`, the matrix is `−w(J−I)`.  The all-ones vector
 has eigenvalue `−(N−1)w`, and its orthogonal complement has eigenvalue `w`.
 
 Double-check: the multiplicities sum to `N` and the trace is zero, agreeing
-with Definition 4.4.  Corollary 4.9 is correct as written.
+with Definition 4.4.  Corollary 4.10 is correct as written.
 
 ### Proposition 5.1: exact cell-integral matrix
 
@@ -301,6 +316,22 @@ discrete mass `m_{1,h}`.
 Double-check: the linear compression term cancels by the same `x−y`
 identity as in Lemma 4.5, and all constants may depend on the fixed mesh,
 configuration, and `s` as stated.  Corollary 5.2 is correct as written.
+
+## Presentation and wording check
+
+The abstract now introduces the radius `R` before listing it among the
+dependencies of the constants, and it states that the finite-well theorem
+includes a symmetry-free two-well specialization.  The introduction compares
+the algebraic nonlocal split with exact decoupling of a disconnected local
+Dirichlet problem; it no longer attributes an exponential split to that
+disconnected problem.  The title and running head use the same American
+spelling as the body.
+
+The fixed-mesh corollary now identifies `φ_{1,h}` with the one-well Galerkin
+matrix, says that the same partition is translated to every component, and
+states that the tabulated errors are calculated before display rounding.
+The 15-page layout has no orphaned code-availability continuation, clipping,
+or malformed reference entry.
 
 ## Citation audit
 
@@ -351,16 +382,15 @@ rows.  The constant-function identity passed before the eigensolves.
 `make audit` reports:
 
 ```text
-release audit passed: citations=12 labels=50 results=14 numerical_rows=11 pages=14
+release audit passed: citations=12 labels=51 results=15 numerical_rows=11 pages=15
 ```
 
 The source archive was extracted into a fresh directory.  `make audit`
-rebuilt the 14-page PDF with no final warning matched by the release audit.
-Running `make arxiv` in that directory produced the same archive hash as the
-repository artifact:
+rebuilt the 15-page PDF with no final warning matched by the release audit.
+The archive generated from the reviewed tree has hash:
 
 ```text
-ad4ee7d3d80b8861d3958a430c033a4ec5aaa496f5cd2bf705a516edb0972b8f
+6a61282353c526febbf88f4a6d8b1aee0ea423aeb7fba9e9218d32309a8202ac
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,

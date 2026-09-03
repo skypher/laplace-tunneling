@@ -126,7 +126,7 @@ def main() -> None:
     code_availability = (
         "assembled constant-function energy identity",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-03",
+        "paper-2026-09-03-r1",
         "this is the version corresponding to the manuscript",
     )
     for fragment in code_availability:
@@ -148,7 +148,11 @@ def main() -> None:
     )
     for pattern in critical_log_patterns:
         require(pattern not in build_log, f"final build diagnostic: {pattern}")
-    require("Output written on paper.pdf (14 pages" in build_log, "unexpected final PDF page count")
+    expected_pages = 15
+    require(
+        f"Output written on paper.pdf ({expected_pages} pages" in build_log,
+        "unexpected final PDF page count",
+    )
 
     expected_numerical_fragments = [
         "60 1.3794549573 0.9105539931 0.9628386433",
@@ -198,7 +202,7 @@ def main() -> None:
     print(
         "release audit passed: "
         f"citations={len(cited)} labels={len(labels)} results={result_count} "
-        "numerical_rows=11 pages=14",
+        f"numerical_rows=11 pages={expected_pages}",
         flush=True,
     )
 

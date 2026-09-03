@@ -11,8 +11,10 @@ Audit date: 2026-09-03.
   associated self-adjoint operator before using it.  Compactness of the
   cited form embedding is explicitly converted into compact resolvent.
 - The unitary map identifies both the `L^2` space and the form domain with
-  two copies of the one-well space; positive separation makes the cross term
-  bounded.
+  two copies of the one-well space.  The cutoff step now includes the direct
+  fractional multiplier estimate: the near-diagonal integral is finite
+  because `s<1`, and the far-field integral is finite because `s>0`.
+  Positive separation makes the cross term bounded.
 - Direct form expansion displays the cancellation
   `|u-v|^2-|u|^2-|v|^2=-2 Re(u conjugate(v))`, giving the negative
   off-diagonal kernel and no diagonal correction.
@@ -33,8 +35,9 @@ Audit date: 2026-09-03.
 - Section 4 now restarts with an arbitrary bounded Lipschitz reference
   domain.  Its proof uses translations and the algebraic `x-y` moment
   cancellation, so central symmetry is not a hypothesis of Theorem 4.6.
-  Corollary 4.7 restores `D=-D` exactly where comparison with the reflected
-  two-well construction uses it.
+  Corollary 4.7 states the resulting symmetry-free two-well asymptotic.
+  Corollary 4.8 restores `D=-D` exactly where comparison with the reflected
+  scalar branches uses it.
 - Lemma 4.2 identifies the direct-sum form domain and obtains the full block
   norm from the Schur bounds and the symmetric row-sum estimate.
 - Lemma 4.3 was checked from the min--max principle on the ground-state
@@ -46,10 +49,12 @@ Audit date: 2026-09-03.
 - Theorem 4.6 combines the cluster error and compression error without
   changing their hypotheses.  After multiplication by `L^kappa`, the two
   errors are `O(L^(-2))` and `O(L^(-kappa))`.
-- Corollaries 4.7--4.9 follow from the explicit finite matrix: the two-well
-  specialization, the sign and simplicity of its lowest eigenvector, and
-  the regular-simplex spectrum were each checked directly.  The Gram-matrix
-  argument in Corollary 4.9 also records the necessary bound `N <= d+1`.
+- Corollaries 4.7--4.10 follow from the explicit finite matrix: the
+  symmetry-free two-well specialization, the recovery of the reflected
+  remainder, the sign and simplicity of the lowest effective eigenvector,
+  and the regular-simplex spectrum were each checked directly.  The
+  Gram-matrix argument in Corollary 4.10 also records the necessary bound
+  `N <= d+1`.
 
 ### Applications and fixed-mesh computation
 
@@ -64,7 +69,7 @@ Audit date: 2026-09-03.
   form identity passed before any eigensolve, and every number printed in
   Tables 1--2 agrees with the saved output after the displayed rounding.
 - A fresh unbuffered replay on 2026-09-03 with Python 3.12.3, NumPy 1.26.4,
-  and SciPy 1.11.4 completed in 14.288 seconds and again matched every saved
+  and SciPy 1.11.4 completed in 14.989 seconds and again matched every saved
   value after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
@@ -95,18 +100,17 @@ priority wording “we are not aware of an earlier result.”
 ## Release checks
 
 The final `make audit` run checks the last LaTeX build, which produced a
-14-page PDF with no unresolved citation, unresolved
+15-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
-inspection of all 14 pages confirms that the abstract qualification, eigenvalue
-convention, form-domain perturbation argument, related-work additions, expanded
-corollary proofs, fixed-mesh geometry, effective spectra, tables, disclosure,
-code-availability metadata, and linked references are legible.  The title
+inspection of all 15 pages confirms that the abstract radius, cutoff estimate,
+symmetry-free corollary, fixed-mesh geometry, effective spectra, tables,
+disclosure, code-availability metadata, and linked references are legible.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
 paper confirms the same two-sided article geometry, Latin Modern font set,
 title stack, section and theorem typography, running-head convention,
-caption treatment, link palette, and ruled-table presentation.  Page 13
+caption treatment, link palette, and ruled-table presentation.  Page 14
 contains the AI-use disclosure naming OpenAI GPT-5.6 Sol
 (`gpt-5.6-sol`) and specifying its research uses.  The manuscript source and extracted
 PDF text contain no prohibited product-name reference.
@@ -114,14 +118,14 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=12 labels=50 results=14 numerical_rows=11 pages=14
+release audit passed: citations=12 labels=51 results=15 numerical_rows=11 pages=15
 ```
 
 Artifact hashes after the referee-revision build are:
 
 ```text
-a6e1b12bf88eb2b96e783785765b0f4bc17f6750798abd9e32b8f9e7d7d370a3  paper.pdf
-ad4ee7d3d80b8861d3958a430c033a4ec5aaa496f5cd2bf705a516edb0972b8f  dist/laplace-tunneling-arxiv.tar.gz
+821ebd20139f645a07739f357cb7a0d0115fb347e4621c404f49636e7cbfe414  paper.pdf
+6a61282353c526febbf88f4a6d8b1aee0ea423aeb7fba9e9218d32309a8202ac  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
@@ -129,7 +133,8 @@ The source archive passed `gzip -t` and contains the manuscript, generated
 bibliography, BibTeX database, README, Makefile, release and numerical audit
 scripts, pinned dependencies, and saved 180-cell output.  Every extracted
 payload byte-matched its working-tree source.  The `make arxiv` prerequisite
-ran the release audit and returned the result shown above.
+ran the release audit and returned the result shown above.  The revised
+release is named `paper-2026-09-03-r1` in the manuscript and README.
 
 ## Final double-check before closure
 

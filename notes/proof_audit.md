@@ -65,7 +65,8 @@ remainder is quadratic in the coupling, hence order `L^(-2d-4s)`.
 
 The reference domain in Section 4 is an arbitrary bounded Lipschitz domain.
 Central symmetry enters the separate reflection construction of Sections
-2--3 and is restored in Corollary 4.7, but it is not used by Theorem 4.6.
+2--3 and is restored in Corollary 4.8, but it is not used by Theorem 4.6.
+Corollary 4.7 records the symmetry-free `N=2` consequence explicitly.
 
 ### Exact operator and sign
 
@@ -127,7 +128,7 @@ finite-dimensional min--max estimate and the cluster bound yield Theorem 4.6.
 For the regular-simplex specialization, translating one center to the origin
 gives an `(N-1)`-vector Gram matrix with diagonal `r^2` and off-diagonal
 `r^2/2`.  Its positive definiteness implies `N-1 <= d`, as now stated in
-Corollary 4.9.
+Corollary 4.10.
 
 ### Independent diagnostic
 

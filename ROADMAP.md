@@ -10,7 +10,7 @@ buckets.  Structural files and literature lists do not earn percentage credit.
 | Applications and source audit | 20% | Quantitative Hong--Krahn--Szegő corollary, interval/ball examples, and priority search are checked | closed |
 | Integration | 15% | Full manuscript compiles, notation is consistent, and every cited use is source-specific | closed |
 
-Overall theorem-slot closure: **100%**.  The basis is the 14 numbered results
+Overall theorem-slot closure: **100%**.  The basis is the 15 numbered results
 and proofs in `paper.tex`, the source records in `notes/literature_audit.md`,
 the numerical output in `numerics/asymptotics_180.txt`, and the final checks in
 `notes/final_audit.md`.
@@ -61,7 +61,7 @@ recorded in `notes/final_audit.md`.
 
 ## Closed integration target
 
-The final manuscript has 50 resolved labels, twelve source-specific cited
-works, 14 numbered results paired with 14 proofs, and a reproducible 14-page
+The final manuscript has 51 resolved labels, twelve source-specific cited
+works, 15 numbered results paired with 15 proofs, and a reproducible 15-page
 PDF.  The deterministic source archive is
 `dist/laplace-tunneling-arxiv.tar.gz`.

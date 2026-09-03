@@ -23,7 +23,7 @@
   urlcolor={purple},
   citecolor={blue!80!black},
   pdfauthor={Leslie P. Polzer},
-  pdftitle={Algebraic Tunnelling for the Restricted Fractional Laplacian on Distant Domains},
+  pdftitle={Algebraic Tunneling for the Restricted Fractional Laplacian on Distant Domains},
   pdfsubject={Leading eigenvalue splitting for distant components of the restricted fractional Laplacian},
   pdfkeywords={fractional Laplacian, eigenvalue splitting, nonlocal double wells, spectral perturbation, shape optimization}
 }
@@ -62,7 +62,7 @@
 \newcommand{\norm}[1]{\lVert #1\rVert}
 \newcommand{\abs}[1]{\lvert #1\rvert}
 
-\title{Algebraic tunnelling for the restricted fractional\\
+\title{Algebraic tunneling for the restricted fractional\\
 Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
@@ -83,7 +83,7 @@ Laplacian on distant domains}
 \renewcommand{\eqref}[1]{%
   \textup{{\normalfont(\oldstylenums{\ref{#1}}}\normalfont)}}
 
-\newcommand{\shorttitle}{ALGEBRAIC TUNNELLING ON DISTANT DOMAINS}
+\newcommand{\shorttitle}{ALGEBRAIC TUNNELING ON DISTANT DOMAINS}
 \newcommand{\shortauthors}{LESLIE P. POLZER}
 \newcommand{\ps@bookheader}{%
   \renewcommand\@oddfoot{\hfil}%
@@ -126,7 +126,8 @@ Laplacian on distant domains}
 \maketitle
 
 \begin{abstract}
-Let $D\subset\R^d$ be a bounded centrally symmetric Lipschitz domain, and
+Let $D\subset B_R(0)\subset\R^d$ be a bounded centrally symmetric Lipschitz
+domain, and
 let $\Omega_L$ be the union of two translates of $D$, arranged symmetrically
 and interchanged by reflection, whose centers are separated by $L$.  For the
 restricted (zero-exterior integral) fractional Laplacian $(-\Delta)^s$,
@@ -149,9 +150,9 @@ $A_D\pm B_L$, an elementary isolated-eigenvalue estimate, and a second-order
 Taylor expansion of the interaction kernel.  For two equal balls, the formula
 for $\lambda_2$ gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
 minimizing sequence.  More generally, central symmetry is unnecessary for
-the finite-well result: for any bounded Lipschitz reference domain and any
-fixed collection of distinct translation sites $a_1,\dots,a_N$, the first $N$
-eigenvalues are
+the finite-well result, including its two-well specialization: for any
+bounded Lipschitz reference domain and any fixed collection of distinct
+translation sites $a_1,\dots,a_N$, the first $N$ eigenvalues are
 \[
  \lambda_k=\mu_1+L^{-d-2s}\theta_k
  +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
@@ -184,9 +185,9 @@ optimization.
 The restricted fractional Laplacian couples disjoint components through its
 integral kernel.  This differs from the local Dirichlet Laplacian, whose
 spectrum on a disconnected union is exactly the multiset union of the
-component spectra.  Two distant congruent components therefore form a
-nonlocal analogue of a double well: their limiting degeneracies split at an
-algebraic, rather than exponential, scale.
+component spectra.  Thus two distant congruent components exhibit a nonzero
+splitting absent from the local disconnected problem, and the nonlocal
+splitting decays algebraically with their separation.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
@@ -234,9 +235,13 @@ The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
 cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
 cluster for finitely many translated components with the spectrum of an
 explicit weighted interaction matrix; unlike the reflection reduction, this
-result does not require central symmetry of the reference component.  Both
-proofs are self-contained after the standard one-well spectral facts.  The
-interval provides an explicit benchmark: one-well eigenvalue and
+result does not require central symmetry of the reference component.  Its
+$N=2$ specialization, Corollary~\ref{cor:symmetry-free-two}, gives the same
+leading doublet coefficient without symmetry; symmetry is used only for the
+exact scalar-branch decomposition and the matching explicit remainder in
+Theorem~\ref{thm:two-well}.  Both proofs are self-contained after the
+standard one-well spectral facts.  The interval provides an explicit
+benchmark: one-well eigenvalue and
 eigenfunction estimates are available in
 \cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
 asymptotics and an eigenfunction bound uniform in both the index and the
@@ -328,15 +333,37 @@ For $f\in\Hs(\Omega_L)$ set
 This defines a unitary map from $L^2(\Omega_L)$ to
 $L^2(D)\oplus L^2(D)$.  Translational and reflection invariance identify the
 two diagonal parts of the form with $\mathcal q_D[u]$ and
-$\mathcal q_D[v]$.  Positive separation permits smooth compactly supported
-cutoffs isolating the two components.  Multiplication by these cutoffs is
-bounded on $H^s(\R^d)$, while conversely the sum of separated translated and
-reflected one-well functions lies in $H^s(\R^d)$.  Hence the unitary
-identifies $\Hs(\Omega_L)$ with $\Hs(D)\oplus\Hs(D)$.  The cross-kernel is
-bounded by positive separation.  Each separate zero-exterior form already
-contains the square interaction with the location occupied by the other
-component.  Thus, after the above changes of variables, expanding the square
-in \eqref{eq:form} gives exactly
+$\mathcal q_D[v]$.
+
+To identify the form domains, fix $\chi\in C_c^\infty(\R^d)$ and
+$w\in H^s(\R^d)$.  Then
+\begin{align*}
+ [\chi w]_{H^s(\R^d)}^2
+ &\leq 2\norm{\chi}_{L^\infty}^2[w]_{H^s(\R^d)}^2\\
+ &\quad+2\int_{\R^d}\abs{w(y)}^2
+ \int_{\R^d}\frac{\abs{\chi(x)-\chi(y)}^2}
+ {\abs{x-y}^{d+2s}}\,dx\,dy.
+\end{align*}
+The inner integral is bounded uniformly in $y$: use
+$\abs{\chi(x)-\chi(y)}\leq\norm{\nabla\chi}_{L^\infty}\abs{x-y}$
+when $\abs{x-y}\leq1$ and
+$\abs{\chi(x)-\chi(y)}\leq2\norm{\chi}_{L^\infty}$ otherwise.  The two
+radial bounds are integrable because $s<1$ and $s>0$, respectively.
+Consequently multiplication by $\chi$ is bounded on $H^s(\R^d)$.
+
+Positive separation permits cutoffs $\chi_\pm$ that equal one on
+$D_L^\pm$ and vanish near the other component.  For
+$f\in\Hs(\Omega_L)$, the functions $\chi_-f$ and $\chi_+f$ therefore
+belong to $H^s(\R^d)$ and, after the above changes of variables, give
+$u,v\in\Hs(D)$.  Conversely, translated and reflected zero extensions of
+any $u,v\in\Hs(D)$ belong to $H^s(\R^d)$, and their sum is supported in
+$\Omega_L$.  Hence the unitary identifies $\Hs(\Omega_L)$ with
+$\Hs(D)\oplus\Hs(D)$.
+
+The cross-kernel is bounded by positive separation.  Each separate
+zero-exterior form already contains the square interaction with the location
+occupied by the other component.  Thus, after the above changes of
+variables, expanding the square in \eqref{eq:form} gives exactly
 \begin{align*}
  &\mathcal q_{\Omega_L}[f]-\mathcal q_D[u]-\mathcal q_D[v]\\
  &\quad=c_{d,s}\iint_{D\times D}
@@ -809,10 +836,47 @@ $L^\kappa\gamma_L^2=O(L^{-\kappa})$; since $\kappa=d+2s>0$, multiplying
 \eqref{eq:multi-limit}.
 \end{proof}
 
+\begin{corollary}[Symmetry-free two-well asymptotic]
+\label{cor:symmetry-free-two}
+Let $D\subset B_R(0)$ be any bounded Lipschitz domain, let $a_1\ne a_2$, and
+put $r=\abs{a_1-a_2}$.  For
+$\Omega_L=(D+La_1)\cup(D+La_2)$, as $L\to\infty$,
+\begin{align*}
+ \lambda_1(\Omega_L)
+ &=\mu_1-c_{d,s}m_1^2r^{-\kappa}L^{-\kappa}
+   +O\!\left(L^{-\kappa-2}+L^{-2\kappa}\right),\\
+ \lambda_2(\Omega_L)
+ &=\mu_1+c_{d,s}m_1^2r^{-\kappa}L^{-\kappa}
+   +O\!\left(L^{-\kappa-2}+L^{-2\kappa}\right).
+\end{align*}
+In particular,
+\[
+ L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(\Omega_L)\bigr)
+ \longrightarrow 2c_{d,s}m_1^2r^{-d-2s}.
+\]
+\end{corollary}
+
+\begin{proof}
+For $N=2$, the effective matrix is
+\[
+ M_{\mathbf a}
+ =\begin{pmatrix}
+ 0&-c_{d,s}m_1^2r^{-\kappa}\\
+ -c_{d,s}m_1^2r^{-\kappa}&0
+ \end{pmatrix},
+\]
+whose ordered eigenvalues are
+$-c_{d,s}m_1^2r^{-\kappa}$ and $c_{d,s}m_1^2r^{-\kappa}$.
+Theorem~\ref{thm:multi-well} gives both expansions because
+$\varepsilon_L=O(L^{-\kappa-2})$ and
+$\gamma_L^2=O(L^{-2\kappa})$.  Subtracting them and using $\kappa=d+2s$
+gives the limit.
+\end{proof}
+
 \begin{corollary}[Recovery of the doublet]\label{cor:multi-two}
-Assume in addition that $D=-D$.  For $N=2$, $a_1=-e/2$, and $a_2=e/2$, the eigenvalues of
-$M_{\mathbf a}$ are $-c_{d,s}m_1^2$ and $c_{d,s}m_1^2$.  The bound
-\eqref{eq:multi-eigenvalue-bound} then agrees with
+Assume in addition that $D=-D$.  For $N=2$, $a_1=-e/2$, and $a_2=e/2$,
+the right-hand side of \eqref{eq:multi-eigenvalue-bound}, including its
+explicit constants, agrees with the bounds
 \eqref{eq:lambda1}--\eqref{eq:lambda2}.
 \end{corollary}
 
@@ -911,8 +975,8 @@ Galerkin matrix $H_h$ of the zero-exterior form $\mathcal q_G$ has entries
 \end{proposition}
 
 \begin{proof}
-For two disjoint cells with center distance $r\geq h$, direct integration
-twice gives
+For two disjoint cells with center distance $r\geq h$, two direct
+integrations give
 \[
  \iint_{I_\alpha\times I_\beta}\abs{x-y}^{-1-2s}\,dx\,dy
  =\frac{2r^q-(r+h)^q-(r-h)^q}{2s q}.
@@ -932,10 +996,11 @@ Dividing both expressions by $h$ for the normalized indicators proves
 \label{cor:discrete-cluster}
 Let $D=(-1/2,1/2)$, and fix a uniform partition of $D$.  Let $\mu_{1,h}$
 and $\phi_{1,h}$ be the lowest eigenvalue and a positive,
-$L^2$-normalized piecewise-constant eigenfunction of its Galerkin matrix.  Put
-$m_{1,h}=\int_D\phi_{1,h}$.  For the corresponding Galerkin matrix on
-$\bigcup_{j=1}^N(D+La_j)$, write its ordered eigenvalues as
-$\lambda_{k,h}(L)$.  Then, as $L\to\infty$, for fixed distinct
+$L^2$-normalized piecewise-constant eigenfunction of the one-well Galerkin
+matrix.  Put $m_{1,h}=\int_D\phi_{1,h}$.  Translate this same partition to
+each component $D+La_j$, and write the ordered eigenvalues of the resulting
+Galerkin matrix on $\bigcup_{j=1}^N(D+La_j)$ as $\lambda_{k,h}(L)$.  Then,
+as $L\to\infty$, for fixed distinct
 $a_1,\dots,a_N$,
 \begin{equation}\label{eq:discrete-cluster}
  \lambda_{k,h}(L)
@@ -998,7 +1063,9 @@ effective spectra are
 \end{align*}
 The direct Galerkin eigenvalues are shown in Table~\ref{tab:clusters}; the
 last column is the largest absolute difference from the corresponding
-effective-matrix eigenvalue.
+effective-matrix eigenvalue.  These errors are computed from the
+full-precision values before the shifts and effective spectra are rounded for
+display.
 
 \begin{table}[ht]
 \centering
@@ -1057,7 +1124,7 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  A frozen copy of the scripts,
 pinned dependencies, release audit, and reference output is included in the
 submission source package; this is the version corresponding to the manuscript.
 The immutable repository tag for this version is
-\texttt{paper-2026-09-03}.  The development repository is available at
+\texttt{paper-2026-09-03-r1}.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 \end{sloppypar}
