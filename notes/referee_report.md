@@ -1,11 +1,11 @@
 # Referee report
 
-Review date: 2026-09-01.
+Review date: 2026-09-03.
 
 Manuscript: *Algebraic tunnelling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: the 2026-09-01 release source recorded in
+Version reviewed: the 2026-09-03 post-referee-revision source recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -30,10 +30,10 @@ repository's earlier audit declarations.  The last independent checks were:
 1. recomputation of every cross-form coefficient, Hessian remainder, Schur
    constant, Young inequality, eigenvalue ordering, and scaled error exponent;
 2. comparison of every external citation with the cited primary-source
-   theorem, proposition, section, equation, page, or abstract;
+   theorem, proposition, section, equation, or page;
 3. exact reproduction of all numerical output, followed by a fresh archive
    build and a deterministic-archive hash comparison; and
-4. inspection of the rendered 13-page manuscript and its final LaTeX log.
+4. inspection of the rendered 14-page manuscript and its final LaTeX log.
 
 These checks support the recommendation above.
 
@@ -318,12 +318,16 @@ uses:
   sharp statement for the mixed local/nonlocal operator;
 - Parini--Salort, Theorems 1.1 and 1.2: compactness/dichotomy and its shape
   optimization consequence;
+- L\'eculier--Roquejoffre, Theorem 1: monotonicity and continuity of the
+  principal eigenvalue as the separation of two one-dimensional patches
+  varies;
 - Abatangelo--Felli--Noris, Introduction, p. 3: dependence on mutual
   component position;
-- Zahl, Section 10, (10.3) and (10.7): translated cross-energy and the signed
-  point-mass toy model;
-- Wu, abstract: resolution of Zahl's no-local-minimum conjecture for the
-  discrete model;
+- Zahl, Section 10, (10.3), (10.7), and Conjecture 10.9: translated
+  cross-energy, the signed point-mass toy model, and the no-local-minimum
+  conjecture;
+- Wu, Introduction: resolution of Zahl's Conjecture 10.9 for the discrete
+  model;
 - Dipierro--Proietti Lippi--Sportelli--Valdinoci, Theorems 1.4--1.7: a
   distinct generalized eigenproblem with lower-order superposition;
 - Kwaśnicki, Theorem 1 and Propositions 1--2: interval eigenvalue and
@@ -332,8 +336,10 @@ uses:
   uniform in eigenfunction index and fractional order.
 
 Double-check: author names, titles, dates, journal data, arXiv identifiers,
-and DOI data in `references.bib` agree with the accessed records.  I found no
-citation correction to request.
+and DOI data in `references.bib` agree with the accessed records.  The
+September 3 follow-up added the previously omitted
+L\'eculier--Roquejoffre paper and replaced the Wu abstract citation with an
+Introduction locator tied to Zahl's numbered conjecture.
 
 ## Numerical and release audit
 
@@ -345,16 +351,16 @@ rows.  The constant-function identity passed before the eigensolves.
 `make audit` reports:
 
 ```text
-release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=13
+release audit passed: citations=12 labels=50 results=14 numerical_rows=11 pages=14
 ```
 
 The source archive was extracted into a fresh directory.  `make audit`
-rebuilt the 13-page PDF with no final warning matched by the release audit.
+rebuilt the 14-page PDF with no final warning matched by the release audit.
 Running `make arxiv` in that directory produced the same archive hash as the
 repository artifact:
 
 ```text
-32159e079769756836713d3b41a021cd932636bf98aa7c8bf30e3928dc48aad9
+ad4ee7d3d80b8861d3958a430c033a4ec5aaa496f5cd2bf705a516edb0972b8f
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,
@@ -362,9 +368,9 @@ broken running head, or malformed bibliography entry.  The PDF metadata,
 author information, code link, AI-use disclosure, and source archive are
 present and internally consistent.
 
-Double-check: the public code URL returned HTTP 200 and the remote `main`
-reference matched the reviewed commit before this report was added.  The
-computational and release claims are supported by the checked artifacts.
+Double-check: the public code URL returned HTTP 200.  The reviewed release is
+identified by the immutable tag named in the manuscript, and the computational
+and release claims are supported by the checked artifacts.
 
 ## Paper-level conclusion
 

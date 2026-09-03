@@ -67,7 +67,7 @@ Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
 \newcommand{\authoremail}{polzer@fastmail.com}
-\date{August 27, 2026}
+\date{September 3, 2026}
 
 \makeatletter
 \renewcommand{\section}{%
@@ -127,9 +127,10 @@ Laplacian on distant domains}
 
 \begin{abstract}
 Let $D\subset\R^d$ be a bounded centrally symmetric Lipschitz domain, and
-let $\Omega_L$ be the union of two reflected translates of $D$ whose centers
-are separated by $L$.  For the restricted fractional Laplacian
-$(-\Delta)^s$, $0<s<1$, we determine the leading splitting of the two
+let $\Omega_L$ be the union of two translates of $D$, arranged symmetrically
+and interchanged by reflection, whose centers are separated by $L$.  For the
+restricted (zero-exterior integral) fractional Laplacian $(-\Delta)^s$,
+$0<s<1$, we determine the leading splitting of the two
 eigenvalues converging to the one-well ground-state energy.  If $\mu_1$ is
 the one-well ground-state eigenvalue, $\phi_1$ is its positive
 $L^2$-normalized eigenfunction, and $m_1=\int_D\phi_1$, then
@@ -194,11 +195,17 @@ sequence when their mutual distance tends to infinity
 proved the mixed local/nonlocal analogue
 \cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}.  Parini and Salort placed
 such distant components in a general concentration--compactness dichotomy
-\cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  Together these works establish
-the qualitative limiting and dichotomy picture but do not specify the leading
-interaction coefficient for the standard restricted fractional Laplacian.
-The purpose of this article is to extract that coefficient and the associated
-effective finite-dimensional interaction.
+\cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  For two one-dimensional
+patches, L\'eculier and Roquejoffre proved monotonicity and continuity of the
+principal eigenvalue as the separation varies, including continuity when the
+patches meet \cite[Theorem~1]{LeculierRoquejoffre2023}.  Their result concerns
+the principal eigenvalue across all separations but does not identify its
+large-separation coefficient or the accompanying second-eigenvalue split.
+Together these works establish the qualitative limiting, continuity, and
+dichotomy picture but do not specify the leading interaction coefficient for
+the standard restricted fractional Laplacian.  The purpose of this article is
+to extract that coefficient and the associated effective finite-dimensional
+interaction.
 
 The influence of mutual position on the restricted fractional spectrum is
 also emphasized by Abatangelo, Felli, and Noris
@@ -206,9 +213,10 @@ also emphasized by Abatangelo, Felli, and Noris
 fractional-capacity perturbations.  In the shape-optimization setting, Zahl
 isolated the exact cross-energy under translations and proposed a signed
 point-mass interaction with kernel $\abs{x-y}^{-d-2s}$
-\cite[Section~10, equations~(10.3) and~(10.7)]{Zahl2026}.  Wu subsequently
-settled Zahl's no-local-minimum conjecture for that discrete signed-mass
-energy \cite[abstract]{Wu2026}.  In another recent direction, Dipierro, Proietti Lippi,
+\cite[Section~10, equations~(10.3) and~(10.7), and
+Conjecture~10.9]{Zahl2026}.  Wu subsequently proved that this discrete
+signed-mass model has no local minima, settling that conjecture
+\cite[Introduction]{Wu2026}.  In another recent direction, Dipierro, Proietti Lippi,
 Sportelli, and Valdinoci studied disconnected domains for generalized
 eigenproblems having a superposition of lower-order operators on the
 right-hand side
@@ -823,29 +831,25 @@ errors, and hence the two displayed remainder bounds, coincide.
 \end{proof}
 
 \begin{corollary}[Collective ground state]\label{cor:collective-ground}
-For every multi-well configuration, $\theta_1<0$ is simple and has an
-eigenvector with strictly positive entries.  Moreover, $\theta_N>0$.
-Consequently, for all sufficiently large $L$, the lowest eigenvalue in the
-cluster is simple and lies below $\mu_1$, while at least one cluster
-eigenvalue lies above $\mu_1$.
+For every multi-well configuration, $\theta_1<0$ is simple and admits an
+eigenvector with strictly positive entries, while $\theta_N>0$.
+Consequently, for all sufficiently large $L$, $\lambda_1(\Omega_{\mathbf
+a,L})$ is simple and
+$\lambda_1(\Omega_{\mathbf a,L})<\mu_1<\lambda_N(\Omega_{\mathbf a,L})$.
 \end{corollary}
 
 \begin{proof}
-The off-diagonal entries of $M_{\mathbf a}$ are strictly negative.  Its
-Rayleigh quotient at $(1,\dots,1)$ is negative, so $\theta_1<0$.  If $z$ is a
-minimizer of the Rayleigh quotient, replacing $z$ by its componentwise
-absolute value cannot increase that quotient, and equality forces all
-nonzero components to have the same sign.  The eigenvalue equation then
-shows that no component can vanish.  Thus every eigenvector for $\theta_1$
-has one strict sign.  Two linearly independent such eigenvectors would have
-a nonzero linear combination with a zero component, so $\theta_1$ is simple.
-Finally, $\operatorname{tr}M_{\mathbf a}=0$ and $\theta_1<0$, hence
-$\theta_N>0$.  Put
-\[
- r_L=\varepsilon_L+\frac{2\gamma_L^2}{g}.
-\]
-Theorem~\ref{thm:multi-well} gives $L^\kappa r_L\to0$.  Since $\theta_1$ is
-simple, $\theta_2-\theta_1>0$.  Choose $L$ so large that
+The off-diagonal entries of $M_{\mathbf a}$ are strictly negative, and its
+Rayleigh quotient at $(1,\dots,1)$ is negative, so $\theta_1<0$.  Replacing a
+Rayleigh minimizer $z$ by its componentwise absolute value cannot increase
+the quotient; equality forces its nonzero components to have the same sign,
+and the eigenvalue equation rules out a zero component.  Thus a ground-state
+eigenvector has one strict sign.  If the ground eigenspace had dimension at
+least two, it would contain a nonzero vector with a zero component, a
+contradiction.  Hence $\theta_1$ is simple.  Finally,
+$\operatorname{tr}M_{\mathbf a}=0$ gives $\theta_N>0$.  Put
+$r_L=\varepsilon_L+2\gamma_L^2/g$.  Theorem~\ref{thm:multi-well} gives
+$L^\kappa r_L\to0$.  Since $\theta_2-\theta_1>0$, choose $L$ so large that
 \[
  L^\kappa r_L
  <\min\left\{\frac{\theta_2-\theta_1}{2},-\theta_1,\theta_N\right\}.
@@ -857,8 +861,7 @@ $\lambda_N>\mu_1$, which proves all three assertions for the full operator.
 
 \begin{corollary}[Regular-simplex cluster]\label{cor:simplex}
 Suppose the centers satisfy $\abs{a_i-a_j}=r$ for all $i\ne j$, as for the
-vertices of a regular simplex.  Such a configuration in $\R^d$ necessarily
-has $N\leq d+1$.  Put
+vertices of a regular simplex.  Then $N\leq d+1$.  Put
 \[
  w=c_{d,s}m_1^2r^{-\kappa}.
 \]
@@ -881,17 +884,17 @@ eigenvalue $w$.
 \section{A reproducible interval check}\label{sec:numerics}
 
 We finish with a conforming fixed-mesh Galerkin check of the two- and
-three-well limits.
-It is included as a reproducibility test of the formulas, not as an input to
-their proofs.  Take $d=1$, $0<s<1/2$, and partition each unit interval into
-cells of length $h$.  Proposition~\ref{prop:cell-matrix} shows directly that
-cell indicators have finite form energy in this range, so they span a
-conforming finite-dimensional subspace of the form domain.
+three-well limits.  It tests the formulas and is not an input to their proofs.
+No $h\to0$ discretization-error estimate is claimed; the calculation tests
+the proved $L\to\infty$ asymptotic at fixed mesh.  Take $d=1$, $0<s<1/2$,
+and partition each unit interval into cells of length $h$.  The cell
+indicators have finite form energy by Proposition~\ref{prop:cell-matrix}, so
+they span a conforming finite-dimensional subspace of the form domain.
 
 \begin{proposition}[Exact cell-integral matrix]\label{prop:cell-matrix}
-Let $I_1,\dots,I_M$ be pairwise disjoint cells of length $h$, set
-$G=\bigcup_{\alpha=1}^M I_\alpha$, let $x_\alpha$ be their centers, put
-$r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and set $q=1-2s$.  In the
+Let $I_1,\dots,I_M$ be pairwise disjoint cells of common length $h$, with
+centers $x_\alpha$, and set $G=\bigcup_{\alpha=1}^M I_\alpha$,
+$r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and $q=1-2s$.  In the
 $L^2(G)$-orthonormal basis $e_\alpha=h^{-1/2}\mathbf 1_{I_\alpha}$, the
 Galerkin matrix $H_h$ of the zero-exterior form $\mathcal q_G$ has entries
 \begin{align}
@@ -1054,7 +1057,7 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  A frozen copy of the scripts,
 pinned dependencies, release audit, and reference output is included in the
 submission source package; this is the version corresponding to the manuscript.
 The immutable repository tag for this version is
-\texttt{paper-2026-09-01}.  The development repository is available at
+\texttt{paper-2026-09-03}.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 \end{sloppypar}

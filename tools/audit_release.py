@@ -85,7 +85,7 @@ def main() -> None:
         "\\author{Leslie P. Polzer}",
         "\\newcommand{\\authoraffiliation}{Independent Researcher}",
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
-        "\\date{August 27, 2026}",
+        "\\date{September 3, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
         "https://github.com/skypher/laplace-tunneling",
     )
@@ -126,7 +126,7 @@ def main() -> None:
     code_availability = (
         "assembled constant-function energy identity",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-01",
+        "paper-2026-09-03",
         "this is the version corresponding to the manuscript",
     )
     for fragment in code_availability:

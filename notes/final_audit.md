@@ -1,6 +1,6 @@
 # Final theorem and release audit
 
-Audit date: 2026-09-01.
+Audit date: 2026-09-03.
 
 ## Final-facing theorem checks
 
@@ -63,8 +63,8 @@ Audit date: 2026-09-01.
 - The saved 180-cell run completed in 57.123 seconds.  Its constant-function
   form identity passed before any eigensolve, and every number printed in
   Tables 1--2 agrees with the saved output after the displayed rounding.
-- A fresh unbuffered replay on 2026-09-01 with Python 3.12.3, NumPy 1.26.4,
-  and SciPy 1.11.4 completed in 11.145 seconds and again matched every saved
+- A fresh unbuffered replay on 2026-09-03 with Python 3.12.3, NumPy 1.26.4,
+  and SciPy 1.11.4 completed in 14.288 seconds and again matched every saved
   value after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
@@ -77,10 +77,11 @@ Audit date: 2026-09-01.
 | Nonlocal Hong--Krahn--Szego sequence | Brasco--Parini, Theorem 6.2, at `p=2` |
 | Mixed local/nonlocal Hong--Krahn--Szego sequence | Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1 |
 | Distant-component dichotomy | Parini--Salort, Theorems 1.1 and 1.2 |
+| Principal eigenvalue versus separation for two one-dimensional patches | L\'eculier--Roquejoffre, Theorem 1 |
 | Mutual-position observation | Abatangelo--Felli--Noris, Introduction, p. 3 |
-| Exact translated cross-energy and point-mass toy | Zahl, Section 10, equations (10.3) and (10.7) |
+| Exact translated cross-energy and point-mass toy | Zahl, Section 10, equations (10.3), (10.7), and Conjecture 10.9 |
 | Disconnected-domain generalized superposition problem | Dipierro--Proietti Lippi--Sportelli--Valdinoci, Theorems 1.4--1.7 |
-| No-local-minimum result for Zahl's discrete energy | Wu, abstract |
+| No-local-minimum result for Zahl's discrete energy | Wu, Introduction |
 | Interval eigenvalue and eigenfunction estimates | Kwasnicki, Theorem 1 and Propositions 1--2 |
 | Sharper interval asymptotics and uniform eigenfunction bound | Zhang, Theorems 1 and 2 |
 
@@ -113,14 +114,14 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=11 labels=50 results=14 numerical_rows=11 pages=14
+release audit passed: citations=12 labels=50 results=14 numerical_rows=11 pages=14
 ```
 
 Artifact hashes after the referee-revision build are:
 
 ```text
-4174303304a7ec6d1283dbc2de72af9a25dd627963f04ce0284d3cd68d2a631c  paper.pdf
-e21dd479130531495791b6adb7fb665e9f871adc73d9bb016d418ef387c87589  dist/laplace-tunneling-arxiv.tar.gz
+a6e1b12bf88eb2b96e783785765b0f4bc17f6750798abd9e32b8f9e7d7d370a3  paper.pdf
+ad4ee7d3d80b8861d3958a430c033a4ec5aaa496f5cd2bf705a516edb0972b8f  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 

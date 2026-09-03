@@ -54,6 +54,15 @@ Mateusz Kwa\'{s}nicki.
 \newblock
   \hfil\break\href{https://doi.org/10.1016/j.jfa.2011.12.004}{doi:10.1016/j.jfa.2011.12.004}.
 
+\bibitem[LR23]{LeculierRoquejoffre2023}
+Alexis L\'{e}culier and Jean-Michel Roquejoffre.
+\newblock Some effects of nonlocal diffusion on the solutions of
+  {F}isher--{KPP} equations in disconnected domains.
+\newblock {\em Calculus of Variations and Partial Differential Equations},
+  62(1):30, 2023.
+\newblock
+  \hfil\break\href{https://doi.org/10.1007/s00526-022-02374-6}{doi:10.1007/s00526-022-02374-6}.
+
 \bibitem[PS20]{PariniSalort2020}
 Enea Parini and Ariel Salort.
 \newblock Compactness and dichotomy in nonlocal shape optimization.

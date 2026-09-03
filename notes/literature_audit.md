@@ -1,6 +1,6 @@
 # Literature audit for distant-component spectral splitting
 
-Audit date: 2026-09-01.
+Audit date: 2026-09-03.
 
 ## Scope and search routes
 
@@ -35,6 +35,14 @@ Hong--Krahn--Szeg\H{o} theorem of Biagi--Dipierro--Valdinoci--Vecchi as a
 close qualitative analogue and the form-space identification of
 Djitte--Fall--Weth as a direct source for the manuscript's zero-exterior
 convention.
+
+A referee follow-up on 2026-09-03 identified and checked the directly relevant
+paper of L\'eculier--Roquejoffre.  Its Theorem 1 treats the principal
+eigenvalue of two one-dimensional patches as their separation varies.  The
+manuscript now cites that result and distinguishes it from the ordered
+large-separation doublet and finite-well cluster proved here.  The same
+follow-up checked Wu's Introduction, which identifies its no-local-minimum
+result as the resolution of Zahl's Conjecture 10.9.
 
 No search result supplied the fixed-domain eigenvalue asymptotics proved in
 Theorems 3.3 and 4.6.  This is search evidence, not a theorem that no such
@@ -78,6 +86,18 @@ Primary source: arXiv:2110.07129; DOI 10.3934/mine.2023014.
 
 Primary source: arXiv:1806.01165; DOI 10.1002/mana.201800234.
 
+### L\'eculier--Roquejoffre (2023)
+
+- Theorem 1 proves that the principal eigenvalue for a union of two
+  one-dimensional patches is increasing and continuous as their separation
+  varies, including continuity when the patches meet.
+- The theorem concerns the principal eigenvalue over the full range of
+  separations.  It does not give the leading large-separation coefficient,
+  the second member of the doublet, a two-sided remainder, or a finite-well
+  effective matrix.
+
+Primary source: arXiv:2004.14771; DOI 10.1007/s00526-022-02374-6.
+
 ### Abatangelo--Felli--Noris (2020)
 
 - The Introduction, p. 3, explicitly notes that the spectrum on a
@@ -113,8 +133,9 @@ Primary source: arXiv:2602.18035.
 
 ### Wu (2026)
 
-- The published abstract studies equilibrium and stability of Zahl's
-  discrete signed-mass toy model and settles its no-local-minimum conjecture.
+- The Introduction studies equilibrium and stability of Zahl's discrete
+  signed-mass toy model and identifies the no-local-minimum conclusion as the
+  resolution of Zahl's Conjecture 10.9.
 - The object is the discrete energy itself, not the spectrum of the
   restricted fractional operator on distant domains.
 
