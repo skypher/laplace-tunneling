@@ -6,6 +6,10 @@ Audit date: 2026-09-03.
 
 ### Two-well splitting
 
+- The singular-integral normalization is now explicit:
+  `c_(d,s)=4^s s Gamma(d/2+s)/(pi^(d/2) Gamma(1-s))`.  Its `d=1`
+  specialization agrees with the constant used in Section 5 and in the
+  numerical script.
 - The form norm is explicitly identified with the inherited fractional
   Sobolev norm, so the manuscript now states closedness of the form and the
   associated self-adjoint operator before using it.  Compactness of the
@@ -49,12 +53,20 @@ Audit date: 2026-09-03.
 - Theorem 4.6 combines the cluster error and compression error without
   changing their hypotheses.  After multiplication by `L^kappa`, the two
   errors are `O(L^(-2))` and `O(L^(-kappa))`.
+- The upper cluster comparison gives
+  `lambda_N <= mu_1+gamma_L`, while Lemma 4.3 gives
+  `lambda_(N+1) >= mu_1+g-gamma_L`.  Their difference is therefore at least
+  `g-2 gamma_L >= g/2` under the theorem's stated size condition.
 - Corollaries 4.7--4.10 follow from the explicit finite matrix: the
   symmetry-free two-well specialization, the recovery of the reflected
   remainder, the sign and simplicity of the lowest effective eigenvector,
   and the regular-simplex spectrum were each checked directly.  The
   Gram-matrix argument in Corollary 4.10 also records the necessary bound
   `N <= d+1`.
+- Corollary 4.9 now separates the two mechanisms: Brasco--Parini Theorem 2.8
+  gives simplicity of the full-domain first eigenvalue for every admissible
+  separation, while Theorem 4.6 gives the strict inequalities relative to
+  `mu_1` for sufficiently large separation.
 
 ### Applications and fixed-mesh computation
 
@@ -69,7 +81,7 @@ Audit date: 2026-09-03.
   form identity passed before any eigensolve, and every number printed in
   Tables 1--2 agrees with the saved output after the displayed rounding.
 - A fresh unbuffered replay on 2026-09-03 with Python 3.12.3, NumPy 1.26.4,
-  and SciPy 1.11.4 completed in 14.989 seconds and again matched every saved
+  and SciPy 1.11.4 completed in 13.551 seconds and again matched every saved
   value after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
@@ -81,6 +93,7 @@ Audit date: 2026-09-03.
 | Positivity and simplicity | Brasco--Parini, Theorem 2.8, at `p=2` |
 | Nonlocal Hong--Krahn--Szego sequence | Brasco--Parini, Theorem 6.2, at `p=2` |
 | Mixed local/nonlocal Hong--Krahn--Szego sequence | Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1 |
+| Local plus compact-kernel nonlocal Hong--Krahn--Szego sequence | Goel--Sreenadh, Theorem 1.4 |
 | Distant-component dichotomy | Parini--Salort, Theorems 1.1 and 1.2 |
 | Principal eigenvalue versus separation for two one-dimensional patches | L\'eculier--Roquejoffre, Theorem 1 |
 | Mutual-position observation | Abatangelo--Felli--Noris, Introduction, p. 3 |
@@ -103,8 +116,11 @@ The final `make audit` run checks the last LaTeX build, which produced a
 15-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
 inspection of all 15 pages confirms that the abstract radius, cutoff estimate,
-symmetry-free corollary, fixed-mesh geometry, effective spectra, tables,
-disclosure, code-availability metadata, and linked references are legible.  The title
+normalization, cluster-edge bounds, symmetry-free corollary, fixed-mesh
+geometry, effective spectra, tables, disclosure, code-availability metadata,
+and linked references are legible.  The introduction no longer breaks after
+an isolated word, and all thirteen bibliography entries remain on the
+final page.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
@@ -118,14 +134,14 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=12 labels=51 results=15 numerical_rows=11 pages=15
+release audit passed: citations=13 labels=52 results=15 numerical_rows=11 pages=15
 ```
 
 Artifact hashes after the referee-revision build are:
 
 ```text
-821ebd20139f645a07739f357cb7a0d0115fb347e4621c404f49636e7cbfe414  paper.pdf
-6a61282353c526febbf88f4a6d8b1aee0ea423aeb7fba9e9218d32309a8202ac  dist/laplace-tunneling-arxiv.tar.gz
+8d6c2ce31f79ce51dbc57e2ea32bc741b30a54a1d2a6fc3fef47101531766fee  paper.pdf
+d46ef1341025c0cbb8d95b8c6ccdad2b0b20b65212f323308bada46a824aa826  dist/laplace-tunneling-arxiv.tar.gz
 6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
 ```
 
@@ -134,7 +150,9 @@ bibliography, BibTeX database, README, Makefile, release and numerical audit
 scripts, pinned dependencies, and saved 180-cell output.  Every extracted
 payload byte-matched its working-tree source.  The `make arxiv` prerequisite
 ran the release audit and returned the result shown above.  The revised
-release is named `paper-2026-09-03-r1` in the manuscript and README.
+release is named `paper-2026-09-03-r2` in the manuscript and README.  A second
+archive created from the same inputs byte-matched the release archive, and a
+fresh extracted-source build passed the same 15-page audit.
 
 ## Final double-check before closure
 

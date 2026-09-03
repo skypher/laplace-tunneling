@@ -129,7 +129,7 @@ Laplacian on distant domains}
 Let $D\subset B_R(0)\subset\R^d$ be a bounded centrally symmetric Lipschitz
 domain, and
 let $\Omega_L$ be the union of two translates of $D$, arranged symmetrically
-and interchanged by reflection, whose centers are separated by $L$.  For the
+and interchanged by central inversion, whose centers are separated by $L$.  For the
 restricted (zero-exterior integral) fractional Laplacian $(-\Delta)^s$,
 $0<s<1$, we determine the leading splitting of the two
 eigenvalues converging to the one-well ground-state energy.  If $\mu_1$ is
@@ -145,7 +145,7 @@ $L^2$-normalized eigenfunction, and $m_1=\int_D\phi_1$, then
  =\mu_1+c_{d,s}m_1^2L^{-d-2s}
    +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right).
 \]
-The proof uses an exact reflection reduction to the two operators
+The proof uses an exact central-inversion reduction to the two operators
 $A_D\pm B_L$, an elementary isolated-eigenvalue estimate, and a second-order
 Taylor expansion of the interaction kernel.  For two equal balls, the formula
 for $\lambda_2$ gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
@@ -183,30 +183,30 @@ optimization.
 \section{Introduction}
 
 The restricted fractional Laplacian couples disjoint components through its
-integral kernel.  This differs from the local Dirichlet Laplacian, whose
-spectrum on a disconnected union is exactly the multiset union of the
-component spectra.  Thus two distant congruent components exhibit a nonzero
-splitting absent from the local disconnected problem, and the nonlocal
-splitting decays algebraically with their separation.
+integral kernel, unlike the local Dirichlet Laplacian, whose spectrum on a
+disconnected union is exactly the multiset union of the component spectra.
+Thus two distant congruent components exhibit a nonzero splitting that decays
+algebraically with their separation.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
 sequence when their mutual distance tends to infinity
-\cite[Theorem~6.2]{BrascoParini2016}.  Biagi, Dipierro, Valdinoci, and Vecchi
-proved the mixed local/nonlocal analogue
-\cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}.  Parini and Salort placed
+\cite[Theorem~6.2]{BrascoParini2016}.  Mixed-operator analogues were proved by
+Biagi, Dipierro, Valdinoci, and Vecchi
+\cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}, and by Goel and Sreenadh
+for a local $p$-Laplacian coupled to a compact-kernel nonlocal $p$-Laplacian
+\cite[Theorem~1.4]{GoelSreenadh2019}; the latter interaction is finite-range
+rather than algebraic.  Parini and Salort placed
 such distant components in a general concentration--compactness dichotomy
 \cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  For two one-dimensional
 patches, L\'eculier and Roquejoffre proved monotonicity and continuity of the
-principal eigenvalue as the separation varies, including continuity when the
-patches meet \cite[Theorem~1]{LeculierRoquejoffre2023}.  Their result concerns
-the principal eigenvalue across all separations but does not identify its
+principal eigenvalue throughout the separation range, including contact
+\cite[Theorem~1]{LeculierRoquejoffre2023}, but did not identify its leading
 large-separation coefficient or the accompanying second-eigenvalue split.
-Together these works establish the qualitative limiting, continuity, and
-dichotomy picture but do not specify the leading interaction coefficient for
-the standard restricted fractional Laplacian.  The purpose of this article is
-to extract that coefficient and the associated effective finite-dimensional
-interaction.
+Together these works give qualitative limiting, continuity, and dichotomy
+results, but not the leading interaction coefficient for the standard
+restricted fractional Laplacian.  We extract that coefficient and the
+associated effective finite-dimensional interaction.
 
 The influence of mutual position on the restricted fractional spectrum is
 also emphasized by Abatangelo, Felli, and Noris
@@ -223,24 +223,24 @@ eigenproblems having a superposition of lower-order operators on the
 right-hand side
 \cite[Theorems~1.4--1.7]{DipierroProiettiLippiSportelliValdinoci2026}.
 None of these works derives a large-separation spectral expansion for the
-standard restricted fractional Laplacian.  Zahl's discrete energy anticipates the
-matrix in \eqref{eq:effective-matrix}; the result here derives it from the full
-restricted fractional operator, bounds the off-diagonal block in operator
-norm, controls its coupling to the complementary one-well modes through the
-spectral gap, and identifies every ordered eigenvalue in the cluster.  We are
+standard restricted fractional Laplacian.  Zahl's discrete energy anticipates
+the matrix in \eqref{eq:effective-matrix}; here it is derived from the full
+operator, with operator-norm control of the off-diagonal block and spectral-gap
+control of the complementary modes, and every ordered cluster eigenvalue is
+identified.  We are
 not aware of an earlier result giving either the two-component coefficient
 with a quantified remainder or this finite-well spectral reduction.
 
 The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
 cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
 cluster for finitely many translated components with the spectrum of an
-explicit weighted interaction matrix; unlike the reflection reduction, this
+explicit weighted interaction matrix; unlike the central-inversion reduction, this
 result does not require central symmetry of the reference component.  Its
 $N=2$ specialization, Corollary~\ref{cor:symmetry-free-two}, gives the same
 leading doublet coefficient without symmetry; symmetry is used only for the
 exact scalar-branch decomposition and the matching explicit remainder in
 Theorem~\ref{thm:two-well}.  Both proofs are self-contained after the
-standard one-well spectral facts.  The interval provides an explicit
+standard one-well spectral facts.  The~interval provides an explicit
 benchmark: one-well eigenvalue and
 eigenfunction estimates are available in
 \cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
@@ -267,8 +267,10 @@ The zero-exterior quadratic form is
    \frac{\abs{u(x)-u(y)}^2}{\abs{x-y}^{\kappa}}\,dx\,dy,
  \qquad u\in\Hs(G),
 \end{equation}
-where $c_{d,s}>0$ is the normalization in the singular-integral definition
-of $(-\Delta)^s$.  The form norm
+where
+$c_{d,s}=4^s s\,\Gamma(d/2+s)/(\pi^{d/2}\Gamma(1-s))$
+is the standard normalization in the singular-integral definition of
+$(-\Delta)^s$.  The form norm
 $\bigl(\mathcal q_G[u]+\norm{u}_{L^2(G)}^2\bigr)^{1/2}$
 is equivalent to the norm inherited from $H^s(\R^d)$ on $\Hs(G)$.  Thus
 \eqref{eq:form} is a densely defined closed form, and we denote its associated
@@ -295,7 +297,7 @@ linear case.  Fix that eigenfunction and set
  \qquad \norm{\phi_1}_{L^2(D)}=1,
  \qquad m_1=\int_D\phi_1(x)\,dx>0.
 \end{equation}
-Simplicity and reflection invariance imply $\phi_1(-x)=\phi_1(x)$.
+Simplicity and central-inversion invariance imply $\phi_1(-x)=\phi_1(x)$.
 
 Fix a unit vector $e\in\R^d$.  For $L>2R$, define
 \[
@@ -310,7 +312,7 @@ On $L^2(D)$ define the bounded integral operator
 \end{equation}
 Its kernel is real and symmetric, so $B_L$ is self-adjoint.
 
-\begin{lemma}[Exact reflection reduction]\label{lem:block}
+\begin{lemma}[Exact central-inversion reduction]\label{lem:block}
 The operator $A_{\Omega_L}$ is unitarily equivalent to
 \[
  \begin{pmatrix}A_D&B_L\\B_L&A_D\end{pmatrix}
@@ -331,7 +333,7 @@ For $f\in\Hs(\Omega_L)$ set
  \qquad x\in D.
 \]
 This defines a unitary map from $L^2(\Omega_L)$ to
-$L^2(D)\oplus L^2(D)$.  Translational and reflection invariance identify the
+$L^2(D)\oplus L^2(D)$.  Translation and central-inversion invariance identify the
 two diagonal parts of the form with $\mathcal q_D[u]$ and
 $\mathcal q_D[v]$.
 
@@ -566,7 +568,7 @@ $\mu_1=\lambda_1(B_R)$.
 
 \section{Finitely many wells}\label{sec:multi-well}
 
-The two-well reflection decomposition is special to a pair.  For finitely
+The two-well central-inversion decomposition is special to a pair.  For finitely
 many components we instead keep the full block operator and compare its
 lowest spectral cluster with its compression to the translated one-well
 ground states.
@@ -798,11 +800,19 @@ then, for $1\leq k\leq N$,
  -(\mu_1+L^{-\kappa}\theta_k)}
  \leq\varepsilon_L+\frac{2\gamma_L^2}{g}.
 \end{equation}
-The cluster is separated from the rest of the spectrum by
-\begin{equation}\label{eq:multi-next-level}
+The upper edge of the cluster and the next eigenvalue satisfy
+\begin{equation}\label{eq:multi-cluster-edges}
+ \lambda_N(\Omega_{\mathbf a,L})
+ \leq\mu_1+\gamma_L\leq\mu_1+\frac g4,
+ \qquad
  \lambda_{N+1}(\Omega_{\mathbf a,L})
- \geq\mu_1+g-\gamma_L
- \geq\mu_1+\frac{3g}{4}.
+ \geq\mu_1+g-\gamma_L\geq\mu_1+\frac{3g}{4}.
+\end{equation}
+In particular, the cluster gap has the quantitative lower bound
+\begin{equation}\label{eq:multi-cluster-gap}
+ \lambda_{N+1}(\Omega_{\mathbf a,L})-
+ \lambda_N(\Omega_{\mathbf a,L})
+ \geq g-2\gamma_L\geq\frac g2.
 \end{equation}
 Consequently, as $L\to\infty$, for every $1\leq k\leq N$,
 \begin{equation}\label{eq:multi-limit}
@@ -829,7 +839,11 @@ Lemma~\ref{lem:compression} give
  \abs{\tau_k(L)-L^{-\kappa}\theta_k}\leq\varepsilon_L.
 \]
 Combining these two estimates proves \eqref{eq:multi-eigenvalue-bound}, and
-\eqref{eq:multi-next-level} follows from \eqref{eq:cluster-separation}.
+the upper bound in \eqref{eq:exact-cluster-comparison}, together with
+$\tau_N(L)\leq\norm{T_L}\leq\norm{\mathcal V_L}\leq\gamma_L$, gives the
+upper-edge estimate in \eqref{eq:multi-cluster-edges}.  The lower bound for
+$\lambda_{N+1}$ follows from \eqref{eq:cluster-separation}.  Subtracting the
+two estimates proves \eqref{eq:multi-cluster-gap}.
 Finally, $L^\kappa\varepsilon_L=O(L^{-2})$ and
 $L^\kappa\gamma_L^2=O(L^{-\kappa})$; since $\kappa=d+2s>0$, multiplying
 \eqref{eq:multi-eigenvalue-bound} by $L^\kappa$ proves
@@ -897,8 +911,9 @@ errors, and hence the two displayed remainder bounds, coincide.
 \begin{corollary}[Collective ground state]\label{cor:collective-ground}
 For every multi-well configuration, $\theta_1<0$ is simple and admits an
 eigenvector with strictly positive entries, while $\theta_N>0$.
-Consequently, for all sufficiently large $L$, $\lambda_1(\Omega_{\mathbf
-a,L})$ is simple and
+For every $L$ admitted by Definition~\ref{def:multi-geometry},
+$\lambda_1(\Omega_{\mathbf a,L})$ is simple.  Moreover, for all sufficiently
+large $L$,
 $\lambda_1(\Omega_{\mathbf a,L})<\mu_1<\lambda_N(\Omega_{\mathbf a,L})$.
 \end{corollary}
 
@@ -913,14 +928,16 @@ least two, it would contain a nonzero vector with a zero component, a
 contradiction.  Hence $\theta_1$ is simple.  Finally,
 $\operatorname{tr}M_{\mathbf a}=0$ gives $\theta_N>0$.  Put
 $r_L=\varepsilon_L+2\gamma_L^2/g$.  Theorem~\ref{thm:multi-well} gives
-$L^\kappa r_L\to0$.  Since $\theta_2-\theta_1>0$, choose $L$ so large that
+$L^\kappa r_L\to0$.  Simplicity of
+$\lambda_1(\Omega_{\mathbf a,L})$ for every admissible $L$ follows from
+\cite[Theorem~2.8]{BrascoParini2016}, applied to the bounded open set
+$\Omega_{\mathbf a,L}$.  Choose $L$ so large that
 \[
  L^\kappa r_L
- <\min\left\{\frac{\theta_2-\theta_1}{2},-\theta_1,\theta_N\right\}.
+ <\min\left\{-\theta_1,\theta_N\right\}.
 \]
 Then \eqref{eq:multi-eigenvalue-bound} gives
-$\lambda_2-\lambda_1>0$, $\lambda_1<\mu_1$, and
-$\lambda_N>\mu_1$, which proves all three assertions for the full operator.
+$\lambda_1<\mu_1<\lambda_N$, which proves the remaining assertions.
 \end{proof}
 
 \begin{corollary}[Regular-simplex cluster]\label{cor:simplex}
@@ -1106,30 +1123,35 @@ singular quadrature or fitted coefficient enters the tables.
 The proof architecture and manuscript were developed with assistance from
 OpenAI's GPT-5.6 Sol model (\texttt{gpt-5.6-sol}).  The model served as an
 interactive research assistant for argument development and stress testing,
-citation and calculation audits, preparation of exact verification code, and
-revision.  The author directed the research, selected and
+citation and calculation audits, preparation of reproducibility and
+release-audit code, and revision.  The author directed the research, selected and
 checked the final arguments, and takes responsibility for all mathematical
 claims, citations, computations, and wording.
 
 \section*{Code availability}
 
 \begin{sloppypar}
-The script \path{tools/check_asymptotics.py} reconstructs every entry in
+The script \path{tools/check_asymptotics.py} reproduces
 Tables~\ref{tab:mesh} and \ref{tab:clusters}.  Before solving the
 eigenproblems, it checks the assembled constant-function energy identity and
 prints progress after each separation.  The pinned numerical dependencies are
 listed in
 \path{requirements-numerics.txt}; the reference output was replayed with
-Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  A frozen copy of the scripts,
-pinned dependencies, release audit, and reference output is included in the
-submission source package; this is the version corresponding to the manuscript.
-The immutable repository tag for this version is
-\texttt{paper-2026-09-03-r1}.  The development repository is available at
+Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
+includes frozen copies of the scripts, pinned dependencies, and reference
+output; this is the version corresponding to the manuscript.
+The version tag for this manuscript is
+\texttt{paper-2026-09-03-r2}.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 \end{sloppypar}
 
+\enlargethispage{3\baselineskip}
 {\small
+\let\standardthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \standardthebibliography{#1}%
+  \setlength{\itemsep}{0pt}}
 \bibliographystyle{alpha}
 \bibliography{references}
 }

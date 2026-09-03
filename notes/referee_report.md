@@ -5,7 +5,7 @@ Review date: 2026-09-03.
 Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: revision tag `paper-2026-09-03-r1`, recorded in
+Version reviewed: revision tag `paper-2026-09-03-r2`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -20,9 +20,11 @@ The paper gives an explicit two-component splitting, an ordered
 finite-component ground-state cluster governed by a weighted interaction
 matrix, and a reproducible fixed-mesh illustration.  The operator reduction,
 signs, leading coefficients, spectral-gap errors, Taylor errors, and limiting
-scales are mutually consistent.  I found no major or minor mathematical
-error, no missing hypothesis used by a caller, and no citation whose checked
-statement differs from its use in the manuscript.
+scales are mutually consistent.  The minor normalization, cluster-gap,
+all-distance simplicity, bibliography, wording, and pagination issues found
+in the preceding review are corrected in this revision.  I found no remaining
+mathematical error, no missing hypothesis used by a caller, and no citation
+whose checked statement differs from its use in the manuscript.
 
 The recommendation follows the object-by-object checks below rather than the
 repository's earlier audit declarations.  The last independent checks were:
@@ -71,7 +73,10 @@ priority theorem.
 ### Preliminary one-well construction
 
 The form in (2.1) has the correct factor `c_{d,s}/2`; polarization therefore
-produces an off-diagonal block with coefficient `−c_{d,s}`.  The space
+produces an off-diagonal block with coefficient `−c_{d,s}`.  The standard
+normalization is now stated explicitly as
+`c_(d,s)=4^s s Gamma(d/2+s)/(pi^(d/2) Gamma(1-s))`, consistent with its
+one-dimensional specialization in Section 5.  The space
 `H̃ˢ(G)` is a closed form domain, and the cited Lipschitz extension and compact
 embedding give compact resolvent for bounded `D`.  The cited positivity and
 simplicity theorem applies at `p = 2`, including without a connectedness
@@ -84,7 +89,7 @@ equation (2.1), Di Nezza--Palatucci--Valdinoci Theorems 5.4 and 7.1, and
 Brasco--Parini Theorem 2.8, specialized exactly as above.  No unsupported
 preliminary spectral fact remains.
 
-### Lemma 2.1: exact reflection reduction
+### Lemma 2.1: exact central-inversion reduction
 
 The left coordinate is `x−Le/2` and the reflected right coordinate is
 `−y+Le/2`; their displacement is `x+y−Le`.  Expanding the full-space
@@ -237,9 +242,11 @@ The direct sum has an `N`-fold eigenvalue `μ₁` and complementary spectrum at
 least `μ₁+g`.  Lemma 4.3 compares the ordered full cluster with the ordered
 eigenvalues of the exact compression, with error `2γ_L²/g`.  Lemma 4.5 and
 the finite-dimensional min--max principle compare that compression with
-`L^(−κ)M_a`, with error `ε_L`.  The triangle inequality gives (4.13), and the
-same cluster lemma gives (4.14).  Scaling leaves `O(L^(−2))` and
-`O(L^(−κ))`.
+`L^(−κ)M_a`, with error `ε_L`.  The triangle inequality gives (4.13).  The
+cluster comparison gives the upper edge `λ_N≤μ₁+γ_L`, and the same cluster
+lemma gives `λ_(N+1)≥μ₁+g−γ_L`.  These are (4.14), and subtraction gives the
+quantitative gap `λ_(N+1)−λ_N≥g−2γ_L≥g/2` in (4.15).  Scaling leaves
+`O(L^(−2))` and `O(L^(−κ))` and gives (4.16).
 
 Double-check: both size assumptions in (4.12) supply the hypotheses of the
 two invoked lemmas, and `κ=d+2s>0`.  Theorem 4.6 is correct as written.
@@ -276,12 +283,13 @@ eigenspace would contain a nonzero vector with a zero component, so the
 lowest eigenvalue is simple.  Its Rayleigh quotient on the all-ones vector is
 negative.  Trace zero then forces the largest eigenvalue to be positive.
 
-The theorem error `r_L` satisfies `L^κr_L→0`; comparison with the positive
-effective spectral gap and the nonzero extreme eigenvalues gives simplicity
-and the signs relative to `μ₁` for large `L`.
+Brasco--Parini Theorem 2.8 gives simplicity of the full-domain first
+eigenvalue for every admissible `L`.  Separately, the theorem error `r_L`
+satisfies `L^κr_L→0`; comparison with the nonzero extreme effective
+eigenvalues gives `λ₁<μ₁<λ_N` for large `L`.
 
-Double-check: the chosen threshold in the proof controls the factor two in
-`λ₂−λ₁` and separately controls `λ₁−μ₁` and `λ_N−μ₁`.  Corollary 4.9 is
+Double-check: Theorem 2.8 applies to the bounded open set `Ω_(a,L)`, and the
+chosen threshold separately controls `λ₁−μ₁` and `λ_N−μ₁`.  Corollary 4.9 is
 correct as written.
 
 ### Corollary 4.10: regular-simplex cluster
@@ -330,8 +338,10 @@ spelling as the body.
 The fixed-mesh corollary now identifies `φ_{1,h}` with the one-well Galerkin
 matrix, says that the same partition is translated to every component, and
 states that the tabulated errors are calculated before display rounding.
-The 15-page layout has no orphaned code-availability continuation, clipping,
-or malformed reference entry.
+The revised introduction has no one-word page break, the compact bibliography
+keeps all thirteen entries on page 15 at the original type size, and the
+layout has no clipping or malformed reference entry.  The AI-use disclosure
+describes the generated code as reproducibility and release-audit code.
 
 ## Citation audit
 
@@ -347,6 +357,9 @@ uses:
   nonlocal Hong--Krahn--Szegő statement;
 - Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1: the analogous strict and
   sharp statement for the mixed local/nonlocal operator;
+- Goel--Sreenadh, Theorem 1.4: the strict second-eigenvalue bound and sharp
+  distant-ball sequence for a local plus compact-kernel nonlocal
+  `p`-Laplacian;
 - Parini--Salort, Theorems 1.1 and 1.2: compactness/dichotomy and its shape
   optimization consequence;
 - L\'eculier--Roquejoffre, Theorem 1: monotonicity and continuity of the
@@ -369,8 +382,8 @@ uses:
 Double-check: author names, titles, dates, journal data, arXiv identifiers,
 and DOI data in `references.bib` agree with the accessed records.  The
 September 3 follow-up added the previously omitted
-L\'eculier--Roquejoffre paper and replaced the Wu abstract citation with an
-Introduction locator tied to Zahl's numbered conjecture.
+L\'eculier--Roquejoffre and Goel--Sreenadh papers and replaced the Wu abstract
+citation with an Introduction locator tied to Zahl's numbered conjecture.
 
 ## Numerical and release audit
 
@@ -382,7 +395,7 @@ rows.  The constant-function identity passed before the eigensolves.
 `make audit` reports:
 
 ```text
-release audit passed: citations=12 labels=51 results=15 numerical_rows=11 pages=15
+release audit passed: citations=13 labels=52 results=15 numerical_rows=11 pages=15
 ```
 
 The source archive was extracted into a fresh directory.  `make audit`
@@ -390,7 +403,7 @@ rebuilt the 15-page PDF with no final warning matched by the release audit.
 The archive generated from the reviewed tree has hash:
 
 ```text
-6a61282353c526febbf88f4a6d8b1aee0ea423aeb7fba9e9218d32309a8202ac
+d46ef1341025c0cbb8d95b8c6ccdad2b0b20b65212f323308bada46a824aa826
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,
@@ -399,8 +412,10 @@ author information, code link, AI-use disclosure, and source archive are
 present and internally consistent.
 
 Double-check: the public code URL returned HTTP 200.  The reviewed release is
-identified by the immutable tag named in the manuscript, and the computational
-and release claims are supported by the checked artifacts.
+identified by the version tag named in the manuscript, and the computational
+and release claims are supported by the checked artifacts.  A second source
+archive byte-matched the release archive, and a fresh extracted-source build
+passed the 15-page release audit.
 
 ## Paper-level conclusion
 

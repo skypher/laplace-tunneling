@@ -39,8 +39,8 @@ The archive is written to `dist/laplace-tunneling-arxiv.tar.gz` and includes the
 manuscript source, generated bibliography, release and numerical audit scripts,
 pinned dependencies, and reference numerical output.
 
-The immutable repository tag for the reviewed manuscript is
-`paper-2026-09-03-r1`.
+The version tag for the reviewed manuscript is
+`paper-2026-09-03-r2`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.

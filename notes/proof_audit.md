@@ -22,6 +22,10 @@
   operator has the analogous strict Hong--Krahn--Szeg\H{o} inequality and
   distant-equal-ball limiting sequence, but the statement is qualitative in
   the separation distance.
+- Goel--Sreenadh, Theorem 1.4: the local plus compact-kernel nonlocal
+  $p$-Laplacian has another strict Hong--Krahn--Szeg\H{o} bound and sharp
+  distant-equal-ball sequence.  Compact support makes that interaction
+  finite-range rather than algebraic at long range.
 - Parini--Salort, Theorems 1.1 and 1.2: the cited dichotomy is qualitative
   resolvent convergence for components whose distance tends to infinity.
 
@@ -108,6 +112,16 @@ is above all `N` eigenvalues of the comparison ground-state block.  Min--max
 therefore places each full cluster eigenvalue between the corresponding
 compressed eigenvalue and that number minus `2b^2/g`.  The same min--max
 principle gives `lambda_(N+1) >= mu + g - b`.
+
+The upper cluster comparison also gives
+`lambda_N <= mu + eta_N <= mu + b`.  Thus, with `b <= gamma_L <= g/4`,
+Theorem 4.6 records both cluster edges and the explicit separation
+`lambda_(N+1) - lambda_N >= g - 2 gamma_L >= g/2`.
+
+Independently of the large-separation estimates, Brasco--Parini Theorem 2.8
+applied to the bounded open multi-well domain gives simplicity of its first
+eigenvalue for every admissible `L`.  Corollary 4.9 uses the asymptotic error
+only for the inequalities relative to the one-well level.
 
 ### Matrix coefficient and Taylor remainder
 

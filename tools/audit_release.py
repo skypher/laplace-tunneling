@@ -112,7 +112,7 @@ def main() -> None:
         "OpenAI's GPT-5.6 Sol model",
         "\\texttt{gpt-5.6-sol}",
         "argument development and stress testing",
-        "preparation of exact verification code",
+        "preparation of reproducibility and release-audit code",
         "takes responsibility for all mathematical claims, citations, computations, and wording",
     )
     normalized_paper = re.sub(r"\s+", " ", paper)
@@ -126,7 +126,7 @@ def main() -> None:
     code_availability = (
         "assembled constant-function energy identity",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-03-r1",
+        "paper-2026-09-03-r2",
         "this is the version corresponding to the manuscript",
     )
     for fragment in code_availability:
@@ -174,9 +174,13 @@ def main() -> None:
         require(fragment in numerics, f"missing reference-output fragment: {fragment}")
 
     manuscript_fragments = [
+        "c_{d,s}=4^s s\\,\\Gamma(d/2+s)/(\\pi^{d/2}\\Gamma(1-s))",
+        "\\cite[Theorem~1.4]{GoelSreenadh2019}",
         "\\abs{u(x)-v(y)}^2-\\abs{u(x)}^2-\\abs{v(y)}^2",
         "\\ip{\\psi}{W\\psi}-w",
         "\\eta_N-\\frac{2b^2}{g}",
+        "\\lambda_{N+1}(\\Omega_{\\mathbf a,L})-",
+        "\\geq g-2\\gamma_L\\geq\\frac g2",
         "1.3794549573 & 0.9105539931 & 0.9628386433",
         "1.3753692130 & 0.8998883318 & 0.9633505837",
         "1.3741292905 & 0.8969647744 & 0.9636021778",

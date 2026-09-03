@@ -44,6 +44,13 @@ large-separation doublet and finite-well cluster proved here.  The same
 follow-up checked Wu's Introduction, which identifies its no-local-minimum
 result as the resolution of Zahl's Conjecture 10.9.
 
+A second referee follow-up on 2026-09-03 added the Hong--Krahn--Szeg\H{o}
+analogue of Goel--Sreenadh.  Their Theorem 1.4 gives the strict bound and the
+sharp distant-equal-ball sequence for a local $p$-Laplacian coupled to a
+nonlocal $p$-Laplacian whose kernel is compactly supported.  The manuscript
+now records this close comparison and distinguishes its finite-range kernel
+from the algebraic long-range kernel studied here.
+
 No search result supplied the fixed-domain eigenvalue asymptotics proved in
 Theorems 3.3 and 4.6.  This is search evidence, not a theorem that no such
 paper exists; the manuscript therefore uses the bounded phrase “we are not
@@ -75,6 +82,19 @@ Primary source: arXiv:1409.6284; DOI 10.1515/acv-2015-0007.
   restricted fractional Laplacian.
 
 Primary source: arXiv:2110.07129; DOI 10.3934/mine.2023014.
+
+### Goel--Sreenadh (2019)
+
+- Theorem 1.4 proves the strict Hong--Krahn--Szeg\H{o} lower bound for the
+  second eigenvalue and sharpness along two equal balls whose mutual distance
+  tends to infinity.
+- The operator is the sum of a local $p$-Laplacian and a nonlocal
+  $p$-Laplacian with a radially symmetric, nonnegative, continuous,
+  compactly supported kernel.  Consequently this model has no algebraic
+  interaction beyond the kernel range and does not supply the coefficient or
+  effective matrix studied in the manuscript.
+
+Primary source: arXiv:1901.03444; DOI 10.1090/proc/14542.
 
 ### Parini--Salort (2020)
 
