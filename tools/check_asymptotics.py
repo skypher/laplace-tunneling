@@ -41,28 +41,52 @@ def galerkin_matrix(
     # Extended precision prevents cancellation in the second difference below
     # when two cells are far apart compared with their width.
     h_extended = np.longdouble(h)
+    component_centers_extended = np.asarray(
+        component_centers, dtype=np.longdouble
+    )
+    if component_centers_extended.ndim != 1 or component_centers_extended.size == 0:
+        raise ValueError("component_centers must be a nonempty one-dimensional array")
     local_centers = np.longdouble(-0.5) + (
         np.arange(cells_per_component, dtype=np.longdouble) + np.longdouble(0.5)
     ) * h_extended
-    centers = np.concatenate(
-        [np.longdouble(c) + local_centers for c in component_centers]
-    )
-    distance = np.abs(centers[:, None] - centers[None, :])
 
     power = 1.0 - 2.0 * s
-    coefficient = normalization_constant(s)
-    interaction = np.zeros_like(distance, dtype=np.longdouble)
-    mask = distance > 0.0
-    r = distance[mask]
-    interaction[mask] = (
-        2.0 * r**power
-        - (r + h_extended) ** power
-        - np.maximum(r - h_extended, np.longdouble(0.0)) ** power
-    ) / (2.0 * s * power)
+    coefficient = np.longdouble(normalization_constant(s))
 
-    stiffness = -np.longdouble(coefficient) * interaction
-    diagonal = coefficient * 2.0 * h**power / (2.0 * s * power)
-    np.fill_diagonal(stiffness, diagonal)
+    def interaction_from_distance(distance: np.ndarray) -> np.ndarray:
+        interaction = np.zeros_like(distance, dtype=np.longdouble)
+        mask = distance > 0.0
+        r = distance[mask]
+        interaction[mask] = (
+            2.0 * r**power
+            - (r + h_extended) ** power
+            - np.maximum(r - h_extended, np.longdouble(0.0)) ** power
+        ) / (2.0 * s * power)
+        return interaction
+
+    # Assemble one local block once.  Reusing it for every component preserves
+    # the exact translation invariance of the Galerkin discretization instead
+    # of subtracting large translated cell coordinates.
+    local_distance = np.abs(local_centers[:, None] - local_centers[None, :])
+    local_stiffness = -coefficient * interaction_from_distance(local_distance)
+    diagonal = coefficient * 2.0 * h_extended**power / (2.0 * s * power)
+    np.fill_diagonal(local_stiffness, diagonal)
+
+    component_count = component_centers_extended.size
+    total_cells = component_count * cells_per_component
+    stiffness = np.empty((total_cells, total_cells), dtype=np.longdouble)
+    for i in range(component_count):
+        i_slice = slice(i * cells_per_component, (i + 1) * cells_per_component)
+        stiffness[i_slice, i_slice] = local_stiffness
+        for j in range(i + 1, component_count):
+            j_slice = slice(j * cells_per_component, (j + 1) * cells_per_component)
+            displacement = component_centers_extended[i] - component_centers_extended[j]
+            distance = np.abs(
+                displacement + local_centers[:, None] - local_centers[None, :]
+            )
+            cross_stiffness = -coefficient * interaction_from_distance(distance)
+            stiffness[i_slice, j_slice] = cross_stiffness
+            stiffness[j_slice, i_slice] = cross_stiffness.T
 
     # The normalized indicator basis has mass matrix I, so divide by h.
     return np.asarray(stiffness / h_extended, dtype=np.float64), h
@@ -114,6 +138,22 @@ def check_constant_energy(cells: int, s: float) -> None:
         )
 
 
+def check_translation_invariance(cells: int, s: float) -> None:
+    """Check that translated components reuse the identical one-well block."""
+    one_well, _ = galerkin_matrix(np.array([0.0]), cells, s)
+    centers = np.array([-24.0, 0.0, 24.0])
+    translated, _ = galerkin_matrix(centers, cells, s)
+    for component in range(centers.size):
+        block = translated[
+            component * cells : (component + 1) * cells,
+            component * cells : (component + 1) * cells,
+        ]
+        if not np.array_equal(block, one_well):
+            raise RuntimeError(
+                f"translation-invariance check failed for component {component}"
+            )
+
+
 def print_configuration(
     label: str,
     normalized_centers: np.ndarray,
@@ -146,6 +186,7 @@ def main() -> None:
 
     started = time.perf_counter()
     check_constant_energy(args.cells, args.s)
+    check_translation_invariance(args.cells, args.s)
     kappa = 1.0 + 2.0 * args.s
     coefficient = normalization_constant(args.s)
     print(

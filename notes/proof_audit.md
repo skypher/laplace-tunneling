@@ -54,6 +54,15 @@ the first Taylor term, proportional to `e dot (x+y)`, vanishes.  The kernel
 remainder is therefore order `L^(-d-2s-2)`.  The spectral perturbation
 remainder is quadratic in the coupling, hence order `L^(-2d-4s)`.
 
+The Hessian of `|Le-z|^(-kappa)` has radial eigenvalue
+`kappa(kappa+1)|Le-z|^(-kappa-2)` and transverse eigenvalues
+`-kappa|Le-z|^(-kappa-2)`, giving the constant
+`C_(kappa,R)=2^(kappa+3)kappa(kappa+1)R^2`.  The explicit threshold in
+Theorem 3.3 supplies both `beta_L <= g/4` and the strict ordering of the two
+branch ground states.  The same comparison proves that the first two
+eigenvalues are simple and that their separation from the third is at least
+`g/2`.
+
 ## Applications and release status
 
 - The source search and bounded priority claim are recorded in
@@ -62,6 +71,8 @@ remainder is quadratic in the coupling, hence order `L^(-2d-4s)`.
   cluster asymptotic.
 - The 180-cell two- and three-well data are saved in
   `numerics/asymptotics_180.txt` and reproduced in Tables 1--2.
+- The numerical assembly reuses one local stiffness block on every translated
+  component and checks exact block equality before solving the eigenproblems.
 - The final theorem, source, numerical, and archive checks are recorded in
   `notes/final_audit.md`.
 

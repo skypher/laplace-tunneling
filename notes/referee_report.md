@@ -1,11 +1,11 @@
 # Referee report
 
-Review date: 2026-09-03.
+Review date: 2026-09-04.
 
 Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: revision tag `paper-2026-09-03-r2`, recorded in
+Version reviewed: revision tag `paper-2026-09-04`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -35,7 +35,7 @@ repository's earlier audit declarations.  The last independent checks were:
    theorem, proposition, section, equation, or page;
 3. exact reproduction of all numerical output, followed by a fresh archive
    build and a deterministic-archive hash comparison; and
-4. inspection of the rendered 15-page manuscript and its final LaTeX log.
+4. inspection of the rendered 16-page manuscript and its final LaTeX log.
 
 These checks support the recommendation above.
 
@@ -126,11 +126,12 @@ manuscript's `−2bt²` term.  Lemma 3.1 is correct as written.
 ### Lemma 3.2: interaction-kernel expansion
 
 For `F_L(z)=|Le−z|^(−κ)`, the segment condition gives distance at least
-`L/2`.  The Hessian operator norm is bounded by
-`κ(κ+3)|Le−z|^(−κ−2)`.  Taylor's factor `1/2`, the bound `|z|≤2R`, and the
-distance estimate combine to
+`L/2`.  Direct differentiation gives radial Hessian eigenvalue
+`κ(κ+1)|Le−z|^(−κ−2)` and transverse eigenvalues
+`−κ|Le−z|^(−κ−2)`.  Taylor's factor `1/2`, the bound `|z|≤2R`, and the
+distance estimate therefore combine to
 
-`2^(κ+3) κ(κ+3) R² L^(−κ−2)`.
+`2^(κ+3) κ(κ+1) R² L^(−κ−2)`.
 
 The derivative at zero is `κL^(−κ−1)e`; because the two-well coordinate uses
 `z=x+y`, evenness of `φ₁` makes its integral vanish.  Positivity converts the
@@ -149,9 +150,13 @@ bound leaves the second level of each branch above `μ₁+3g/4` and both branch
 ground states below `μ₁+g/4`, so the first two full eigenvalues are exactly
 the branch ground states.
 
-The second condition in (3.8) dominates the worst allowed difference of the
-two perturbation errors and fixes their order.  Lemma 3.2 then gives (3.6) and
-(3.7).  After subtracting, multiplication by `L^κ` leaves errors
+The explicit threshold `L₀` first gives `β_L≤g/4`.  Its third term, together
+with `L+2R≤3L/2` and the strict inequality `3/2<2`, dominates the worst
+allowed difference of the two perturbation errors and fixes their order.
+Lemma 3.2 then gives the two stated eigenvalue estimates.  The within-branch
+gap also proves that both eigenvalues are simple,
+`λ₃≥μ₁+3g/4`, and `λ₃−λ₂≥g/2`.  After subtracting the two expansions,
+multiplication by `L^κ` leaves errors
 `O(L^(−2))` and `O(L^(−κ))`, both tending to zero.
 
 Double-check: the lower bound
@@ -338,10 +343,11 @@ spelling as the body.
 The fixed-mesh corollary now identifies `φ_{1,h}` with the one-well Galerkin
 matrix, says that the same partition is translated to every component, and
 states that the tabulated errors are calculated before display rounding.
-The revised introduction has no one-word page break, the compact bibliography
-keeps all thirteen entries on page 15 at the original type size, and the
-layout has no clipping or malformed reference entry.  The AI-use disclosure
-describes the generated code as reproducibility and release-audit code.
+The revised introduction has no one-word page break, all thirteen
+bibliography entries are legible across pages 15--16 at the original type
+size, and the layout has no clipping or malformed reference entry.  The
+AI-use disclosure describes the generated code as reproducibility and
+release-audit code.
 
 ## Citation audit
 
@@ -390,20 +396,23 @@ citation with an Introduction locator tied to Zahl's numbered conjecture.
 The independent run of `python3 -u tools/check_asymptotics.py` reproduced
 every saved numerical line exactly except for elapsed time.  This includes
 the three mesh rows, both effective spectra, and all fourteen separation
-rows.  The constant-function identity passed before the eigensolves.
+rows.  The constant-function identity and the exact equality of all
+translated one-well blocks passed before the eigensolves.  At `L=3`, the
+two- and three-well norm bounds are respectively `0.10858` and `0.21716`,
+both below `g_h/4=0.22424`.
 
 `make audit` reports:
 
 ```text
-release audit passed: citations=13 labels=52 results=15 numerical_rows=11 pages=15
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 pages=16
 ```
 
 The source archive was extracted into a fresh directory.  `make audit`
-rebuilt the 15-page PDF with no final warning matched by the release audit.
+rebuilt the 16-page PDF with no final warning matched by the release audit.
 The archive generated from the reviewed tree has hash:
 
 ```text
-d46ef1341025c0cbb8d95b8c6ccdad2b0b20b65212f323308bada46a824aa826
+0cf1c570769b201acac14bc274cdcd747c10a000efcebf3638a81b4c3dac0f71
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,
@@ -415,7 +424,7 @@ Double-check: the public code URL returned HTTP 200.  The reviewed release is
 identified by the version tag named in the manuscript, and the computational
 and release claims are supported by the checked artifacts.  A second source
 archive byte-matched the release archive, and a fresh extracted-source build
-passed the 15-page release audit.
+passed the 16-page release audit.
 
 ## Paper-level conclusion
 

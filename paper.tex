@@ -51,8 +51,6 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
 
 \renewcommand{\qedsymbol}{$\blacksquare$}
 
@@ -67,7 +65,7 @@ Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
 \newcommand{\authoremail}{polzer@fastmail.com}
-\date{September 3, 2026}
+\date{September 4, 2026}
 
 \makeatletter
 \renewcommand{\section}{%
@@ -127,32 +125,24 @@ Laplacian on distant domains}
 
 \begin{abstract}
 Let $D\subset B_R(0)\subset\R^d$ be a bounded centrally symmetric Lipschitz
-domain, and
-let $\Omega_L$ be the union of two translates of $D$, arranged symmetrically
-and interchanged by central inversion, whose centers are separated by $L$.  For the
-restricted (zero-exterior integral) fractional Laplacian $(-\Delta)^s$,
-$0<s<1$, we determine the leading splitting of the two
-eigenvalues converging to the one-well ground-state energy.  If $\mu_1$ is
-the one-well ground-state eigenvalue, $\phi_1$ is its positive
-$L^2$-normalized eigenfunction, and $m_1=\int_D\phi_1$, then
-\[
+domain, and let $\Omega_L$ be the union of two centrally inverted translates
+of $D$ whose centers are separated by $L$.  For the restricted fractional
+Laplacian $(-\Delta)^s$, $0<s<1$, let $\mu_1$ be the one-well ground-state
+eigenvalue, let $\phi_1$ be its positive $L^2$-normalized eigenfunction, and
+put $m_1=\int_D\phi_1$.  As $L\to\infty$,
+\begin{align*}
  \lambda_1(\Omega_L)
- =\mu_1-c_{d,s}m_1^2L^{-d-2s}
-   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
-\]
-\[
+ &=\mu_1-c_{d,s}m_1^2L^{-d-2s}
+   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),\\
  \lambda_2(\Omega_L)
- =\mu_1+c_{d,s}m_1^2L^{-d-2s}
-   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right).
-\]
-The proof uses an exact central-inversion reduction to the two operators
-$A_D\pm B_L$, an elementary isolated-eigenvalue estimate, and a second-order
-Taylor expansion of the interaction kernel.  For two equal balls, the formula
-for $\lambda_2$ gives the leading rate in the nonlocal Hong--Krahn--Szeg\H{o}
-minimizing sequence.  More generally, central symmetry is unnecessary for
-the finite-well result, including its two-well specialization: for any
-bounded Lipschitz reference domain and any fixed collection of distinct
-translation sites $a_1,\dots,a_N$, the first $N$ eigenvalues are
+ &=\mu_1+c_{d,s}m_1^2L^{-d-2s}
+   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
+\end{align*}
+where $c_{d,s}$ is the singular-integral normalization.  For two equal balls,
+the second formula gives the leading rate in the nonlocal
+Hong--Krahn--Szeg\H{o} minimizing sequence.  More generally, for any bounded
+Lipschitz reference domain and fixed distinct translation sites
+$a_1,\dots,a_N$, the first $N$ eigenvalues are
 \[
  \lambda_k=\mu_1+L^{-d-2s}\theta_k
  +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
@@ -161,13 +151,7 @@ translation sites $a_1,\dots,a_N$, the first $N$ eigenvalues are
 where $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the explicit
 matrix with zero diagonal and off-diagonal entries
 $-c_{d,s}m_1^2\abs{a_i-a_j}^{-d-2s}$.  Exact cell-integral Galerkin
-computations on two and three intervals illustrate the corresponding
-fixed-mesh limits, while a mesh study records stabilization of the one-well
-interaction coefficient.  In the displayed spectral asymptotics,
-$L\to\infty$.
-The implicit constants in the two-well formulas depend only on
-$d,s,D,R$, and $g$; in the multi-well formula they may also depend on the
-fixed $N$ and configuration $(a_1,\dots,a_N)$.
+computations on two and three intervals illustrate these fixed-mesh limits.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -185,8 +169,8 @@ optimization.
 The restricted fractional Laplacian couples disjoint components through its
 integral kernel, unlike the local Dirichlet Laplacian, whose spectrum on a
 disconnected union is exactly the multiset union of the component spectra.
-Thus two distant congruent components exhibit a nonzero splitting that decays
-algebraically with their separation.
+We prove that two distant congruent components exhibit a nonzero splitting
+that decays algebraically with their separation.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
@@ -245,7 +229,8 @@ benchmark: one-well eigenvalue and
 eigenfunction estimates are available in
 \cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
 asymptotics and an eigenfunction bound uniform in both the index and the
-fractional order are proved in \cite[Theorems~1 and~2]{Zhang2026}.
+fractional order are proved in \cite[Theorems~1 and~2]{Zhang2026}.  Both
+sources write the operator order as $\alpha=2s$.
 
 \section{The one-well operator and exact two-well reduction}
 
@@ -256,6 +241,12 @@ Fix $d\geq1$ and $0<s<1$, and put
 For an open set $G\subset\R^d$, let
 \[
  \Hs(G)=\{u\in H^s(\R^d):u=0\ \text{a.e. on }\R^d\setminus G\}.
+\]
+We use the Gagliardo seminorm
+\[
+ [u]_{H^s(\R^d)}^2
+ =\iint_{\R^d\times\R^d}
+   \frac{\abs{u(x)-u(y)}^2}{\abs{x-y}^{d+2s}}\,dx\,dy.
 \]
 For bounded Lipschitz $G$, this space agrees with the completion of
 $C_c^\infty(G)$ in the global $H^s(\R^d)$ norm
@@ -281,8 +272,9 @@ repeated according to multiplicity.  For an abstract self-adjoint operator
 $T$ with compact resolvent, $\lambda_k(T)$ has the analogous meaning.
 
 Let $D\subset B_R(0)$ be a bounded Lipschitz domain satisfying $D=-D$.
-The Lipschitz extension property and compactness of the form embedding follow
-from \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Hence $A_D$
+We retain Lipschitz regularity in order to invoke the extension property and
+compactness of the form embedding from
+\cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Hence $A_D$
 has compact resolvent.  Write its eigenvalues with multiplicity and denote the
 first two distinct levels by
 \[
@@ -297,7 +289,9 @@ linear case.  Fix that eigenfunction and set
  \qquad \norm{\phi_1}_{L^2(D)}=1,
  \qquad m_1=\int_D\phi_1(x)\,dx>0.
 \end{equation}
-Simplicity and central-inversion invariance imply $\phi_1(-x)=\phi_1(x)$.
+Simplicity and central-inversion invariance show that
+$\phi_1(-x)=\pm\phi_1(x)$; positivity fixes the sign, so
+$\phi_1(-x)=\phi_1(x)$.
 
 Fix a unit vector $e\in\R^d$.  For $L>2R$, define
 \[
@@ -362,7 +356,7 @@ any $u,v\in\Hs(D)$ belong to $H^s(\R^d)$, and their sum is supported in
 $\Omega_L$.  Hence the unitary identifies $\Hs(\Omega_L)$ with
 $\Hs(D)\oplus\Hs(D)$.
 
-The cross-kernel is bounded by positive separation.  Each separate
+The cross-kernel is bounded because of positive separation.  Each separate
 zero-exterior form already contains the square interaction with the location
 occupied by the other component.  Thus, after the above changes of
 variables, expanding the square in \eqref{eq:form} gives exactly
@@ -379,7 +373,10 @@ The square terms therefore cancel, leaving no additional diagonal
 contribution.  This proves the block representation in the sense of closed forms.  Since
 $B_L$ is bounded, it also gives the stated operator representation.  The
 unitary change of variables
-$(u,v)\mapsto 2^{-1/2}(u+v,u-v)$ yields \eqref{eq:direct-sum}.
+\[
+ (u,v)\longmapsto 2^{-1/2}(u+v,u-v)
+\]
+yields \eqref{eq:direct-sum}.
 \end{proof}
 
 \section{The doublet splitting}
@@ -389,8 +386,9 @@ branches.
 
 \begin{lemma}[Ground-state perturbation bound]\label{lem:perturb}
 Let $A$ be self-adjoint with compact resolvent, simple lowest eigenvalue
-$\mu$, normalized ground state $\phi$, and spectral gap $g>0$.  Let $W$ be
-bounded and self-adjoint, put $b=\norm{W}$ and
+$\mu$, and normalized ground state $\phi$.  Define the spectral gap by
+$g=\lambda_2(A)-\mu>0$.  Let $W$ be bounded and self-adjoint, put
+$b=\norm{W}$ and
 $w=\ip{\phi}{W\phi}$, and suppose $b\leq g/4$.  Then
 \begin{equation}\label{eq:perturb}
  -\frac{2b^2}{g}
@@ -424,8 +422,10 @@ Using $\abs{w}\leq b$, $\abs{a}\leq1$, and $\norm W=b$,
 Taking the infimum over normalized $\psi$ proves the lower bound.
 \end{proof}
 
-The next lemma extracts the interaction coefficient and records why central
-symmetry improves the kernel error by one power of $L$.
+The next lemma extracts the interaction coefficient.  In the reflected
+coordinates used here, evenness of the ground state removes the linear Taylor
+term.  Section~4 obtains the same error order without symmetry from an
+algebraic cancellation in translated coordinates.
 
 \begin{lemma}[Interaction-kernel expansion]\label{lem:kernel}
 Let
@@ -438,7 +438,7 @@ For $L\geq4R$,
  \abs{I_L-m_1^2L^{-\kappa}}
  \leq C_{\kappa,R}m_1^2L^{-\kappa-2},
  \qquad
- C_{\kappa,R}=2^{\kappa+3}\kappa(\kappa+3)R^2.
+ C_{\kappa,R}=2^{\kappa+3}\kappa(\kappa+1)R^2.
 \end{equation}
 Moreover,
 \begin{equation}\label{eq:Bnorm}
@@ -451,10 +451,18 @@ Moreover,
 \begin{proof}
 Set $F_L(z)=\abs{Le-z}^{-\kappa}$.  For $\abs z\leq2R$ and $L\geq4R$,
 the segment from $0$ to $z$ remains at distance at least $L/2$ from $Le$.
-Direct differentiation gives
+Put $n_z=(Le-z)/\abs{Le-z}$.  Direct differentiation gives
 \[
- \norm{D^2F_L(z)}
- \leq \kappa(\kappa+3)\abs{Le-z}^{-\kappa-2}.
+ \nabla^2F_L(z)
+ =\kappa\abs{Le-z}^{-\kappa-2}
+   \bigl((\kappa+2)n_z\otimes n_z-I\bigr).
+\]
+Its radial and transverse eigenvalues are respectively
+$\kappa(\kappa+1)\abs{Le-z}^{-\kappa-2}$ and
+$-\kappa\abs{Le-z}^{-\kappa-2}$.  Since $\kappa>1$,
+\[
+ \norm{\nabla^2F_L(z)}
+ =\kappa(\kappa+1)\abs{Le-z}^{-\kappa-2}.
 \]
 Taylor's theorem therefore yields
 \[
@@ -483,9 +491,16 @@ which is \eqref{eq:Bnorm}.
 
 \begin{theorem}[Two-well algebraic splitting]\label{thm:two-well}
 Let $D\subset B_R(0)$ be a bounded centrally symmetric Lipschitz domain, and
-let $\Omega_L$ be defined above.  There is $L_0<\infty$, determined by
-$d,s,D,R$ and the one-well gap $g$, such that for $L\geq L_0$ the first two
-eigenvalues of $A_{\Omega_L}$ satisfy
+let $\Omega_L$ be as in Section~2.  Set
+\begin{equation}\label{eq:explicit-L0}
+ L_0=\max\left\{
+  4R,
+  \left(\frac{4c_{d,s}2^\kappa\abs D}{g}\right)^{1/\kappa},
+  2\left(\frac{2c_{d,s}4^\kappa\abs{D}^2}
+  {gm_1^2}\right)^{1/\kappa}
+ \right\}.
+\end{equation}
+For $L\geq L_0$, the first two eigenvalues of $A_{\Omega_L}$ satisfy
 \begin{align}
  \abs{\lambda_1(\Omega_L)
   -(\mu_1-c_{d,s}m_1^2L^{-\kappa})}
@@ -496,6 +511,12 @@ eigenvalues of $A_{\Omega_L}$ satisfy
  &\leq c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
        +\frac{2\beta_L^2}{g}.\label{eq:lambda2}
 \end{align}
+Both eigenvalues are simple, and
+\begin{equation}\label{eq:two-well-third-level}
+ \lambda_3(\Omega_L)\geq\mu_1+\frac{3g}{4},
+ \qquad
+ \lambda_3(\Omega_L)-\lambda_2(\Omega_L)\geq\frac g2.
+\end{equation}
 In particular, as $L\to\infty$,
 \begin{equation}\label{eq:gap-limit}
  L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(\Omega_L)\bigr)
@@ -509,14 +530,22 @@ $A_D+B_L$ and $A_D-B_L$.  Put
 \[
  t_L=\ip{\phi_1}{B_L\phi_1}=-c_{d,s}I_L<0.
 \]
-Choose $L_0\geq4R$ so large that, for $L\geq L_0$,
+For $L\geq L_0$, the second term in \eqref{eq:explicit-L0} gives the first
+inequality in
 \begin{equation}\label{eq:L0-conditions}
  \beta_L\leq\frac g4,
  \qquad
  2c_{d,s}m_1^2(L+2R)^{-\kappa}>\frac{4\beta_L^2}{g}.
 \end{equation}
-Such a choice exists because the left-hand side of the second inequality is
-of order $L^{-\kappa}$ and its right-hand side is of order $L^{-2\kappa}$.
+Indeed, $L\geq4R$ gives $L+2R\leq3L/2$, while the third term in
+\eqref{eq:explicit-L0} and $3/2<2$ give
+\[
+ L^\kappa>
+ \left(\frac32\right)^\kappa
+ \frac{2c_{d,s}4^\kappa\abs{D}^2}{gm_1^2}.
+\]
+Substitution of $\beta_L=c_{d,s}2^\kappa\abs D\,L^{-\kappa}$ proves the
+strict second inequality in \eqref{eq:L0-conditions}.
 
 Apply Lemma~\ref{lem:perturb} first with $W=B_L$ and then with $W=-B_L$.
 The two branch ground-state energies have the form
@@ -541,13 +570,18 @@ Since $\abs{Le-x-y}\leq L+2R$ and $\phi_1>0$,
 The second condition in \eqref{eq:L0-conditions} and
 \eqref{eq:branches} imply $E_+(L)<E_-(L)$.  Hence
 $\lambda_1(\Omega_L)=E_+(L)$ and
-$\lambda_2(\Omega_L)=E_-(L)$.  Equations \eqref{eq:lambda1} and
+$\lambda_2(\Omega_L)=E_-(L)$.  The within-branch separation above makes both
+eigenvalues simple.  It also gives
+$\lambda_3(\Omega_L)\geq\mu_1+3g/4$, while
+$\lambda_2(\Omega_L)\leq\mu_1+g/4$; this proves
+\eqref{eq:two-well-third-level}.  Equations \eqref{eq:lambda1} and
 \eqref{eq:lambda2} now follow from Lemma~\ref{lem:kernel}.  Subtracting the
 two expansions and multiplying by $L^\kappa$ proves
 \eqref{eq:gap-limit}, since $\kappa>0$.
 \end{proof}
 
 \begin{corollary}[Rate for the distant-ball minimizing sequence]
+\label{cor:distant-ball}
 Let $D=B_R(0)$ and let $\Omega_L$ be the union of two radius-$R$ balls whose
 centers are separated by $L$, so that $\abs{\Omega_L}=2\abs{B_R}$.  Then, as
 $L\to\infty$,
@@ -652,12 +686,12 @@ The Schur test therefore gives
  L^{-\kappa}\abs{a_i-a_j}^{-\kappa}.
 \end{equation}
 For $u=(u_1,\dots,u_N)$, set $r_j=\norm{u_j}_{L^2(D)}$ and let
-$G$ be the symmetric matrix with entries
-$G_{ij}=\norm{B_{ij,L}}$.  Then
+$\mathsf N_L$ be the symmetric matrix with entries
+$(\mathsf N_L)_{ij}=\norm{B_{ij,L}}$.  Then
 \[
  \norm{\mathcal V_Lu}_{\mathcal H_N}
- \leq\norm{Gr}_{\ell^2}
- \leq\left(\max_i\sum_jG_{ij}\right)\norm r_{\ell^2}.
+ \leq\norm{\mathsf N_Lr}_{\ell^2}
+ \leq\left(\max_i\sum_j(\mathsf N_L)_{ij}\right)\norm r_{\ell^2}.
 \]
 Combining this inequality with \eqref{eq:multi-block-norm} proves
 \eqref{eq:gamma-L}.
@@ -765,7 +799,7 @@ $F(z)=\abs{La+z}^{-\kappa}$.  For $\abs z\leq2R$, the segment from $0$ to
 $z$ stays at distance at least $L\abs a/2$ from $-La$.  As in the proof of
 Lemma~\ref{lem:kernel}, Taylor's theorem gives
 \begin{equation}\label{eq:multi-taylor}
- \abs{F(z)-F(0)-DF(0)z}
+ \abs{F(z)-F(0)-\nabla F(0)\mathbin{\cdot}z}
  \leq C_{\kappa,R}L^{-\kappa-2}\abs a^{-\kappa-2}.
 \end{equation}
 The linear term vanishes after integration because
@@ -968,13 +1002,14 @@ We finish with a conforming fixed-mesh Galerkin check of the two- and
 three-well limits.  It tests the formulas and is not an input to their proofs.
 No $h\to0$ discretization-error estimate is claimed; the calculation tests
 the proved $L\to\infty$ asymptotic at fixed mesh.  Take $d=1$, $0<s<1/2$,
-and partition each unit interval into cells of length $h$.  The cell
+and consider finite unions of unit intervals.  Partition each component into
+cells of length $h$.  The cell
 indicators have finite form energy by Proposition~\ref{prop:cell-matrix}, so
 they span a conforming finite-dimensional subspace of the form domain.
 
 \begin{proposition}[Exact cell-integral matrix]\label{prop:cell-matrix}
-Let $I_1,\dots,I_M$ be pairwise disjoint cells of common length $h$, with
-centers $x_\alpha$, and set $G=\bigcup_{\alpha=1}^M I_\alpha$,
+Assume $0<s<1/2$.  Let $I_1,\dots,I_M$ be pairwise disjoint cells of common
+length $h$, with centers $x_\alpha$, and set $G=\bigcup_{\alpha=1}^M I_\alpha$,
 $r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and $q=1-2s$.  In the
 $L^2(G)$-orthonormal basis $e_\alpha=h^{-1/2}\mathbf 1_{I_\alpha}$, the
 Galerkin matrix $H_h$ of the zero-exterior form $\mathcal q_G$ has entries
@@ -1086,37 +1121,43 @@ display.
 
 \begin{table}[ht]
 \centering
-\begin{tabular}{rccc}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rccc@{}}
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & max. error\\ \hline
 3  & $-0.190740$ & $ 0.189832$ & $5.52\times10^{-3}$\\
 6  & $-0.186544$ & $ 0.186335$ & $1.33\times10^{-3}$\\
 12 & $-0.185551$ & $ 0.185486$ & $3.36\times10^{-4}$\\
-24 & $-0.185286$ & $ 0.185295$ & $8.04\times10^{-5}$\\
+24 & $-0.185302$ & $ 0.185279$ & $8.68\times10^{-5}$\\
 \hline
-\end{tabular}
+\end{tabular*}
 
 \vskip10pt
-\begin{tabular}{rcccc}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rcccc@{}}
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & max. error\\ \hline
 3  & $-0.304984$ & $0.065562$ & $0.237544$ & $8.27\times10^{-3}$\\
 6  & $-0.298738$ & $0.065554$ & $0.232747$ & $2.03\times10^{-3}$\\
-12 & $-0.297232$ & $0.065510$ & $0.231597$ & $5.19\times10^{-4}$\\
-24 & $-0.296843$ & $0.065504$ & $0.231323$ & $1.29\times10^{-4}$\\
+12 & $-0.297236$ & $0.065504$ & $0.231595$ & $5.22\times10^{-4}$\\
+24 & $-0.296852$ & $0.065488$ & $0.231316$ & $1.38\times10^{-4}$\\
 \hline
-\end{tabular}
-\caption{Scaled two-well (top) and three-well (bottom) cluster shifts.}
+\end{tabular*}
+\caption{Scaled two-well (top) and three-well (bottom) cluster shifts at
+selected separations.}
 \label{tab:clusters}
 \end{table}
 
-The scaled errors decrease to zero in both configurations, as asserted at
-fixed mesh by Corollary~\ref{cor:discrete-cluster}.  The calculation uses the
-exact entries \eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}; no
-singular quadrature or fitted coefficient enters the tables.
+At the selected separations, the scaled errors decrease monotonically;
+Corollary~\ref{cor:discrete-cluster} proves that they tend to zero at fixed
+mesh.  At $L=3$, the discrete bounds are $\gamma_L=0.10858$ for two wells and
+$\gamma_L=0.21716$ for three wells, both below $g_h/4=0.22424$.  Since
+$\gamma_L$ decreases with $L$ and $L\delta_{\mathbf a}\geq4R$ already at
+$L=3$, the finite-dimensional cluster estimate used in the proof applies at
+every computed separation.  The calculation uses the exact entries
+\eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}; no singular quadrature
+or fitted coefficient enters the tables.
 
 \section*{AI-use disclosure}
 
@@ -1134,14 +1175,15 @@ claims, citations, computations, and wording.
 The script \path{tools/check_asymptotics.py} reproduces
 Tables~\ref{tab:mesh} and \ref{tab:clusters}.  Before solving the
 eigenproblems, it checks the assembled constant-function energy identity and
-prints progress after each separation.  The pinned numerical dependencies are
+the exact reuse of each translated one-well block, then prints progress after
+each separation.  The pinned numerical dependencies are
 listed in
 \path{requirements-numerics.txt}; the reference output was replayed with
 Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
 includes frozen copies of the scripts, pinned dependencies, and reference
 output; this is the version corresponding to the manuscript.
 The version tag for this manuscript is
-\texttt{paper-2026-09-03-r2}.  The development repository is available at
+\texttt{paper-2026-09-04}.  The development repository is available at
 \href{https://github.com/skypher/laplace-tunneling}%
 {github.com/skypher/laplace-tunneling}.
 \end{sloppypar}

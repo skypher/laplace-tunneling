@@ -1,6 +1,6 @@
 # Final theorem and release audit
 
-Audit date: 2026-09-03.
+Audit date: 2026-09-04.
 
 ## Final-facing theorem checks
 
@@ -25,11 +25,17 @@ Audit date: 2026-09-03.
 - Lemma 3.1 states the form domain for the Rayleigh vectors, displays the
   full `W`-term expansion, and bounds the isolated-eigenvalue error by
   `2 beta_L^2/g`.
-- Lemma 3.2 uses the Hessian bound
-  `kappa (kappa+3) |Le-z|^(-kappa-2)` and evenness of the ground state to
-  remove the linear Taylor term.
-- The ordering condition in (3.8) separates the two branch ground states
-  from both branch second eigenvalues and fixes the signs in (3.6)--(3.7).
+- Lemma 3.2 computes the Hessian exactly: its radial eigenvalue is
+  `kappa (kappa+1) |Le-z|^(-kappa-2)` and every transverse eigenvalue is
+  `-kappa |Le-z|^(-kappa-2)`.  Evenness of the ground state removes the
+  linear Taylor term in the reflected coordinates.
+- Theorem 3.3 gives an explicit `L_0`.  Its second term yields
+  `beta_L <= g/4`, while its third term and `L+2R <= 3L/2` yield the strict
+  branch-ordering inequality.
+- The branch comparison separates both ground states from both branch second
+  eigenvalues.  The theorem therefore states that `lambda_1` and `lambda_2`
+  are simple, `lambda_3 >= mu_1+3g/4`, and
+  `lambda_3-lambda_2 >= g/2`.
 - Multiplication by `L^kappa` leaves errors of orders `L^(-2)` and
   `L^(-kappa)`, both tending to zero in the ordinary topology of the real
   numbers.
@@ -77,11 +83,17 @@ Audit date: 2026-09-03.
   diagonal integral exactly for `0 < s < 1/2`.
 - Corollary 5.2 repeats the block, gap, and Taylor estimates in the fixed
   finite-dimensional Galerkin space and states its own remainder.
-- The saved 180-cell run completed in 57.123 seconds.  Its constant-function
-  form identity passed before any eigensolve, and every number printed in
-  Tables 1--2 agrees with the saved output after the displayed rounding.
-- A fresh unbuffered replay on 2026-09-03 with Python 3.12.3, NumPy 1.26.4,
-  and SciPy 1.11.4 completed in 13.551 seconds and again matched every saved
+- The Galerkin assembly constructs one local stiffness block and reuses it
+  exactly on every translated component.  This removes cancellation caused
+  by forming within-component distances from large translated coordinates;
+  an exact block-equality check runs before any eigensolve.
+- The saved corrected 180-cell run completed in 27.019 seconds.  Its
+  constant-function form identity and translated-block check passed, and
+  every number printed in Tables 1--2 agrees with the saved output after the
+  displayed rounding.  At `L=3`, the two- and three-well norm bounds are
+  respectively `0.10858` and `0.21716`, both below `g_h/4=0.22424`.
+- A fresh unbuffered replay on 2026-09-04 with Python 3.12.3, NumPy 1.26.4,
+  and SciPy 1.11.4 completed in 35.683 seconds and again matched every saved
   value after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
@@ -113,14 +125,14 @@ priority wording “we are not aware of an earlier result.”
 ## Release checks
 
 The final `make audit` run checks the last LaTeX build, which produced a
-15-page PDF with no unresolved citation, unresolved
+16-page PDF with no unresolved citation, unresolved
 reference, multiply-defined label, overfull box, or underfull box.  Visual
-inspection of all 15 pages confirms that the abstract radius, cutoff estimate,
+inspection of all 16 pages confirms that the abstract radius, cutoff estimate,
 normalization, cluster-edge bounds, symmetry-free corollary, fixed-mesh
 geometry, effective spectra, tables, disclosure, code-availability metadata,
 and linked references are legible.  The introduction no longer breaks after
-an isolated word, and all thirteen bibliography entries remain on the
-final page.  The title
+an isolated word, and all thirteen bibliography entries are legible across
+pages 15--16.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
@@ -134,15 +146,15 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=13 labels=52 results=15 numerical_rows=11 pages=15
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 pages=16
 ```
 
 Artifact hashes after the referee-revision build are:
 
 ```text
-8d6c2ce31f79ce51dbc57e2ea32bc741b30a54a1d2a6fc3fef47101531766fee  paper.pdf
-d46ef1341025c0cbb8d95b8c6ccdad2b0b20b65212f323308bada46a824aa826  dist/laplace-tunneling-arxiv.tar.gz
-6f2d9d3acfa7b7a6c659399ac06f0a30fcc6788c51582681ffeb59775a4facc3  numerics/asymptotics_180.txt
+52b7114c5d9c8ceac7406554f99c996ced7f5ae6d4dffffae98c6f73d0708a91  paper.pdf
+0cf1c570769b201acac14bc274cdcd747c10a000efcebf3638a81b4c3dac0f71  dist/laplace-tunneling-arxiv.tar.gz
+af38fe65daf22e5f08a1ea7df85937d2931162b0e52a993f5419d74c826879e9  numerics/asymptotics_180.txt
 ```
 
 The source archive passed `gzip -t` and contains the manuscript, generated
@@ -150,9 +162,9 @@ bibliography, BibTeX database, README, Makefile, release and numerical audit
 scripts, pinned dependencies, and saved 180-cell output.  Every extracted
 payload byte-matched its working-tree source.  The `make arxiv` prerequisite
 ran the release audit and returned the result shown above.  The revised
-release is named `paper-2026-09-03-r2` in the manuscript and README.  A second
+release is named `paper-2026-09-04` in the manuscript and README.  A second
 archive created from the same inputs byte-matched the release archive, and a
-fresh extracted-source build passed the same 15-page audit.
+fresh extracted-source build passed the same 16-page audit.
 
 ## Final double-check before closure
 

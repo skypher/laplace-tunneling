@@ -85,7 +85,7 @@ def main() -> None:
         "\\author{Leslie P. Polzer}",
         "\\newcommand{\\authoraffiliation}{Independent Researcher}",
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
-        "\\date{September 3, 2026}",
+        "\\date{September 4, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
         "https://github.com/skypher/laplace-tunneling",
     )
@@ -125,8 +125,9 @@ def main() -> None:
     )
     code_availability = (
         "assembled constant-function energy identity",
+        "exact reuse of each translated one-well block",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-03-r2",
+        "paper-2026-09-04",
         "this is the version corresponding to the manuscript",
     )
     for fragment in code_availability:
@@ -148,7 +149,7 @@ def main() -> None:
     )
     for pattern in critical_log_patterns:
         require(pattern not in build_log, f"final build diagnostic: {pattern}")
-    expected_pages = 15
+    expected_pages = 16
     require(
         f"Output written on paper.pdf ({expected_pages} pages" in build_log,
         "unexpected final PDF page count",
@@ -162,12 +163,12 @@ def main() -> None:
         "3.0 [-0.19073969 +0.18983213] 5.52492390e-03",
         "6.0 [-0.18654355 +0.18633540] 1.32877928e-03",
         "12.0 [-0.18555071 +0.18548609] 3.35940722e-04",
-        "24.0 [-0.18528584 +0.18529520] 8.04350430e-05",
+        "24.0 [-0.18530156 +0.18527949] 8.67909149e-05",
         "configuration=three_collinear_wells theta=[-0.29671332 +0.06548331 +0.23123001]",
         "3.0 [-0.30498358 +0.06556153 +0.23754436] 8.27026105e-03",
         "6.0 [-0.29873846 +0.06555350 +0.23274709] 2.02514771e-03",
-        "12.0 [-0.29723238 +0.06550952 +0.23159709] 5.19068743e-04",
-        "24.0 [-0.29684270 +0.06550416 +0.23132312] 1.29386990e-04",
+        "12.0 [-0.29723551 +0.06550397 +0.23159465] 5.22191390e-04",
+        "24.0 [-0.29685154 +0.06548844 +0.23131623] 1.38220035e-04",
         "completed elapsed_seconds=",
     ]
     for fragment in expected_numerical_fragments:
@@ -175,6 +176,9 @@ def main() -> None:
 
     manuscript_fragments = [
         "c_{d,s}=4^s s\\,\\Gamma(d/2+s)/(\\pi^{d/2}\\Gamma(1-s))",
+        "C_{\\kappa,R}=2^{\\kappa+3}\\kappa(\\kappa+1)R^2",
+        "\\label{eq:explicit-L0}",
+        "\\label{eq:two-well-third-level}",
         "\\cite[Theorem~1.4]{GoelSreenadh2019}",
         "\\abs{u(x)-v(y)}^2-\\abs{u(x)}^2-\\abs{v(y)}^2",
         "\\ip{\\psi}{W\\psi}-w",
@@ -189,11 +193,11 @@ def main() -> None:
         "$-0.190740$ & $ 0.189832$ & $5.52\\times10^{-3}$",
         "$-0.186544$ & $ 0.186335$ & $1.33\\times10^{-3}$",
         "$-0.185551$ & $ 0.185486$ & $3.36\\times10^{-4}$",
-        "$-0.185286$ & $ 0.185295$ & $8.04\\times10^{-5}$",
+        "$-0.185302$ & $ 0.185279$ & $8.68\\times10^{-5}$",
         "$-0.304984$ & $0.065562$ & $0.237544$ & $8.27\\times10^{-3}$",
         "$-0.298738$ & $0.065554$ & $0.232747$ & $2.03\\times10^{-3}$",
-        "$-0.297232$ & $0.065510$ & $0.231597$ & $5.19\\times10^{-4}$",
-        "$-0.296843$ & $0.065504$ & $0.231323$ & $1.29\\times10^{-4}$",
+        "$-0.297236$ & $0.065504$ & $0.231595$ & $5.22\\times10^{-4}$",
+        "$-0.296852$ & $0.065488$ & $0.231316$ & $1.38\\times10^{-4}$",
     ]
     for fragment in manuscript_fragments:
         require(fragment in paper, f"missing manuscript table fragment: {fragment}")
