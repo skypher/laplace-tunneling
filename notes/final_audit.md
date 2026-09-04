@@ -152,8 +152,8 @@ release audit passed: citations=13 labels=55 results=15 numerical_rows=11 pages=
 Artifact hashes after the referee-revision build are:
 
 ```text
-52b7114c5d9c8ceac7406554f99c996ced7f5ae6d4dffffae98c6f73d0708a91  paper.pdf
-0cf1c570769b201acac14bc274cdcd747c10a000efcebf3638a81b4c3dac0f71  dist/laplace-tunneling-arxiv.tar.gz
+5b9b1065fd9b700db4436c132db2a0114525029a32bd8f3ea931882e76347944  paper.pdf
+3a75980f63de706fb3744418436aaedd106c93c834c7428361f07b8e6356fdf9  dist/laplace-tunneling-arxiv.tar.gz
 af38fe65daf22e5f08a1ea7df85937d2931162b0e52a993f5419d74c826879e9  numerics/asymptotics_180.txt
 ```
 
@@ -162,7 +162,7 @@ bibliography, BibTeX database, README, Makefile, release and numerical audit
 scripts, pinned dependencies, and saved 180-cell output.  Every extracted
 payload byte-matched its working-tree source.  The `make arxiv` prerequisite
 ran the release audit and returned the result shown above.  The revised
-release is named `paper-2026-09-04` in the manuscript and README.  A second
+release is named `paper-2026-09-04-r1` in the manuscript and README.  A second
 archive created from the same inputs byte-matched the release archive, and a
 fresh extracted-source build passed the same 16-page audit.
 

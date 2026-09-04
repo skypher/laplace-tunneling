@@ -125,8 +125,8 @@ Laplacian on distant domains}
 
 \begin{abstract}
 Let $D\subset B_R(0)\subset\R^d$ be a bounded centrally symmetric Lipschitz
-domain, and let $\Omega_L$ be the union of two centrally inverted translates
-of $D$ whose centers are separated by $L$.  For the restricted fractional
+domain, fix a unit vector $e\in\R^d$, and set
+$\Omega_L=(D-\frac L2e)\cup(D+\frac L2e)$.  For the restricted fractional
 Laplacian $(-\Delta)^s$, $0<s<1$, let $\mu_1$ be the one-well ground-state
 eigenvalue, let $\phi_1$ be its positive $L^2$-normalized eigenfunction, and
 put $m_1=\int_D\phi_1$.  As $L\to\infty$,
@@ -152,6 +152,8 @@ where $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the explicit
 matrix with zero diagonal and off-diagonal entries
 $-c_{d,s}m_1^2\abs{a_i-a_j}^{-d-2s}$.  Exact cell-integral Galerkin
 computations on two and three intervals illustrate these fixed-mesh limits.
+All implicit constants are uniform in $L$ for fixed $d,s,D,R$ and, in the
+multi-well statement, fixed $N$ and translation sites.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -180,8 +182,10 @@ Biagi, Dipierro, Valdinoci, and Vecchi
 \cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}, and by Goel and Sreenadh
 for a local $p$-Laplacian coupled to a compact-kernel nonlocal $p$-Laplacian
 \cite[Theorem~1.4]{GoelSreenadh2019}; the latter interaction is finite-range
-rather than algebraic.  Parini and Salort placed
-such distant components in a general concentration--compactness dichotomy
+rather than algebraic.  Parini and Salort proved a fractional
+concentration--compactness trichotomy for bounded Sobolev sequences and
+transferred its dichotomy to quasi-open domains through operator-norm
+resolvent approximation
 \cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  For two one-dimensional
 patches, L\'eculier and Roquejoffre proved monotonicity and continuity of the
 principal eigenvalue throughout the separation range, including contact
@@ -261,7 +265,12 @@ The zero-exterior quadratic form is
 where
 $c_{d,s}=4^s s\,\Gamma(d/2+s)/(\pi^{d/2}\Gamma(1-s))$
 is the standard normalization in the singular-integral definition of
-$(-\Delta)^s$.  The form norm
+$(-\Delta)^s$.  Brasco and Parini use coefficient $2$ in place of
+$c_{d,s}$ in the singular-integral operator, so their eigenvalues are
+multiplied here by $c_{d,s}/2$; the positivity, simplicity, ordering, and
+shape-optimization statements cited below are unchanged by this fixed
+positive rescaling
+\cite[Section~1.1, p.~2]{BrascoParini2016}.  The form norm
 $\bigl(\mathcal q_G[u]+\norm{u}_{L^2(G)}^2\bigr)^{1/2}$
 is equivalent to the norm inherited from $H^s(\R^d)$ on $\Hs(G)$.  Thus
 \eqref{eq:form} is a densely defined closed form, and we denote its associated
@@ -902,6 +911,7 @@ In particular,
  L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(\Omega_L)\bigr)
  \longrightarrow 2c_{d,s}m_1^2r^{-d-2s}.
 \]
+The implicit constants in the two expansions are independent of $L$.
 \end{corollary}
 
 \begin{proof}
@@ -1183,9 +1193,9 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
 includes frozen copies of the scripts, pinned dependencies, and reference
 output; this is the version corresponding to the manuscript.
 The version tag for this manuscript is
-\texttt{paper-2026-09-04}.  The development repository is available at
-\href{https://github.com/skypher/laplace-tunneling}%
-{github.com/skypher/laplace-tunneling}.
+\texttt{paper-2026-09-04-r1}.  The tagged development source is available at
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r1}%
+{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r1}.
 \end{sloppypar}
 
 \enlargethispage{3\baselineskip}

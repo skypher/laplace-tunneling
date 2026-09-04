@@ -5,7 +5,7 @@ Review date: 2026-09-04.
 Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: revision tag `paper-2026-09-04`, recorded in
+Version reviewed: revision tag `paper-2026-09-04-r1`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -412,7 +412,7 @@ rebuilt the 16-page PDF with no final warning matched by the release audit.
 The archive generated from the reviewed tree has hash:
 
 ```text
-0cf1c570769b201acac14bc274cdcd747c10a000efcebf3638a81b4c3dac0f71
+3a75980f63de706fb3744418436aaedd106c93c834c7428361f07b8e6356fdf9
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,

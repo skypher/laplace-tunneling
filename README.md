@@ -40,7 +40,7 @@ manuscript source, generated bibliography, release and numerical audit scripts,
 pinned dependencies, and reference numerical output.
 
 The version tag for the reviewed manuscript is
-`paper-2026-09-04`.
+`paper-2026-09-04-r1`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.
