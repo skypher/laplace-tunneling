@@ -95,7 +95,7 @@ def main() -> None:
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
         "\\date{September 4, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r3",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r4",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -116,11 +116,12 @@ def main() -> None:
         require(fragment in paper, f"missing Virasoro-style primitive: {fragment}")
 
     ai_disclosure = (
-        "\\section*{AI-use disclosure}",
+        "\\section*{Use of artificial intelligence}",
         "OpenAI's GPT-5.6 Sol model",
         "\\texttt{gpt-5.6-sol}",
-        "argument development and stress testing",
-        "preparation of reproducibility and release-audit code",
+        "to explore and test arguments",
+        "audit citations and calculations",
+        "prepare reproducibility and release-checking code",
         "takes responsibility for all mathematical claims, citations, computations, and wording",
     )
     normalized_paper = re.sub(r"\s+", " ", paper)
@@ -135,11 +136,11 @@ def main() -> None:
         "assembled constant-function energy identity",
         "exact reuse of each translated one-well block",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-04-r3",
-        "anc/check_asymptotics.py",
-        "anc/requirements-numerics.txt",
-        "anc/asymptotics_180.txt",
-        "this is the version corresponding to the manuscript",
+        "paper-2026-09-04-r4",
+        "check_asymptotics.py",
+        "requirements-numerics.txt",
+        "asymptotics_180.txt",
+        "these archived files correspond to the manuscript",
     )
     for fragment in code_availability:
         require(
@@ -148,11 +149,11 @@ def main() -> None:
         )
     require(
         "identically oriented translates of a common well" in normalized_paper,
-        "missing finite-well orientation scope",
+        "missing multi-well orientation scope",
     )
     require(
         "many congruent wells" not in normalized_paper,
-        "finite-well claim overstates the proved translation geometry",
+        "multi-well claim overstates the proved translation geometry",
     )
     require(
         "compact-kernel nonlocal" not in normalized_paper,
@@ -160,10 +161,10 @@ def main() -> None:
     )
     require(
         "identically oriented translates of a common well" in readme,
-        "README overstates the finite-well geometry",
+        "README overstates the multi-well geometry",
     )
     require(
-        "paper-2026-09-04-r3" in readme,
+        "paper-2026-09-04-r4" in readme,
         "README release tag is stale",
     )
 

@@ -6,7 +6,7 @@ buckets.  Structural files and literature lists do not earn percentage credit.
 | Bucket | Weight | Acceptance condition | Status |
 |---|---:|---|---|
 | Two-well splitting | 35% | Exact block reduction, coefficient, sign, and remainder compile in the manuscript | closed |
-| Multi-well effective Hamiltonian | 30% | The spectral cluster is reduced to an explicit finite matrix with a norm-controlled error | closed |
+| Multi-well effective interaction matrix | 30% | The spectral cluster is reduced to an explicit finite matrix with a norm-controlled error | closed |
 | Applications and source audit | 20% | Quantitative Hong--Krahn--Szegő corollary, interval/ball examples, and priority search are checked | closed |
 | Integration | 15% | Full manuscript compiles, notation is consistent, and every cited use is source-specific | closed |
 

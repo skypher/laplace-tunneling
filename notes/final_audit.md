@@ -48,8 +48,9 @@ Audit date: 2026-09-04.
   Corollary 4.7 states the resulting symmetry-free two-well asymptotic.
   Corollary 4.8 restores `D=-D` exactly where comparison with the reflected
   scalar branches uses it.  The abstract, introduction, repository summary,
-  and closing scope statement now advertise exactly the proved geometry:
-  identically oriented translates `D+La_j`, not independently rotated copies.
+  and Section 4's fixed-data statement now advertise exactly the proved
+  geometry: identically oriented translates `D+La_j`, not independently
+  rotated copies.
 - Lemma 4.2 identifies the direct-sum form domain and obtains the full block
   norm from the Schur bounds and the symmetric row-sum estimate.
 - Lemma 4.3 was checked from the min--max principle on the ground-state
@@ -138,29 +139,30 @@ normalization, cluster-edge bounds, symmetry-free corollary, fixed-mesh
 geometry, effective spectra, revised table labels, disclosure,
 code-availability metadata, and linked DOI/arXiv references are legible.  The
 shortened abstract and the contribution, geometry-scope, and symmetry
-clarifications are also legible.  Page 15 contains the fixed-mesh table, scope
-statement, disclosure, and code information; all thirteen bibliography entries
-fit legibly on page 16.  The title page lists Leslie P. Polzer, Independent Researcher, and
-`polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
+clarifications are also legible.  Page 15 contains the fixed-mesh table,
+disclosure, code information, and the first bibliography entry; the remaining
+twelve entries fit legibly on page 16.  The title page lists Leslie P. Polzer,
+Independent Researcher, and `polzer@fastmail.com`; the PDF Author field is
+`Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
 paper confirms the same two-sided article geometry, Latin Modern font set,
 title stack, section and theorem typography, running-head convention,
 caption treatment, link palette, and ruled-table presentation.  Page 15
-contains the AI-use disclosure naming OpenAI GPT-5.6 Sol
+contains the AI disclosure naming OpenAI GPT-5.6 Sol
 (`gpt-5.6-sol`) and specifying its research uses.  The manuscript source and extracted
 PDF text contain no prohibited product-name reference.
 
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1269 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1410 pages=16
 ```
 
 Artifact hashes after the arXiv-readiness revision are:
 
 ```text
-f598e1403fad74c223918022cb7503c9df04d2669f6fc98faf0fa3a6af54605c  paper.pdf
-42f9fd9f7cc0213cf167aaf122b82780ae7c4d470571b5e795ebe572e393fee8  dist/laplace-tunneling-arxiv.tar.gz
+3bd6c98ea0f03c2eb59ab7784d6a334961bf9025633c02f766491a6bdca0a925  paper.pdf
+69329e84fa874b531925c68987272377fbfefc8534b0690af284e1b05c34ce1b  dist/laplace-tunneling-arxiv.tar.gz
 af38fe65daf22e5f08a1ea7df85937d2931162b0e52a993f5419d74c826879e9  numerics/asymptotics_180.txt
 ```
 
@@ -170,11 +172,8 @@ script, pinned dependencies, and saved 180-cell output.  The manifest has seven
 files and one directory, and every extracted payload byte-matched its
 working-tree source.  The `make arxiv` prerequisite ran the release audit and
 returned the result shown above.  The revised release is named
-`paper-2026-09-04-r3` in the manuscript and README.  An independently staged
-archive byte-matched the release archive.  Two PDFLaTeX passes from a fresh
-extraction, without repository build files, produced a 16-page PDF whose final
-log had no warnings or box diagnostics and whose extracted text byte-matched
-the local PDF text.
+`paper-2026-09-04-r4` in the manuscript and README.  A second archive
+generation byte-matched the release archive.
 
 ## Final double-check before closure
 

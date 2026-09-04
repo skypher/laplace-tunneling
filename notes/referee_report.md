@@ -5,7 +5,7 @@ Review date: 2026-09-04.
 Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: revision tag `paper-2026-09-04-r3`, recorded in
+Version reviewed: revision tag `paper-2026-09-04-r4`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -23,12 +23,13 @@ signs, leading coefficients, spectral-gap errors, Taylor errors, and limiting
 scales are mutually consistent.  The minor normalization, cluster-gap,
 all-distance simplicity, geometry-scope, bibliography, wording, and pagination
 issues found in the preceding reviews are corrected in this revision.  In
-particular, the finite-well claims now say "identically oriented translates,"
-Corollary 4.8 states its common threshold and exact error identity, and the
-closing scope statement fixes every parameter held constant as `L` tends to
-infinity.  I found no remaining mathematical error, no missing hypothesis used
-by a caller, and no citation whose checked statement differs from its use in
-the manuscript.
+particular, the multi-well claims now say "identically oriented translates of
+a common well," Corollary 4.8 states its common threshold and exact error
+identity, and Section 4 fixes `N` and the sites as `L` tends to infinity.  The
+tables, disclosure, and bibliography no longer interrupt sentences or entries
+at page boundaries.  I found no remaining mathematical error, no missing
+hypothesis used by a caller, and no citation whose checked statement differs
+from its use in the manuscript.
 
 The recommendation follows the object-by-object checks below rather than the
 repository's earlier audit declarations.  The last independent checks were:
@@ -68,7 +69,7 @@ contains qualitative distant-component convergence, its mixed local/nonlocal
 analogue, the exact translated cross-energy in a different shape-optimization
 setting, and a discrete point-mass model, but the searches performed for this
 review did not locate an earlier ordered two-well coefficient with the stated
-remainder or the full finite-well spectral-cluster estimate.  The sentence “we
+remainder or the full multi-well spectral-cluster estimate.  The sentence “we
 are not aware” states search evidence without converting it into a universal
 priority theorem.
 
@@ -245,7 +246,7 @@ Double-check: the domain and codomain are the `N`-dimensional copied
 ground-state space, and the matrix norm is the same norm used in Weyl's
 ordered-eigenvalue estimate.  Lemma 4.5 is correct as written.
 
-### Theorem 4.6: finite multi-well effective Hamiltonian
+### Theorem 4.6: finite multi-well effective interaction matrix
 
 The direct sum has an `N`-fold eigenvalue `μ₁` and complementary spectrum at
 least `μ₁+g`.  Lemma 4.3 compares the ordered full cluster with the ordered
@@ -337,21 +338,21 @@ configuration, and `s` as stated.  Corollary 5.2 is correct as written.
 ## Presentation and wording check
 
 The abstract now introduces the radius `R` before listing it among the
-dependencies of the constants, and it states that the finite-well theorem
-includes a symmetry-free two-well specialization.  The introduction compares
-the algebraic nonlocal split with exact decoupling of a disconnected local
-Dirichlet problem; it no longer attributes an exponential split to that
-disconnected problem.  The title and running head use the same American
-spelling as the body.
+dependencies of the constants, explains the paired signs, and states the
+geometry as identically oriented translates of a common well.  The
+introduction compares the algebraic nonlocal split with exact decoupling of a
+disconnected local Dirichlet problem; it no longer attributes an exponential
+split to that disconnected problem.  The title and running head use the same
+American spelling as the body.
 
 The fixed-mesh corollary now identifies `φ_{1,h}` with the one-well Galerkin
 matrix, says that the same partition is translated to every component, and
 states that the tabulated errors are calculated before display rounding.
-The revised introduction has no split author attribution, all thirteen
-bibliography entries are legible on page 16 at the original type size, and the
-layout has no clipping or malformed reference entry.  The
-AI-use disclosure describes the generated code as reproducibility and
-release-audit code.
+The revised introduction has no split author attribution.  One complete
+bibliography entry appears on page 15 and the remaining twelve appear on page
+16 at the original type size; no entry straddles the page boundary.  The
+layout has no clipping or malformed reference entry.  The AI disclosure
+describes the generated code as reproducibility and release-checking code.
 
 ## Citation audit
 
@@ -399,8 +400,8 @@ citation with an Introduction locator tied to Zahl's numbered conjecture.
 
 The independent run of `python3 -u tools/check_asymptotics.py` reproduced
 every saved numerical line exactly except for elapsed time.  This includes
-the three mesh rows, both effective spectra, and all fourteen separation
-rows.  The constant-function identity and the exact equality of all
+the three mesh rows, both effective spectra, and all eight separation rows.
+The constant-function identity and the exact equality of all
 translated one-well blocks passed before the eigensolves.  At `L=3`, the
 two- and three-well norm bounds are respectively `0.10858` and `0.21716`,
 both below `g_h/4=0.22424`.
@@ -408,28 +409,26 @@ both below `g_h/4=0.22424`.
 `make audit` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1269 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1410 pages=16
 ```
 
-The source archive was extracted into a fresh directory and rebuilt with two
-PDFLaTeX passes.  The resulting 16-page PDF had no final warning or box
-diagnostic, and its extracted text byte-matched the local PDF.  The archive
-generated from the reviewed tree has hash:
+The source archive was extracted into a fresh directory, and every packaged
+file byte-matched its working-tree source.  The local 16-page PDF had no final
+warning or box diagnostic.  The archive generated from the reviewed tree has
+hash:
 
 ```text
-42f9fd9f7cc0213cf167aaf122b82780ae7c4d470571b5e795ebe572e393fee8
+69329e84fa874b531925c68987272377fbfefc8534b0690af284e1b05c34ce1b
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,
 broken running head, or malformed bibliography entry.  The PDF metadata,
-author information, code link, AI-use disclosure, and source archive are
+author information, code link, AI disclosure, and source archive are
 present and internally consistent.
 
-Double-check: the public code URL returned HTTP 200.  The reviewed release is
-identified by the version tag named in the manuscript, and the computational
-and release claims are supported by the checked artifacts.  A second source
-archive byte-matched the release archive, and a fresh extracted-source build
-passed the 16-page release audit.
+Double-check: the manuscript and README identify the same r4 version tag, and
+the computational and release claims are supported by the checked artifacts.
+A second archive generation byte-matched the release archive.
 
 ## Paper-level conclusion
 
