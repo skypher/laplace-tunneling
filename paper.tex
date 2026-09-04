@@ -65,7 +65,7 @@ fractional Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
 \newcommand{\authoremail}{polzer@fastmail.com}
-\date{September 4, 2026}
+\date{September 5, 2026}
 
 \makeatletter
 \renewcommand{\section}{%
@@ -100,7 +100,7 @@ fractional Laplacian on distant domains}
 \renewcommand{\maketitle}{%
   \begin{center}
     {\large\bfseries\@title}\\
-    \vskip36pt
+    \vskip24pt
     \ifx\@author\@empty
       \mbox{}\par
     \else
@@ -112,7 +112,7 @@ fractional Laplacian on distant domains}
       \smallskip
       {\small\@date}\par
     \fi
-    \vskip36pt
+    \vskip24pt
   \end{center}}
 \makeatother
 
@@ -124,32 +124,30 @@ fractional Laplacian on distant domains}
 \maketitle
 
 \begin{abstract}
-Let $D\subset B_R(0)\subset\mathbb R^d$ be a bounded centrally symmetric
-Lipschitz open set, and let $\Omega_L$ be the union of two translates of $D$
-placed symmetrically about the origin, with centers separated by $L$.  For the
-restricted fractional Laplacian $(-\Delta)^s$, $0<s<1$, let $\mu_1$ be the one-well ground-state
-eigenvalue, let $\phi_1>0$ be $L^2$-normalized, and set
-$m_1=\int_D\phi_1$.  We prove
+We study the restricted fractional Laplacian $(-\Delta)^s$, $0<s<1$, on
+distant translates of a bounded Lipschitz open set $D\subset\mathbb R^d$.
+Let $\mu_1$ be the one-well ground-state eigenvalue, let $\phi_1$ be its
+positive $L^2$-normalized eigenfunction, and set $m_1=\int_D\phi_1$.
+For $\Omega_L=(D-Le/2)\cup(D+Le/2)$ with a fixed unit vector $e$, we prove
 \[
  \lambda_{1,2}(\Omega_L)=\mu_1\mp c_{d,s}m_1^2L^{-d-2s}
  +O(L^{-d-2s-2}+L^{-2d-4s}),
 \]
-where the upper and lower signs correspond to $\lambda_1$ and $\lambda_2$,
-respectively.  The proof uses an exact reduction by central inversion, an
-isolated-eigenvalue perturbation estimate, and a second-order expansion of the
-interaction kernel.  For two
-equal balls, the expansion for $\lambda_2$ gives the leading convergence rate
-in the nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.  We also consider
-$\Omega_{\mathbf a,L}=\bigcup_{j=1}^N(D+La_j)$ for a fixed finite family of
-identically oriented translates of a common well $D$, assumed bounded and
-Lipschitz, where central symmetry is not assumed and the sites
-$a_1,\ldots,a_N$ are distinct.  The first $N$ eigenvalues satisfy
+where the minus sign corresponds to $\lambda_1$ and $c_{d,s}$ is the standard
+singular-integral normalization.  When $D=-D$, we also give an exact
+decomposition into symmetric and antisymmetric sectors and an explicit
+separation threshold.  For fixed distinct sites $a_1,\ldots,a_N$, let
+$\Omega_{\mathbf a,L}=\bigcup_{j=1}^N(D+La_j)$.  Its first $N$ eigenvalues satisfy
 $\lambda_k(\Omega_{\mathbf a,L})=\mu_1+L^{-d-2s}\theta_k
 +O(L^{-d-2s-2}+L^{-2d-4s})$, where
 $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the matrix with zero
 diagonal and off-diagonal entries
-$-c_{d,s}m_1^2\lvert a_i-a_j\rvert^{-d-2s}$.  Fixed-mesh Galerkin computations
-using exact cell integrals illustrate the two- and three-well limits.
+$-c_{d,s}m_1^2\lvert a_i-a_j\rvert^{-d-2s}$.  The estimates follow from
+spectral-gap bounds and Taylor expansion with a quadratic remainder.
+For two equal balls, the expansion for $\lambda_2$ gives the leading rate
+in the nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.
+Galerkin computations using exact cell integrals illustrate the two- and
+three-well asymptotics at fixed mesh.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -160,15 +158,35 @@ optimization.
 \noindent\textbf{2020 Mathematics Subject Classification.}\enspace 35P15; 35R11.
 \end{abstract}
 
-\vskip50pt
+\vskip24pt
 \baselineskip=13.5pt
 \section{Introduction}
 
 The restricted fractional Laplacian couples disjoint components through its
 integral kernel, unlike the local Dirichlet Laplacian, whose spectrum on a
 disconnected union is exactly the multiset union of the component spectra.
-We prove that two distant translates of one centrally symmetric component
-exhibit a nonzero splitting that decays algebraically with their separation.
+Here tunneling refers to the splitting of the one-well ground-state level
+caused by the nonlocal interaction between distant copies of a reference
+well.  We consider identically oriented translates of a common well; the
+splitting decays algebraically with their separation.
+
+Theorem~\ref{thm:two-well} gives explicit bounds for the two eigenvalue shifts
+in the centrally symmetric case.  Theorem~\ref{thm:multi-well} approximates
+the first $N$ eigenvalues for a fixed family of translates by the spectrum
+of an explicit interaction matrix, with error bounds uniform over those
+$N$ eigenvalues.  Its two-well specialization,
+Corollary~\ref{cor:symmetry-free-two}, gives the doublet asymptotic without
+central symmetry.  For two equal balls, Corollary~\ref{cor:distant-ball}
+identifies the leading rate along the Hong--Krahn--Szeg\H{o} minimizing
+sequence.  Section~\ref{sec:numerics} illustrates the two- and three-well
+asymptotics by Galerkin computations at fixed mesh.
+
+Central symmetry permits an exact decomposition into the symmetric and
+antisymmetric sector operators $A_D\pm B_L$.  For the general family of
+translates, the linear term in the kernel expansion cancels after projection
+onto the one-well ground states.  This gives the same remainder order without
+symmetry.  Both arguments are self-contained after the standard one-well
+spectral facts.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
@@ -180,59 +198,36 @@ supported kernel
 rather than algebraic.  Biagi, Dipierro, Valdinoci, and Vecchi proved a mixed
 local/nonlocal analogue
 \cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}.  Parini and Salort
-proved a fractional concentration--compactness trichotomy for bounded Sobolev sequences and
-transferred its dichotomy to quasi-open domains through operator-norm
-resolvent approximation
+proved a fractional concentration--compactness trichotomy for bounded Sobolev
+sequences and transferred its dichotomy to quasi-open domains through
+operator-norm resolvent approximation
 \cite[Theorems~1.1 and~1.2]{PariniSalort2020}.  For two one-dimensional
 patches, L\'eculier and Roquejoffre proved monotonicity and continuity of the
 principal eigenvalue throughout the separation range, including contact
-\cite[Theorem~1]{LeculierRoquejoffre2023}, but did not identify its leading
-large-separation coefficient or the accompanying second-eigenvalue split.
-Together these works give qualitative limiting, continuity, and dichotomy
-results, but not the leading interaction coefficient for the standard
-restricted fractional Laplacian.  We extract that coefficient and the
-associated effective finite-dimensional interaction.
+\cite[Theorem~1]{LeculierRoquejoffre2023}.  These results describe the
+qualitative dependence on separation and the limiting shape-optimization
+behavior.
 
 The influence of mutual position on the restricted fractional spectrum is
 also emphasized by Abatangelo, Felli, and Noris
-\cite[Introduction, p.~3]{AbatangeloFelliNoris2020}, in a study of small
+\cite[arXiv v2, Introduction, p.~3]{AbatangeloFelliNoris2020}, in a study of small
 fractional-capacity perturbations.  In the shape-optimization setting, Zahl
 isolated the exact cross-energy under translations and proposed a signed
 point-mass interaction with kernel $\abs{x-y}^{-d-2s}$
 \cite[Section~10, equations~(10.3) and~(10.7), and
 Conjecture~10.9]{Zahl2026}.  Wu subsequently proved that this discrete
 signed-mass model has no local minima, settling that conjecture
-\cite[Introduction]{Wu2026}.  In another recent direction, Dipierro, Proietti Lippi,
-Sportelli, and Valdinoci studied disconnected domains for generalized
-eigenproblems having a superposition of lower-order operators on the
-right-hand side
+\cite[Introduction]{Wu2026}.  Dipierro, Proietti Lippi, Sportelli, and
+Valdinoci studied disconnected domains for generalized eigenproblems having
+a superposition of lower-order operators on the right-hand side
 \cite[Theorems~1.4--1.7]{DipierroProiettiLippiSportelliValdinoci2026}.
-The cited works do not derive a large-separation spectral expansion for the
-standard restricted fractional Laplacian.  Zahl's discrete energy anticipates
-the matrix in \eqref{eq:effective-matrix}; Theorem~\ref{thm:multi-well}
-derives that matrix from the full operator, with operator-norm control of the
-off-diagonal block and spectral-gap control of the complementary modes, and
-identifies every ordered cluster eigenvalue.  We are not aware of an earlier
-result giving either the two-component coefficient with a quantified
-remainder or this multi-well spectral reduction.
 
-Our contribution has three parts.  First, Theorem~\ref{thm:two-well}
-identifies the leading coefficient and sign of both eigenvalue shifts for two
-centrally symmetric wells, with a quantified remainder.  Second,
-Theorem~\ref{thm:multi-well} identifies the entire ground-state cluster for
-any fixed finite family of identically oriented translates with the spectrum
-of an explicit interaction matrix and gives uniform cluster-error bounds.
-Third, Section~\ref{sec:numerics} gives exact-cell-integral, fixed-mesh
-computations illustrating both limits.
-
-Central symmetry permits the exact
-decomposition into the scalar symmetric and antisymmetric branches
-$A_D\pm B_L$.  In the symmetry-free multi-well compression, the corresponding
-first-order kernel term instead cancels algebraically after projection onto the
-one-well ground states.  Its $N=2$ specialization,
-Corollary~\ref{cor:symmetry-free-two}, therefore gives the same leading
-doublet coefficient without symmetry.  Both proofs are self-contained after
-the standard one-well spectral facts.
+Zahl's discrete energy anticipates the matrix in
+\eqref{eq:effective-matrix}.  Here we derive that matrix from the standard
+restricted fractional Laplacian, controlling the interaction in operator norm
+and the contribution of complementary modes through the one-well spectral
+gap.  We are not aware of an earlier result giving either the two-component
+coefficient with a quantified remainder or this multi-well spectral reduction.
 
 \section{The one-well operator and exact two-well reduction}
 
@@ -255,7 +250,7 @@ $C_c^\infty(G)$ in the global $H^s(\R^d)$ norm
 \cite[Section~2, equation~(2.1)]{DjitteFallWeth2021}.
 The zero-exterior quadratic form is
 \begin{equation}\label{eq:form}
- \mathcal q_G[u]
+ \mathcal{Q}_G[u]
  =\frac{c_{d,s}}2\iint_{\R^d\times\R^d}
    \frac{\abs{u(x)-u(y)}^2}{\abs{x-y}^{\kappa}}\,dx\,dy,
  \qquad u\in\Hs(G),
@@ -268,8 +263,8 @@ $c_{d,s}$ in the singular-integral operator, so their eigenvalues are
 multiplied here by $c_{d,s}/2$; the positivity, simplicity, ordering, and
 shape-optimization statements cited below are unchanged by this fixed
 positive rescaling
-\cite[Section~1.1, p.~2]{BrascoParini2016}.  The form norm
-$\bigl(\mathcal q_G[u]+\norm{u}_{L^2(G)}^2\bigr)^{1/2}$
+\cite[arXiv v2, Section~1.1, p.~2]{BrascoParini2016}.  The form norm
+$\bigl(\mathcal{Q}_G[u]+\norm{u}_{L^2(G)}^2\bigr)^{1/2}$
 is equivalent to the norm inherited from $H^s(\R^d)$ on $\Hs(G)$.  Thus
 \eqref{eq:form} is a densely defined closed form, and we denote its associated
 self-adjoint operator on $L^2(G)$ by $A_G$.
@@ -282,15 +277,15 @@ Let $D\subset B_R(0)$ be a bounded Lipschitz open set satisfying $D=-D$.
 We retain Lipschitz regularity in order to invoke the extension property and
 compactness of the form embedding from
 \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Hence $A_D$
-has compact resolvent.  Write its eigenvalues with multiplicity and denote the
-first two distinct levels by
+has compact resolvent.  Its first eigenvalue is simple and has a strictly
+positive normalized eigenfunction by
+\cite[Theorem~2.8]{BrascoParini2016}, specialized to the linear case.  Put
 \[
- \mu_1<\mu_2,
+ \mu_1=\lambda_1(D),
+ \qquad \mu_2=\lambda_2(D),
  \qquad g=\mu_2-\mu_1>0.
 \]
-The first eigenvalue is simple and has a strictly positive normalized
-eigenfunction by \cite[Theorem~2.8]{BrascoParini2016}, specialized to the
-linear case.  Fix that eigenfunction and set
+Fix the positive normalized ground-state eigenfunction and set
 \begin{equation}\label{eq:mass}
  A_D\phi_1=\mu_1\phi_1,
  \qquad \norm{\phi_1}_{L^2(D)}=1,
@@ -335,8 +330,8 @@ For $f\in\Hs(\Omega_L)$ set
 \]
 This defines a unitary map from $L^2(\Omega_L)$ to
 $L^2(D)\oplus L^2(D)$.  Translation invariance and invariance under central
-inversion identify the two diagonal parts of the form with $\mathcal q_D[u]$ and
-$\mathcal q_D[v]$.
+inversion identify the two diagonal parts of the form with $\mathcal{Q}_D[u]$ and
+$\mathcal{Q}_D[v]$.
 
 To identify the form domains, fix $\chi\in C_c^\infty(\R^d)$ and
 $w\in H^s(\R^d)$.  Then
@@ -364,11 +359,11 @@ $\Omega_L$.  Hence the unitary identifies $\Hs(\Omega_L)$ with
 $\Hs(D)\oplus\Hs(D)$.
 
 The cross-kernel is bounded because of positive separation.  Each separate
-zero-exterior form already contains the square interaction with the location
-occupied by the other component.  Thus, after the above changes of
-variables, expanding the square in \eqref{eq:form} yields the exact identity
+zero-exterior form already includes the squared-modulus terms integrated
+against the kernel over the other component.  Thus, after the above changes
+of variables, expanding the square in \eqref{eq:form} yields the exact identity
 \begin{align*}
- &\mathcal q_{\Omega_L}[f]-\mathcal q_D[u]-\mathcal q_D[v]\\
+ &\mathcal{Q}_{\Omega_L}[f]-\mathcal{Q}_D[u]-\mathcal{Q}_D[v]\\
  &\quad=c_{d,s}\iint_{D\times D}
  \frac{\abs{u(x)-v(y)}^2-\abs{u(x)}^2-\abs{v(y)}^2}
  {\abs{Le-x-y}^{\kappa}}\,dx\,dy\\
@@ -388,7 +383,7 @@ yields \eqref{eq:direct-sum}.
 
 \section{The doublet splitting}
 
-We first record the elementary perturbation estimate used for the two scalar
+We first record the elementary perturbation estimate used for the two
 branches.
 
 \begin{lemma}[Ground-state perturbation bound]\label{lem:perturb}
@@ -434,6 +429,7 @@ coordinates used here, evenness of the ground state removes the linear Taylor
 term.  Section~4 obtains the same error order without symmetry from an
 algebraic cancellation in translated coordinates.
 
+\begin{samepage}
 \begin{lemma}[Interaction-kernel expansion]\label{lem:kernel}
 Let
 \[
@@ -454,6 +450,7 @@ Moreover,
  \beta_L=c_{d,s}2^\kappa\abs D\,L^{-\kappa}.
 \end{equation}
 \end{lemma}
+\end{samepage}
 
 \begin{proof}
 Set $F_L(z)=\abs{Le-z}^{-\kappa}$.  For $\abs z\leq2R$ and $L\geq4R$,
@@ -555,7 +552,8 @@ Substitution of $\beta_L=c_{d,s}2^\kappa\abs D\,L^{-\kappa}$ proves the
 strict second inequality in \eqref{eq:L0-conditions}.
 
 Apply Lemma~\ref{lem:perturb} first with $W=B_L$ and then with $W=-B_L$.
-The two branch ground-state energies have the form
+Let $E_+(L)$ and $E_-(L)$ denote the ground-state energies of the symmetric
+and antisymmetric branches, respectively.  They have the form
 \begin{equation}\label{eq:branches}
  E_+(L)=\mu_1+t_L+\rho_+(L),
  \qquad
@@ -827,6 +825,7 @@ The operator norm of a real symmetric matrix is at most its largest absolute
 row sum.  Taking that row sum proves \eqref{eq:compression-error}.
 \end{proof}
 
+\begin{samepage}
 \begin{theorem}[Finite multi-well effective interaction matrix]
 \label{thm:multi-well}
 Let $D$, $\mu_1$, $g$, $\phi_1$, and $m_1$ be as fixed at the beginning of
@@ -863,6 +862,7 @@ Consequently, as $L\to\infty$, for every $1\leq k\leq N$,
  \longrightarrow\theta_k.
 \end{equation}
 \end{theorem}
+\end{samepage}
 
 \begin{proof}
 Lemma~\ref{lem:multi-block} identifies the full operator with
@@ -1000,7 +1000,7 @@ $\lambda_1<\mu_1<\lambda_N$, which proves the remaining assertions.
 \end{proof}
 
 \begin{corollary}[Regular-simplex cluster]\label{cor:simplex}
-Suppose the centers satisfy $\abs{a_i-a_j}=r$ for all $i\ne j$, as for the
+Suppose the sites satisfy $\abs{a_i-a_j}=r$ for all $i\ne j$, as for the
 vertices of a regular simplex.  Then $N\leq d+1$.  Put
 \[
  w=c_{d,s}m_1^2r^{-\kappa}.
@@ -1023,11 +1023,12 @@ complement is an eigenvector with eigenvalue $w$.
 
 \section{Reproducible fixed-mesh checks on intervals}\label{sec:numerics}
 
-We finish with a conforming Galerkin check at fixed mesh for the two- and
-three-well limits.  The computation is not used in the proofs, and no
-$h\to0$ discretization-error estimate is claimed; it tests only the proved
-$L\to\infty$ asymptotic.  Take $d=1$, $0<s<1/2$, and consider finite unions
-of unit intervals.  For analytic one-well results on an interval, see
+We illustrate the fixed-mesh cluster asymptotic of
+Corollary~\ref{cor:discrete-cluster} using conforming Galerkin matrices
+assembled from exact cell integrals.  The mesh is held fixed as $L$ increases;
+no discretization-error estimate as $h\to0$ is asserted.  Take $d=1$,
+$0<s<1/2$, and consider finite unions of unit intervals.  For high-index
+eigenvalue asymptotics and eigenfunction estimates on a single interval, see
 \cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
 asymptotics and an eigenfunction bound uniform in both the index and the
 fractional order are proved in \cite[Theorems~1 and~2]{Zhang2026}.  Both
@@ -1042,7 +1043,7 @@ Assume $0<s<1/2$.  Let $I_1,\dots,I_M$ be pairwise disjoint cells of common
 length $h$, with centers $x_\alpha$, and set $G=\bigcup_{\alpha=1}^M I_\alpha$,
 $r_{\alpha\beta}=\abs{x_\alpha-x_\beta}$, and $q=1-2s$.  In the
 $L^2(G)$-orthonormal basis $e_\alpha=h^{-1/2}\mathbf 1_{I_\alpha}$, the
-Galerkin matrix $H_h$ of the zero-exterior form $\mathcal q_G$ has entries
+Galerkin matrix $H_h$ of the zero-exterior form $\mathcal{Q}_G$ has entries
 \begin{align}
  (H_h)_{\alpha\alpha}
  &=\frac{c_{1,s}}{h}\frac{2h^q}{2s q},
@@ -1074,7 +1075,7 @@ Dividing both expressions by $h$ for the normalized indicators proves
 \eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}.
 \end{proof}
 
-\enlargethispage{3\baselineskip}
+\begin{samepage}
 \begin{corollary}[Fixed-mesh cluster asymptotic]
 \label{cor:discrete-cluster}
 Let $D=(-1/2,1/2)$, and fix a uniform partition of $D$.  Let $\mu_{1,h}$
@@ -1095,6 +1096,7 @@ where $\theta_{1,h}\leq\cdots\leq\theta_{N,h}$ are the eigenvalues of the
 matrix with zero diagonal and off-diagonal entries
 $-c_{1,s}m_{1,h}^2\abs{a_i-a_j}^{-1-2s}$.
 \end{corollary}
+\end{samepage}
 
 \begin{proof}
 All off-diagonal entries of the one-well matrix in
@@ -1119,17 +1121,17 @@ normalization
  c_{1,s}=\frac{4^s s\,\Gamma(1/2+s)}
  {\sqrt\pi\,\Gamma(1-s)}.
 \]
-Table~\ref{tab:mesh} records the one-well quantities.  The stabilization of
-$m_{1,h}$ is the relevant check for the interaction coefficient.
+Table~\ref{tab:mesh} records the one-well quantities, including the dependence
+on mesh size of $m_{1,h}$, which enters the interaction coefficient.
 
 \begin{table}[ht]
 \centering
 \begin{tabular}{rccc}
 \hline
 cells & $\mu_{1,h}$ & $\mu_{2,h}-\mu_{1,h}$ & $m_{1,h}$\\ \hline
-60  & 1.3794549573 & 0.9105539931 & 0.9628386433\\
-120 & 1.3753692130 & 0.8998883318 & 0.9633505837\\
-180 & 1.3741292905 & 0.8969647744 & 0.9636021778\\
+60  & 1.379455 & 0.910554 & 0.962839\\
+120 & 1.375369 & 0.899888 & 0.963351\\
+180 & 1.374129 & 0.896965 & 0.963602\\
 \hline
 \end{tabular}
 \caption{One-well Galerkin data for $D=(-1/2,1/2)$, $s=1/4$, and the
@@ -1139,17 +1141,20 @@ indicated uniform meshes.}
 
 On the 180-cell-per-component mesh, the two-well component centers are
 $(-L/2,L/2)$, while the three-well centers are $(-L,0,L)$.  The corresponding
-fixed-mesh effective-matrix spectra are
+fixed-mesh effective-matrix spectra, indexed by the fixed sites, are
 \begin{align*}
- (-L/2,L/2):&\quad (-0.18521477,0.18521477),\\
- (-L,0,L):&\quad
+ \mathbf a=(-1/2,1/2):&\quad (-0.18521477,0.18521477),\\
+ \mathbf a=(-1,0,1):&\quad
  (-0.29671332,0.06548331,0.23123001).
 \end{align*}
-The direct Galerkin eigenvalues are shown in Table~\ref{tab:clusters}; the
-last column is the largest absolute difference from the corresponding
-effective-matrix eigenvalue.  These errors are computed from the
-full-precision values before the shifts and effective spectra are rounded for
-display.
+Table~\ref{tab:clusters} lists the scaled shifts computed from the Galerkin
+eigenvalues.  For each configuration, the last column is
+\begin{equation}\label{eq:scaled-cluster-error}
+ E_h(L)=\max_{1\leq k\leq N}
+ \abs{L^{3/2}\bigl(\lambda_{k,h}(L)-\mu_{1,h}\bigr)-\theta_{k,h}}.
+\end{equation}
+These errors are computed from the full-precision values before the shifts
+and effective spectra are rounded for display.
 
 At the selected separations, the scaled errors decrease monotonically;
 Corollary~\ref{cor:discrete-cluster} proves that they tend to zero at fixed
@@ -1169,7 +1174,7 @@ or fitted coefficient enters the tables.
 \multicolumn{4}{c}{\textit{Two wells}}\\
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
-    & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & maximum error\\ \hline
+    & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & $E_h(L)$\\ \hline
 3  & $-0.190740$ & $ 0.189832$ & $5.52\times10^{-3}$\\
 6  & $-0.186544$ & $ 0.186335$ & $1.33\times10^{-3}$\\
 12 & $-0.185551$ & $ 0.185486$ & $3.36\times10^{-4}$\\
@@ -1183,17 +1188,17 @@ $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$
-    & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & maximum error\\ \hline
+    & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & $E_h(L)$\\ \hline
 3  & $-0.304984$ & $0.065562$ & $0.237544$ & $8.27\times10^{-3}$\\
 6  & $-0.298738$ & $0.065554$ & $0.232747$ & $2.03\times10^{-3}$\\
 12 & $-0.297236$ & $0.065504$ & $0.231595$ & $5.22\times10^{-4}$\\
 24 & $-0.296852$ & $0.065488$ & $0.231316$ & $1.38\times10^{-4}$\\
 \hline
 \end{tabular*}
-\caption{Scaled cluster shifts on the 180-cell-per-component mesh for two
-wells centered at $(-L/2,L/2)$ and three wells centered at $(-L,0,L)$;
-the maximum error is measured against the corresponding effective-matrix
-spectrum.}
+\caption{Scaled cluster shifts for $s=1/4$ and $D=(-1/2,1/2)$ on the
+180-cell-per-component mesh, with two wells centered at $(-L/2,L/2)$ or three
+wells centered at $(-L,0,L)$.  The maximum scaled-shift error $E_h(L)$ is
+defined in \eqref{eq:scaled-cluster-error}.}
 \label{tab:clusters}
 \end{minipage}
 \par\medskip
@@ -1209,20 +1214,14 @@ citations, computations, and wording.
 \section*{Code availability}
 
 \begin{sloppypar}
-The ancillary file \path{check_asymptotics.py} reproduces
-Tables~\ref{tab:mesh} and \ref{tab:clusters}.  Before solving the
-eigenproblems, it checks the assembled constant-function energy identity and
-the exact reuse of each translated one-well block, then prints progress after
-each separation.  The pinned numerical dependencies are listed in the
-ancillary file \path{requirements-numerics.txt}; the reference output in
-\path{asymptotics_180.txt} was replayed with
-Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
-includes a frozen copy of the script, pinned dependencies, and reference
-output; these archived files correspond to the manuscript.
-The version tag for this manuscript is
-\texttt{paper-2026-09-04-r5}.  The tagged development source is available at
-\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r5}%
-{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r5}.
+The ancillary files contain the script \path{check_asymptotics.py}, the
+pinned dependencies in \path{requirements-numerics.txt}, and the reference
+output \path{asymptotics_180.txt} reproducing Tables~\ref{tab:mesh} and
+\ref{tab:clusters}.  The output was reproduced using
+Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  These files are archived with
+the manuscript; the corresponding source is available in the tagged release
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-05}%
+{\texttt{paper-2026-09-05}}.
 \end{sloppypar}
 
 {\small

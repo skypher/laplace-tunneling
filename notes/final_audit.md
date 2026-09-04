@@ -1,5 +1,65 @@
 # Final theorem and release audit
 
+## Editorial release — 2026-09-05
+
+Release: `paper-2026-09-05`.  This revision implements the presentation and
+bibliography review in `notes/presentation_referee_report_2026-09-05.md`.
+The theorem hypotheses, estimates, and numerical program are unchanged.
+The mathematical and numerical checks dated 2026-09-04 are retained below;
+they were not repeated as part of this editorial revision.
+
+The quadratic form now uses `\mathcal{Q}` in all eight places where the
+lowercase calligraphic source rendered as a non-letter symbol.  The abstract
+identifies the ground-state eigenfunction explicitly and leads with the
+symmetry-free result already stated in Corollary 4.7.  The introduction
+presents the results before the literature comparison and retains one bounded
+priority statement.  Table 2 defines its scaled-shift error in equation (5.4),
+and the effective spectra are labeled by the fixed sites.  Page-specific
+Brasco–Parini and Abatangelo–Felli–Noris citations identify arXiv v2.  The
+Parini–Salort theorem numbering in the literature audit has been corrected.
+
+Checks performed before recording this release:
+
+- The revised manuscript was built with `make pdf`.  All 16 rendered pages
+  were inspected, including the corrected form symbol, abstract, tables,
+  and bibliography.  The statements of Lemma 3.2, Theorem 4.6, and
+  Corollary 5.2 each fit on a single page.  The bibliography fits on page 16.
+- The final LaTeX and BibTeX logs have no warnings, unresolved citations or
+  references, or overfull/underfull box diagnostics.  All listed PDF fonts
+  are embedded Type 1 fonts.
+- The three rounded rows in Table 1 were compared directly with the saved
+  decimal output.  The release audit checks all eleven numerical rows.
+  The saved output retains its original precision; no numerical computation
+  was rerun for this revision.
+- The notation guard rejects both `\mathcal q` and `\mathcal{q}` and accepts
+  `\mathcal{Q}`.  PDF text extraction finds no malformed form glyph.  Both
+  `-h` and `--help` for the revised audit script exit successfully.
+- `make arxiv` passed its audit and produced the seven-file submission
+  payload.  Every payload file byte-matches its working-tree source, and
+  `gzip -t` passes.
+- The extracted archive was built in a fresh directory using the existing
+  PDF recipe.  It produced 16 pages with clean final logs; its generated
+  bibliography and layout-preserving PDF text match the working copies.
+- Repacking those files with the release's fixed timestamp, ownership, and
+  file modes byte-matches the source archive.
+
+The release audit reports:
+
+```text
+release audit passed: citations=13 labels=56 results=15 numerical_rows=11 abstract_chars=1407 pages=16
+```
+
+Current artifact SHA-256 digests:
+
+```text
+e7870fb44f690e4d30c39a761f7fa20d0319dba059a6c42670a4be107aa01961  paper.tex
+b19abc921fcb63981896953cc481a0c2ffc5a4354aaded87b107c49f9735f86c  paper.pdf
+2ae142793fba1f411c3960066311cb73c4875b4f83201e32e86aef73ee522eac  references.bib
+7de3edad1d926fb28f2f79b380a429bd47224706cec10892ca0d1390ac2b2fad  dist/laplace-tunneling-arxiv.tar.gz
+```
+
+## Original audit — 2026-09-04
+
 Audit date: 2026-09-04.
 
 ## Final-facing theorem checks

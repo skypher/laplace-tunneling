@@ -2,9 +2,9 @@
 
 This repository develops spectral asymptotics for the restricted fractional
 Laplacian on distant components.  The manuscript quantifies the double-well
-splitting and identifies the entire ground-state cluster for finitely many
-identically oriented translates of a common well through an explicit
-effective interaction matrix.
+splitting and approximates the ground-state cluster for finitely many
+identically oriented translates of a common well by the spectrum of an
+explicit effective interaction matrix.
 
 The manuscript is `paper.tex`.  Build it with the tools available in this
 workspace:
@@ -22,7 +22,7 @@ make numerics
 
 The reference output from the 180-cell run is
 `numerics/asymptotics_180.txt`.
-It was replayed with Python 3.12.3, NumPy 1.26.4, and SciPy 1.11.4.
+It was reproduced using Python 3.12.3, NumPy 1.26.4, and SciPy 1.11.4.
 
 Run the mechanical release checks with:
 
@@ -43,7 +43,7 @@ under the archive's top-level `anc/` directory.  Repository-maintenance files
 are omitted from the submission package.
 
 The version tag for the reviewed manuscript is
-`paper-2026-09-04-r5`.
+`paper-2026-09-05`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.

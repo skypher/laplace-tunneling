@@ -26,6 +26,7 @@ def main() -> None:
     built_bibliography = read("paper.bbl")
     build_log = read("paper.log")
     numerics = read("numerics/asymptotics_180.txt")
+    ancillary_readme = read("anc/README.txt")
     failures: list[str] = []
 
     def require(condition: bool, message: str) -> None:
@@ -87,15 +88,19 @@ def main() -> None:
     forbidden_markers = ("TODO", "FIXME", "TBD", "\\begin{assumption}", "\\begin{hypothesis}")
     for marker in forbidden_markers:
         require(marker not in paper, f"open marker in manuscript: {marker}")
+    require(
+        re.search(r"\\mathcal\s*(?:[a-z]|\{[a-z]\})", paper) is None,
+        "lowercase mathcal letter renders as a symbol with the manuscript fonts",
+    )
 
     submission_metadata = (
         "pdfauthor={Leslie P. Polzer}",
         "\\author{Leslie P. Polzer}",
         "\\newcommand{\\authoraffiliation}{Independent Researcher}",
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
-        "\\date{September 4, 2026}",
+        "\\date{September 5, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r5",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-05",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -133,19 +138,27 @@ def main() -> None:
         "AI disclosure contains a prohibited product-name reference",
     )
     code_availability = (
-        "assembled constant-function energy identity",
-        "exact reuse of each translated one-well block",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-04-r5",
+        "paper-2026-09-05",
         "check_asymptotics.py",
         "requirements-numerics.txt",
         "asymptotics_180.txt",
-        "these archived files correspond to the manuscript",
+        "These files are archived with the manuscript",
     )
     for fragment in code_availability:
         require(
             fragment in normalized_paper,
             f"missing code-availability text: {fragment}",
+        )
+    normalized_ancillary_readme = re.sub(r"\s+", " ", ancillary_readme)
+    for fragment in (
+        "assembled constant-function energy identity",
+        "exact reuse of each translated one-well block",
+        "prints progress after each separation",
+    ):
+        require(
+            fragment in normalized_ancillary_readme,
+            f"missing ancillary reproduction detail: {fragment}",
         )
     require(
         "identically oriented translates of a common well" in normalized_paper,
@@ -164,7 +177,7 @@ def main() -> None:
         "README overstates the multi-well geometry",
     )
     require(
-        "paper-2026-09-04-r5" in readme,
+        "paper-2026-09-05" in readme,
         "README release tag is stale",
     )
 
@@ -237,9 +250,11 @@ def main() -> None:
         "\\eta_N-\\frac{2b^2}{g}",
         "\\lambda_{N+1}(\\Omega_{\\mathbf a,L})-",
         "\\geq g-2\\gamma_L\\geq\\frac g2",
-        "1.3794549573 & 0.9105539931 & 0.9628386433",
-        "1.3753692130 & 0.8998883318 & 0.9633505837",
-        "1.3741292905 & 0.8969647744 & 0.9636021778",
+        "\\label{eq:scaled-cluster-error}",
+        "\\mathcal{Q}_G[u]",
+        "1.379455 & 0.910554 & 0.962839",
+        "1.375369 & 0.899888 & 0.963351",
+        "1.374129 & 0.896965 & 0.963602",
         "(-0.18521477,0.18521477)",
         "(-0.29671332,0.06548331,0.23123001)",
         "$-0.190740$ & $ 0.189832$ & $5.52\\times10^{-3}$",

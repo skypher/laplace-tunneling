@@ -1,7 +1,7 @@
 .PHONY: pdf numerics audit arxiv
 
 ARXIV_ARCHIVE := dist/laplace-tunneling-arxiv.tar.gz
-ARXIV_MTIME := UTC 2026-09-04
+ARXIV_MTIME := UTC 2026-09-05
 
 pdf: paper.pdf
 

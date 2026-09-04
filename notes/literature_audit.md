@@ -98,9 +98,12 @@ Primary source: arXiv:1901.03444; DOI 10.1090/proc/14542.
 
 ### Parini--Salort (2020)
 
-- Theorem 1.1 gives the compactness/dichotomy alternative and operator-norm
-  resolvent approximation by two pieces at diverging distance.
-- Theorem 1.2 applies the dichotomy to spectral shape functionals.
+- Theorem 1.1 gives the compactness/vanishing/dichotomy trichotomy for bounded
+  fractional Sobolev sequences.
+- Theorem 1.2 gives the quasi-open-set compactness/dichotomy alternative and
+  operator-norm resolvent approximation by two pieces at diverging distance.
+- Theorem 1.3 applies the dichotomy to shape functionals.  The manuscript
+  cites Theorems 1.1 and 1.2 for the first two statements.
 - These results are qualitative with respect to the separation scale and do
   not give an interaction coefficient or effective matrix.
 
