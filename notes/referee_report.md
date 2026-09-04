@@ -5,7 +5,7 @@ Review date: 2026-09-04.
 Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: revision tag `paper-2026-09-04-r4`, recorded in
+Version reviewed: revision tag `paper-2026-09-04-r5`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -94,7 +94,7 @@ equation (2.1), Di Nezza--Palatucci--Valdinoci Theorems 5.4 and 7.1, and
 Brasco--Parini Theorem 2.8, specialized exactly as above.  No unsupported
 preliminary spectral fact remains.
 
-### Lemma 2.1: exact central-inversion reduction
+### Lemma 2.1: exact reduction by central inversion
 
 The left coordinate is `x−Le/2` and the reflected right coordinate is
 `−y+Le/2`; their displacement is `x+y−Le`.  Expanding the full-space
@@ -305,7 +305,8 @@ correct as written.
 ### Corollary 4.10: regular-simplex cluster
 
 With equal pair distance `r`, the matrix is `−w(J−I)`.  The all-ones vector
-has eigenvalue `−(N−1)w`, and its orthogonal complement has eigenvalue `w`.
+has eigenvalue `−(N−1)w`, and every vector in its orthogonal complement is an
+eigenvector with eigenvalue `w`.
 
 Double-check: the multiplicities sum to `N` and the trace is zero, agreeing
 with Definition 4.4.  Corollary 4.10 is correct as written.
@@ -409,7 +410,7 @@ both below `g_h/4=0.22424`.
 `make audit` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1410 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1537 pages=16
 ```
 
 The source archive was extracted into a fresh directory, and every packaged
@@ -418,7 +419,7 @@ warning or box diagnostic.  The archive generated from the reviewed tree has
 hash:
 
 ```text
-69329e84fa874b531925c68987272377fbfefc8534b0690af284e1b05c34ce1b
+29de10e7a2e6a04907d6f0e64da27a1d27c694bebeada44b604b21020ea9af20
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,
@@ -426,7 +427,7 @@ broken running head, or malformed bibliography entry.  The PDF metadata,
 author information, code link, AI disclosure, and source archive are
 present and internally consistent.
 
-Double-check: the manuscript and README identify the same r4 version tag, and
+Double-check: the manuscript and README identify the same r5 version tag, and
 the computational and release claims are supported by the checked artifacts.
 A second archive generation byte-matched the release archive.
 

@@ -60,8 +60,8 @@
 \newcommand{\norm}[1]{\lVert #1\rVert}
 \newcommand{\abs}[1]{\lvert #1\rvert}
 
-\title{Algebraic tunneling for the restricted fractional\\
-Laplacian on distant domains}
+\title{Algebraic tunneling for the restricted\\
+fractional Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
 \newcommand{\authoremail}{polzer@fastmail.com}
@@ -135,20 +135,21 @@ $m_1=\int_D\phi_1$.  We prove
  +O(L^{-d-2s-2}+L^{-2d-4s}),
 \]
 where the upper and lower signs correspond to $\lambda_1$ and $\lambda_2$,
-respectively.  The proof uses an exact central-inversion reduction, an
+respectively.  The proof uses an exact reduction by central inversion, an
 isolated-eigenvalue perturbation estimate, and a second-order expansion of the
 interaction kernel.  For two
 equal balls, the expansion for $\lambda_2$ gives the leading convergence rate
-in the nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.  We also treat any
-fixed finite family of identically oriented translates of a common well, without a
-symmetry assumption.  For distinct sites $a_1,\ldots,a_N$, the first $N$
-eigenvalues satisfy
-$\lambda_k=\mu_1+L^{-d-2s}\theta_k
+in the nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.  We also consider
+$\Omega_{\mathbf a,L}=\bigcup_{j=1}^N(D+La_j)$ for a fixed finite family of
+identically oriented translates of a common well $D$, assumed bounded and
+Lipschitz, where central symmetry is not assumed and the sites
+$a_1,\ldots,a_N$ are distinct.  The first $N$ eigenvalues satisfy
+$\lambda_k(\Omega_{\mathbf a,L})=\mu_1+L^{-d-2s}\theta_k
 +O(L^{-d-2s-2}+L^{-2d-4s})$, where
 $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the matrix with zero
 diagonal and off-diagonal entries
-$-c_{d,s}m_1^2\lvert a_i-a_j\rvert^{-d-2s}$.  Exact cell-integral Galerkin
-computations on two and three intervals illustrate the fixed-mesh limits.
+$-c_{d,s}m_1^2\lvert a_i-a_j\rvert^{-d-2s}$.  Fixed-mesh Galerkin computations
+using exact cell integrals illustrate the two- and three-well limits.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -295,7 +296,7 @@ linear case.  Fix that eigenfunction and set
  \qquad \norm{\phi_1}_{L^2(D)}=1,
  \qquad m_1=\int_D\phi_1(x)\,dx>0.
 \end{equation}
-Simplicity and central-inversion invariance show that
+Simplicity and invariance under central inversion show that
 $\phi_1(-x)=\pm\phi_1(x)$; positivity fixes the sign, so
 $\phi_1(-x)=\phi_1(x)$.
 
@@ -312,7 +313,7 @@ On $L^2(D)$ define the bounded integral operator
 \end{equation}
 Its kernel is real and symmetric, so $B_L$ is self-adjoint.
 
-\begin{lemma}[Exact central-inversion reduction]\label{lem:block}
+\begin{lemma}[Exact reduction by central inversion]\label{lem:block}
 The operator $A_{\Omega_L}$ is unitarily equivalent to
 \[
  \begin{pmatrix}A_D&B_L\\B_L&A_D\end{pmatrix}
@@ -333,8 +334,8 @@ For $f\in\Hs(\Omega_L)$ set
  \qquad x\in D.
 \]
 This defines a unitary map from $L^2(\Omega_L)$ to
-$L^2(D)\oplus L^2(D)$.  Translation and central-inversion invariance identify the
-two diagonal parts of the form with $\mathcal q_D[u]$ and
+$L^2(D)\oplus L^2(D)$.  Translation invariance and invariance under central
+inversion identify the two diagonal parts of the form with $\mathcal q_D[u]$ and
 $\mathcal q_D[v]$.
 
 To identify the form domains, fix $\chi\in C_c^\infty(\R^d)$ and
@@ -608,10 +609,10 @@ $\mu_1=\lambda_1(B_R)$.
 
 \section{Finitely many wells}\label{sec:multi-well}
 
-The two-well central-inversion decomposition is special to a pair.  For finitely
-many components we instead keep the full block operator and compare its
-lowest spectral cluster with its compression to the translated one-well
-ground states.
+The two-well decomposition induced by central inversion is specific to a pair.
+For finitely many components we instead keep the full block operator and
+compare its lowest spectral cluster with its compression to the translated
+one-well ground states.
 
 Throughout this section, let $D\subset B_R(0)$ be any bounded Lipschitz open
 set; central symmetry is not assumed.  The compactness and ground-state
@@ -910,7 +911,8 @@ In particular,
  L^{d+2s}\bigl(\lambda_2(\Omega_L)-\lambda_1(\Omega_L)\bigr)
  \longrightarrow 2c_{d,s}m_1^2r^{-d-2s}.
 \]
-The implicit constants in the two expansions are independent of $L$.
+The constants implicit in the two expansions may depend on $d$, $s$, $D$,
+$R$, and $r$, but are independent of $L$.
 \end{corollary}
 
 \begin{proof}
@@ -953,7 +955,8 @@ $\varepsilon_L=c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}$.  Hence
  =c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
   +\frac{2\beta_L^2}{g}.
 \]
-Moreover, $L\geq L_0$ implies $L\geq4R$ and $\gamma_L=\beta_L\leq g/4$,
+The condition $L\geq L_0$ also implies $L\geq4R$ and
+$\gamma_L=\beta_L\leq g/4$,
 so the hypotheses of Theorem~\ref{thm:multi-well} hold.  In the exact
 compression, central symmetry of $D$ and evenness of $\phi_1$ show, after the
 change of variables $y\mapsto-y$, that the translated two-well kernel integral
@@ -977,8 +980,9 @@ The off-diagonal entries of $M_{\mathbf a}$ are strictly negative, and its
 Rayleigh quotient at $(1,\dots,1)$ is negative, so $\theta_1<0$.  Replacing a
 Rayleigh minimizer $z$ by its componentwise absolute value cannot increase
 the quotient; equality forces its nonzero components to have the same sign,
-and the eigenvalue equation rules out a zero component.  Thus a ground-state
-eigenvector has one strict sign.  If the ground eigenspace had dimension at
+and the eigenvalue equation rules out a zero component.  Thus the components
+of a ground-state eigenvector are either all strictly positive or all strictly
+negative.  If the ground eigenspace had dimension at
 least two, it would contain a nonzero vector with a zero component, a
 contradiction.  Hence $\theta_1$ is simple.  Finally,
 $\operatorname{tr}M_{\mathbf a}=0$ gives $\theta_N>0$.  Put
@@ -1013,8 +1017,8 @@ After translating $a_N$ to the origin, the $N-1$ vectors
 $a_i-a_N$ have Gram matrix with diagonal entries $r^2$ and off-diagonal
 entries $r^2/2$.  This matrix is positive definite, so $N-1\leq d$.
 Here $M_{\mathbf a}=-w(J-I)$, where $J$ is the all-ones matrix.  The vector
-$(1,\dots,1)$ has eigenvalue $-(N-1)w$, and its orthogonal complement has
-eigenvalue $w$.
+$(1,\dots,1)$ has eigenvalue $-(N-1)w$, and every vector in its orthogonal
+complement is an eigenvector with eigenvalue $w$.
 \end{proof}
 
 \section{Reproducible fixed-mesh checks on intervals}\label{sec:numerics}
@@ -1133,9 +1137,9 @@ indicated uniform meshes.}
 \label{tab:mesh}
 \end{table}
 
-On the 180-cell mesh, the two-well component centers are $(-L/2,L/2)$,
-while the three-well centers are $(-L,0,L)$.  The corresponding fixed-mesh
-effective spectra are
+On the 180-cell-per-component mesh, the two-well component centers are
+$(-L/2,L/2)$, while the three-well centers are $(-L,0,L)$.  The corresponding
+fixed-mesh effective-matrix spectra are
 \begin{align*}
  (-L/2,L/2):&\quad (-0.18521477,0.18521477),\\
  (-L,0,L):&\quad
@@ -1165,7 +1169,7 @@ or fitted coefficient enters the tables.
 \multicolumn{4}{c}{\textit{Two wells}}\\
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
-    & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & max. error\\ \hline
+    & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & maximum error\\ \hline
 3  & $-0.190740$ & $ 0.189832$ & $5.52\times10^{-3}$\\
 6  & $-0.186544$ & $ 0.186335$ & $1.33\times10^{-3}$\\
 12 & $-0.185551$ & $ 0.185486$ & $3.36\times10^{-4}$\\
@@ -1179,7 +1183,7 @@ $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$
-    & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & max. error\\ \hline
+    & $L^{3/2}(\lambda_{3,h}-\mu_{1,h})$ & maximum error\\ \hline
 3  & $-0.304984$ & $0.065562$ & $0.237544$ & $8.27\times10^{-3}$\\
 6  & $-0.298738$ & $0.065554$ & $0.232747$ & $2.03\times10^{-3}$\\
 12 & $-0.297236$ & $0.065504$ & $0.231595$ & $5.22\times10^{-4}$\\
@@ -1188,7 +1192,8 @@ $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
 \end{tabular*}
 \caption{Scaled cluster shifts on the 180-cell-per-component mesh for two
 wells centered at $(-L/2,L/2)$ and three wells centered at $(-L,0,L)$;
-max. error is measured against the corresponding effective-matrix spectrum.}
+the maximum error is measured against the corresponding effective-matrix
+spectrum.}
 \label{tab:clusters}
 \end{minipage}
 \par\medskip
@@ -1215,9 +1220,9 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
 includes a frozen copy of the script, pinned dependencies, and reference
 output; these archived files correspond to the manuscript.
 The version tag for this manuscript is
-\texttt{paper-2026-09-04-r4}.  The tagged development source is available at
-\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r4}%
-{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r4}.
+\texttt{paper-2026-09-04-r5}.  The tagged development source is available at
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r5}%
+{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r5}.
 \end{sloppypar}
 
 {\small

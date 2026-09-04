@@ -4,7 +4,7 @@
 
 - Brasco--Parini, Theorem 2.8, specialized to `p=2`: the first restricted
   fractional eigenvalue on a bounded open set is simple and its eigenfunction
-  has one strict sign.
+  is either strictly positive or strictly negative.
 - Brasco--Parini, Theorem 6.2, specialized to `p=2`: the nonlocal
   Hong--Krahn--Szegő bound is strict, and two equal balls whose mutual distance
   tends to infinity form a minimizing sequence.

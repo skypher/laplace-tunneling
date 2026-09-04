@@ -138,7 +138,7 @@ inspection of all 16 pages confirms that the abstract radius, cutoff estimate,
 normalization, cluster-edge bounds, symmetry-free corollary, fixed-mesh
 geometry, effective spectra, revised table labels, disclosure,
 code-availability metadata, and linked DOI/arXiv references are legible.  The
-shortened abstract and the contribution, geometry-scope, and symmetry
+revised abstract and the contribution, geometry-scope, and symmetry
 clarifications are also legible.  Page 15 contains the fixed-mesh table,
 disclosure, code information, and the first bibliography entry; the remaining
 twelve entries fit legibly on page 16.  The title page lists Leslie P. Polzer,
@@ -155,14 +155,14 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1410 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1537 pages=16
 ```
 
 Artifact hashes after the arXiv-readiness revision are:
 
 ```text
-3bd6c98ea0f03c2eb59ab7784d6a334961bf9025633c02f766491a6bdca0a925  paper.pdf
-69329e84fa874b531925c68987272377fbfefc8534b0690af284e1b05c34ce1b  dist/laplace-tunneling-arxiv.tar.gz
+ef7e1090e0126e48ce6b223b7280c120b48ff4771b6d17345713ea0fcc84fb89  paper.pdf
+29de10e7a2e6a04907d6f0e64da27a1d27c694bebeada44b604b21020ea9af20  dist/laplace-tunneling-arxiv.tar.gz
 af38fe65daf22e5f08a1ea7df85937d2931162b0e52a993f5419d74c826879e9  numerics/asymptotics_180.txt
 ```
 
@@ -172,7 +172,7 @@ script, pinned dependencies, and saved 180-cell output.  The manifest has seven
 files and one directory, and every extracted payload byte-matched its
 working-tree source.  The `make arxiv` prerequisite ran the release audit and
 returned the result shown above.  The revised release is named
-`paper-2026-09-04-r4` in the manuscript and README.  A second archive
+`paper-2026-09-04-r5` in the manuscript and README.  A second archive
 generation byte-matched the release archive.
 
 ## Final double-check before closure

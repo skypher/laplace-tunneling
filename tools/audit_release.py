@@ -95,7 +95,7 @@ def main() -> None:
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
         "\\date{September 4, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r4",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r5",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -136,7 +136,7 @@ def main() -> None:
         "assembled constant-function energy identity",
         "exact reuse of each translated one-well block",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-04-r4",
+        "paper-2026-09-04-r5",
         "check_asymptotics.py",
         "requirements-numerics.txt",
         "asymptotics_180.txt",
@@ -164,7 +164,7 @@ def main() -> None:
         "README overstates the multi-well geometry",
     )
     require(
-        "paper-2026-09-04-r4" in readme,
+        "paper-2026-09-04-r5" in readme,
         "README release tag is stale",
     )
 
