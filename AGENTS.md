@@ -1,7 +1,8 @@
 # Project goal
 
 Develop a paper proof of algebraic spectral tunnelling for the restricted
-fractional Laplacian on finitely many distant congruent domains.
+fractional Laplacian on finitely many distant identically oriented translates
+of a common domain.
 
 The final paper theorem has three parts:
 
@@ -24,6 +25,8 @@ release checks recorded in `notes/final_audit.md`.  The final manuscript is
 - `c_{d,s}` denotes the normalization in the singular-integral definition.
 - For the first theorem, the reference component `D` is bounded, Lipschitz,
   centrally symmetric, and contained in a ball of radius `R`.
+- For the finite-well theorem, the components are the translates `D+La_j`;
+  independently rotated copies are not asserted.
 - Novelty priority claims use the bounded wording supported by the completed
   literature audit.  Mathematical claims may be stated unconditionally only
   when their proofs and cited inputs are present in the manuscript.

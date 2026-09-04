@@ -21,6 +21,7 @@ def main() -> None:
     parser.parse_args()
 
     paper = read("paper.tex")
+    readme = read("README.md")
     bibliography = read("references.bib")
     built_bibliography = read("paper.bbl")
     build_log = read("paper.log")
@@ -94,7 +95,7 @@ def main() -> None:
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
         "\\date{September 4, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r2",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r3",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -134,7 +135,7 @@ def main() -> None:
         "assembled constant-function energy identity",
         "exact reuse of each translated one-well block",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-04-r2",
+        "paper-2026-09-04-r3",
         "anc/check_asymptotics.py",
         "anc/requirements-numerics.txt",
         "anc/asymptotics_180.txt",
@@ -145,6 +146,26 @@ def main() -> None:
             fragment in normalized_paper,
             f"missing code-availability text: {fragment}",
         )
+    require(
+        "identically oriented translates of a common well" in normalized_paper,
+        "missing finite-well orientation scope",
+    )
+    require(
+        "many congruent wells" not in normalized_paper,
+        "finite-well claim overstates the proved translation geometry",
+    )
+    require(
+        "compact-kernel nonlocal" not in normalized_paper,
+        "ambiguous compact-kernel wording remains",
+    )
+    require(
+        "identically oriented translates of a common well" in readme,
+        "README overstates the finite-well geometry",
+    )
+    require(
+        "paper-2026-09-04-r3" in readme,
+        "README release tag is stale",
+    )
 
     metadata_abstract_length = 0
     abstract_match = re.search(

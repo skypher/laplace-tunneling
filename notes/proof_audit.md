@@ -22,10 +22,11 @@
   operator has the analogous strict Hong--Krahn--Szeg\H{o} inequality and
   distant-equal-ball limiting sequence, but the statement is qualitative in
   the separation distance.
-- Goel--Sreenadh, Theorem 1.4: the local plus compact-kernel nonlocal
-  $p$-Laplacian has another strict Hong--Krahn--Szeg\H{o} bound and sharp
-  distant-equal-ball sequence.  Compact support makes that interaction
-  finite-range rather than algebraic at long range.
+- Goel--Sreenadh, Theorem 1.4: the local $p$-Laplacian coupled to a nonlocal
+  $p$-Laplacian with a compactly supported kernel has another strict
+  Hong--Krahn--Szeg\H{o} bound and sharp distant-equal-ball sequence.  Compact
+  support makes that interaction finite-range rather than algebraic at long
+  range.
 - Parini--Salort, Theorems 1.1 and 1.2: the cited dichotomy is qualitative
   resolvent convergence for components whose distance tends to infinity.
 

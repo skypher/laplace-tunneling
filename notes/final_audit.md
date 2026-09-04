@@ -47,7 +47,9 @@ Audit date: 2026-09-04.
   cancellation, so central symmetry is not a hypothesis of Theorem 4.6.
   Corollary 4.7 states the resulting symmetry-free two-well asymptotic.
   Corollary 4.8 restores `D=-D` exactly where comparison with the reflected
-  scalar branches uses it.
+  scalar branches uses it.  The abstract, introduction, repository summary,
+  and closing scope statement now advertise exactly the proved geometry:
+  identically oriented translates `D+La_j`, not independently rotated copies.
 - Lemma 4.2 identifies the direct-sum form domain and obtains the full block
   norm from the Schur bounds and the symmetric row-sum estimate.
 - Lemma 4.3 was checked from the min--max principle on the ground-state
@@ -69,6 +71,10 @@ Audit date: 2026-09-04.
   and the regular-simplex spectrum were each checked directly.  The
   Gram-matrix argument in Corollary 4.10 also records the necessary bound
   `N <= d+1`.
+- Corollary 4.8 now states the common condition `L >= L_0`, verifies that it
+  supplies the size hypotheses of Theorem 4.6, and displays the exact identity
+  between `epsilon_L+2 gamma_L^2/g` and the right-hand side of each two-well
+  bound.
 - Corollary 4.9 now separates the two mechanisms: Brasco--Parini Theorem 2.8
   gives simplicity of the full-domain first eigenvalue for every admissible
   separation, while Theorem 4.6 gives the strict inequalities relative to
@@ -93,7 +99,7 @@ Audit date: 2026-09-04.
   displayed rounding.  At `L=3`, the two- and three-well norm bounds are
   respectively `0.10858` and `0.21716`, both below `g_h/4=0.22424`.
 - A fresh unbuffered replay on 2026-09-04 with Python 3.12.3, NumPy 1.26.4,
-  and SciPy 1.11.4 completed in 35.683 seconds and again matched every saved
+  and SciPy 1.11.4 completed in 27.104 seconds and again matched every saved
   value after removing the machine-dependent elapsed-time line.
 
 ## Source-specific checks
@@ -105,7 +111,7 @@ Audit date: 2026-09-04.
 | Positivity and simplicity | Brasco--Parini, Theorem 2.8, at `p=2` |
 | Nonlocal Hong--Krahn--Szego sequence | Brasco--Parini, Theorem 6.2, at `p=2` |
 | Mixed local/nonlocal Hong--Krahn--Szego sequence | Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1 |
-| Local plus compact-kernel nonlocal Hong--Krahn--Szego sequence | Goel--Sreenadh, Theorem 1.4 |
+| Local plus nonlocal Hong--Krahn--Szego sequence, with a compactly supported kernel in the nonlocal term | Goel--Sreenadh, Theorem 1.4 |
 | Distant-component dichotomy | Parini--Salort, Theorems 1.1 and 1.2 |
 | Principal eigenvalue versus separation for two one-dimensional patches | L\'eculier--Roquejoffre, Theorem 1 |
 | Mutual-position observation | Abatangelo--Felli--Noris, Introduction, p. 3 |
@@ -131,14 +137,15 @@ inspection of all 16 pages confirms that the abstract radius, cutoff estimate,
 normalization, cluster-edge bounds, symmetry-free corollary, fixed-mesh
 geometry, effective spectra, revised table labels, disclosure,
 code-availability metadata, and linked DOI/arXiv references are legible.  The
-shortened abstract and the contribution and symmetry clarifications are also
-legible, and all thirteen bibliography entries fit across pages 15--16.  The title
-page lists Leslie P. Polzer, Independent Researcher, and
+shortened abstract and the contribution, geometry-scope, and symmetry
+clarifications are also legible.  Page 15 contains the fixed-mesh table, scope
+statement, disclosure, and code information; all thirteen bibliography entries
+fit legibly on page 16.  The title page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
 paper confirms the same two-sided article geometry, Latin Modern font set,
 title stack, section and theorem typography, running-head convention,
-caption treatment, link palette, and ruled-table presentation.  Page 14
+caption treatment, link palette, and ruled-table presentation.  Page 15
 contains the AI-use disclosure naming OpenAI GPT-5.6 Sol
 (`gpt-5.6-sol`) and specifying its research uses.  The manuscript source and extracted
 PDF text contain no prohibited product-name reference.
@@ -146,14 +153,14 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1237 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1269 pages=16
 ```
 
 Artifact hashes after the arXiv-readiness revision are:
 
 ```text
-e2f56fe51176e5129f721cbd2d45db6c8b10dca82253048f83d53d9c1c8122f5  paper.pdf
-1963176346c3fbb273ab08f177dd0b3866c90536670ed3801a9f76ca5a2fcb77  dist/laplace-tunneling-arxiv.tar.gz
+f598e1403fad74c223918022cb7503c9df04d2669f6fc98faf0fa3a6af54605c  paper.pdf
+42f9fd9f7cc0213cf167aaf122b82780ae7c4d470571b5e795ebe572e393fee8  dist/laplace-tunneling-arxiv.tar.gz
 af38fe65daf22e5f08a1ea7df85937d2931162b0e52a993f5419d74c826879e9  numerics/asymptotics_180.txt
 ```
 
@@ -163,7 +170,7 @@ script, pinned dependencies, and saved 180-cell output.  The manifest has seven
 files and one directory, and every extracted payload byte-matched its
 working-tree source.  The `make arxiv` prerequisite ran the release audit and
 returned the result shown above.  The revised release is named
-`paper-2026-09-04-r2` in the manuscript and README.  An independently staged
+`paper-2026-09-04-r3` in the manuscript and README.  An independently staged
 archive byte-matched the release archive.  Two PDFLaTeX passes from a fresh
 extraction, without repository build files, produced a 16-page PDF whose final
 log had no warnings or box diagnostics and whose extracted text byte-matched

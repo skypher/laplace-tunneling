@@ -137,9 +137,10 @@ $m_1=\int_D\phi_1$.  We prove
 using an exact central-inversion reduction, an isolated-eigenvalue perturbation
 estimate, and a second-order expansion of the interaction kernel.  For two
 equal balls, the upper member of the doublet gives the leading rate in the
-nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.  We also treat finitely
-many congruent wells without a symmetry assumption.  For fixed distinct sites
-$a_1,\ldots,a_N$, the first $N$ eigenvalues satisfy
+nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.  We also treat fixed
+finite families of identically oriented translates of one well, with no
+symmetry assumption.  For distinct sites $a_1,\ldots,a_N$, the first $N$
+eigenvalues satisfy
 $\lambda_k=\mu_1+L^{-d-2s}\theta_k
 +O(L^{-d-2s-2}+L^{-2d-4s})$, where
 $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the matrix with zero
@@ -163,16 +164,18 @@ optimization.
 The restricted fractional Laplacian couples disjoint components through its
 integral kernel, unlike the local Dirichlet Laplacian, whose spectrum on a
 disconnected union is exactly the multiset union of the component spectra.
-We prove that two distant congruent components exhibit a nonzero splitting
-that decays algebraically with their separation.
+We prove that two distant translates of one centrally symmetric component
+exhibit a nonzero splitting that decays algebraically with their separation.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
 sequence when their mutual distance tends to infinity
-\cite[Theorem~6.2]{BrascoParini2016}.  Mixed-operator analogues were proved by
-Biagi, Dipierro, Valdinoci, and Vecchi
-\cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}, and by Goel and Sreenadh
-for a local $p$-Laplacian coupled to a compact-kernel nonlocal $p$-Laplacian
+\cite[Theorem~6.2]{BrascoParini2016}.  Biagi, Dipierro, Valdinoci, and Vecchi
+proved a mixed local/nonlocal analogue
+\cite[Theorem~1.1]{BiagiDipierroValdinociVecchi2023}.
+
+A second analogue is due to Goel and Sreenadh; it treats a local
+$p$-Laplacian coupled to a nonlocal $p$-Laplacian with a compactly supported kernel
 \cite[Theorem~1.4]{GoelSreenadh2019}; the latter interaction is finite-range
 rather than algebraic.  Parini and Salort proved a fractional
 concentration--compactness trichotomy for bounded Sobolev sequences and
@@ -213,9 +216,10 @@ with a quantified remainder or this finite-well spectral reduction.
 
 Our contribution has three parts.  First, we identify the leading coefficient
 and sign of the first two eigenvalue shifts for two centrally symmetric wells.
-Second, we derive an explicit effective Hamiltonian for finitely many congruent
-wells without a symmetry assumption.  Third, we give uniform spectral-cluster
-errors and fixed-mesh computations illustrating both limits.
+Second, we derive an explicit effective Hamiltonian for finitely many
+identically oriented translates of a common well, without a symmetry
+assumption.  Third, we give uniform spectral-cluster errors and fixed-mesh
+computations illustrating both limits.
 
 The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
 cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
@@ -931,8 +935,9 @@ gives the limit.
 
 \begin{corollary}[Recovery of the doublet]\label{cor:multi-two}
 Assume in addition that $D=-D$.  For $N=2$, $a_1=-e/2$, and $a_2=e/2$,
-the right-hand side of \eqref{eq:multi-eigenvalue-bound}, including its
-explicit constants, agrees with the bounds
+and every $L\geq L_0$ from \eqref{eq:explicit-L0}, the error expression
+$\varepsilon_L+2\gamma_L^2/g$ in \eqref{eq:multi-eigenvalue-bound} is exactly
+the right-hand side of each bound
 \eqref{eq:lambda1}--\eqref{eq:lambda2}.
 \end{corollary}
 
@@ -944,10 +949,20 @@ In this case
 \]
 whose ordered eigenvalues are $-c_{d,s}m_1^2$ and $c_{d,s}m_1^2$.  Moreover,
 $\Sigma_\kappa(\mathbf a)=\Sigma_{\kappa+2}(\mathbf a)=1$, so
-$\gamma_L=\beta_L$.  In the exact compression, central symmetry of $D$ and
-evenness of $\phi_1$ show, after the change of variables $y\mapsto-y$, that
-the translated two-well kernel integral equals $I_L$.  Thus the compression
-errors, and hence the two displayed remainder bounds, coincide.
+$\gamma_L=\beta_L$ and
+$\varepsilon_L=c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}$.  Hence
+\[
+ \varepsilon_L+\frac{2\gamma_L^2}{g}
+ =c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
+  +\frac{2\beta_L^2}{g}.
+\]
+Moreover, $L\geq L_0$ implies $L\geq4R$ and $\gamma_L=\beta_L\leq g/4$,
+so the hypotheses of Theorem~\ref{thm:multi-well} hold.  In the exact
+compression, central symmetry of $D$ and evenness of $\phi_1$ show, after the
+change of variables $y\mapsto-y$, that the translated two-well kernel integral
+equals $I_L$.  The ordered leading terms therefore match the reflected
+branches in Theorem~\ref{thm:two-well}, and the displayed identity proves the
+claim about their remainder bounds.
 \end{proof}
 
 \begin{corollary}[Collective ground state]\label{cor:collective-ground}
@@ -1169,6 +1184,11 @@ every computed separation.  The calculation uses the exact entries
 \eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}; no singular quadrature
 or fitted coefficient enters the tables.
 
+Every $L\to\infty$ limit keeps all other data fixed, including $N$ and the
+distinct sites $\mathbf a$ in Section~4 and the translated mesh in Section~5.
+The multi-well construction in Section~4 uses identically oriented translates
+$D+La_j$ of the common reference well.
+
 \section*{AI-use disclosure}
 
 The proof architecture and manuscript were developed with assistance from
@@ -1194,12 +1214,11 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
 includes a frozen copy of the script, pinned dependencies, and reference
 output; this is the version corresponding to the manuscript.
 The version tag for this manuscript is
-\texttt{paper-2026-09-04-r2}.  The tagged development source is available at
-\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r2}%
-{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r2}.
+\texttt{paper-2026-09-04-r3}.  The tagged development source is available at
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r3}%
+{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r3}.
 \end{sloppypar}
 
-\enlargethispage{3\baselineskip}
 {\small
 \let\standardthebibliography\thebibliography
 \renewcommand{\thebibliography}[1]{%

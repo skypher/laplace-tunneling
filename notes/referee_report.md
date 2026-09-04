@@ -5,7 +5,7 @@ Review date: 2026-09-04.
 Manuscript: *Algebraic tunneling for the restricted fractional Laplacian on
 distant domains*.
 
-Version reviewed: revision tag `paper-2026-09-04-r1`, recorded in
+Version reviewed: revision tag `paper-2026-09-04-r3`, recorded in
 `notes/final_audit.md`.
 
 ## Recommendation
@@ -21,10 +21,14 @@ finite-component ground-state cluster governed by a weighted interaction
 matrix, and a reproducible fixed-mesh illustration.  The operator reduction,
 signs, leading coefficients, spectral-gap errors, Taylor errors, and limiting
 scales are mutually consistent.  The minor normalization, cluster-gap,
-all-distance simplicity, bibliography, wording, and pagination issues found
-in the preceding review are corrected in this revision.  I found no remaining
-mathematical error, no missing hypothesis used by a caller, and no citation
-whose checked statement differs from its use in the manuscript.
+all-distance simplicity, geometry-scope, bibliography, wording, and pagination
+issues found in the preceding reviews are corrected in this revision.  In
+particular, the finite-well claims now say "identically oriented translates,"
+Corollary 4.8 states its common threshold and exact error identity, and the
+closing scope statement fixes every parameter held constant as `L` tends to
+infinity.  I found no remaining mathematical error, no missing hypothesis used
+by a caller, and no citation whose checked statement differs from its use in
+the manuscript.
 
 The recommendation follows the object-by-object checks below rather than the
 repository's earlier audit declarations.  The last independent checks were:
@@ -343,9 +347,9 @@ spelling as the body.
 The fixed-mesh corollary now identifies `φ_{1,h}` with the one-well Galerkin
 matrix, says that the same partition is translated to every component, and
 states that the tabulated errors are calculated before display rounding.
-The revised introduction has no one-word page break, all thirteen
-bibliography entries are legible across pages 15--16 at the original type
-size, and the layout has no clipping or malformed reference entry.  The
+The revised introduction has no split author attribution, all thirteen
+bibliography entries are legible on page 16 at the original type size, and the
+layout has no clipping or malformed reference entry.  The
 AI-use disclosure describes the generated code as reproducibility and
 release-audit code.
 
@@ -364,8 +368,8 @@ uses:
 - Biagi--Dipierro--Valdinoci--Vecchi, Theorem 1.1: the analogous strict and
   sharp statement for the mixed local/nonlocal operator;
 - Goel--Sreenadh, Theorem 1.4: the strict second-eigenvalue bound and sharp
-  distant-ball sequence for a local plus compact-kernel nonlocal
-  `p`-Laplacian;
+  distant-ball sequence for a local `p`-Laplacian coupled to a nonlocal
+  `p`-Laplacian with a compactly supported kernel;
 - Parini--Salort, Theorems 1.1 and 1.2: compactness/dichotomy and its shape
   optimization consequence;
 - L\'eculier--Roquejoffre, Theorem 1: monotonicity and continuity of the
@@ -404,15 +408,16 @@ both below `g_h/4=0.22424`.
 `make audit` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1269 pages=16
 ```
 
-The source archive was extracted into a fresh directory.  `make audit`
-rebuilt the 16-page PDF with no final warning matched by the release audit.
-The archive generated from the reviewed tree has hash:
+The source archive was extracted into a fresh directory and rebuilt with two
+PDFLaTeX passes.  The resulting 16-page PDF had no final warning or box
+diagnostic, and its extracted text byte-matched the local PDF.  The archive
+generated from the reviewed tree has hash:
 
 ```text
-3a75980f63de706fb3744418436aaedd106c93c834c7428361f07b8e6356fdf9
+42f9fd9f7cc0213cf167aaf122b82780ae7c4d470571b5e795ebe572e393fee8
 ```
 
 Rendered-page inspection found no clipping, collision, unreadable table,
