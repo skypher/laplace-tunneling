@@ -1,5 +1,8 @@
 .PHONY: pdf numerics audit arxiv
 
+ARXIV_ARCHIVE := dist/laplace-tunneling-arxiv.tar.gz
+ARXIV_MTIME := UTC 2026-09-04
+
 pdf: paper.pdf
 
 paper.pdf: paper.tex references.bib
@@ -14,11 +17,19 @@ numerics:
 audit: paper.pdf
 	python3 -u tools/audit_release.py
 
-arxiv: audit
+arxiv: audit anc/README.txt
 	mkdir -p dist
-	tar --sort=name --mtime='UTC 2026-09-04' --owner=0 --group=0 --numeric-owner \
-		-czf dist/laplace-tunneling-arxiv.tar.gz \
-		paper.tex paper.bbl references.bib README.md Makefile \
-		tools/audit_release.py tools/check_asymptotics.py \
-		requirements-numerics.txt \
-		numerics/asymptotics_180.txt
+	staging_dir=$$(mktemp -d); \
+		trap 'rm -rf "$$staging_dir"' EXIT; \
+		install -m 0644 paper.tex paper.bbl references.bib "$$staging_dir"; \
+		install -d -m 0755 "$$staging_dir/anc"; \
+		install -m 0644 anc/README.txt "$$staging_dir/anc/README.txt"; \
+		install -m 0644 tools/check_asymptotics.py \
+			"$$staging_dir/anc/check_asymptotics.py"; \
+		install -m 0644 requirements-numerics.txt \
+			"$$staging_dir/anc/requirements-numerics.txt"; \
+		install -m 0644 numerics/asymptotics_180.txt \
+			"$$staging_dir/anc/asymptotics_180.txt"; \
+		tar --sort=name --mtime='$(ARXIV_MTIME)' --owner=0 --group=0 \
+			--numeric-owner -C "$$staging_dir" -czf "$(CURDIR)/$(ARXIV_ARCHIVE)" \
+			paper.tex paper.bbl references.bib anc

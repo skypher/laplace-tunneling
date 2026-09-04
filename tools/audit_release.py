@@ -41,6 +41,7 @@ def main() -> None:
         "tools/audit_release.py",
         "requirements-numerics.txt",
         "numerics/asymptotics_180.txt",
+        "anc/README.txt",
     ]
     for relative in required_files:
         require((ROOT / relative).is_file(), f"missing release file: {relative}")
@@ -52,6 +53,12 @@ def main() -> None:
     bbl_keys = set(re.findall(r"\\bibitem(?:\[[^]]*\])?\{([^}]+)\}", built_bibliography))
     require(cited == bib_keys, f"citation/BibTeX mismatch: cited={sorted(cited)}, bib={sorted(bib_keys)}")
     require(cited == bbl_keys, f"citation/bbl mismatch: cited={sorted(cited)}, bbl={sorted(bbl_keys)}")
+    eprint_ids = set(re.findall(r"eprint\s*=\s*\{([^}]+)\}", bibliography))
+    for identifier in eprint_ids:
+        require(
+            f"arXiv:{identifier}" in built_bibliography,
+            f"arXiv identifier absent from generated bibliography: {identifier}",
+        )
 
     labels = set(re.findall(r"\\label\{([^}]+)\}", paper))
     references = {
@@ -87,7 +94,7 @@ def main() -> None:
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
         "\\date{September 4, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r1",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r2",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -127,7 +134,10 @@ def main() -> None:
         "assembled constant-function energy identity",
         "exact reuse of each translated one-well block",
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-04-r1",
+        "paper-2026-09-04-r2",
+        "anc/check_asymptotics.py",
+        "anc/requirements-numerics.txt",
+        "anc/asymptotics_180.txt",
         "this is the version corresponding to the manuscript",
     )
     for fragment in code_availability:
@@ -135,6 +145,26 @@ def main() -> None:
             fragment in normalized_paper,
             f"missing code-availability text: {fragment}",
         )
+
+    metadata_abstract_length = 0
+    abstract_match = re.search(
+        r"\\begin\{abstract\}(.*?)\\vskip5pt",
+        paper,
+        flags=re.DOTALL,
+    )
+    require(abstract_match is not None, "cannot extract metadata abstract")
+    if abstract_match is not None:
+        metadata_abstract = re.sub(r"\s+", " ", abstract_match.group(1)).strip()
+        metadata_abstract_length = len(metadata_abstract)
+        require(
+            metadata_abstract_length <= 1920,
+            f"metadata abstract exceeds 1920 characters: {metadata_abstract_length}",
+        )
+        for opaque_macro in (r"\R", r"\abs", r"\Hs", r"\ip", r"\norm", r"\!"):
+            require(
+                opaque_macro not in metadata_abstract,
+                f"opaque macro in metadata abstract: {opaque_macro}",
+            )
 
     critical_log_patterns = (
         "LaTeX Warning",
@@ -210,7 +240,8 @@ def main() -> None:
     print(
         "release audit passed: "
         f"citations={len(cited)} labels={len(labels)} results={result_count} "
-        f"numerical_rows=11 pages={expected_pages}",
+        f"numerical_rows=11 abstract_chars={metadata_abstract_length} "
+        f"pages={expected_pages}",
         flush=True,
     )
 

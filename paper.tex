@@ -124,36 +124,28 @@ Laplacian on distant domains}
 \maketitle
 
 \begin{abstract}
-Let $D\subset B_R(0)\subset\R^d$ be a bounded centrally symmetric Lipschitz
-domain, fix a unit vector $e\in\R^d$, and set
-$\Omega_L=(D-\frac L2e)\cup(D+\frac L2e)$.  For the restricted fractional
+Let $D\subset B_R(0)\subset\mathbb R^d$ be a bounded centrally symmetric
+Lipschitz open set, and let $\Omega_L$ be the union of two symmetric translates
+of $D$ whose centers are separated by $L$.  For the restricted fractional
 Laplacian $(-\Delta)^s$, $0<s<1$, let $\mu_1$ be the one-well ground-state
-eigenvalue, let $\phi_1$ be its positive $L^2$-normalized eigenfunction, and
-put $m_1=\int_D\phi_1$.  As $L\to\infty$,
-\begin{align*}
- \lambda_1(\Omega_L)
- &=\mu_1-c_{d,s}m_1^2L^{-d-2s}
-   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),\\
- \lambda_2(\Omega_L)
- &=\mu_1+c_{d,s}m_1^2L^{-d-2s}
-   +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
-\end{align*}
-where $c_{d,s}$ is the singular-integral normalization.  For two equal balls,
-the second formula gives the leading rate in the nonlocal
-Hong--Krahn--Szeg\H{o} minimizing sequence.  More generally, for any bounded
-Lipschitz reference domain and fixed distinct translation sites
-$a_1,\dots,a_N$, the first $N$ eigenvalues are
+eigenvalue, let $\phi_1>0$ be $L^2$-normalized, and set
+$m_1=\int_D\phi_1$.  We prove
 \[
- \lambda_k=\mu_1+L^{-d-2s}\theta_k
- +O\!\left(L^{-d-2s-2}+L^{-2d-4s}\right),
- \qquad 1\leq k\leq N,
+ \lambda_{1,2}(\Omega_L)=\mu_1\mp c_{d,s}m_1^2L^{-d-2s}
+ +O(L^{-d-2s-2}+L^{-2d-4s}),
 \]
-where $\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the explicit
-matrix with zero diagonal and off-diagonal entries
-$-c_{d,s}m_1^2\abs{a_i-a_j}^{-d-2s}$.  Exact cell-integral Galerkin
-computations on two and three intervals illustrate these fixed-mesh limits.
-All implicit constants are uniform in $L$ for fixed $d,s,D,R$ and, in the
-multi-well statement, fixed $N$ and translation sites.
+using an exact central-inversion reduction, an isolated-eigenvalue perturbation
+estimate, and a second-order expansion of the interaction kernel.  For two
+equal balls, the upper member of the doublet gives the leading rate in the
+nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.  We also treat finitely
+many congruent wells without a symmetry assumption.  For fixed distinct sites
+$a_1,\ldots,a_N$, the first $N$ eigenvalues satisfy
+$\lambda_k=\mu_1+L^{-d-2s}\theta_k
++O(L^{-d-2s-2}+L^{-2d-4s})$, where
+$\theta_1\leq\cdots\leq\theta_N$ are the eigenvalues of the matrix with zero
+diagonal and off-diagonal entries
+$-c_{d,s}m_1^2\lvert a_i-a_j\rvert^{-d-2s}$.  Exact cell-integral Galerkin
+computations on two and three intervals illustrate the fixed-mesh limits.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -219,18 +211,24 @@ identified.  We are
 not aware of an earlier result giving either the two-component coefficient
 with a quantified remainder or this finite-well spectral reduction.
 
+Our contribution has three parts.  First, we identify the leading coefficient
+and sign of the first two eigenvalue shifts for two centrally symmetric wells.
+Second, we derive an explicit effective Hamiltonian for finitely many congruent
+wells without a symmetry assumption.  Third, we give uniform spectral-cluster
+errors and fixed-mesh computations illustrating both limits.
+
 The first result, Theorem~\ref{thm:two-well}, treats the double ground-state
 cluster.  Theorem~\ref{thm:multi-well} identifies the entire ground-state
 cluster for finitely many translated components with the spectrum of an
-explicit weighted interaction matrix; unlike the central-inversion reduction, this
-result does not require central symmetry of the reference component.  Its
-$N=2$ specialization, Corollary~\ref{cor:symmetry-free-two}, gives the same
-leading doublet coefficient without symmetry; symmetry is used only for the
-exact scalar-branch decomposition and the matching explicit remainder in
-Theorem~\ref{thm:two-well}.  Both proofs are self-contained after the
-standard one-well spectral facts.  The~interval provides an explicit
-benchmark: one-well eigenvalue and
-eigenfunction estimates are available in
+explicit weighted interaction matrix.  Central symmetry permits the exact
+decomposition into the scalar symmetric and antisymmetric branches
+$A_D\pm B_L$.  In the symmetry-free multi-well compression, the corresponding
+first-order kernel term instead cancels algebraically after projection onto the
+one-well ground states.  Its $N=2$ specialization,
+Corollary~\ref{cor:symmetry-free-two}, therefore gives the same leading
+doublet coefficient without symmetry.  Both proofs are self-contained after
+the standard one-well spectral facts.  For a one-dimensional interval,
+one-well eigenvalue and eigenfunction estimates are available in
 \cite[Theorem~1 and Propositions~1--2]{Kwasnicki2012}; sharper eigenvalue
 asymptotics and an eigenfunction bound uniform in both the index and the
 fractional order are proved in \cite[Theorems~1 and~2]{Zhang2026}.  Both
@@ -280,7 +278,7 @@ $\lambda_1(G)\leq\lambda_2(G)\leq\cdots$ for the eigenvalues of $A_G$,
 repeated according to multiplicity.  For an abstract self-adjoint operator
 $T$ with compact resolvent, $\lambda_k(T)$ has the analogous meaning.
 
-Let $D\subset B_R(0)$ be a bounded Lipschitz domain satisfying $D=-D$.
+Let $D\subset B_R(0)$ be a bounded Lipschitz open set satisfying $D=-D$.
 We retain Lipschitz regularity in order to invoke the extension property and
 compactness of the form embedding from
 \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Hence $A_D$
@@ -499,7 +497,7 @@ which is \eqref{eq:Bnorm}.
 \end{proof}
 
 \begin{theorem}[Two-well algebraic splitting]\label{thm:two-well}
-Let $D\subset B_R(0)$ be a bounded centrally symmetric Lipschitz domain, and
+Let $D\subset B_R(0)$ be a bounded centrally symmetric Lipschitz open set, and
 let $\Omega_L$ be as in Section~2.  Set
 \begin{equation}\label{eq:explicit-L0}
  L_0=\max\left\{
@@ -616,8 +614,8 @@ many components we instead keep the full block operator and compare its
 lowest spectral cluster with its compression to the translated one-well
 ground states.
 
-Throughout this section, let $D\subset B_R(0)$ be any bounded Lipschitz
-domain; central symmetry is not assumed.  The compactness and ground-state
+Throughout this section, let $D\subset B_R(0)$ be any bounded Lipschitz open
+set; central symmetry is not assumed.  The compactness and ground-state
 results \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012} and
 \cite[Theorem~2.8]{BrascoParini2016} apply unchanged.  Write
 $\mu_1<\mu_2$, $g=\mu_2-\mu_1>0$, choose the positive normalized ground
@@ -895,7 +893,7 @@ $L^\kappa\gamma_L^2=O(L^{-\kappa})$; since $\kappa=d+2s>0$, multiplying
 
 \begin{corollary}[Symmetry-free two-well asymptotic]
 \label{cor:symmetry-free-two}
-Let $D\subset B_R(0)$ be any bounded Lipschitz domain, let $a_1\ne a_2$, and
+Let $D\subset B_R(0)$ be any bounded Lipschitz open set, let $a_1\ne a_2$, and
 put $r=\abs{a_1-a_2}$.  For
 $\Omega_L=(D+La_1)\cup(D+La_2)$, as $L\to\infty$,
 \begin{align*}
@@ -944,7 +942,7 @@ In this case
  M_{\mathbf a}
  =\begin{pmatrix}0&-c_{d,s}m_1^2\\-c_{d,s}m_1^2&0\end{pmatrix},
 \]
-whose ordered eigenvalues are the two stated numbers.  Moreover,
+whose ordered eigenvalues are $-c_{d,s}m_1^2$ and $c_{d,s}m_1^2$.  Moreover,
 $\Sigma_\kappa(\mathbf a)=\Sigma_{\kappa+2}(\mathbf a)=1$, so
 $\gamma_L=\beta_L$.  In the exact compression, central symmetry of $D$ and
 evenness of $\phi_1$ show, after the change of variables $y\mapsto-y$, that
@@ -1006,7 +1004,7 @@ $(1,\dots,1)$ has eigenvalue $-(N-1)w$, and its orthogonal complement has
 eigenvalue $w$.
 \end{proof}
 
-\section{A reproducible interval check}\label{sec:numerics}
+\section{Reproducible fixed-mesh checks on intervals}\label{sec:numerics}
 
 We finish with a conforming fixed-mesh Galerkin check of the two- and
 three-well limits.  It tests the formulas and is not an input to their proofs.
@@ -1132,6 +1130,7 @@ display.
 \begin{table}[ht]
 \centering
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rccc@{}}
+\multicolumn{4}{c}{\textit{Two wells}}\\
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$ & max. error\\ \hline
@@ -1144,6 +1143,7 @@ $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
 
 \vskip10pt
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}rcccc@{}}
+\multicolumn{5}{c}{\textit{Three wells}}\\
 \hline
 $L$ & $L^{3/2}(\lambda_{1,h}-\mu_{1,h})$
     & $L^{3/2}(\lambda_{2,h}-\mu_{1,h})$
@@ -1182,20 +1182,21 @@ claims, citations, computations, and wording.
 \section*{Code availability}
 
 \begin{sloppypar}
-The script \path{tools/check_asymptotics.py} reproduces
+The ancillary script \path{anc/check_asymptotics.py} reproduces
 Tables~\ref{tab:mesh} and \ref{tab:clusters}.  Before solving the
 eigenproblems, it checks the assembled constant-function energy identity and
 the exact reuse of each translated one-well block, then prints progress after
 each separation.  The pinned numerical dependencies are
 listed in
-\path{requirements-numerics.txt}; the reference output was replayed with
+\path{anc/requirements-numerics.txt}; the reference output in
+\path{anc/asymptotics_180.txt} was replayed with
 Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  The submission source package
-includes frozen copies of the scripts, pinned dependencies, and reference
+includes a frozen copy of the script, pinned dependencies, and reference
 output; this is the version corresponding to the manuscript.
 The version tag for this manuscript is
-\texttt{paper-2026-09-04-r1}.  The tagged development source is available at
-\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r1}%
-{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r1}.
+\texttt{paper-2026-09-04-r2}.  The tagged development source is available at
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r2}%
+{github.com/skypher/laplace-tunneling/tree/paper-2026-09-04-r2}.
 \end{sloppypar}
 
 \enlargethispage{3\baselineskip}

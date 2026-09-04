@@ -129,10 +129,10 @@ The final `make audit` run checks the last LaTeX build, which produced a
 reference, multiply-defined label, overfull box, or underfull box.  Visual
 inspection of all 16 pages confirms that the abstract radius, cutoff estimate,
 normalization, cluster-edge bounds, symmetry-free corollary, fixed-mesh
-geometry, effective spectra, tables, disclosure, code-availability metadata,
-and linked references are legible.  The introduction no longer breaks after
-an isolated word, and all thirteen bibliography entries are legible across
-pages 15--16.  The title
+geometry, effective spectra, revised table labels, disclosure,
+code-availability metadata, and linked DOI/arXiv references are legible.  The
+shortened abstract and the contribution and symmetry clarifications are also
+legible, and all thirteen bibliography entries fit across pages 15--16.  The title
 page lists Leslie P. Polzer, Independent Researcher, and
 `polzer@fastmail.com`; the PDF Author field is `Leslie P. Polzer`.  A
 source-to-source and rendered-page comparison with the Virasoro reference
@@ -146,25 +146,28 @@ PDF text contain no prohibited product-name reference.
 `python3 -u tools/audit_release.py` reports:
 
 ```text
-release audit passed: citations=13 labels=55 results=15 numerical_rows=11 pages=16
+release audit passed: citations=13 labels=55 results=15 numerical_rows=11 abstract_chars=1237 pages=16
 ```
 
-Artifact hashes after the referee-revision build are:
+Artifact hashes after the arXiv-readiness revision are:
 
 ```text
-5b9b1065fd9b700db4436c132db2a0114525029a32bd8f3ea931882e76347944  paper.pdf
-3a75980f63de706fb3744418436aaedd106c93c834c7428361f07b8e6356fdf9  dist/laplace-tunneling-arxiv.tar.gz
+e2f56fe51176e5129f721cbd2d45db6c8b10dca82253048f83d53d9c1c8122f5  paper.pdf
+1963176346c3fbb273ab08f177dd0b3866c90536670ed3801a9f76ca5a2fcb77  dist/laplace-tunneling-arxiv.tar.gz
 af38fe65daf22e5f08a1ea7df85937d2931162b0e52a993f5419d74c826879e9  numerics/asymptotics_180.txt
 ```
 
-The source archive passed `gzip -t` and contains the manuscript, generated
-bibliography, BibTeX database, README, Makefile, release and numerical audit
-scripts, pinned dependencies, and saved 180-cell output.  Every extracted
-payload byte-matched its working-tree source.  The `make arxiv` prerequisite
-ran the release audit and returned the result shown above.  The revised
-release is named `paper-2026-09-04-r1` in the manuscript and README.  A second
-archive created from the same inputs byte-matched the release archive, and a
-fresh extracted-source build passed the same 16-page audit.
+The source archive passed `gzip -t`.  Its root contains only `paper.tex`,
+`paper.bbl`, and `references.bib`; `anc/` contains its README, the numerical
+script, pinned dependencies, and saved 180-cell output.  The manifest has seven
+files and one directory, and every extracted payload byte-matched its
+working-tree source.  The `make arxiv` prerequisite ran the release audit and
+returned the result shown above.  The revised release is named
+`paper-2026-09-04-r2` in the manuscript and README.  An independently staged
+archive byte-matched the release archive.  Two PDFLaTeX passes from a fresh
+extraction, without repository build files, produced a 16-page PDF whose final
+log had no warnings or box diagnostics and whose extracted text byte-matched
+the local PDF text.
 
 ## Final double-check before closure
 

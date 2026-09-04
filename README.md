@@ -15,7 +15,7 @@ make pdf
 Reproduce the interval tables with:
 
 ```sh
-python3 -m pip install -r requirements-numerics.txt
+python3 -u -m pip install -r requirements-numerics.txt
 make numerics
 ```
 
@@ -36,11 +36,13 @@ make arxiv
 ```
 
 The archive is written to `dist/laplace-tunneling-arxiv.tar.gz` and includes the
-manuscript source, generated bibliography, release and numerical audit scripts,
-pinned dependencies, and reference numerical output.
+manuscript source and generated bibliography at its root.  The numerical
+script, pinned dependencies, reference output, and an ancillary README are
+under the archive's top-level `anc/` directory.  Repository-maintenance files
+are omitted from the submission package.
 
 The version tag for the reviewed manuscript is
-`paper-2026-09-04-r1`.
+`paper-2026-09-04-r2`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.
