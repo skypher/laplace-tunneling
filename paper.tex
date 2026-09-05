@@ -128,15 +128,17 @@ We study the restricted fractional Laplacian $(-\Delta)^s$, $0<s<1$, on
 distant translates of a bounded Lipschitz open set $D\subset\mathbb R^d$.
 Let $\mu_1$ be the one-well ground-state eigenvalue, let $\phi_1$ be its
 positive $L^2$-normalized eigenfunction, and set $m_1=\int_D\phi_1$.
-For $\Omega_L=(D-Le/2)\cup(D+Le/2)$ with a fixed unit vector $e$, we prove
+For $\Omega_L=(D-Le/2)\cup(D+Le/2)$ with a fixed unit vector $e$, we prove,
+as $L\to\infty$,
 \[
  \lambda_{1,2}(\Omega_L)=\mu_1\mp c_{d,s}m_1^2L^{-d-2s}
  +O(L^{-d-2s-2}+L^{-2d-4s}),
 \]
 where the minus sign corresponds to $\lambda_1$ and $c_{d,s}$ is the standard
 singular-integral normalization.  When $D=-D$, we also give an exact
-decomposition into symmetric and antisymmetric sectors and an explicit
-separation threshold.  For fixed distinct sites $a_1,\ldots,a_N$, let
+decomposition into symmetric and antisymmetric sectors under central inversion
+and an explicit separation threshold.  For fixed $N\geq2$ and distinct sites
+$a_1,\ldots,a_N$, let
 $\Omega_{\mathbf a,L}=\bigcup_{j=1}^N(D+La_j)$.  Its first $N$ eigenvalues satisfy
 $\lambda_k(\Omega_{\mathbf a,L})=\mu_1+L^{-d-2s}\theta_k
 +O(L^{-d-2s-2}+L^{-2d-4s})$, where
@@ -185,8 +187,8 @@ Central symmetry permits an exact decomposition into the symmetric and
 antisymmetric sector operators $A_D\pm B_L$.  For the general family of
 translates, the linear term in the kernel expansion cancels after projection
 onto the one-well ground states.  This gives the same remainder order without
-symmetry.  Both arguments are self-contained after the standard one-well
-spectral facts.
+symmetry.  The proofs use the one-well spectral facts recalled in Section~2,
+together with elementary perturbation estimates.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
@@ -798,6 +800,7 @@ If $L\delta_{\mathbf a}\geq4R$, then
  =c_{d,s}C_{\kappa,R}m_1^2
  \Sigma_{\kappa+2}(\mathbf a)L^{-\kappa-2}.
 \end{equation}
+Here $C_{\kappa,R}$ is given by \eqref{eq:kernel-expansion}.
 \end{lemma}
 
 \begin{proof}
@@ -828,9 +831,9 @@ row sum.  Taking that row sum proves \eqref{eq:compression-error}.
 \begin{samepage}
 \begin{theorem}[Finite multi-well effective interaction matrix]
 \label{thm:multi-well}
-Let $D$, $\mu_1$, $g$, $\phi_1$, and $m_1$ be as fixed at the beginning of
-this section, and let the multi-well geometry be as in
-Definition~\ref{def:multi-geometry}.  If
+Use the fixed one-well data and Definitions~\ref{def:multi-geometry}
+and~\ref{def:effective-matrix}, with $\gamma_L$ and $\varepsilon_L$ from
+\eqref{eq:gamma-L} and \eqref{eq:compression-error}.  If
 \begin{equation}\label{eq:multi-size-conditions}
  L\delta_{\mathbf a}\geq4R,
  \qquad
@@ -881,15 +884,14 @@ Lemma~\ref{lem:compression} give
 \[
  \abs{\tau_k(L)-L^{-\kappa}\theta_k}\leq\varepsilon_L.
 \]
-Combining these two estimates proves \eqref{eq:multi-eigenvalue-bound}, and
-the upper bound in \eqref{eq:exact-cluster-comparison}, together with
-$\tau_N(L)\leq\norm{T_L}\leq\norm{\mathcal V_L}\leq\gamma_L$, gives the
-upper-edge estimate in \eqref{eq:multi-cluster-edges}.  The lower bound for
-$\lambda_{N+1}$ follows from \eqref{eq:cluster-separation}.  Subtracting the
-two estimates proves \eqref{eq:multi-cluster-gap}.
+The triangle inequality gives \eqref{eq:multi-eigenvalue-bound}.  Using
+$\tau_N(L)\leq\norm{T_L}\leq\norm{\mathcal V_L}\leq\gamma_L$ in
+\eqref{eq:exact-cluster-comparison} gives the upper bound in
+\eqref{eq:multi-cluster-edges}; \eqref{eq:cluster-separation} gives the lower
+bound.  Their difference proves \eqref{eq:multi-cluster-gap}.
 Finally, $L^\kappa\varepsilon_L=O(L^{-2})$ and
-$L^\kappa\gamma_L^2=O(L^{-\kappa})$; since $\kappa=d+2s>0$, multiplying
-\eqref{eq:multi-eigenvalue-bound} by $L^\kappa$ proves
+$L^\kappa\gamma_L^2=O(L^{-\kappa})$ with $\kappa=d+2s>0$, so multiplication
+of \eqref{eq:multi-eigenvalue-bound} by $L^\kappa$ gives
 \eqref{eq:multi-limit}.
 \end{proof}
 
@@ -932,7 +934,7 @@ $\gamma_L^2=O(L^{-2\kappa})$.  Subtracting them and using $\kappa=d+2s$
 gives the limit.
 \end{proof}
 
-\begin{corollary}[Recovery of the doublet]\label{cor:multi-two}
+\begin{corollary}[Two-well remainder comparison]\label{cor:multi-two}
 Assume in addition that $D=-D$, and take $N=2$, $a_1=-e/2$, and
 $a_2=e/2$.  For every $L\geq L_0$ from \eqref{eq:explicit-L0}, the error
 expression $\varepsilon_L+2\gamma_L^2/g$ in
@@ -1021,7 +1023,7 @@ $(1,\dots,1)$ has eigenvalue $-(N-1)w$, and every vector in its orthogonal
 complement is an eigenvector with eigenvalue $w$.
 \end{proof}
 
-\section{Reproducible fixed-mesh checks on intervals}\label{sec:numerics}
+\section{Numerical illustrations on intervals}\label{sec:numerics}
 
 We illustrate the fixed-mesh cluster asymptotic of
 Corollary~\ref{cor:discrete-cluster} using conforming Galerkin matrices
@@ -1064,15 +1066,13 @@ integrations give
  \iint_{I_\alpha\times I_\beta}\abs{x-y}^{-1-2s}\,dx\,dy
  =\frac{2r^q-(r+h)^q-(r-h)^q}{2s q}.
 \]
-The off-diagonal form entry is minus $c_{1,s}$ times this integral.  For one
-cell,
+Multiplication by $-c_{1,s}/h$ gives \eqref{eq:cell-offdiagonal}.
+Similarly, the diagonal entry in \eqref{eq:cell-diagonal} is $c_{1,s}/h$ times
 \[
  \int_{I_\alpha}\int_{\R\setminus I_\alpha}
  \abs{x-y}^{-1-2s}\,dy\,dx
- =\frac{2h^q}{2s q}.
+ =\frac{2h^q}{2s q}.\qedhere
 \]
-Dividing both expressions by $h$ for the normalized indicators proves
-\eqref{eq:cell-diagonal}--\eqref{eq:cell-offdiagonal}.
 \end{proof}
 
 \begin{samepage}
@@ -1140,8 +1140,8 @@ indicated uniform meshes.}
 \end{table}
 
 On the 180-cell-per-component mesh, the two-well component centers are
-$(-L/2,L/2)$, while the three-well centers are $(-L,0,L)$.  The corresponding
-fixed-mesh effective-matrix spectra, indexed by the fixed sites, are
+$(-L/2,L/2)$, while the three-well centers are $(-L,0,L)$.  For the corresponding
+fixed sites, the effective matrices on this mesh have eigenvalues
 \begin{align*}
  \mathbf a=(-1/2,1/2):&\quad (-0.18521477,0.18521477),\\
  \mathbf a=(-1,0,1):&\quad
@@ -1158,8 +1158,9 @@ and effective spectra are rounded for display.
 
 At the selected separations, the scaled errors decrease monotonically;
 Corollary~\ref{cor:discrete-cluster} proves that they tend to zero at fixed
-mesh.  At $L=3$, the discrete bounds are $\gamma_L=0.10858$ for two wells and
-$\gamma_L=0.21716$ for three wells, both below $g_h/4=0.22424$.  Since
+mesh.  Here $g_h=\mu_{2,h}-\mu_{1,h}$ and $R=1/2$.  At $L=3$, the bound
+$\gamma_L$ in \eqref{eq:gamma-L} is $0.10858$ for two wells and $0.21716$ for
+three wells, while $g_h/4=0.22424$.  Since
 $\gamma_L$ decreases with $L$ and $L\delta_{\mathbf a}\geq4R$ already at
 $L=3$, the finite-dimensional cluster estimate used in the proof applies at
 every computed separation.  The calculation uses the exact entries
@@ -1214,14 +1215,16 @@ citations, computations, and wording.
 \section*{Code availability}
 
 \begin{sloppypar}
-The ancillary files contain the script \path{check_asymptotics.py}, the
-pinned dependencies in \path{requirements-numerics.txt}, and the reference
-output \path{asymptotics_180.txt} reproducing Tables~\ref{tab:mesh} and
-\ref{tab:clusters}.  The output was reproduced using
+The script \path{check_asymptotics.py} reproduces Tables~\ref{tab:mesh}
+and~\ref{tab:clusters}.  The ancillary files also include the pinned
+dependencies in \path{requirements-numerics.txt} and the reference output in
+\path{asymptotics_180.txt}.  The calculation was reproduced using
 Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  These files are archived with
-the manuscript; the corresponding source is available in the tagged release
-\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-05}%
-{\texttt{paper-2026-09-05}}.
+the manuscript and are also available, with the manuscript source, in
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-05-r2}%
+{skypher/laplace-tunneling}, tag
+\href{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-05-r2}%
+{paper-2026-09-05-r2}.
 \end{sloppypar}
 
 {\small

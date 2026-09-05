@@ -1,6 +1,52 @@
 # Final theorem and release audit
 
-## Editorial release — 2026-09-05
+## Editorial follow-up — 2026-09-05, revision 2
+
+Release: `paper-2026-09-05-r2`. This revision implements the follow-up in
+`notes/presentation_referee_followup_2026-09-05.md`. The abstract now states
+the limiting regime, fixed number of wells, and central-inversion symmetry.
+The numerical discussion defines its gap notation and radius. Theorem 4.6
+and Lemma 4.5 give direct definition references, and the code-availability
+paragraph displays the repository and release names. The ending of
+Proposition 5.1's proof stays with its final display on p. 13.
+
+Checks completed before recording this release:
+
+- The final manuscript has 16 pages, all visually inspected. Theorem 4.6,
+  Corollary 4.7, and Corollary 5.2 each have an intact statement. The
+  bibliography occupies p. 16.
+- The final LaTeX and BibTeX logs contain no warnings, unresolved references,
+  or overfull/underfull box diagnostics. All listed PDF fonts are embedded
+  Type 1 fonts. The revised repository hyperlinks target the new tag.
+- All 79 displayed-mathematics blocks match the preceding release after
+  normalization of whitespace and the end-of-proof marker. The bibliography,
+  numerical program, and saved output byte-match that release. The proof
+  prose in Proposition 5.1 and Theorem 4.6 was tightened; the displayed
+  formulas and their labels were retained. No numerical computation was
+  rerun for this editorial revision.
+- Both `-h` and `--help` for the metadata-adjusted release audit exit
+  successfully. The audit passes with the result below.
+- `make arxiv` regenerated the submission package. All seven payload files
+  byte-match their working sources, and `gzip -t` passes.
+- A fresh build of the extracted archive gives clean final logs and
+  reproduces the generated bibliography and layout-preserving PDF text.
+  Repacking the payload with the fixed timestamp, ownership, and file modes
+  reproduces the archive bytes.
+
+```text
+release audit passed: citations=13 labels=56 results=15 numerical_rows=11 abstract_chars=1462 pages=16
+```
+
+Artifact SHA-256 digests for `paper-2026-09-05-r2`:
+
+```text
+1a9ad744d8848bac74bbc827b938456eb72d15d1a59775a75a8a5e016f00eba7  paper.tex
+b73de3471da5691006fd5f50154556d7c2e1a6d7174fc37bb2dc786acd06518f  paper.pdf
+2ae142793fba1f411c3960066311cb73c4875b4f83201e32e86aef73ee522eac  references.bib
+9d4d698a5e2c1970bb174f1a022eb178f0825724ae5f9385a45f4100e121159c  dist/laplace-tunneling-arxiv.tar.gz
+```
+
+## Earlier editorial release — 2026-09-05
 
 Release: `paper-2026-09-05`.  This revision implements the presentation and
 bibliography review in `notes/presentation_referee_report_2026-09-05.md`.
@@ -49,7 +95,7 @@ The release audit reports:
 release audit passed: citations=13 labels=56 results=15 numerical_rows=11 abstract_chars=1407 pages=16
 ```
 
-Current artifact SHA-256 digests:
+Artifact SHA-256 digests for `paper-2026-09-05`:
 
 ```text
 e7870fb44f690e4d30c39a761f7fa20d0319dba059a6c42670a4be107aa01961  paper.tex

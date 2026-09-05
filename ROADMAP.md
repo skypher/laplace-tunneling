@@ -65,4 +65,4 @@ The final manuscript has 56 resolved labels, thirteen source-specific cited
 works, 15 numbered results paired with 15 proofs, and a reproducible 16-page
 PDF.  The deterministic source archive is
 `dist/laplace-tunneling-arxiv.tar.gz`.  The presentation revisions and release
-checks for `paper-2026-09-05` are recorded in `notes/final_audit.md`.
+checks for `paper-2026-09-05-r2` are recorded in `notes/final_audit.md`.
