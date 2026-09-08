@@ -100,7 +100,8 @@ def main() -> None:
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
         "\\date{September 5, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-05-r2",
+        "\\url{https://github.com/skypher/laplace-tunneling}",
+        "\\texttt{paper-2026-09-05-r2}",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -121,7 +122,7 @@ def main() -> None:
         require(fragment in paper, f"missing Virasoro-style primitive: {fragment}")
 
     ai_disclosure = (
-        "\\section*{Use of artificial intelligence}",
+        "\\section*{AI disclosure}",
         "OpenAI's GPT-5.6 Sol model",
         "\\texttt{gpt-5.6-sol}",
         "to explore and test arguments",
