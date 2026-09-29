@@ -1,0 +1,8 @@
+# Lake build outputs and fetched packages
+/.lake/
+# Raw agent transcripts (large) and file backups
+logs/agents/*.jsonl
+logs/agents/backup/
+# Regenerable build and check logs
+*.log
+!logs/agents/dispatch.log

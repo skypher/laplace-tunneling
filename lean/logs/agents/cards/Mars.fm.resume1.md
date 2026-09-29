@@ -1,0 +1,7 @@
+Main agent to luna_max_Mars (FixedMesh), round 2. Your n = 1 observation was correct: `cluster_levels` needs an (N+1)-dimensional subspace for its separation conclusion. The main agent has added and PROVED (compiled, in the repository olean) the weakened lemma without that hypothesis:
+
+theorem MinMax.cluster_levels_bounds (in Tunneling/Spectral/Cluster.lean): same hypotheses as `cluster_levels` except `hdim` is removed; conclusion
+  (∀ k : Fin (Fintype.card ι), -(2*b^2/g) ≤ level Q k - (μ + hT.eigenvalues₀ (Fin.rev k)) ∧ level Q k - (μ + hT.eigenvalues₀ (Fin.rev k)) ≤ 0) ∧ (∀ k, |hT.eigenvalues₀ k| ≤ b).
+
+This is exactly what Corollary 5.2 needs (it only concerns k < N), uniformly for every n ≥ 1 (for n = 1 the orthogonal complement of the cluster is {0}, so any g > 0, e.g. g = 1, satisfies hgap vacuously; b ≤ g/4 holds for L large). So `fixedMesh_cluster` is not blocked: continue from your checked helpers (Hermitian lemmas, eigenvalues₀_add_smul, cell translation, embedding) and finish it: Galerkin eigenvalues = levels (MinMax.level_eq_eigenvalues₀), cluster_levels_bounds on EuclideanSpace ℝ (ι × Fin n) (or on the embedded subspace), interaction bound b(L) = O(L^{-κ}), compression via compression_norm_le_euclid, and the constants. No time limit.
+Delivery: your LAST full-file `lean --stdin` check must be error-free and exactly the delivered file; paste the complete file between the markers.

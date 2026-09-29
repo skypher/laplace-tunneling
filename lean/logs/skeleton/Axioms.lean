@@ -1,0 +1,22 @@
+import Tunneling
+#print axioms Tunneling.multiWell_main
+#print axioms Tunneling.twoWell_main
+#print axioms Tunneling.twoWell_main_centrallySymmetric
+#print axioms Tunneling.multiWell_cluster
+#print axioms Tunneling.exists_positiveGroundState
+#print axioms Tunneling.IsPositiveGroundState.unique
+#print axioms Tunneling.eigenvalue_zero_lt_one
+#print axioms Tunneling.exists_orthonormal_eigenfunctions
+#print axioms Tunneling.eigenvalue_monotone_tendsto
+#print axioms Tunneling.exists_eigenvalue_eq_of_weakEigenfunction
+#print axioms Tunneling.finrank_weakEigenspace
+#print axioms Tunneling.distantBall_rate
+#print axioms Tunneling.symmetryFree_twoWell
+#print axioms Tunneling.multiTwo_remainder
+#print axioms Tunneling.collectiveGround_matrix
+#print axioms Tunneling.collectiveGround_spectrum
+#print axioms Tunneling.simplex_cluster
+#print axioms Tunneling.cellMatrix_diag
+#print axioms Tunneling.cellMatrix_offdiag
+#print axioms Tunneling.cellVec_mem_formDomain
+#print axioms Tunneling.fixedMesh_cluster

@@ -1,0 +1,16 @@
+name = "tunneling"
+defaultTargets = ["Tunneling"]
+
+[leanOptions]
+pp.unicode.fun = true
+autoImplicit = false
+relaxedAutoImplicit = false
+maxErrors = 500
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "v4.33.0"
+
+[[lean_lib]]
+name = "Tunneling"
