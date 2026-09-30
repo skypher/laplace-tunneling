@@ -43,7 +43,7 @@ under the archive's top-level `anc/` directory.  Repository-maintenance files
 are omitted from the submission package.
 
 The version tag for the reviewed manuscript is
-`paper-2026-09-05-r2`.
+`paper-2026-09-30`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.

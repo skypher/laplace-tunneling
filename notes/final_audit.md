@@ -1,5 +1,35 @@
 # Final theorem and release audit
 
+## Release retag — 2026-09-30
+
+Release: `paper-2026-09-30`. The manuscript content is that of commit
+`a6d9319` (AI-disclosure heading, code-availability wording), which followed
+`paper-2026-09-05-r2` without its own tag. The only change is the release tag
+named in the code-availability paragraph, now `paper-2026-09-30`, so that the
+tag carries exactly the manuscript source it cites. The fixed archive
+timestamp is `UTC 2026-09-30`.
+
+Checks completed before recording this release:
+
+- The release audit, with the tag fragments updated, passes with the result
+  below; the final LaTeX log is clean and the PDF has 16 pages.
+- `make arxiv` regenerated the submission package. All seven payload files
+  byte-match their working sources, `gzip -t` passes, and a second
+  `make arxiv` reproduces the archive bytes.
+
+```text
+release audit passed: citations=13 labels=56 results=15 numerical_rows=11 abstract_chars=1462 pages=16
+```
+
+Artifact SHA-256 digests for `paper-2026-09-30`:
+
+```text
+cd25569c648baead64d2251d9fc076c825fed88e4420f280476d04a94960814e  paper.tex
+5f0e650a7ab2d7e29a5f5b67a6f8281ff34987f4a76e516282db691863a6c4e9  paper.pdf
+2ae142793fba1f411c3960066311cb73c4875b4f83201e32e86aef73ee522eac  references.bib
+68c6f2f20d8afed06f10e9af62c09435758560ba9d6084e5d8a7b064f4fd8481  dist/laplace-tunneling-arxiv.tar.gz
+```
+
 ## Editorial follow-up — 2026-09-05, revision 2
 
 Release: `paper-2026-09-05-r2`. This revision implements the follow-up in
