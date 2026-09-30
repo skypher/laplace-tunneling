@@ -101,7 +101,7 @@ def main() -> None:
         "\\date{September 30, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
         "\\url{https://github.com/skypher/laplace-tunneling}",
-        "\\texttt{paper-2026-09-30-r1}",
+        "\\texttt{paper-2026-09-30-r2}",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -140,7 +140,7 @@ def main() -> None:
     )
     code_availability = (
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-30-r1",
+        "paper-2026-09-30-r2",
         "check_asymptotics.py",
         "requirements-numerics.txt",
         "asymptotics_180.txt",
@@ -148,7 +148,7 @@ def main() -> None:
     )
     formal_verification = (
         "\\section{Formal verification}\\label{sec:lean}",
-        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-30-r1/lean",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-30-r2/lean",
         "Strict positivity of $\\phi_1$ is not formalized",
         "Anthropic's Claude Opus~5.5 model",
         "\\texttt{gpt-6-luna}",
@@ -161,6 +161,19 @@ def main() -> None:
         "Lipschitz open set" not in normalized_paper,
         "manuscript still restricts a result to Lipschitz wells",
     )
+    require(
+        "\\label{lem:ground}" in paper,
+        "missing ground-state lemma for the a.e.-vanishing form domain",
+    )
+    for stale_citation in (
+        "{BrascoParini2016} apply unchanged",
+        "{BrascoParini2016}, applied to the bounded open set",
+        "Fix the positive normalized ground-state eigenfunction",
+    ):
+        require(
+            stale_citation not in normalized_paper,
+            f"ground-state citation outside its function space: {stale_citation}",
+        )
     for fragment in code_availability:
         require(
             fragment in normalized_paper,
@@ -193,7 +206,7 @@ def main() -> None:
         "README overstates the multi-well geometry",
     )
     require(
-        "paper-2026-09-30-r1" in readme,
+        "paper-2026-09-30-r2" in readme,
         "README release tag is stale",
     )
 

@@ -1,5 +1,60 @@
 # Final theorem and release audit
 
+## Independent review repairs — 2026-09-30, revision 2
+
+Release: `paper-2026-09-30-r2`. This revision repairs the five findings of the
+independent review R1 (`gpt-6-astra`, max effort, read-only, commit `4e00c18`;
+report `lean/logs/agents/Psyche_astra_review.last.md`). The main agent
+verified each finding against the sources before repairing it.
+
+- GAP (repaired): after the Lipschitz hypothesis was removed, the paper cited
+  Brasco--Parini Theorem 2.8 for simplicity and positivity. That theorem is
+  stated for the completion of `C_c^infty(D)`, which differs from the paper's
+  space of `H^s` functions vanishing a.e. off `D` for irregular sets (for
+  example `D = (-1,1) \ {0}` with `s > 1/2`). New Lemma 2.2 proves, for the
+  paper's space and every nonempty bounded open set, that the first eigenvalue
+  is simple, its eigenfunctions have constant sign, and the nonnegative
+  normalized ground state has positive mass (formal: `exists_positiveGroundState`,
+  `IsPositiveGroundState.unique`, `eigenvalue_zero_lt_one`). The paper now fixes
+  the nonnegative ground state and uses only `phi_1 >= 0`; strict positivity
+  is cited only for Lipschitz wells, where [DFW21] identifies the spaces.
+  Corollary 4.9 cites Lemma 2.2 instead of [BP16] for the simplicity of
+  `lambda_1(Omega_{a,L})`.
+- OVERCLAIM (repaired): the well is now assumed nonempty in Section 2,
+  Section 4, Theorem 3.3, Corollaries 4.7 and 4.8, and Section 6.
+- MINOR (repaired): the superseded `L2TwoWellAux` / `FinalTheoremL2`, whose
+  hypotheses were unsatisfiable, is removed from `lean/Tunneling/Final.lean`;
+  nothing depended on it.
+- MINOR (repaired): Table 3 lists `MinMax.cluster_levels_bounds` with
+  `MinMax.cluster_levels`, and Lemma 2.2 has its own row.
+- MINOR (repaired): Lean docstrings cite the current paper numbering with the
+  stable LaTeX labels.
+
+Checks completed before recording this release:
+
+- `lean/ci/check.sh` passes locally: full `lake build`, no `sorry`, no axiom
+  declaration, 27/27 listed theorems depend only on `propext`,
+  `Classical.choice`, `Quot.sound`.
+- The release audit, extended to require Lemma 2.2 and to reject the removed
+  citations, passes with the result below; the final LaTeX log is clean, and
+  pages 4 and 18 were rendered and inspected.
+- `make arxiv` regenerated the package; all seven payload files byte-match,
+  `gzip -t` passes, a second `make arxiv` reproduces the bytes, and a fresh
+  build of the extracted archive gives a clean 19-page log.
+
+```text
+release audit passed: citations=13 labels=60 results=17 numerical_rows=11 abstract_chars=1700 pages=19
+```
+
+Artifact SHA-256 digests for `paper-2026-09-30-r2`:
+
+```text
+a3455467c995a304f40c4cefd04fefb9b7624461b1c22eb3ad6ab569bb1ca1a5  paper.tex
+e9af917ba6fc356a9105ae4dc67375324499303de6047b2322e2ba9981939c19  paper.pdf
+2ae142793fba1f411c3960066311cb73c4875b4f83201e32e86aef73ee522eac  references.bib
+56f0cb10750d8dc11f132004e8b9011eb34514adcc86f2ad928558e673862e41  dist/laplace-tunneling-arxiv.tar.gz
+```
+
 ## Stronger hypotheses and formal verification — 2026-09-30, revision 1
 
 Release: `paper-2026-09-30-r1` (commit `9357636`). This revision incorporates

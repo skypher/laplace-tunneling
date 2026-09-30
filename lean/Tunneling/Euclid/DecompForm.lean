@@ -1,6 +1,6 @@
 import Tunneling.Euclid.Decomp
 /-!
-# The exact block identity of paper Lemma 4.1
+# The exact block identity of paper Lemma 4.2 (`lem:multi-block`)
 -/
 namespace Tunneling
 open MeasureTheory
@@ -500,7 +500,7 @@ private theorem test_polar_offdiag (c : ℝ) (φi φj : formDomain G.κ G.D)
     _ = -2 * c * G.crossPair i j (φi : L2 d) (φj : L2 d) := by
       rw [hBA, htrans]
       ring
-/-- The exact block identity of Lemma 4.1 in the sense of closed forms. -/
+/-- The exact block identity of Lemma 4.2 (`lem:multi-block`) in the sense of closed forms. -/
 theorem formQ_eq (c : ℝ) (ψ : formDomain G.κ G.Ω) :
     formQ c G.κ G.Ω ψ = G.Q0 c ψ + G.interaction c ψ ψ := by
   let f : ι → formDomain G.κ G.Ω := fun j => G.Φ (G.wellMap j ψ) j

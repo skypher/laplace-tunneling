@@ -2,7 +2,7 @@ import Tunneling.Euclid.Translate
 import Tunneling.MultiWell
 
 /-!
-# Exact multi-well reduction (paper Lemma 4.1)
+# Exact multi-well reduction (paper Lemma 4.2 (`lem:multi-block`))
 
 For `N` translates `D + L a_j` with `L |a_i - a_j| ≥ 4R` and `D ⊆ B_R(0)`,
 every `ψ ∈ H^s_0(Ω_{a,L})` splits into the pieces
@@ -22,7 +22,7 @@ variable {d : ℕ} {ι : Type*} [Fintype ι] [DecidableEq ι]
 /-- The multi-well domain `Ω_{a,L} = ⋃_j (D + L a_j)` of equation
 `eq:multi-domain`. -/
 def multiWellDomain (D : Set (Eucl d)) (a : ι → Eucl d) (L : ℝ) : Set (Eucl d) := {x | ∃ j, x - L • a j ∈ D}
-/-- Geometric data of paper Lemma 4.1: a measurable `D ⊆ B_R(0)` and
+/-- Geometric data of paper Lemma 4.2 (`lem:multi-block`): a measurable `D ⊆ B_R(0)` and
 translation sites with `L |a_i - a_j| ≥ 4R` for `i ≠ j`. -/
 structure WellGeometry (d : ℕ) (ι : Type*) [Fintype ι] where
   κ : ℝ

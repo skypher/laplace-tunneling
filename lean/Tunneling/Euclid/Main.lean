@@ -19,8 +19,10 @@ All objects are the concrete ones of the paper:
 * `φ` is the normalized nonnegative ground state of `A_D` and
   `m₁ = ∫ φ`.
 
-`multiWell_main` is paper Theorem 4.3 (`thm:multi-well`) and `twoWell_main`
-is paper Theorem 3.3 (`thm:two-well`).
+`multiWell_main` is paper Theorem 4.6 (`thm:multi-well`).  `twoWell_main` is
+paper Corollary 4.8 (`cor:multi-two`), i.e. Theorem 3.3 (`thm:two-well`) for an
+arbitrary nonempty bounded open well, and `twoWell_main_centrallySymmetric` is
+Theorem 3.3 with its stated hypotheses.
 -/
 
 namespace Tunneling
@@ -315,7 +317,7 @@ theorem multiWell_cluster (hd : 1 ≤ d) (s : ℝ) (hs : 0 < s ∧ s < 1)
     exact hn
 
 
-/-- **Paper Theorem 4.3** (`thm:multi-well`): finite multi-well effective
+/-- **Paper Theorem 4.6** (`thm:multi-well`): finite multi-well effective
 interaction matrix.  For a bounded open `D ⊆ B_R(0)`, distinct sites `a`, the
 eigenvalues of the restricted fractional Laplacian on
 `Ω_{a,L} = ⋃_j (D + L a_j)` satisfy, whenever `L δ_a ≥ 4R` and `γ_L ≤ g/4`,
@@ -515,14 +517,14 @@ private theorem twoWellTheta_values (e : Eucl d) (he : ‖e‖ = 1)
     change hM.eigenvalues₀ (Fin.rev i1) = c * m ^ 2
     rw [hrev1, heig.2, habs]
 
-/-- **Paper Theorem 3.3** (`thm:two-well`): two-well algebraic splitting.  For
-a bounded open `D ⊆ B_R(0)`, a unit vector `e`, and `L ≥ L₀`
+/-- **Paper Corollary 4.8** (`cor:multi-two`): the conclusions of Theorem 3.3
+(`thm:two-well`, two-well algebraic splitting) without central symmetry.  For
+a nonempty bounded open `D ⊆ B_R(0)`, a unit vector `e`, and `L ≥ L₀`
 (equation `eq:explicit-L0`), the eigenvalues of the restricted fractional
 Laplacian on `Ω_L` satisfy `eq:lambda1`, `eq:lambda2`,
 `eq:two-well-third-level`, the limit `eq:gap-limit`, and the first two
 eigenvalues are simple: `λ₁(Ω_L) < λ₂(Ω_L) < λ₃(Ω_L)`.  Central symmetry of
-`D` is not needed for these conclusions (compare paper Corollaries 4.4
-and 4.6). -/
+`D` is not needed for these conclusions. -/
 theorem twoWell_main (hd : 1 ≤ d) (s : ℝ) (hs : 0 < s ∧ s < 1)
     (c : ℝ) (hc : 0 < c) (R : ℝ) (hR : 0 < R) (D : Set (Eucl d)) (hDo : IsOpen D)
     (hDne : D.Nonempty) (hDR : D ⊆ Metric.ball 0 R) (φ : L2 d)

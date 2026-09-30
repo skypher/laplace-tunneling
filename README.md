@@ -43,7 +43,7 @@ under the archive's top-level `anc/` directory.  Repository-maintenance files
 are omitted from the submission package.
 
 The version tag for the reviewed manuscript is
-`paper-2026-09-30-r1`.
+`paper-2026-09-30-r2`.
 
 ## Lean formalization
 

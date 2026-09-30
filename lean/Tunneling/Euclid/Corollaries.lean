@@ -3,7 +3,7 @@ import Mathlib.Analysis.InnerProductSpace.GramMatrix
 import Mathlib.LinearAlgebra.AffineSpace.FiniteDimensional
 
 /-!
-# Corollaries of the main theorems (paper Corollaries 3.4 and 4.4--4.8)
+# Corollaries of the main theorems (paper Corollaries 3.4 and 4.7--4.10)
 -/
 
 namespace Tunneling
@@ -527,7 +527,7 @@ theorem distantBall_rate (hd : 1 ≤ d) (s : ℝ) (hs : 0 < s ∧ s < 1)
     exact hadd
   simpa [A, lam, oneWellConstants] using hlim
 
-/-- **Paper Corollary 4.4** (`cor:symmetry-free-two`): two arbitrary distinct
+/-- **Paper Corollary 4.7** (`cor:symmetry-free-two`): two arbitrary distinct
 sites, no symmetry of `D`.  With `r = |a₁ - a₂|`,
 `λ₁,₂(Ω_L) = μ₁ ∓ c m₁² r^{-κ} L^{-κ} + O(L^{-κ-2} + L^{-2κ})` and
 `L^{d+2s}(λ₂ - λ₁) → 2 c m₁² r^{-d-2s}`. -/
@@ -698,7 +698,7 @@ theorem symmetryFree_twoWell (hd : 1 ≤ d) (s : ℝ) (hs : 0 < s ∧ s < 1)
       exact hgaplim
     simpa [κ, m, r, lam, A, oneWellConstants] using hfinal
 
-/-- **Paper Corollary 4.6** (`cor:multi-two`): for `a₁ = -e/2`, `a₂ = e/2`
+/-- **Paper Corollary 4.8** (`cor:multi-two`): for `a₁ = -e/2`, `a₂ = e/2`
 the multi-well error `ε_L + 2γ_L²/g` equals the two-well remainder. -/
 theorem multiTwo_remainder (A : TwoWellConstants) (e : Eucl d) (he : ‖e‖ = 1) (L : ℝ) :
     multiWellEpsilon A (twoWellSites e) L +
@@ -706,7 +706,7 @@ theorem multiTwo_remainder (A : TwoWellConstants) (e : Eucl d) (he : ‖e‖ = 1
       A.remainder L := by
   exact multiTwo_remainder_aux A e he L
 
-/-- **Paper Corollary 4.7** (`cor:collective-ground`), matrix part: `θ₁ < 0`
+/-- **Paper Corollary 4.9** (`cor:collective-ground`), matrix part: `θ₁ < 0`
 is simple with an eigenvector of positive entries, and `θ_N > 0`. -/
 theorem collectiveGround_matrix {ι : Type*} [Fintype ι] [DecidableEq ι]
     (hN : 2 ≤ Fintype.card ι) (a : ι → Eucl d) (ha : ∀ i j : ι, i ≠ j → a i ≠ a j)
@@ -885,7 +885,7 @@ theorem collectiveGround_matrix {ι : Type*} [Fintype ι] [DecidableEq ι]
         rw [htheta0lam]
         exact hv
 
-/-- **Paper Corollary 4.7**, spectral part: `λ₁(Ω_{a,L})` is simple for every
+/-- **Paper Corollary 4.9** (`cor:collective-ground`), spectral part: `λ₁(Ω_{a,L})` is simple for every
 `L > 0`, and `λ₁(Ω_{a,L}) < μ₁ < λ_N(Ω_{a,L})` for all large `L`. -/
 theorem collectiveGround_spectrum {ι : Type*} [Fintype ι] [DecidableEq ι]
     (hN : 2 ≤ Fintype.card ι) (hd : 1 ≤ d) (s : ℝ) (hs : 0 < s ∧ s < 1)
@@ -1020,7 +1020,7 @@ theorem collectiveGround_spectrum {ι : Type*} [Fintype ι] [DecidableEq ι]
     exact hSimple L hL
   · simpa [κ, μ₁, lambda, A, oneWellConstants] using hlarge
 
-/-- **Paper Corollary 4.8** (`cor:simplex`): equidistant sites.  Then
+/-- **Paper Corollary 4.10** (`cor:simplex`): equidistant sites.  Then
 `N ≤ d + 1`, `θ₁ = -(N-1) w` and `θ₂ = ⋯ = θ_N = w` with `w = c m₁² r^{-κ}`. -/
 theorem simplex_cluster {ι : Type*} [Fintype ι] [DecidableEq ι]
     (hN : 1 ≤ Fintype.card ι) (a : ι → Eucl d) (r : ℝ) (hr : 0 < r)

@@ -7,7 +7,7 @@ import Tunneling.MultiWell
 /-!
 # The isolated spectral-cluster bound
 
-This file formalizes paper Lemma 4.2 (`lem:cluster`) in the Courant--Fischer
+This file formalizes paper Lemma 4.3 (`lem:cluster`) in the Courant--Fischer
 language of `Tunneling.MinMax`.  The unperturbed form `Q₀` has the `N`
 orthonormal vectors `φ i` as eigenvectors with eigenvalue `μ` (weak
 eigen-equation `heig`) and the gap `hgap` on their orthogonal complement.  The
@@ -261,7 +261,7 @@ private theorem clusterW_matrix
   simp [clusterEmbed, Matrix.toEuclideanLin_apply, PiLp.inner_apply,
     Matrix.mulVec, dotProduct, hTw, hwsymm, mul_comm, mul_left_comm, mul_assoc]
 
-/-- Paper Lemma 4.2, equations `eq:cluster-bound` and `eq:cluster-separation`.
+/-- Paper Lemma 4.3, equations `eq:cluster-bound` and `eq:cluster-separation`.
 The eigenvalues of `T` are listed increasingly as
 `hT.eigenvalues₀ (Fin.rev k)`. -/
 theorem cluster_levels
@@ -515,7 +515,7 @@ theorem cluster_levels
       (μ + g - b) hsepRay hdimN
     simpa [n] using hsep
 
-/-- Paper Lemma 4.2, equation `eq:cluster-bound` alone.  This form needs no
+/-- Paper Lemma 4.3, equation `eq:cluster-bound` alone.  This form needs no
 extra dimension beyond `span φ`, so it applies when the whole space is the
 `N`-dimensional cluster (for instance a one-cell Galerkin space). -/
 theorem cluster_levels_bounds

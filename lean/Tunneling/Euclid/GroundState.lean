@@ -5,16 +5,17 @@ import Tunneling.Euclid.Sign
 /-!
 # The one-well ground state
 
-Paper Section 2 uses, for a bounded open `D ⊆ B_R(0)`:
+Paper Section 2 (Lemma 2.2, `lem:ground`) uses, for a nonempty bounded open
+`D ⊆ B_R(0)`:
 
 * `μ₁ = λ₁(D) < μ₂ = λ₂(D)` (simplicity of the first eigenvalue);
 * a normalized nonnegative ground state `φ₁` with `A_D φ₁ = μ₁ φ₁` and
   mass `m₁ = ∫ φ₁ > 0` (equation `eq:mass`).
 
-The paper cites [DiNezzaPalatucciValdinoci2012, Theorems 5.4 and 7.1] and
-[BrascoParini2016, Theorem 2.8] for these facts; here they are proved from the
-compactness of the form embedding (`Tunneling.Euclid.Compactness`) and the
-sign property of minimizers (`Tunneling.Euclid.Sign`).  In this file `μ₁` and
+As in the paper's proof of Lemma 2.2, these facts are proved from the
+compactness of the form embedding (Lemma 2.1, `Tunneling.Euclid.Compactness`)
+and the sign property of minimizers (`Tunneling.Euclid.Sign`), for the form
+domain of functions vanishing almost everywhere outside `D`.  In this file `μ₁` and
 `μ₂` are the Courant--Fischer levels `eigenvalue c κ D 0` and
 `eigenvalue c κ D 1`.
 -/

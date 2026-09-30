@@ -2,7 +2,7 @@ import Tunneling.Euclid.FormDomain
 import Tunneling.MultiWell
 
 /-
-# The compression error on `ℝ^d` (paper Lemma 4.3)
+# The compression error on `ℝ^d` (paper Lemma 4.5 (`lem:compression`))
 
 The Taylor estimate `eq:multi-taylor` holds for `|x|, |y| ≤ R`.  On `ℝ^d` the
 ground state is supported in `D ⊆ B_R(0)`, so the pointwise hypothesis
@@ -263,7 +263,7 @@ private theorem compression_entry_taylor_support (A : TwoWellConstants)
   have hmul := mul_le_mul_of_nonneg_left hcenterPair A.hc.le
   simpa [mul_assoc, mul_comm, mul_left_comm] using hmul
 
-/-- Entrywise compression error of Lemma 4.3 on `ℝ^d`. -/
+/-- Entrywise compression error of Lemma 4.5 on `ℝ^d`. -/
 theorem compression_entry_error_euclid (A : TwoWellConstants) (a : ι → Eucl d)
     (u : Eucl d → ℝ) (L : ℝ) (i j : ι) (hL : 0 < L)
     (hsep : ∀ p q : ι, p ≠ q → 4 * A.R ≤ L * ‖a p - a q‖)
@@ -282,7 +282,7 @@ theorem compression_entry_error_euclid (A : TwoWellConstants) (a : ι → Eucl d
     exact compression_entry_taylor_support A a u L i j hL hij
       (hsep i j hij) hsupp hint hmass hnonneg
 
-/-- Operator-norm form of Lemma 4.3 on `ℝ^d`:
+/-- Operator-norm form of Lemma 4.5 on `ℝ^d`:
 `‖T_L - L^{-κ} M_a‖ ≤ ε_L`. -/
 theorem compression_norm_le_euclid (A : TwoWellConstants) (a : ι → Eucl d)
     (u : Eucl d → ℝ) (L : ℝ) (hL : 0 < L)

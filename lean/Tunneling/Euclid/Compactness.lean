@@ -4,8 +4,9 @@ import Tunneling.Euclid.CellAverage
 # Compactness of the form embedding on bounded sets
 
 For a bounded set `D ⊆ ℝ^d`, bounded subsets of `H^s_0(D)` are relatively
-compact in `L²(ℝ^d)`.  This replaces the citation
-[DiNezzaPalatucciValdinoci2012, Theorem 7.1] in paper Section 2 and is proved
+compact in `L²(ℝ^d)`.  This is paper Lemma 2.1 (`lem:compact`), which needs no
+boundary regularity (the Lipschitz route via
+[DiNezzaPalatucciValdinoci2012, Theorem 7.1] is not used), and is proved
 by averaging over cubes of side `ε`: on a cube `Q` of diameter `√d ε`,
 
   `∫_Q |u - ⨍_Q u|² = (2|Q|)⁻¹ ∬_{Q×Q} |u(x)-u(y)|²

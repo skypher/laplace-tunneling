@@ -7,8 +7,8 @@ For real `a, b`,
 `|a - b|² - ||a| - |b||² = 2 (|a| |b| - a b) = 4 (a⁺ b⁻ + a⁻ b⁺)`.
 Hence `[|u|] ≤ [u]`, and equality forces `u⁺(x) u⁻(y) = 0` for a.e.
 `(x, y)`, because the Gagliardo kernel is positive off the diagonal.  By
-Tonelli this means that `u⁺ = 0` a.e. or `u⁻ = 0` a.e.  This is the linear case
-of the ground-state argument cited from [BrascoParini2016, Theorem 2.8].
+Tonelli this means that `u⁺ = 0` a.e. or `u⁻ = 0` a.e.  This is the sign step
+in the proof of paper Lemma 2.2 (`lem:ground`).
 -/
 
 namespace Tunneling

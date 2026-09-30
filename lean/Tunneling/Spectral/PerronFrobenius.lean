@@ -6,7 +6,7 @@ import Tunneling.Perturbation
 /-!
 # Ground states of symmetric matrices with negative off-diagonal entries
 
-Paper Corollaries 4.7 and 5.2 use the Rayleigh-quotient form of the
+Paper Corollaries 4.9 and 5.2 use the Rayleigh-quotient form of the
 Perron--Frobenius argument: for a real symmetric matrix whose off-diagonal
 entries are strictly negative, the lowest eigenvalue is simple and has an
 eigenvector with strictly positive entries.

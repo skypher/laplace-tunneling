@@ -127,7 +127,7 @@ fractional Laplacian on distant domains}
 We study the restricted fractional Laplacian $(-\Delta)^s$, $0<s<1$, on
 distant translates of a bounded open set $D\subset\mathbb R^d$.
 Let $\mu_1$ be the one-well ground-state eigenvalue, let $\phi_1$ be its
-positive $L^2$-normalized eigenfunction, and set $m_1=\int_D\phi_1$.
+nonnegative $L^2$-normalized eigenfunction, and set $m_1=\int_D\phi_1$.
 For $\Omega_L=(D-Le/2)\cup(D+Le/2)$ with a fixed unit vector $e$, we prove,
 as $L\to\infty$,
 \[
@@ -323,23 +323,58 @@ relatively compact in the complete space $L^2(\R^d)$.  Compactness of the form
 embedding gives the compactness of the resolvent of $A_G$.
 \end{proof}
 
-Let $D\subset B_R(0)$ be a bounded open set.  By Lemma~\ref{lem:compact},
-$A_D$ has compact resolvent.  Its first eigenvalue is simple and has a strictly
-positive normalized eigenfunction by
-\cite[Theorem~2.8]{BrascoParini2016}, specialized to the linear case.  Put
+The following facts are proved directly for the space $\Hs(G)$ above.
+
+\begin{lemma}[Ground state]\label{lem:ground}
+Let $G\subset B_R(0)$ be a nonempty open set.  Then
+$\lambda_1(G)<\lambda_2(G)$, every eigenfunction of $\lambda_1(G)$ is either
+nonnegative or nonpositive almost everywhere, and the eigenspace of
+$\lambda_1(G)$ is spanned by a normalized eigenfunction $\phi\geq0$ with
+$\int_G\phi>0$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:compact}, $A_G$ has compact resolvent, and the
+eigenfunctions of $\lambda_1(G)$ are exactly the nonzero minimizers of the
+Rayleigh quotient $\mathcal{Q}_G[u]/\norm{u}_{L^2}^2$ on $\Hs(G)$.  For real $u$
+and all $x,y$,
+\[
+ \abs{u(x)-u(y)}^2-\bigl(\abs{u(x)}-\abs{u(y)}\bigr)^2
+ =2\bigl(\abs{u(x)u(y)}-u(x)u(y)\bigr)\geq0.
+\]
+Hence $\abs u\in\Hs(G)$ and $\mathcal{Q}_G[\abs u]\leq\mathcal{Q}_G[u]$, with
+equality only if $u(x)u(y)\geq0$ for almost every $(x,y)$, because the kernel
+is positive off the diagonal.  By Tonelli's theorem, the product of the
+measures of $\{u>0\}$ and $\{u<0\}$ then vanishes, so $u$ has constant sign.
+If $u$ is an eigenfunction of $\lambda_1(G)$, then $\abs u$ is also a
+minimizer, so equality holds and $u$ has constant sign.  If the eigenspace
+contained two orthonormal eigenfunctions, we could choose them nonnegative;
+their orthogonality would force disjoint supports up to null sets, and their
+difference would be an eigenfunction that changes sign, a contradiction.
+Thus $\lambda_1(G)$ is simple.  A normalized nonnegative eigenfunction is
+nonzero and integrable on the bounded set $G$, so its integral is positive.
+\end{proof}
+
+Let $D\subset B_R(0)$ be a nonempty bounded open set.  By
+Lemmas~\ref{lem:compact} and~\ref{lem:ground}, $A_D$ has compact resolvent and
+simple first eigenvalue.  Put
 \[
  \mu_1=\lambda_1(D),
  \qquad \mu_2=\lambda_2(D),
  \qquad g=\mu_2-\mu_1>0.
 \]
-Fix the positive normalized ground-state eigenfunction and set
+Fix the nonnegative normalized ground-state eigenfunction and set
 \begin{equation}\label{eq:mass}
  A_D\phi_1=\mu_1\phi_1,
  \qquad \norm{\phi_1}_{L^2(D)}=1,
  \qquad m_1=\int_D\phi_1(x)\,dx>0.
 \end{equation}
-When $D=-D$, simplicity and invariance under central inversion show that
-$\phi_1(-x)=\pm\phi_1(x)$; positivity fixes the sign, so
+For Lipschitz $D$, the space $\Hs(D)$ is the completion used in
+\cite{BrascoParini2016} by \cite[Section~2, equation~(2.1)]{DjitteFallWeth2021},
+and \cite[Theorem~2.8]{BrascoParini2016}, specialized to the linear case, shows
+that $\phi_1>0$ almost everywhere in $D$.  The arguments below use only
+$\phi_1\geq0$.  When $D=-D$, simplicity and invariance under central inversion
+show that $\phi_1(-x)=\pm\phi_1(x)$; since $\phi_1$ is nonnegative and nonzero,
 $\phi_1(-x)=\phi_1(x)$.
 
 Fix a unit vector $e\in\R^d$.  For $L>2R$, define
@@ -527,7 +562,7 @@ Because $\phi_1$ is even,
  \int_Dx\phi_1(x)\,dx=0.
 \]
 Consequently the integral of the linear Taylor term with $z=x+y$ vanishes.
-Since $\phi_1$ is positive, integration of the remainder gives
+Since $\phi_1$ is nonnegative, integration of the remainder gives
 \eqref{eq:kernel-expansion}.
 
 Finally, $\abs{Le-x-y}\geq L-2R\geq L/2$.  The Schur test applied to
@@ -541,7 +576,7 @@ which is \eqref{eq:Bnorm}.
 \end{proof}
 
 \begin{theorem}[Two-well algebraic splitting]\label{thm:two-well}
-Let $D\subset B_R(0)$ be a bounded centrally symmetric open set, and
+Let $D\subset B_R(0)$ be a nonempty bounded centrally symmetric open set, and
 let $\Omega_L$ be as in Section~2.  Set
 \begin{equation}\label{eq:explicit-L0}
  L_0=\max\left\{
@@ -615,7 +650,7 @@ $\mu_2-\beta_L\geq\mu_1+3g/4$, whereas both branch ground-state energies are
 at most $\mu_1+\beta_L\leq\mu_1+g/4$.  Thus the first two eigenvalues of the
 full operator are the two numbers in \eqref{eq:branches}.
 
-Since $\abs{Le-x-y}\leq L+2R$ and $\phi_1>0$,
+Since $\abs{Le-x-y}\leq L+2R$ and $\phi_1\geq0$,
 \[
  I_L\geq m_1^2(L+2R)^{-\kappa}.
 \]
@@ -635,7 +670,7 @@ two expansions and multiplying by $L^\kappa$ proves
 Central symmetry enters the proof only through Lemmas~\ref{lem:block}
 and~\ref{lem:kernel}.  Corollary~\ref{cor:multi-two} proves every conclusion
 of Theorem~\ref{thm:two-well}, with the same threshold $L_0$ and the same
-remainders, for an arbitrary bounded open set $D\subset B_R(0)$, by the
+remainders, for an arbitrary nonempty bounded open set $D\subset B_R(0)$, by the
 translated-coordinate argument of Section~\ref{sec:multi-well}.
 
 \begin{corollary}[Rate for the distant-ball minimizing sequence]
@@ -665,10 +700,10 @@ For finitely many components we instead keep the full block operator and
 compare its lowest spectral cluster with its compression to the translated
 one-well ground states.
 
-Throughout this section, let $D\subset B_R(0)$ be any bounded open set;
-central symmetry is not assumed.  Lemma~\ref{lem:compact} and
-\cite[Theorem~2.8]{BrascoParini2016} apply unchanged.  Write
-$\mu_1<\mu_2$, $g=\mu_2-\mu_1>0$, choose the positive normalized ground
+Throughout this section, let $D\subset B_R(0)$ be any nonempty bounded open
+set; central symmetry is not assumed.  Lemmas~\ref{lem:compact}
+and~\ref{lem:ground} apply unchanged.  Write
+$\mu_1<\mu_2$, $g=\mu_2-\mu_1>0$, choose the nonnegative normalized ground
 state $A_D\phi_1=\mu_1\phi_1$, and set
 $m_1=\int_D\phi_1(x)\,dx>0$.
 Every $L\to\infty$ statement in this section keeps $N$ and the distinct sites
@@ -950,7 +985,7 @@ of \eqref{eq:multi-eigenvalue-bound} by $L^\kappa$ gives
 
 \begin{corollary}[Symmetry-free two-well asymptotic]
 \label{cor:symmetry-free-two}
-Let $D\subset B_R(0)$ be any bounded open set, let $a_1\ne a_2$, and
+Let $D\subset B_R(0)$ be any nonempty bounded open set, let $a_1\ne a_2$, and
 put $r=\abs{a_1-a_2}$.  For
 $\Omega_L=(D+La_1)\cup(D+La_2)$, as $L\to\infty$,
 \begin{align*}
@@ -989,7 +1024,7 @@ gives the limit.
 
 \begin{corollary}[Two-well splitting without central symmetry]
 \label{cor:multi-two}
-Let $D\subset B_R(0)$ be any bounded open set, let $e$ be a unit vector,
+Let $D\subset B_R(0)$ be any nonempty bounded open set, let $e$ be a unit vector,
 let $\Omega_L=(D-\frac L2e)\cup(D+\frac L2e)$, and let $L_0$ be given by
 \eqref{eq:explicit-L0}.  Then every conclusion of
 Theorem~\ref{thm:two-well} holds: for $L\geq L_0$ the bounds
@@ -1028,7 +1063,7 @@ gives $\abs{J_L-m_1^2L^{-\kappa}}\leq C_{\kappa,R}m_1^2L^{-\kappa-2}$, and
 Moreover, $c_{d,s}J_L\leq\norm{T_L}\leq\norm{\mathcal V_L}\leq\beta_L$.
 Hence $\lambda_2(\Omega_L)\leq\mu_1+g/4$.  Also, by
 \eqref{eq:cluster-separation}, $\lambda_3(\Omega_L)\geq\mu_1+3g/4$.  This
-proves \eqref{eq:two-well-third-level}.  Since $\phi_1>0$ and
+proves \eqref{eq:two-well-third-level}.  Since $\phi_1\geq0$ and
 $\abs{Le-x+y}\leq L+2R$ on $D\times D$, we have
 $J_L\geq m_1^2(L+2R)^{-\kappa}$, and \eqref{eq:exact-cluster-comparison}
 gives
@@ -1069,7 +1104,7 @@ $\operatorname{tr}M_{\mathbf a}=0$ gives $\theta_N>0$.  Put
 $r_L=\varepsilon_L+2\gamma_L^2/g$.  Theorem~\ref{thm:multi-well} gives
 $L^\kappa r_L\to0$.  Simplicity of
 $\lambda_1(\Omega_{\mathbf a,L})$ for every admissible $L$ follows from
-\cite[Theorem~2.8]{BrascoParini2016}, applied to the bounded open set
+Lemma~\ref{lem:ground}, applied to the nonempty bounded open set
 $\Omega_{\mathbf a,L}$.  Choose $L$ so large that
 \[
  L^\kappa r_L
@@ -1290,7 +1325,7 @@ The theorems, the corollaries, and Proposition~\ref{prop:cell-matrix},
 together with the one-well facts of Section~2 that they use, are formalized
 in Lean~4 (version~4.33.0) with the Mathlib library.  The formalization is in the
 directory \path{lean} of the repository listed under Code availability, at
-\url{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-30-r1/lean}.
+\url{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-30-r2/lean}.
 A continuous-integration job rebuilds it on every change.  The job fails if
 any proof is incomplete, if the project declares an axiom, or if a result in
 Table~\ref{tab:lean} depends on axioms other than the three standard ones of
@@ -1299,17 +1334,16 @@ Lean (propositional extensionality, choice, and quotient soundness).
 The operator $A_G$ enters through its closed form.  The space $\Hs(G)$ is a
 subspace of $L^2(\R^d)$, \eqref{eq:form} is a quadratic form on it, and
 $\lambda_k(G)$ is defined by the Courant--Fischer min--max principle.  For
-every bounded open set $G$, the formalization proves that these numbers are
+every nonempty bounded open set $G$, the formalization proves that these numbers are
 exactly the eigenvalues of the weak problem
 $\mathcal{Q}_G(u,v)=\lambda\langle u,v\rangle$ for all $v\in\Hs(G)$, repeated
-according to multiplicity.  It also proves Lemma~\ref{lem:compact}, the
-existence and uniqueness of the nonnegative normalized ground state, the
-inequality $\mu_1<\mu_2$, and the gap inequality on the orthogonal complement
-of $\phi_1$.  Strict positivity of $\phi_1$ is not formalized; the proofs use
-only $\phi_1\geq0$, and by uniqueness the formal ground state is the function
-$\phi_1$ of \eqref{eq:mass}.
+according to multiplicity.  It also proves Lemmas~\ref{lem:compact}
+and~\ref{lem:ground}, including the uniqueness of the nonnegative normalized
+ground state $\phi_1$ of \eqref{eq:mass}, and the gap inequality on the
+orthogonal complement of $\phi_1$.  Strict positivity of $\phi_1$ is not
+formalized; it is cited only for Lipschitz wells in Section~2 and is not used.
 
-The formal statements of Sections~2--4 hold for every bounded open set
+The formal statements of Sections~2--4 hold for every nonempty bounded open set
 $D\subset B_R(0)$, all $d\geq1$ and $0<s<1$, and every positive constant in
 place of $c_{d,s}$; those of Section~\ref{sec:numerics} keep the assumptions
 $d=1$ and $0<s<1/2$ stated there.  Lemma~\ref{lem:multi-block} is formalized
@@ -1327,14 +1361,15 @@ formalization.
 \hline
 Result & Lean declaration\\ \hline
 Lemma~\ref{lem:compact} & \path{totallyBounded_energySublevel}\\
-Ground state, $\mu_1<\mu_2$ & \path{exists_positiveGroundState},
+Lemma~\ref{lem:ground} & \path{exists_positiveGroundState},
   \path{eigenvalue_zero_lt_one}\\
 Weak eigenvalues & \path{finrank_weakEigenspace}\\
 Theorem~\ref{thm:two-well} & \path{twoWell_main_centrallySymmetric}\\
 Corollary~\ref{cor:distant-ball} & \path{distantBall_rate}\\
 Lemma~\ref{lem:multi-block} & \path{WellGeometry.formQ_eq},
   \path{WellGeometry.abs_interaction_le}\\
-Lemma~\ref{lem:cluster} & \path{MinMax.cluster_levels}\\
+Lemma~\ref{lem:cluster} & \path{MinMax.cluster_levels},
+  \path{MinMax.cluster_levels_bounds}\\
 Lemma~\ref{lem:compression} & \path{compression_norm_le_euclid}\\
 Theorem~\ref{thm:multi-well} & \path{multiWell_main}\\
 Corollary~\ref{cor:symmetry-free-two} & \path{symmetryFree_twoWell}\\
@@ -1374,7 +1409,7 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  These files are archived with
 the manuscript and are also available, with the manuscript source, in the
 GitHub repository
 \url{https://github.com/skypher/laplace-tunneling}
-(tag \texttt{paper-2026-09-30-r1}).  The Lean formalization of
+(tag \texttt{paper-2026-09-30-r2}).  The Lean formalization of
 Section~\ref{sec:lean} and its build configuration are in the directory
 \path{lean} of the same repository and tag.
 \end{sloppypar}
