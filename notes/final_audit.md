@@ -1,5 +1,65 @@
 # Final theorem and release audit
 
+## Stronger hypotheses and formal verification — 2026-09-30, revision 1
+
+Release: `paper-2026-09-30-r1` (commit `9357636`). This revision incorporates
+the Lean 4 / Mathlib formalization in `lean/` (CI:
+`.github/workflows/lean.yml`). This record was added in the commit after the
+tagged one.
+
+Mathematical changes, each checked against the formal proof:
+
+- Lipschitz regularity is removed throughout.  New Lemma 2.1 proves the
+  compactness of the form embedding for every bounded open set by cube
+  averaging (formal: `totallyBounded_energySublevel`, `exists_tendsto_subseq`);
+  Brasco--Parini Theorem 2.8 already covers bounded open sets.  The Lipschitz
+  citation [DNPV12] remains as the classical route.
+- Central symmetry is a hypothesis only of the sector decomposition (Lemma
+  2.2) and the reflected kernel expansion (Lemma 3.2), which now state it.
+  Corollary 4.8 is strengthened from a remainder comparison to the full
+  conclusion of Theorem 3.3 (bounds, simplicity, third level, gap limit, same
+  `L_0`) for every bounded open well, via the exact cluster comparison with
+  `N = 2` and `J_L >= m_1^2 (L+2R)^(-kappa)` (formal: `twoWell_main`).
+- Lemma 4.3 now states that the separation `eq:cluster-separation` requires
+  a space of dimension greater than `N`; `eq:cluster-bound` holds without it
+  (formal: `MinMax.cluster_levels_bounds`).  The proof of Corollary 5.2 notes
+  the one-cell case, where only `eq:cluster-bound` is used.
+- New Section 6 describes the formalization, maps the results to Lean
+  declarations (Table 3), and states what is not formalized (strict
+  positivity of `phi_1`, which no proof uses; the sector Lemmas 2.2, 3.1,
+  3.2; the numerical tables).  The AI disclosure names the models used for
+  the formalization; the code-availability paragraph cites the new tag and the
+  `lean` directory.  The date is 30 September 2026.
+
+Checks completed before recording this release:
+
+- `lean/ci/check.sh` passes locally and in GitHub CI: full `lake build`, no
+  `sorry`, no axiom declaration, and 27/27 listed theorems depend only on
+  `propext`, `Classical.choice`, `Quot.sound`.  CI runs 36662258259 (`main`)
+  and 36662259466 (tag `paper-2026-09-30-r1`) passed; run 36661547796 built the
+  project from scratch without a Lake cache and passed.
+- The release audit (updated for the tag, date, 19 pages, and the new
+  formal-verification text) passes with the result below.  The final LaTeX log
+  has no warnings or overfull/underfull boxes; pages 11 and 16--19 were
+  rendered and inspected.
+- `make arxiv` regenerated the package; all seven payload files byte-match
+  their sources, `gzip -t` passes, a second `make arxiv` reproduces the bytes,
+  and a fresh build of the extracted archive gives a clean 19-page log.
+  `dist/arxiv-metadata.txt` carries the new abstract and comments.
+
+```text
+release audit passed: citations=13 labels=59 results=16 numerical_rows=11 abstract_chars=1697 pages=19
+```
+
+Artifact SHA-256 digests for `paper-2026-09-30-r1`:
+
+```text
+4cc2734bb6a39641fa1fb4470a2e6ec8cb48abcae695c753fffc628fb351afd4  paper.tex
+51d1502ef03304cbaeb41d932f99dd859765db1cc35a6f3585a3119c32edcc2d  paper.pdf
+2ae142793fba1f411c3960066311cb73c4875b4f83201e32e86aef73ee522eac  references.bib
+7f00fa68b52e55103f4efd0477ee5d2750c8a168696700bea1e4be9cc5d1ce17  dist/laplace-tunneling-arxiv.tar.gz
+```
+
 ## Release retag — 2026-09-30
 
 Release: `paper-2026-09-30`. The manuscript content is that of commit
