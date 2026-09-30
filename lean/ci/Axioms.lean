@@ -20,3 +20,9 @@ import Tunneling
 #print axioms Tunneling.cellMatrix_offdiag
 #print axioms Tunneling.cellVec_mem_formDomain
 #print axioms Tunneling.fixedMesh_cluster
+#print axioms Tunneling.totallyBounded_energySublevel
+#print axioms Tunneling.WellGeometry.formQ_eq
+#print axioms Tunneling.WellGeometry.abs_interaction_le
+#print axioms Tunneling.MinMax.cluster_levels
+#print axioms Tunneling.MinMax.cluster_levels_bounds
+#print axioms Tunneling.compression_norm_le_euclid

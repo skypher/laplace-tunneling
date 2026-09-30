@@ -43,7 +43,27 @@ under the archive's top-level `anc/` directory.  Repository-maintenance files
 are omitted from the submission package.
 
 The version tag for the reviewed manuscript is
-`paper-2026-09-30`.
+`paper-2026-09-30-r1`.
+
+## Lean formalization
+
+The directory `lean/` contains a Lean 4 (v4.33.0) and Mathlib formalization of
+the theorems, the corollaries, and the cell-integral proposition, together with
+the one-well spectral facts they use, for every bounded open well.  Build and
+audit it with:
+
+```sh
+cd lean
+lake exe cache get
+./ci/check.sh
+```
+
+`ci/check.sh` runs `lake build`, fails on any `sorry` warning or `axiom`
+declaration, and checks that every final-facing theorem listed in
+`ci/Axioms.lean` depends only on `propext`, `Classical.choice`, and
+`Quot.sound`.  The GitHub workflow `.github/workflows/lean.yml` runs the same
+check on every push.  Section 6 of the manuscript maps each result to its Lean
+declaration; the verification record is in `lean/PROMOTION_LEDGER.md`.
 
 The project-specific target and progress criteria are recorded in
 `AGENTS.md` and `ROADMAP.md`.

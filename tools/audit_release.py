@@ -98,10 +98,10 @@ def main() -> None:
         "\\author{Leslie P. Polzer}",
         "\\newcommand{\\authoraffiliation}{Independent Researcher}",
         "\\newcommand{\\authoremail}{polzer@fastmail.com}",
-        "\\date{September 5, 2026}",
+        "\\date{September 30, 2026}",
         "\\newcommand{\\shortauthors}{LESLIE P. POLZER}",
         "\\url{https://github.com/skypher/laplace-tunneling}",
-        "\\texttt{paper-2026-09-30}",
+        "\\texttt{paper-2026-09-30-r1}",
     )
     for fragment in submission_metadata:
         require(fragment in paper, f"missing submission metadata: {fragment}")
@@ -140,11 +140,26 @@ def main() -> None:
     )
     code_availability = (
         "Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4",
-        "paper-2026-09-30",
+        "paper-2026-09-30-r1",
         "check_asymptotics.py",
         "requirements-numerics.txt",
         "asymptotics_180.txt",
         "These files are archived with the manuscript",
+    )
+    formal_verification = (
+        "\\section{Formal verification}\\label{sec:lean}",
+        "https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-30-r1/lean",
+        "Strict positivity of $\\phi_1$ is not formalized",
+        "Anthropic's Claude Opus~5.5 model",
+        "\\texttt{gpt-6-luna}",
+        "its correctness rests on the Lean proof checker",
+        "\\label{tab:lean}",
+    )
+    for fragment in formal_verification:
+        require(fragment in normalized_paper, f"missing formal-verification text: {fragment}")
+    require(
+        "Lipschitz open set" not in normalized_paper,
+        "manuscript still restricts a result to Lipschitz wells",
     )
     for fragment in code_availability:
         require(
@@ -178,7 +193,7 @@ def main() -> None:
         "README overstates the multi-well geometry",
     )
     require(
-        "paper-2026-09-30" in readme,
+        "paper-2026-09-30-r1" in readme,
         "README release tag is stale",
     )
 
@@ -215,7 +230,7 @@ def main() -> None:
     )
     for pattern in critical_log_patterns:
         require(pattern not in build_log, f"final build diagnostic: {pattern}")
-    expected_pages = 16
+    expected_pages = 19
     require(
         f"Output written on paper.pdf ({expected_pages} pages" in build_log,
         "unexpected final PDF page count",

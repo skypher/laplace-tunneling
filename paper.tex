@@ -65,7 +65,7 @@ fractional Laplacian on distant domains}
 \author{Leslie P. Polzer}
 \newcommand{\authoraffiliation}{Independent Researcher}
 \newcommand{\authoremail}{polzer@fastmail.com}
-\date{September 5, 2026}
+\date{September 30, 2026}
 
 \makeatletter
 \renewcommand{\section}{%
@@ -125,7 +125,7 @@ fractional Laplacian on distant domains}
 
 \begin{abstract}
 We study the restricted fractional Laplacian $(-\Delta)^s$, $0<s<1$, on
-distant translates of a bounded Lipschitz open set $D\subset\mathbb R^d$.
+distant translates of a bounded open set $D\subset\mathbb R^d$.
 Let $\mu_1$ be the one-well ground-state eigenvalue, let $\phi_1$ be its
 positive $L^2$-normalized eigenfunction, and set $m_1=\int_D\phi_1$.
 For $\Omega_L=(D-Le/2)\cup(D+Le/2)$ with a fixed unit vector $e$, we prove,
@@ -135,9 +135,10 @@ as $L\to\infty$,
  +O(L^{-d-2s-2}+L^{-2d-4s}),
 \]
 where the minus sign corresponds to $\lambda_1$ and $c_{d,s}$ is the standard
-singular-integral normalization.  When $D=-D$, we also give an exact
-decomposition into symmetric and antisymmetric sectors under central inversion
-and an explicit separation threshold.  For fixed $N\geq2$ and distinct sites
+singular-integral normalization.  We also give an explicit separation
+threshold beyond which both eigenvalues are simple and satisfy explicit
+remainder bounds, and, when $D=-D$, an exact decomposition into symmetric and
+antisymmetric sectors under central inversion.  For fixed $N\geq2$ and distinct sites
 $a_1,\ldots,a_N$, let
 $\Omega_{\mathbf a,L}=\bigcup_{j=1}^N(D+La_j)$.  Its first $N$ eigenvalues satisfy
 $\lambda_k(\Omega_{\mathbf a,L})=\mu_1+L^{-d-2s}\theta_k
@@ -149,7 +150,9 @@ spectral-gap bounds and Taylor expansion with a quadratic remainder.
 For two equal balls, the expansion for $\lambda_2$ gives the leading rate
 in the nonlocal Hong--Krahn--Szeg\H{o} minimizing sequence.
 Galerkin computations using exact cell integrals illustrate the two- and
-three-well asymptotics at fixed mesh.
+three-well asymptotics at fixed mesh.  The theorems, the corollaries, and the
+cell-integral proposition, together with the one-well spectral facts they use,
+are formally verified in Lean~4 with Mathlib.
 
 \vskip5pt
 \noindent\textbf{Keywords.}\enspace restricted fractional Laplacian;
@@ -178,7 +181,10 @@ the first $N$ eigenvalues for a fixed family of translates by the spectrum
 of an explicit interaction matrix, with error bounds uniform over those
 $N$ eigenvalues.  Its two-well specialization,
 Corollary~\ref{cor:symmetry-free-two}, gives the doublet asymptotic without
-central symmetry.  For two equal balls, Corollary~\ref{cor:distant-ball}
+central symmetry, and Corollary~\ref{cor:multi-two} shows that every
+conclusion of Theorem~\ref{thm:two-well}, with the same explicit threshold and
+remainders, holds for an arbitrary bounded open well.  For two equal balls,
+Corollary~\ref{cor:distant-ball}
 identifies the leading rate along the Hong--Krahn--Szeg\H{o} minimizing
 sequence.  Section~\ref{sec:numerics} illustrates the two- and three-well
 asymptotics by Galerkin computations at fixed mesh.
@@ -188,7 +194,11 @@ antisymmetric sector operators $A_D\pm B_L$.  For the general family of
 translates, the linear term in the kernel expansion cancels after projection
 onto the one-well ground states.  This gives the same remainder order without
 symmetry.  The proofs use the one-well spectral facts recalled in Section~2,
-together with elementary perturbation estimates.
+together with elementary perturbation estimates.  No boundary regularity of
+the well is needed: Lemma~\ref{lem:compact} gives the compactness of the form
+embedding for every bounded open set.  Section~\ref{sec:lean} describes a
+formal verification of the theorems, the corollaries, and
+Proposition~\ref{prop:cell-matrix} in Lean~4 with Mathlib.
 
 Brasco and Parini proved that the fractional Hong--Krahn--Szeg\H{o} bound for
 the second eigenvalue is strict and that two equal balls form a minimizing
@@ -275,11 +285,46 @@ $\lambda_1(G)\leq\lambda_2(G)\leq\cdots$ for the eigenvalues of $A_G$,
 repeated according to multiplicity.  For an abstract self-adjoint operator
 $T$ with compact resolvent, $\lambda_k(T)$ has the analogous meaning.
 
-Let $D\subset B_R(0)$ be a bounded Lipschitz open set satisfying $D=-D$.
-We retain Lipschitz regularity in order to invoke the extension property and
-compactness of the form embedding from
-\cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  Hence $A_D$
-has compact resolvent.  Its first eigenvalue is simple and has a strictly
+For Lipschitz $G$ the compactness of the form embedding follows from the
+extension property and
+\cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012}.  The following
+cube-averaging argument needs no boundary regularity.
+
+\begin{lemma}[Compactness of the form embedding]\label{lem:compact}
+Let $G\subset B_R(0)$ be open.  Every sequence in $\Hs(G)$ that is bounded in
+the form norm has a subsequence converging in $L^2(\R^d)$.  In particular,
+$A_G$ has compact resolvent.
+\end{lemma}
+
+\begin{proof}
+Fix $\varepsilon>0$, tile $\R^d$ by the half-open cubes $Q$ of side
+$\varepsilon$ with vertices in $\varepsilon\mathbb Z^d$, and put
+$P_\varepsilon u=\sum_Q\bigl(\varepsilon^{-d}\int_Qu\bigr)\mathbf 1_Q$.
+Expanding the squares gives, for each cube,
+\begin{align*}
+ \int_Q\Bigl|u-\varepsilon^{-d}\int_Qu\Bigr|^2
+ &=\frac1{2\varepsilon^d}\iint_{Q\times Q}\abs{u(x)-u(y)}^2\,dx\,dy\\
+ &\leq\frac{(\sqrt d\,\varepsilon)^{\kappa}}{2\varepsilon^d}
+ \iint_{Q\times Q}\frac{\abs{u(x)-u(y)}^2}{\abs{x-y}^{\kappa}}\,dx\,dy,
+\end{align*}
+because $\abs{x-y}\leq\sqrt d\,\varepsilon$ on $Q\times Q$.  The sets
+$Q\times Q$ are pairwise disjoint, so summation over the cubes gives
+\[
+ \norm{u-P_\varepsilon u}_{L^2(\R^d)}^2
+ \leq d^{\kappa/2}\varepsilon^{2s}\,\frac{\mathcal{Q}_G[u]}{c_{d,s}},
+ \qquad u\in\Hs(G).
+\]
+Only the finitely many cubes meeting $B_R(0)$ contribute to
+$P_\varepsilon u$, and $\norm{P_\varepsilon u}_{L^2}\leq\norm{u}_{L^2}$ by the
+Cauchy--Schwarz inequality.  Hence a set bounded in the form norm lies within
+distance $C\varepsilon^s$ of a bounded subset of a finite-dimensional space.
+Since $\varepsilon>0$ is arbitrary, the set is totally bounded, hence
+relatively compact in the complete space $L^2(\R^d)$.  Compactness of the form
+embedding gives the compactness of the resolvent of $A_G$.
+\end{proof}
+
+Let $D\subset B_R(0)$ be a bounded open set.  By Lemma~\ref{lem:compact},
+$A_D$ has compact resolvent.  Its first eigenvalue is simple and has a strictly
 positive normalized eigenfunction by
 \cite[Theorem~2.8]{BrascoParini2016}, specialized to the linear case.  Put
 \[
@@ -293,7 +338,7 @@ Fix the positive normalized ground-state eigenfunction and set
  \qquad \norm{\phi_1}_{L^2(D)}=1,
  \qquad m_1=\int_D\phi_1(x)\,dx>0.
 \end{equation}
-Simplicity and invariance under central inversion show that
+When $D=-D$, simplicity and invariance under central inversion show that
 $\phi_1(-x)=\pm\phi_1(x)$; positivity fixes the sign, so
 $\phi_1(-x)=\phi_1(x)$.
 
@@ -311,7 +356,7 @@ On $L^2(D)$ define the bounded integral operator
 Its kernel is real and symmetric, so $B_L$ is self-adjoint.
 
 \begin{lemma}[Exact reduction by central inversion]\label{lem:block}
-The operator $A_{\Omega_L}$ is unitarily equivalent to
+Assume $D=-D$.  The operator $A_{\Omega_L}$ is unitarily equivalent to
 \[
  \begin{pmatrix}A_D&B_L\\B_L&A_D\end{pmatrix}
  \quad\text{on }L^2(D)\oplus L^2(D),
@@ -433,7 +478,7 @@ algebraic cancellation in translated coordinates.
 
 \begin{samepage}
 \begin{lemma}[Interaction-kernel expansion]\label{lem:kernel}
-Let
+Assume $D=-D$, and let
 \[
  I_L=\iint_{D\times D}
  \frac{\phi_1(x)\phi_1(y)}{\abs{Le-x-y}^{\kappa}}\,dx\,dy.
@@ -496,7 +541,7 @@ which is \eqref{eq:Bnorm}.
 \end{proof}
 
 \begin{theorem}[Two-well algebraic splitting]\label{thm:two-well}
-Let $D\subset B_R(0)$ be a bounded centrally symmetric Lipschitz open set, and
+Let $D\subset B_R(0)$ be a bounded centrally symmetric open set, and
 let $\Omega_L$ be as in Section~2.  Set
 \begin{equation}\label{eq:explicit-L0}
  L_0=\max\left\{
@@ -587,6 +632,12 @@ two expansions and multiplying by $L^\kappa$ proves
 \eqref{eq:gap-limit}, since $\kappa>0$.
 \end{proof}
 
+Central symmetry enters the proof only through Lemmas~\ref{lem:block}
+and~\ref{lem:kernel}.  Corollary~\ref{cor:multi-two} proves every conclusion
+of Theorem~\ref{thm:two-well}, with the same threshold $L_0$ and the same
+remainders, for an arbitrary bounded open set $D\subset B_R(0)$, by the
+translated-coordinate argument of Section~\ref{sec:multi-well}.
+
 \begin{corollary}[Rate for the distant-ball minimizing sequence]
 \label{cor:distant-ball}
 Let $D=B_R(0)$ and let $\Omega_L$ be the union of two radius-$R$ balls whose
@@ -614,9 +665,8 @@ For finitely many components we instead keep the full block operator and
 compare its lowest spectral cluster with its compression to the translated
 one-well ground states.
 
-Throughout this section, let $D\subset B_R(0)$ be any bounded Lipschitz open
-set; central symmetry is not assumed.  The compactness and ground-state
-results \cite[Theorems~5.4 and~7.1]{DiNezzaPalatucciValdinoci2012} and
+Throughout this section, let $D\subset B_R(0)$ be any bounded open set;
+central symmetry is not assumed.  Lemma~\ref{lem:compact} and
 \cite[Theorem~2.8]{BrascoParini2016} apply unchanged.  Write
 $\mu_1<\mu_2$, $g=\mu_2-\mu_1>0$, choose the positive normalized ground
 state $A_D\phi_1=\mu_1\phi_1$, and set
@@ -724,10 +774,13 @@ $\operatorname{ran}P$, then, for $1\leq k\leq N$,
  -\frac{2b^2}{g}
  \leq\lambda_k(A+W)-(\mu+\eta_k)\leq0.
 \end{equation}
-In addition,
+If the underlying Hilbert space has dimension greater than $N$, then in
+addition
 \begin{equation}\label{eq:cluster-separation}
  \lambda_{N+1}(A+W)\geq\mu+g-b\geq\mu+\frac{3g}{4}.
 \end{equation}
+The bound \eqref{eq:cluster-bound} holds also when the space is
+$N$-dimensional; then $P^\perp=\{0\}$ and the gap condition is vacuous.
 \end{lemma}
 
 \begin{proof}
@@ -897,7 +950,7 @@ of \eqref{eq:multi-eigenvalue-bound} by $L^\kappa$ gives
 
 \begin{corollary}[Symmetry-free two-well asymptotic]
 \label{cor:symmetry-free-two}
-Let $D\subset B_R(0)$ be any bounded Lipschitz open set, let $a_1\ne a_2$, and
+Let $D\subset B_R(0)$ be any bounded open set, let $a_1\ne a_2$, and
 put $r=\abs{a_1-a_2}$.  For
 $\Omega_L=(D+La_1)\cup(D+La_2)$, as $L\to\infty$,
 \begin{align*}
@@ -934,21 +987,22 @@ $\gamma_L^2=O(L^{-2\kappa})$.  Subtracting them and using $\kappa=d+2s$
 gives the limit.
 \end{proof}
 
-\begin{corollary}[Two-well remainder comparison]\label{cor:multi-two}
-Assume in addition that $D=-D$, and take $N=2$, $a_1=-e/2$, and
-$a_2=e/2$.  For every $L\geq L_0$ from \eqref{eq:explicit-L0}, the error
-expression $\varepsilon_L+2\gamma_L^2/g$ in
-\eqref{eq:multi-eigenvalue-bound} is exactly the right-hand side of each bound
-\eqref{eq:lambda1}--\eqref{eq:lambda2}.
+\begin{corollary}[Two-well splitting without central symmetry]
+\label{cor:multi-two}
+Let $D\subset B_R(0)$ be any bounded open set, let $e$ be a unit vector,
+let $\Omega_L=(D-\frac L2e)\cup(D+\frac L2e)$, and let $L_0$ be given by
+\eqref{eq:explicit-L0}.  Then every conclusion of
+Theorem~\ref{thm:two-well} holds: for $L\geq L_0$ the bounds
+\eqref{eq:lambda1}, \eqref{eq:lambda2}, and \eqref{eq:two-well-third-level}
+hold and both eigenvalues are simple, and \eqref{eq:gap-limit} holds.  For
+$N=2$, $a_1=-e/2$, and $a_2=e/2$, the error expression
+$\varepsilon_L+2\gamma_L^2/g$ in \eqref{eq:multi-eigenvalue-bound} equals
+the right-hand side of each bound \eqref{eq:lambda1}--\eqref{eq:lambda2}.
 \end{corollary}
 
 \begin{proof}
-In this case
-\[
- M_{\mathbf a}
- =\begin{pmatrix}0&-c_{d,s}m_1^2\\-c_{d,s}m_1^2&0\end{pmatrix},
-\]
-whose ordered eigenvalues are $-c_{d,s}m_1^2$ and $c_{d,s}m_1^2$.  Moreover,
+Take $N=2$, $a_1=-e/2$, and $a_2=e/2$, so that $\Omega_{\mathbf a,L}=\Omega_L$
+and $\delta_{\mathbf a}=1$.  Then
 $\Sigma_\kappa(\mathbf a)=\Sigma_{\kappa+2}(\mathbf a)=1$, so
 $\gamma_L=\beta_L$ and
 $\varepsilon_L=c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}$.  Hence
@@ -957,14 +1011,38 @@ $\varepsilon_L=c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}$.  Hence
  =c_{d,s}C_{\kappa,R}m_1^2L^{-\kappa-2}
   +\frac{2\beta_L^2}{g}.
 \]
-The condition $L\geq L_0$ also implies $L\geq4R$ and
-$\gamma_L=\beta_L\leq g/4$,
-so the hypotheses of Theorem~\ref{thm:multi-well} hold.  In the exact
-compression, central symmetry of $D$ and evenness of $\phi_1$ show, after the
-change of variables $y\mapsto-y$, that the translated two-well kernel integral
-equals $I_L$.  The ordered leading terms therefore match the reflected
-branches in Theorem~\ref{thm:two-well}, and the displayed identity proves the
-claim about their remainder bounds.
+The proof of Theorem~\ref{thm:two-well} derives \eqref{eq:L0-conditions}
+from $L\geq L_0$ without using central symmetry; in particular $L\geq4R$ and
+$\gamma_L=\beta_L\leq g/4$, so \eqref{eq:exact-cluster-comparison} and
+\eqref{eq:cluster-separation} apply.  By \eqref{eq:exact-compression}, the
+matrix $T_L$ has zero diagonal and off-diagonal entry $-c_{d,s}J_L$, where
+\[
+ J_L=\iint_{D\times D}
+ \frac{\phi_1(x)\phi_1(y)}{\abs{Le-x+y}^{\kappa}}\,dx\,dy,
+\]
+so its ordered eigenvalues are $\mp c_{d,s}J_L$.  Lemma~\ref{lem:compression}
+gives $\abs{J_L-m_1^2L^{-\kappa}}\leq C_{\kappa,R}m_1^2L^{-\kappa-2}$, and
+\eqref{eq:exact-cluster-comparison} then gives
+\eqref{eq:lambda1} and \eqref{eq:lambda2}.
+
+Moreover, $c_{d,s}J_L\leq\norm{T_L}\leq\norm{\mathcal V_L}\leq\beta_L$.
+Hence $\lambda_2(\Omega_L)\leq\mu_1+g/4$.  Also, by
+\eqref{eq:cluster-separation}, $\lambda_3(\Omega_L)\geq\mu_1+3g/4$.  This
+proves \eqref{eq:two-well-third-level}.  Since $\phi_1>0$ and
+$\abs{Le-x+y}\leq L+2R$ on $D\times D$, we have
+$J_L\geq m_1^2(L+2R)^{-\kappa}$, and \eqref{eq:exact-cluster-comparison}
+gives
+\[
+ \lambda_2(\Omega_L)-\lambda_1(\Omega_L)
+ \geq2c_{d,s}J_L-\frac{2\beta_L^2}{g}
+ \geq2c_{d,s}m_1^2(L+2R)^{-\kappa}-\frac{2\beta_L^2}{g}>0
+\]
+by the second inequality in \eqref{eq:L0-conditions}.  Both eigenvalues are
+therefore simple.  Subtracting \eqref{eq:lambda1} from \eqref{eq:lambda2} and
+multiplying by $L^\kappa$ proves \eqref{eq:gap-limit}.  When $D=-D$, evenness
+of $\phi_1$ and the change of variables $y\mapsto-y$ give $J_L=I_L$, so the
+leading terms coincide with the reflected branches of
+Theorem~\ref{thm:two-well}.
 \end{proof}
 
 \begin{corollary}[Collective ground state]\label{cor:collective-ground}
@@ -1109,7 +1187,9 @@ off-diagonal norm is $O_{h,\mathbf a,s}(L^{-1-2s})$, and the complement of
 the $N$ copied ground states is separated by the positive discrete
 one-well gap.  The Taylor argument in Lemma~\ref{lem:compression}, now in
 Euclidean operator norm, gives an
-$O_{h,\mathbf a,s}(L^{-3-2s})$ compression error.  Applying
+$O_{h,\mathbf a,s}(L^{-3-2s})$ compression error.  If the partition has a
+single cell, the Galerkin space is spanned by the $N$ copied ground states and
+only \eqref{eq:cluster-bound} is needed.  Applying
 Lemma~\ref{lem:cluster} to this finite matrix gives the additional
 $O_{h,\mathbf a,s}(L^{-2-4s})$ term and proves
 \eqref{eq:discrete-cluster}.
@@ -1204,13 +1284,84 @@ defined in \eqref{eq:scaled-cluster-error}.}
 \end{minipage}
 \par\medskip
 
+\section{Formal verification}\label{sec:lean}
+
+The theorems, the corollaries, and Proposition~\ref{prop:cell-matrix},
+together with the one-well facts of Section~2 that they use, are formalized
+in Lean~4 (version~4.33.0) with the Mathlib library.  The formalization is in the
+directory \path{lean} of the repository listed under Code availability, at
+\url{https://github.com/skypher/laplace-tunneling/tree/paper-2026-09-30-r1/lean}.
+A continuous-integration job rebuilds it on every change.  The job fails if
+any proof is incomplete, if the project declares an axiom, or if a result in
+Table~\ref{tab:lean} depends on axioms other than the three standard ones of
+Lean (propositional extensionality, choice, and quotient soundness).
+
+The operator $A_G$ enters through its closed form.  The space $\Hs(G)$ is a
+subspace of $L^2(\R^d)$, \eqref{eq:form} is a quadratic form on it, and
+$\lambda_k(G)$ is defined by the Courant--Fischer min--max principle.  For
+every bounded open set $G$, the formalization proves that these numbers are
+exactly the eigenvalues of the weak problem
+$\mathcal{Q}_G(u,v)=\lambda\langle u,v\rangle$ for all $v\in\Hs(G)$, repeated
+according to multiplicity.  It also proves Lemma~\ref{lem:compact}, the
+existence and uniqueness of the nonnegative normalized ground state, the
+inequality $\mu_1<\mu_2$, and the gap inequality on the orthogonal complement
+of $\phi_1$.  Strict positivity of $\phi_1$ is not formalized; the proofs use
+only $\phi_1\geq0$, and by uniqueness the formal ground state is the function
+$\phi_1$ of \eqref{eq:mass}.
+
+The formal statements of Sections~2--4 hold for every bounded open set
+$D\subset B_R(0)$, all $d\geq1$ and $0<s<1$, and every positive constant in
+place of $c_{d,s}$; those of Section~\ref{sec:numerics} keep the assumptions
+$d=1$ and $0<s<1/2$ stated there.  Lemma~\ref{lem:multi-block} is formalized
+in the sense of closed forms, which is how the theorems use it.
+The formal proof of Theorem~\ref{thm:two-well} follows
+Corollary~\ref{cor:multi-two}; Lemmas~\ref{lem:block}, \ref{lem:perturb},
+and~\ref{lem:kernel}, which enter only the symmetric proof, are not
+formalized as stated.  The numerical tables are not part of the
+formalization.
+
+\begin{table}[ht]
+\centering
+{\small
+\begin{tabular}{ll}
+\hline
+Result & Lean declaration\\ \hline
+Lemma~\ref{lem:compact} & \path{totallyBounded_energySublevel}\\
+Ground state, $\mu_1<\mu_2$ & \path{exists_positiveGroundState},
+  \path{eigenvalue_zero_lt_one}\\
+Weak eigenvalues & \path{finrank_weakEigenspace}\\
+Theorem~\ref{thm:two-well} & \path{twoWell_main_centrallySymmetric}\\
+Corollary~\ref{cor:distant-ball} & \path{distantBall_rate}\\
+Lemma~\ref{lem:multi-block} & \path{WellGeometry.formQ_eq},
+  \path{WellGeometry.abs_interaction_le}\\
+Lemma~\ref{lem:cluster} & \path{MinMax.cluster_levels}\\
+Lemma~\ref{lem:compression} & \path{compression_norm_le_euclid}\\
+Theorem~\ref{thm:multi-well} & \path{multiWell_main}\\
+Corollary~\ref{cor:symmetry-free-two} & \path{symmetryFree_twoWell}\\
+Corollary~\ref{cor:multi-two} & \path{twoWell_main}\\
+Corollary~\ref{cor:collective-ground} & \path{collectiveGround_matrix},
+  \path{collectiveGround_spectrum}\\
+Corollary~\ref{cor:simplex} & \path{simplex_cluster}\\
+Proposition~\ref{prop:cell-matrix} & \path{cellMatrix_diag},
+  \path{cellMatrix_offdiag}\\
+Corollary~\ref{cor:discrete-cluster} & \path{fixedMesh_cluster}\\
+\hline
+\end{tabular}}
+\caption{Formal counterparts of the results, in the namespace
+\texttt{Tunneling}.}
+\label{tab:lean}
+\end{table}
+
 \section*{AI disclosure}
 
 The author used OpenAI's GPT-5.6 Sol model (\texttt{gpt-5.6-sol}) to explore
 and test arguments, audit citations and calculations, prepare reproducibility
-and release-checking code, and revise the manuscript.  The author checked the
-final arguments and takes responsibility for all mathematical claims,
-citations, computations, and wording.
+and release-checking code, and revise the manuscript.  The Lean formalization
+of Section~\ref{sec:lean} was developed with Anthropic's Claude Opus~5.5 model
+(\texttt{claude-opus-5-5}) and OpenAI's GPT-6 Luna model
+(\texttt{gpt-6-luna}); its correctness rests on the Lean proof checker.  The
+author checked the final arguments and takes responsibility for all
+mathematical claims, citations, computations, and wording.
 
 \section*{Code availability}
 
@@ -1223,7 +1374,9 @@ Python~3.12.3, NumPy~1.26.4, and SciPy~1.11.4.  These files are archived with
 the manuscript and are also available, with the manuscript source, in the
 GitHub repository
 \url{https://github.com/skypher/laplace-tunneling}
-(tag \texttt{paper-2026-09-30}).
+(tag \texttt{paper-2026-09-30-r1}).  The Lean formalization of
+Section~\ref{sec:lean} and its build configuration are in the directory
+\path{lean} of the same repository and tag.
 \end{sloppypar}
 
 {\small
